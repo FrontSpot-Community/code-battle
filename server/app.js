@@ -12,7 +12,6 @@ import webpackConfig from '../webpack.config.index';
 import routers from './routers';
 import * as common from './middlewares/common';
 import _ from 'lodash';
-import cors from 'cors';
 
 const app = express();
 const compiler = webpack(webpackConfig);
@@ -24,10 +23,8 @@ process.env.NODE_ENV === 'development'
     ? webpackMiddleware(app, compiler, webpackConfig)
     : app.use(compression());
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, config.get('static'))));
-app.use(checkAccessMiddleware);
 app.use('/api', routers);
 app.use(common.errorHandler);
 app.listen(config.get('port'), common.listen);

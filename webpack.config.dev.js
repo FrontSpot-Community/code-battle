@@ -28,7 +28,7 @@ export default {
             {
                 test: /\.js$/,
                 include: path.join(__dirname, 'src'),
-                loaders: ['babel']
+                loaders: ['babel-loader']
             },
             {
                 test: /(\.css)$/,

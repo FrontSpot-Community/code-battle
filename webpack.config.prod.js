@@ -21,7 +21,7 @@ export default {
         contentBase: './dist'
     },
     plugins: [
-        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.DefinePlugin(GLOBALS),
         new ExtractTextPlugin('style.css'),
         new webpack.optimize.DedupePlugin(),

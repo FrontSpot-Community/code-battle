@@ -1,6 +1,6 @@
-
-import jwt from 'jsonwebtoken';
 import config from '../configuration';
+
+const jwt = {};
 
 export const setToken = (res, token) => {
     res.setHeader('x-access-token', token);
