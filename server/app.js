@@ -1,6 +1,7 @@
 /**
  * Created by vlad on 9/25/2016.
  */
+import './libs/mongoose';
 import express from 'express';
 import bodyParser from 'body-parser';
 import webpack from 'webpack';

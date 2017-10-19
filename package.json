@@ -11,7 +11,8 @@
     "open:src": "cross-env NODE_ENV=development babel-node server/app.js",
     "lint": "node_modules/.bin/esw --fix",
     "lint:watch": "npm run lint -- --watch",
-    "test": "mocha --require ignore-styles --reporter spec progress tools/testSetup.js \"src/**/*.test.js\"",
+    "test": "npm run test:server",
+    "test:server": "mocha --require ignore-styles --reporter spec progress tools/testSetup.js \"server/**/*.test.js\"",
     "test:watch": "npm run test -- --watch",
     "clean-dist": "npm run remove-dist && mkdir dist",
     "remove-dist": "node_modules/.bin/rimraf ./dist",
@@ -35,6 +36,7 @@
     "babel-polyfill": "^6.26.0",
     "babel-preset-es2017": "^6.24.1",
     "babel-preset-es2017-node7": "^0.5.2",
+    "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-stage-3": "^6.24.1",
@@ -52,6 +54,7 @@
     "ignore-styles": "^5.0.1",
     "jsdom": "8.5.0",
     "mocha": "^4.0.1",
+    "mongoose": "^4.12.3",
     "nconf": "^0.8.5",
     "nodemon": "^1.12.1",
     "npm-run-all": "^4.1.1",
@@ -67,11 +70,16 @@
     "react-router-redux": "^4.0.8",
     "redux": "^3.7.2",
     "redux-immutable-state-invariant": "^2.1.0",
+    "redux-saga": "^0.16.0",
+    "stylelint": "^8.2.0",
     "webpack": "2.1.0-beta.21",
     "webpack-dev-middleware": "^1.12.0",
     "webpack-hot-middleware": "^2.20.0"
   },
   "repository": {
     "type": "git"
+  },
+  "devDependencies": {
+    "flow-bin": "^0.57.3"
   }
 }

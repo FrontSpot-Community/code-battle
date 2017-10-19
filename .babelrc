@@ -2,7 +2,8 @@
     "presets": [
         "es2017-node7",
         "stage-3",
-        "react"
+        "react",
+        "flow"
     ],
     "env": {
         "development": {
