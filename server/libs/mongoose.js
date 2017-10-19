@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
 import config from '../configuration';
-import bluebird from 'bluebird';
 /* eslint-disable no-console */
 
 mongoose.connect(config.get('db:connection'), {useMongoClient: true});
