@@ -17,6 +17,7 @@ export default {
         filename: 'bundle.js'
     },
     devServer: {
+        historyApiFallback: true,
         contentBase: './src'
     },
     plugins: [

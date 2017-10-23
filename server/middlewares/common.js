@@ -13,6 +13,6 @@ export function errorHandler(err, req, res, next) {
 export function sendIndexHtml(req, res) {
     res.sendFile(path.join(
         global._root,
-        config.get('static') + '/index.html')
+        config.get('index'))
     );
 }
