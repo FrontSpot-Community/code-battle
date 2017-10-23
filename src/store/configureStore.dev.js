@@ -2,12 +2,10 @@ import {createStore, applyMiddleware, compose} from 'redux';
 import rootReducer from '../reducers';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 import createSagaMiddleware, {END} from 'redux-saga';
-
+const sagaMiddleware = createSagaMiddleware();
 let store;
 
 export const configureStore = (initialState) => {
-    const sagaMiddleware = createSagaMiddleware();
-
     store = createStore(
             rootReducer,
             initialState,
