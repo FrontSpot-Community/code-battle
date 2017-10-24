@@ -1,0 +1,15 @@
+{
+    "presets": [
+        "es2017-node7",
+        "stage-3",
+        "react",
+        "flow"
+    ],
+    "env": {
+        "development": {
+            "presets": [
+                "react-hmre"
+            ]
+        }
+    }
+}

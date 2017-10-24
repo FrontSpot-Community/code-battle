@@ -1,0 +1,48 @@
+{
+    "extends": [
+        "eslint:recommended",
+        "google",
+        "plugin:import/errors",
+        "plugin:import/warnings"],
+    "plugins": [
+        "react",
+        "import"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "parser": "babel-eslint",
+    "env": {
+        "mocha": true,
+        "es6": true,
+        "browser": true,
+        "node": true,
+        "jquery": true
+    },
+    "rules": {
+        "react/jsx-uses-react": "error",
+        "react/jsx-uses-vars": "error",
+        "comma-dangle": [
+            "error",
+            "never"
+        ],
+        "max-len": ["error", {
+            "ignoreComments": true,
+            "ignoreTemplateLiterals": true,
+            "ignoreTrailingComments": true,
+            "ignoreUrls": true
+        }],
+        "no-invalid-this": 0,
+        "new-cap": ["error", {
+            "properties": false
+        }],
+        "require-jsdoc": 0
+    },
+    "settings": {
+        "import/ignore": [".(scss|less|css)$"]
+    }
+}
