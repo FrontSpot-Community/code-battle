@@ -1,0 +1,12 @@
+{
+    "port": 3000,
+    "static": "../src",
+    "index": "../src/index.html",
+    "db": {
+        "connection": "mongodb://vlados:vlados@ds015690.mlab.com:15690/inbriefdb",
+        "name": "inbrief",
+        "options": {
+
+        }
+    }
+}
