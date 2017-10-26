@@ -29,6 +29,7 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.17.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.1",
@@ -64,6 +65,7 @@
     "pre-commit": "^1.2.2",
     "preload-image-loader": "^1.0.0",
     "prop-types": "^15.6.0",
+    "query-string": "^5.0.1",
     "react": "^16.0.0",
     "react-bootstrap": "^0.31.5",
     "react-dom": "^16.0.0",

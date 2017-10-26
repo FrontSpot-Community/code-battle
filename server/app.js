@@ -26,7 +26,7 @@ process.env.NODE_ENV === 'development'
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, config.get('static'))));
-app.use('/api', routers);
+app.use(routers);
 app.get('*', common.sendIndexHtml);
 app.use(common.errorHandler);
 app.listen(config.get('port'), common.listen);
