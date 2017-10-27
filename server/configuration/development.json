@@ -8,5 +8,10 @@
         "options": {
 
         }
+    },
+    "github": {
+        "clientID": "0cebe6182174a9aab2d0",
+        "clientSecret": "89e7d0c4743410198bb8ec1e5cf29f6106cfe634",
+        "callbackURL": "http://localhost:3000/auth/github/callback"
     }
 }
