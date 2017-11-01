@@ -1,7 +1,6 @@
 /**
  * Created by vlad on 9/25/2016.
  */
-import './libs/mongoose';
 import express from 'express';
 import bodyParser from 'body-parser';
 import webpack from 'webpack';
@@ -26,7 +25,7 @@ process.env.NODE_ENV === 'development'
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, config.get('static'))));
-app.use('/api', routers);
+app.use('/other-static-pages', routers);
 app.get('*', common.sendIndexHtml);
 app.use(common.errorHandler);
 app.listen(config.get('port'), common.listen);
