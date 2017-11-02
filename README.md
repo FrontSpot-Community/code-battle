@@ -1,5 +1,5 @@
 # code-battle
-
+ 
 ## How to install ?
  
 * **Clone the repo via git**
