@@ -7,6 +7,7 @@ import {configureStore} from './store/configureStore';
 import {App} from './containers/App';
 import Home from './containers/Home';
 import About from './containers/About';
+import TaskPage from './containers/TaskPage';
 import rootSaga from './sagas';
 
 const store = configureStore();
@@ -19,6 +20,7 @@ render(
                 <Switch>
                     <Route exact path="/" component={Home} />
                     <Route exact path="/about" component={About} />
+                    <Route exact path="/task-page" component={TaskPage} />
                     <Route path="*" component={About} />
                 </Switch>
             </App>
