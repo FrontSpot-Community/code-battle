@@ -1,4 +1,4 @@
-# code-battle
+# Code-Battle
  
 ## How to install ?
  
