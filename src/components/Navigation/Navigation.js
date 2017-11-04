@@ -6,14 +6,10 @@ import {
   Nav
 } from 'react-bootstrap';
 
-import styles from './navigation.scss';
-
 export default class Navigation extends Component {
     render() {
-        const {nav} = styles;
-
         return (
-            <Navbar className={nav}>
+            <Navbar>
                <Navbar.Header>
                  <Navbar.Brand>
                    <a href="#">React-Bootstrap</a>
