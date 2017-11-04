@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Grid, Row} from 'react-bootstrap';
-import {TaskDescription} from '../../components/index';
+import {TaskDescription, CodeEditor} from '../../components/index';
 import style from './taskPageContainer.scss';
 
 export default class TaskPage extends Component {
@@ -9,7 +9,7 @@ export default class TaskPage extends Component {
             <Grid className={style.taskPageContainer} fluid={true}>
                 <Row className="showGrid">
                     <TaskDescription />
-                    {/* <CodeEditor />*/}
+                    <CodeEditor />
                 </Row>
             </Grid>
         );
