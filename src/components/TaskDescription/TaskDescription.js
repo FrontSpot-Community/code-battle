@@ -12,17 +12,17 @@ export default class TaskDescription extends Component {
         return (
             <Col className={style.taskDescriptionContainer} md={5}>
                 <InfoRow />
-                <Tabs defaultActiveKey={1}>
+                <Tabs id={'taskDescriptionTabs'} defaultActiveKey={1}>
                     <Tab
                         eventKey={1}
-                        title="Description"
+                        title={'Description'}
                          tabClassName={style.tabTitle}
                     >
                         <Description />
                     </Tab>
                     <Tab
                         eventKey={2}
-                        title="Output"
+                        title={'Output'}
                         tabClassName={style.tabTitle}
                     >
                         <Output />

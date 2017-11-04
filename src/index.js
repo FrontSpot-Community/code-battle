@@ -7,7 +7,7 @@ import {configureStore} from './store/configureStore';
 import {App} from './containers/App';
 import Home from './containers/Home';
 import About from './containers/About';
-import TaskPage from './containers/TaskPage';
+import TaskPage from './containers/TaskPageContainer';
 import rootSaga from './sagas';
 
 const store = configureStore();
