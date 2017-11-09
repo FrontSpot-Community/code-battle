@@ -1,10 +1,10 @@
 # Code-Battle
- 
+
 ## How to install ?
- 
+
 * **Clone the repo via git**
-    ```bash 
-    git clone https://github.com/SergeyKovalchuk/code-battle.git
+    ```bash
+    git clone https://github.com/FrontSpot-Community/code-battle.git
     ```
 * **Enter the folder**
      ```bash
@@ -19,8 +19,7 @@
     yarn start or npm start
     ```
 
-
-## To build: 
+## To build:
 
 ```bash
 yarn  run build or npm  run build
@@ -34,12 +33,9 @@ yarn  run build or npm  run build
 
 :bulb:  *You can\'t commit if you have code style errors  or test failed*
 
-
-## Used: 
+## Used:
 
 * **Node.js**
-* **Express**
 * **React+Redux**
 * **Webpack**
-* **MongoDB**
 * **Yarn**
