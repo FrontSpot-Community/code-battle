@@ -5,7 +5,7 @@ import {
   Col
 } from 'react-bootstrap';
 
-import BattleList from '../components/BattleList/BattleList';
+import TourList from '../components/TourList/TourList';
 
 export default class HomeContainer extends React.Component {
   constructor() {
@@ -30,7 +30,7 @@ export default class HomeContainer extends React.Component {
         <Grid>
           <Row >
             <Col xs={12} sm={6} md={10} lg={10}>
-              <BattleList {...this.state} />
+              <TourList {...this.state} />
             </Col>
           </Row>
         </Grid>

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 
-export default class Battle extends Component {
+export default class Tour extends Component {
     render() {
         return (
             <section>

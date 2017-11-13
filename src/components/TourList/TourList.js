@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
-import Battle from '../Battle/Battle';
+import Tour from '../Tour/Tour';
 
-export default class BattleList extends Component {
+export default class TourList extends Component {
     render() {
       return (
           <section>
             {this.props.battles.map((battle, index) => {
               return (
-                <Battle key={battle.battleId} {...battle} />
+                <Tour key={battle.battleId} {...battle} />
               );
             })}
           </section>
