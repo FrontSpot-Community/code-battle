@@ -23,6 +23,7 @@
     "stylelint"
   ],
   "dependencies": {
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-polyfill": "^6.26.0",
     "react": "^16.0.0",
     "react-ace": "^5.5.0",
