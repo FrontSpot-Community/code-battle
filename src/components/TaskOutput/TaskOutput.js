@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import style from './output.scss';
+import style from './taskOutput.scss';
 
-export default class Output extends Component {
+export default class TaskOutput extends Component {
     render() {
         return (
             <div className={style.outputContainer}>
-                Output
+                {this.props.output}
             </div>
         );
     }
