@@ -4,25 +4,13 @@ import {
   Row,
   Col
 } from 'react-bootstrap';
+import {connect} from 'react-redux';
 
-import BattleList from '../components/BattleList/BattleList';
+import TournamentList from '../components/TournamentList/TournamentList';
 
-export default class HomeContainer extends React.Component {
+class HomeContainer extends React.Component {
   constructor() {
     super();
-
-    // For testing
-    this.state = {
-      battles: [
-        {
-          battleId: 'js',
-          battleTitle: 'Javascript',
-          battleCat: 'js',
-          battleImage: '',
-          battleDesc: ''
-        }
-      ]
-    };
   }
 
   render() {
@@ -30,10 +18,18 @@ export default class HomeContainer extends React.Component {
         <Grid>
           <Row >
             <Col xs={12} sm={6} md={10} lg={10}>
-              <BattleList {...this.state} />
+              <TournamentList {...this.props} />
             </Col>
           </Row>
         </Grid>
       );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    tournaments: state.tournaments.data
+  };
+};
+
+export default connect(mapStateToProps)(HomeContainer);
