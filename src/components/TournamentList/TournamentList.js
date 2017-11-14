@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import Tour from '../Tour/Tour';
+import Tournament from '../Tournament/Tournament';
 
 export default class TourList extends Component {
   renderList = () => {
     return this.props.tournaments && this.props.tournaments.map((t, i) => {
       return (
-        <Tour key={t.id} {...t} />
+        <Tournament key={t.id} {...t} />
       );
     });
   }

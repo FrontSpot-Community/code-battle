@@ -6,7 +6,7 @@ import {
 } from 'react-bootstrap';
 import {connect} from 'react-redux';
 
-import TourList from '../components/TourList/TourList';
+import TournamentList from '../components/TournamentList/TournamentList';
 
 class HomeContainer extends React.Component {
   constructor() {
@@ -18,7 +18,7 @@ class HomeContainer extends React.Component {
         <Grid>
           <Row >
             <Col xs={12} sm={6} md={10} lg={10}>
-              <TourList {...this.props} />
+              <TournamentList {...this.props} />
             </Col>
           </Row>
         </Grid>
