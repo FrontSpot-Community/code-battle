@@ -5,7 +5,7 @@ export default class BattleList extends Component {
     render() {
       return (
           <section>
-            {this.props.tasks.map((task, index) => {
+            {this.props.tasks.map((task) => {
               return (
                 <Task key={task.taskId} battle={this.props.battle} {...task} />
               );

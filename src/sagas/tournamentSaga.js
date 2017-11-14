@@ -4,7 +4,7 @@ import Api from '../api/tournaments';
 import {fetchSuccess} from '../actions/tournamentActions';
 import {TOURNAMENTS_FETCH_REQUESTED} from '../constants';
 
-function* fetchTournaments(action) {
+function* fetchTournaments() {
    try {
       const tournaments = yield call(Api.fetchAll);
       yield put(fetchSuccess(tournaments));
