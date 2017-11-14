@@ -1,29 +1,48 @@
 import React from 'react';
 import {
-  Grid,
-  Row,
-  Col
+    Grid,
+    Row,
+    Col,
+    Tabs,
+    Tab
 } from 'react-bootstrap';
+import TaskDescription from '../components/TaskDescription/TaskDescription';
+import TaskOutput from '../components/TaskOutput/TaskOutput';
+import CodeEditor from '../components/CodeEditor/CodeEditor';
 
-
-export default class TaksContainer extends React.Component {
+export default class TaskContainer extends React.Component {
   constructor() {
     super();
 
     this.state = {
-
+        description: 'Task Description',
+        output: 'Task Output'
     };
   }
 
   render() {
       return (
-        <Grid>
-          <h1>Task : {this.props.match.params.taskId}</h1>
-          <Row >
-            <Col xs={12} sm={12} md={12} lg={12}>
-              Editor and Task Info
-            </Col>
-          </Row>
+        <Grid fluid={true}>
+            <h1>Task : {this.props.match.params.taskId}</h1>
+            <Row>
+                <Col md={5}>
+                    <Tabs id={'taskDescriptionTabs'} defaultActiveKey={1}>
+                        <Tab eventKey={1} title={'Description'}>
+                            <TaskDescription
+                                description={this.state.description}
+                            />
+                        </Tab>
+                        <Tab eventKey={2} title={'Output'}>
+                            <TaskOutput
+                                output={this.state.output}
+                            />
+                        </Tab>
+                    </Tabs>
+                </Col>
+                <Col md={7}>
+                    <CodeEditor />
+                </Col>
+            </Row>
         </Grid>
       );
   }
