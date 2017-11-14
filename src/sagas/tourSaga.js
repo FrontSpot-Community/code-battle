@@ -1,7 +1,7 @@
 import {call, put, takeEvery} from 'redux-saga/effects';
 import Api from '../api/tours';
 
-import {fetchSuccess} from '../actions/tour';
+import {fetchSuccess} from '../actions/tourActions';
 import {TOURS_FETCH_REQUESTED} from '../constants';
 
 function* fetchTours(action) {
