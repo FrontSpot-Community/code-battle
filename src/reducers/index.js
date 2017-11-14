@@ -1,11 +1,8 @@
 import {combineReducers} from 'redux';
+import tournamentReducer from './tournamentReducer';
+
 const rootReducer = combineReducers({
-    blank: function(state, action) {
-        if (state == null) {
-            state = [];
-        }
-        return state;
-    }
+    tournaments: tournamentReducer
 });
 
 export default rootReducer;

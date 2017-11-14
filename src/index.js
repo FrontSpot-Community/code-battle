@@ -5,6 +5,7 @@ import {Provider} from 'react-redux';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import {configureStore} from './store/configureStore';
 import {App} from './containers/App';
+import {TOURNAMENTS_FETCH_REQUESTED} from './constants';
 import HomeContainer from './containers/HomeContainer';
 import AboutContainer from './containers/AboutContainer';
 import BattleContainer from './containers/BattleContainer';
@@ -13,6 +14,8 @@ import rootSaga from './sagas';
 
 const store = configureStore();
 store.runSaga(rootSaga);
+
+store.dispatch({type: TOURNAMENTS_FETCH_REQUESTED});
 
 render(
     <Provider store={store}>
