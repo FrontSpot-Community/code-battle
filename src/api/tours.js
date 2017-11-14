@@ -12,7 +12,7 @@ const tours = [
 ];
 
 export default class Tours {
-  static getAllCourses() {
+  static getAll() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(Object.assign([], tours));
