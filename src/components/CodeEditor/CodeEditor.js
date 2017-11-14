@@ -18,11 +18,11 @@ export default class CodeEditor extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: '',
-            mode: 'JavaScript',
-            theme: 'Twilight',
-            fontSize: 16,
-            highlightActiveLine: true
+            value: this.props.value,
+            mode: this.props.mode,
+            theme: this.props.theme,
+            fontSize: this.props.fontSize,
+            highlightActiveLine: this.props.highlightActiveLine
         };
     }
 
@@ -47,19 +47,25 @@ export default class CodeEditor extends Component {
     render() {
         return (
             <section>
-                <ButtonGroup justified>
+                <ButtonGroup block>
                     <DropdownButton
-                        title={`Language: ${this.state.mode}`}
+                        id={'dropdown-language'}
                         key={'dropdown-language'}
+                        title={`Language: ${this.state.mode}`}
+                        bsSize={'large'}
                         onSelect={this.setMode}
                     >
-                        <MenuItem eventKey={'JavaScript'}>JavaScript</MenuItem>
+                        <MenuItem eventKey={'JavaScript'}>
+                            JavaScript
+                        </MenuItem>
                         <MenuItem eventKey={'CSS'}>CSS</MenuItem>
                         <MenuItem eventKey={'HTML'}>HTML</MenuItem>
                     </DropdownButton>
                     <DropdownButton
-                        title={`Theme: ${this.state.theme}`}
+                        id={'dropdown-theme'}
                         key={'dropdown-theme'}
+                        title={`Theme: ${this.state.theme}`}
+                        bsSize={'large'}
                         onSelect={this.setTheme}
                     >
                         <MenuItem eventKey={'Twilight'}>Twilight</MenuItem>
@@ -67,8 +73,10 @@ export default class CodeEditor extends Component {
                         <MenuItem eventKey={'Monokai'}>Monokai</MenuItem>
                     </DropdownButton>
                     <DropdownButton
-                        title={`Font size: ${this.state.fontSize}`}
+                        id={'dropdown-fontSize'}
                         key={'dropdown-fontSize'}
+                        title={`Font size: ${this.state.fontSize}`}
+                        bsSize={'large'}
                         onSelect={this.setFontSize}
                     >
                         <MenuItem eventKey={14}>14</MenuItem>
@@ -77,6 +85,7 @@ export default class CodeEditor extends Component {
                         <MenuItem eventKey={20}>20</MenuItem>
                     </DropdownButton>
                 </ButtonGroup>
+                <h3>Solution:</h3>
                 <AceEditor
                     value={this.state.value}
                     mode={this.state.mode.toLowerCase()}
@@ -84,7 +93,20 @@ export default class CodeEditor extends Component {
                     fontSize={this.state.fontSize}
                     highlightActiveLine={this.state.highlightActiveLine}
                     width={'100%'}
-                    height={'50vh'}
+                    height={'44vh'}
+                    showPrintMargin={false}
+                    onChange={this.onChange}
+                />
+                <h3>Sample Tests:</h3>
+                <AceEditor
+                    value={this.state.value}
+                    mode={this.state.mode.toLowerCase()}
+                    theme={this.state.theme.toLowerCase()}
+                    fontSize={this.state.fontSize}
+                    highlightActiveLine={this.state.highlightActiveLine}
+                    width={'100%'}
+                    height={'20vh'}
+                    showPrintMargin={false}
                     onChange={this.onChange}
                 />
             </section>
