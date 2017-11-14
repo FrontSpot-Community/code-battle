@@ -1,11 +1,8 @@
 import {combineReducers} from 'redux';
+import tourReducer from './tourReducer';
+
 const rootReducer = combineReducers({
-    blank: function(state, action) {
-        if (state == null) {
-            state = [];
-        }
-        return state;
-    }
+    tours: tourReducer
 });
 
 export default rootReducer;

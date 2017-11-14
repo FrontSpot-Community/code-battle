@@ -6,8 +6,8 @@ export default class Tour extends Component {
         return (
             <section>
                 <h1>
-                  <Link to={`/battle/${this.props.battleId}`}>
-                    {this.props.battleTitle}
+                  <Link to={`/battle/${this.props.id}`}>
+                    {this.props.title}
                   </Link>
                 </h1>
             </section>

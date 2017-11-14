@@ -8,11 +8,17 @@ const tours = [
     title: 'Simplify the solution',
     category: 'JavaScript',
     author: 'Rufat Khaslarov'
+  },
+  {
+    id: 'simplify-the-solution2',
+    title: 'Simplify the solution2',
+    category: 'JavaScript',
+    author: 'Rufat Khaslarov'
   }
 ];
 
 export default class Tours {
-  static getAll() {
+  static fetchAll() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(Object.assign([], tours));

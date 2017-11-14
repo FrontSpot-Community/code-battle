@@ -5,9 +5,9 @@ export default class TourList extends Component {
     render() {
       return (
           <section>
-            {this.props.battles.map((battle, index) => {
+            {this.props.tours && this.props.tours.map((tour, index) => {
               return (
-                <Tour key={battle.battleId} {...battle} />
+                <Tour key={tour.id} {...tour} />
               );
             })}
           </section>
