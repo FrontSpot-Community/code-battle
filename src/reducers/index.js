@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
-import tourReducer from './tourReducer';
+import tournamentReducer from './tournamentReducer';
 
 const rootReducer = combineReducers({
-    tours: tourReducer
+    tournaments: tournamentReducer
 });
 
 export default rootReducer;

@@ -26,9 +26,9 @@ class HomeContainer extends React.Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   return {
-    tours: state.tours
+    tournaments: state.tournaments.data
   };
 };
 

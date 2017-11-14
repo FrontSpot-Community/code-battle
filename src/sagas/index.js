@@ -1,9 +1,9 @@
 import {fork} from 'redux-saga/effects';
 
-import tourSaga from './tourSaga';
+import tournamentSaga from './tournamentSaga';
 
 export default function* rootSaga() {
   yield [
-    fork(tourSaga)
+    fork(tournamentSaga)
   ];
 }

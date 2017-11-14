@@ -2,7 +2,7 @@
 // It uses setTimeout to simulate the delay of an AJAX call.
 // All calls return promises.
 const delay = 1000;
-const tours = [
+const tournaments = [
   {
     id: 'simplify-the-solution',
     title: 'Simplify the solution',
@@ -21,7 +21,7 @@ export default class Tours {
   static fetchAll() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve(Object.assign([], tours));
+        resolve([...tournaments]);
       }, delay);
     });
   }
