@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 
-export default class Tour extends Component {
+export default class Tournament extends Component {
     render() {
         return (
             <section>

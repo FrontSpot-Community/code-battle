@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Tournament from '../Tournament/Tournament';
 
-export default class TourList extends Component {
+export default class TournamentList extends Component {
   renderList = () => {
     return this.props.tournaments && this.props.tournaments.map((t, i) => {
       return (
