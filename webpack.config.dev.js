@@ -35,13 +35,16 @@ module.exports = {
           use: 'babel-loader'
         },
         {
-          test: /\.s?css$/,
-          include: srcPath,
-          use: [
-            'style-loader',
-            'css-loader',
-            'sass-loader'
-          ]
+              test: /\.scss$/,
+              loaders: [
+                  'style-loader',
+                  'css-loader?modules&importLoaders=1&localIdentName=sn-[local]___[hash:base64:5]',
+                  'sass-loader'
+              ],
+              include: [
+                  path.join(__dirname, 'src')
+              ],
+              exclude: []
         },
         {
           test: /\.(png|jpe?g)$/,
