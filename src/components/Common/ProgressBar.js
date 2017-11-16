@@ -6,7 +6,12 @@ import './progress-bar.scss';
 export default class ProgressBar extends Component {
     render() {
         return (
-            <LoadingBar className="loading" />
+            <LoadingBar
+              className="loading"
+              updateTime={20}
+              maxProgress={100}
+              progressIncrease={20}
+            />
         );
     }
 }
