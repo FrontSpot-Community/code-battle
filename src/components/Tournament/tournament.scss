@@ -1,0 +1,48 @@
+.tournament {
+  background-color: rgba(0,0,0,0.1);
+  padding: 20px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  flex: 48%;
+  max-width: 48%;
+  display: flex;
+
+  &-icon {
+    flex: 1;
+    
+    .glyphicon {
+      top: 5px;
+      font-size: 40px;
+      padding-right: 15px;
+    }
+  }
+
+  &-info {
+    flex: 11;
+  }
+
+  &-title {
+    a {
+      transition: color 0.2s ease-in;
+      position: relative;
+      top: 3px;
+      color: #000;
+      font-size: 1.2em;
+      text-decoration: none;
+
+      &:hover {
+        color: #333;
+      }
+    }
+  }
+
+  &-author {
+    padding-top: 2px;
+  }
+
+  @media(max-width: 768px) {
+    flex-basis: 100%;
+    max-width: 100%;
+    margin-left: 0px;
+  }
+}
