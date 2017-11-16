@@ -22,7 +22,7 @@ const tournaments = [
     author: 'saiful110816'
   },
   {
-    id: 'simplify-the-solution',
+    id: 'simplify-the-solution4',
     title: 'Simplify the solution',
     category: 'JavaScript',
     author: 'Rufat Khaslarov'

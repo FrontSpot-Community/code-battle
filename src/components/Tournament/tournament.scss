@@ -1,4 +1,16 @@
+@keyframes showOn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 .tournament {
+
+  animation: 1s ease-out 0s 1 showOn;
   background-color: rgba(0,0,0,0.1);
   padding: 20px;
   margin-left: 10px;
@@ -9,7 +21,7 @@
 
   &-icon {
     flex: 1;
-    
+
     .glyphicon {
       top: 5px;
       font-size: 40px;

@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
-import {
-  Glyphicon
-} from 'react-bootstrap';
+
+
+import TournamentIcon from './TournamentIcon';
+import TournamentInfo from './TournamentInfo';
 
 import './tournament.scss';
 
@@ -10,19 +10,8 @@ export default class Tournament extends Component {
     render() {
         return (
             <section className="tournament">
-              <section className="tournament-icon">
-                <Glyphicon glyph="book" />
-              </section>
-              <section className="tournament-info">
-                <section className="tournament-title">
-                  <Link to={`/battle/${this.props.id}`}>
-                   {this.props.title}
-                  </Link>
-                </section>
-                <section className="tournament-author">
-                  by {this.props.author}
-                </section>
-              </section>
+              <TournamentIcon icon="book" />
+              <TournamentInfo {...this.props} />
             </section>
         );
     }
