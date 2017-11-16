@@ -1,5 +1,6 @@
 import React from 'react';
 import Navigation from '../components/Navigation/Navigation';
+import ProgressBar from '../components/Common/ProgressBar';
 
 export class App extends React.Component {
     render() {
@@ -16,6 +17,7 @@ export class App extends React.Component {
 
         return (
             <section className="wrapper">
+              <ProgressBar />
               <Navigation links={links} />
               <main>
                 {this.props.children}
