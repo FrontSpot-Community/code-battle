@@ -14,9 +14,14 @@ export default class TournamentList extends Component {
 
   render() {
     return (
+      <section>
+        <section className="tournament-count">
+          {this.props.tournaments.length} Tournaments Found
+        </section>
         <section className="tournament-list">
           {this.renderList()}
         </section>
+      </section>
     );
   }
 }
