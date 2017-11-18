@@ -16,7 +16,14 @@
                         "locals": ["module"]
                      }]
                 }],
-                ["transform-class-properties", { "spec": true }]]
-      }
+                ["transform-class-properties", { "spec": true }]
+            ]
+        },
+        "production": {
+            "plugins": [
+                ["transform-class-properties", { "spec": true }]
+            ]
+
+        }
     }
 }
