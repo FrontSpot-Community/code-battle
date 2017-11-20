@@ -2,6 +2,8 @@ import React from 'react';
 import Navigation from '../components/Navigation/Navigation';
 import ProgressBar from '../components/Common/ProgressBar';
 
+import './App.scss';
+
 export class App extends React.Component {
     render() {
         const links = [
@@ -16,13 +18,13 @@ export class App extends React.Component {
         ];
 
         return (
-            <section className="wrapper">
+            <div className="wrapper">
               <ProgressBar />
               <Navigation links={links} />
               <main>
                 {this.props.children}
               </main>
-            </section>
+            </div>
         );
     }
 }

@@ -3,16 +3,16 @@ import {Link} from 'react-router-dom';
 
 const TournamentInfo = ({id, title, author}) => {
   return (
-    <section className="tournament-info">
-      <section className="tournament-title">
+    <div className="tournament-info">
+      <div className="tournament-title">
         <Link to={`/battle/${id}`}>
          {title}
         </Link>
-      </section>
-      <section className="tournament-author">
+      </div>
+      <div className="tournament-author">
         by {author}
-      </section>
-    </section>
+      </div>
+    </div>
   );
 };
 

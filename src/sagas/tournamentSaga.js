@@ -13,7 +13,7 @@ function* fetchTournaments() {
    } catch (e) {
       yield put(fetchFailed(e));
    } finally {
-     yield put(hideLoading());
+      yield put(hideLoading());
    }
 }
 

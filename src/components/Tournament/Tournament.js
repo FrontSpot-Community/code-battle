@@ -9,10 +9,10 @@ import './tournament.scss';
 export default class Tournament extends Component {
     render() {
         return (
-            <section className="tournament">
+            <div className="tournament">
               <TournamentIcon icon="book" />
               <TournamentInfo {...this.props} />
-            </section>
+            </div>
         );
     }
 }

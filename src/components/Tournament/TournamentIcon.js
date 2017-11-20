@@ -5,9 +5,9 @@ import {
 
 const TournamentIcon = ({icon}) => {
   return (
-    <section className="tournament-icon">
+    <div className="tournament-icon">
       <Glyphicon glyph={icon} />
-    </section>
+    </div>
   );
 };
 
