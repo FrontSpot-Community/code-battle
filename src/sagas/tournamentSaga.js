@@ -1,15 +1,19 @@
 import {call, put, takeEvery} from 'redux-saga/effects';
-import Api from '../api/tournaments';
+import {showLoading, hideLoading} from 'react-redux-loading-bar';
 
-import {fetchSuccess} from '../actions/tournamentActions';
+import Api from '../api/tournaments';
+import {fetchSuccess, fetchFailed} from '../actions/tournamentActions';
 import {TOURNAMENTS_FETCH_REQUESTED} from '../constants';
 
 function* fetchTournaments() {
    try {
+      yield put(showLoading());
       const tournaments = yield call(Api.fetchAll);
       yield put(fetchSuccess(tournaments));
    } catch (e) {
-      yield put({type: 'TOURS_FETCH_FAILED', message: e.message}); // toDO
+      yield put(fetchFailed(e));
+   } finally {
+      yield put(hideLoading());
    }
 }
 

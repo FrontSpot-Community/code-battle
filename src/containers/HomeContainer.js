@@ -17,7 +17,7 @@ class HomeContainer extends React.Component {
       return (
         <Grid>
           <Row >
-            <Col xs={12} sm={6} md={10} lg={10}>
+            <Col xs={12} sm={12} md={12} lg={12}>
               <TournamentList {...this.props} />
             </Col>
           </Row>

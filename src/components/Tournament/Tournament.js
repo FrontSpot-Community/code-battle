@@ -1,16 +1,18 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+
+
+import TournamentIcon from './TournamentIcon';
+import TournamentInfo from './TournamentInfo';
+
+import './tournament.scss';
 
 export default class Tournament extends Component {
     render() {
         return (
-            <section>
-                <h1>
-                  <Link to={`/battle/${this.props.id}`}>
-                    {this.props.title}
-                  </Link>
-                </h1>
-            </section>
+            <div className="tournament">
+              <TournamentIcon icon="book" />
+              <TournamentInfo {...this.props} />
+            </div>
         );
     }
 }

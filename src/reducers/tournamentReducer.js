@@ -1,4 +1,7 @@
-import {TOURNAMENTS_FETCH_SUCCESS} from '../constants';
+import {
+  TOURNAMENTS_FETCH_SUCCESS,
+  TOURNAMENTS_FETCH_FAILED
+} from '../constants';
 
 const initialState = {
     isLoading: false,
@@ -12,6 +15,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         data: action.tournaments
+      };
+    case TOURNAMENTS_FETCH_FAILED:
+      return {
+        ...state,
+        error: action.error
       };
     default:
       return state;

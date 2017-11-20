@@ -10,6 +10,24 @@ const tournaments = [
     author: 'Rufat Khaslarov'
   },
   {
+    id: 'string-etc',
+    title: 'string etc',
+    category: 'JavaScript',
+    author: 'lihuanshuai'
+  },
+  {
+    id: 'yet-To-Solve',
+    title: 'yet To Solve',
+    category: 'JavaScript',
+    author: 'saiful110816'
+  },
+  {
+    id: 'simplify-the-solution4',
+    title: 'Simplify the solution',
+    category: 'JavaScript',
+    author: 'Rufat Khaslarov'
+  },
+  {
     id: 'simplify-the-solution2',
     title: 'Simplify the solution2',
     category: 'JavaScript',
