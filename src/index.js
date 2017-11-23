@@ -10,6 +10,7 @@ import HomeContainer from './containers/HomeContainer';
 import AboutContainer from './containers/AboutContainer';
 import BattleContainer from './containers/BattleContainer';
 import TaskContainer from './containers/TaskContainer';
+import TaskTrainContainer from './containers/TaskTrainContainer';
 import LoginContainer from './containers/LoginContainer';
 import rootSaga from './sagas';
 

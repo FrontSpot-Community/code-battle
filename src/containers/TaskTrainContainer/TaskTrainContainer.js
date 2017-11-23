@@ -10,7 +10,7 @@ import TaskDescription from '../../components/TaskDescription/TaskDescription';
 import TaskOutput from '../../components/TaskOutput/TaskOutput';
 import CodeEditor from '../../components/CodeEditor/CodeEditor';
 
-export default class TaskContainer extends React.Component {
+export default class TaskTrainContainer extends React.Component {
     constructor() {
         super();
 
