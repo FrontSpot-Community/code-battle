@@ -1,11 +1,21 @@
 import React from 'react';
+import Login from '../components/Common/Login';
+import {
+  Grid,
+  Row,
+  Col
+} from 'react-bootstrap';
 
 export default class LoginContainer extends React.Component {
     render() {
         return (
-            <div>
-              Login form
-            </div>
+          <Grid>
+            <Row >
+              <Col md={12}>
+                  <Login />
+              </Col>
+            </Row>
+          </Grid>
         );
     }
 }
