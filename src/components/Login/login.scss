@@ -1,3 +1,21 @@
 .login-form {
   color: #fff;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2vh;
+
+  &-entry {
+    width: 350px;
+    background-color: rgba(0,0,0,0.2);
+    padding: 20px;
+    padding-top: 60px;
+
+  }
+
+  &-buttons {
+    padding-top: 20px;
+  }
+
 }
