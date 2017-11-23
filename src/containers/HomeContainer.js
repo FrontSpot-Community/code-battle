@@ -9,10 +9,6 @@ import {connect} from 'react-redux';
 import TournamentList from '../components/TournamentList/TournamentList';
 
 class HomeContainer extends React.Component {
-  constructor() {
-    super();
-  }
-
   render() {
       return (
         <Grid>
