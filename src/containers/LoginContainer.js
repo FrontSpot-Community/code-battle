@@ -1,5 +1,5 @@
 import React from 'react';
-import Login from '../components/Common/Login';
+import {Login} from '../components/Common';
 import {
   Grid,
   Row,
