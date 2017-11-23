@@ -1,6 +1,6 @@
 import React from 'react';
 import Navigation from '../components/Navigation/Navigation';
-import ProgressBar from '../components/Common/ProgressBar';
+import {ProgressBar} from '../components/Common';
 
 import './App.scss';
 
