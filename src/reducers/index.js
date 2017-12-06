@@ -1,11 +1,10 @@
 import {combineReducers} from 'redux';
+import tournamentReducer from './tournamentReducer';
+import {loadingBarReducer} from 'react-redux-loading-bar';
+
 const rootReducer = combineReducers({
-    blank: function(state, action) {
-        if (state == null) {
-            state = [];
-        }
-        return state;
-    }
+    tournaments: tournamentReducer,
+    loadingBar: loadingBarReducer
 });
 
 export default rootReducer;

@@ -1,0 +1,10 @@
+.tournament-list {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  flex-basis: 100%;
+  @media(max-width: 768px) {
+    flex-direction: column;
+  }
+}

@@ -1,15 +1,29 @@
 {
     "presets": [
-        "es2017-node7",
+        "env",
+        "es2017",
         "stage-3",
         "react",
         "flow"
     ],
     "env": {
         "development": {
-            "presets": [
-                "react-hmre"
+            "plugins": [
+                ["react-transform", {
+                    "transforms": [{
+                        "transform": "react-transform-hmr",
+                        "imports": ["react"],
+                        "locals": ["module"]
+                     }]
+                }],
+                ["transform-class-properties", { "spec": true }]
             ]
+        },
+        "production": {
+            "plugins": [
+                ["transform-class-properties", { "spec": true }]
+            ]
+
         }
     }
 }
