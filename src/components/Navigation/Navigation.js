@@ -6,21 +6,25 @@ import {
   Nav
 } from 'react-bootstrap';
 
+import codeBattleLogo from '../../assets/images/code-battle-logo.png';
+import styles from './navigation.scss';
+
 export default class Navigation extends Component {
     render() {
         return (
-            <Navbar>
-               <Navbar.Header>
-                 <Navbar.Brand>
-                   <a href="#">React-Bootstrap</a>
-                 </Navbar.Brand>
+            <Navbar fluid>
+                <Navbar.Header>
+                    <a href="#" className={styles.logoWrapper}>
+                        <img src={codeBattleLogo} className={styles.logo}/>
+                        CODE BATTLE
+                    </a>
                </Navbar.Header>
                <Nav>
                 {this.props.links.map((link, index) => {
-                  return (
-                    <LinkContainer key={index} to={link.path}>
-                      <NavItem eventKey={index}>{link.title}</NavItem>
-                    </LinkContainer>
+                    return (
+                        <LinkContainer key={index} to={link.path}>
+                            <NavItem eventKey={index}>{link.title}</NavItem>
+                        </LinkContainer>
                   );
                 })}
                </Nav>

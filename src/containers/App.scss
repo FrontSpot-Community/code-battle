@@ -1,3 +1,20 @@
+@font-face {
+    font-family: 'Oswald Bold';
+    src: local('Oswald Bold'), url('../assets/fonts/font-oswald/oswald-bold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Oswald Regular';
+    src: local('Oswald Regular'), url('../assets/fonts/font-oswald/oswald-regular.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'Oswald Light';
+    src: local('Oswald Light'), url('../assets/fonts/font-oswald/oswald-light.woff') format('woff');
+}
+
+
 body {
   height: 100%;
 
