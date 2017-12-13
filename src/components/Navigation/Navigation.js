@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import logoImage from '../../assets/logo.svg';
+import {Link} from 'react-router-dom';
+
 import styles from './style.scss';
 
 export default class Navigation extends Component {
@@ -14,7 +16,10 @@ export default class Navigation extends Component {
                     <img src={logoImage}/>
                 </div>
                 <div className={styles.brand_title}>
-                    <a href="#" className={styles.title}>{this.brandTitle}</a>
+                    <Link to={'/'}
+                          className={styles.title}>
+                        {this.brandTitle}
+                    </Link>
                 </div>
                 <div className={styles.space}></div>
             </div>

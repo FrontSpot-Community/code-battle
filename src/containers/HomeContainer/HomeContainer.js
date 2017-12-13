@@ -3,6 +3,7 @@ import style from './style.scss';
 import {connect} from 'react-redux';
 
 import TournamentList from '../../components/TournamentList/TournamentList';
+import Tabs from '../../components/Tabs';
 
 class HomeContainer extends React.Component {
   constructor() {
@@ -12,15 +13,7 @@ class HomeContainer extends React.Component {
   render() {
       return (
         <div className={style.wrapper}>
-            <div className={style.tabs}>
-                <div className={style.tab_item}>
-                    <a href="#">LET THE BATTLE BEGIN</a>
-                    <div className={style.underline}></div>
-                </div>
-                <div className={style.tab_item}>
-                    <a href="#">FINISHED TOURNAMENTS</a>
-                </div>
-            </div>
+            <Tabs/>
             <TournamentList {...this.props} />
         </div>
       );
