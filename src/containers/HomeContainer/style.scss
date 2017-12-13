@@ -1,0 +1,47 @@
+@import '../../constants/colors';
+
+$underlineWidth: 2px;
+
+.wrapper {
+    display: flex;
+    flex: 1;
+    height: 100%;
+    margin: 2%;
+}
+
+.tabs {
+    display: block;
+    width: 100%;
+
+    background-color: $bg_dark;
+    height: 10%;
+}
+
+.tab_item {
+    margin-left: 2%;
+    display: inline-block;
+    position: relative;
+    height: calc(100% - 2px);
+
+    a {
+        margin-top: 10%;
+        display: inline-block;
+        color: white;
+        white-space: nowrap ;
+        font-size: 14px;
+        text-decoration: none;
+
+        &:active, &:visited {
+            text-decoration: none;
+        }
+
+    }
+}
+
+.underline {
+    bottom: 0;
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    border-bottom: $underlineWidth solid red;
+}
