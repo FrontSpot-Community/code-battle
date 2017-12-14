@@ -2,19 +2,22 @@ import React from 'react';
 import style from './style.scss';
 import {connect} from 'react-redux';
 
-import TournamentList from '../../components/TournamentList/TournamentList';
+import TournamentList from '../../components/TournamentList';
 import Tabs from '../../components/Tabs';
 
 class HomeContainer extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
 
   render() {
       return (
         <div className={style.wrapper}>
-            <Tabs/>
-            <TournamentList {...this.props} />
+            <div className={style.listContainer}>
+                <Tabs/>
+                <TournamentList tournaments={this.props.tournaments}/>
+            </div>
+            <div className={style.rankContainer}></div>
         </div>
       );
   }

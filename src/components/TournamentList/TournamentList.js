@@ -1,14 +1,52 @@
 import React, {Component} from 'react';
 import Tournament from '../Tournament/Tournament';
+import IconInput from '../Common/IconInput';
 
 import style from './style.scss';
 
+const headerCellNames = [
+    {
+        displayName: 'Tasks',
+        propName: 'numberOfTasks'
+    },
+    {
+        displayName: 'Difficulty',
+        propName: 'difficulty'
+    },
+    {
+        displayName: 'Language',
+        propName: 'language'
+    },
+    {
+        displayName: 'Created By Team',
+        propName: 'createdByTeam'
+    },
+    {
+        displayName: 'Status',
+        propName: 'status'
+    }
+];
+
 export default class TournamentList extends Component {
-    renderTournamentHeader = () => {
+    renderHeader = () => {
         return (
             <div className={style.headers}>
-                <div className={style.first}></div>
-                <div className={style.second}></div>
+                <div className={style.headerCell}>
+                    <IconInput placeholder={'Search...'}
+                               iconClass={'glyphicon glyphicon-search'}/>
+                </div>
+                {headerCellNames.map((item) => {
+                    return (
+                        <div className={style.headerCell}>
+                            <span>{item.displayName}</span>
+                            <a className={style.icon}>
+                                <i className={
+                                    'glyphicon glyphicon-triangle-bottom'
+                                }></i>
+                            </a>
+                        </div>
+                    );
+                })}
             </div>);
     };
   renderList = () => {
@@ -17,12 +55,13 @@ export default class TournamentList extends Component {
         <Tournament key={t.id} {...t} />
       );
     });
-  }
+  };
 
   render() {
     return (
         <div className={style.wrapper}>
-            {this.renderTournamentHeader()}
+            {this.renderHeader()}
+
             <div className="tournament-count">
                 {this.props.tournaments.length} Tournaments Found
             </div>
