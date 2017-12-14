@@ -2,6 +2,14 @@
 
 .wrapper {
     margin: 2%;
+    display: flex;
+    flex: 1;
 }
 
+.listContainer {
+    flex: 5;
+}
 
+.rankContainer {
+    flex: 2;
+}

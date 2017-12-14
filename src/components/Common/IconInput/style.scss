@@ -1,0 +1,25 @@
+.wrapper {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+}
+
+.input {
+    color: white;
+    background-color: transparent;
+    border: none;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.icon {
+    align-self: flex-end;
+    margin-right: 5%;
+    color: #666666;
+
+    i {
+        vertical-align: middle;
+    }
+}

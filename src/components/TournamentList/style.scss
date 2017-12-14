@@ -3,23 +3,41 @@
 .wrapper {
     border-top: 1px solid #333333;
     background-color: $bg_dark;
+    display: flex;
+    flex-direction: column;
 }
 
 .headers {
-    background-color: red;
-    display: flex;
-    flex: 1;
     height: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-grow: 0;
+
 }
 
-.first {
-    flex: 1;
-    background-color: green;
+.headerCell {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    color: white;
+    justify-content: center;
+    align-items: center;
+
+    span {
+        font-family: SourceSansPro;
+        font-size: 16px;
+    }
 }
 
-.second {
-    flex: 1;
-    background-color: gray;
+.icon {
+    font-size: 5px;
+    color: white;
+    margin-left: 2%;
+
+    &:hover {
+        color: white;
+        cursor: pointer;
+    }
 }
 
 .tournament-list {
