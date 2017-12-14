@@ -8,6 +8,7 @@
     color: white;
     background-color: transparent;
     border: none;
+    width: 80%;
 
     &:focus {
         outline: none;
@@ -18,8 +19,4 @@
     align-self: flex-end;
     margin-right: 5%;
     color: #666666;
-
-    i {
-        vertical-align: middle;
-    }
 }

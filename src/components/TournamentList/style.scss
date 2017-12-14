@@ -7,47 +7,24 @@
     flex-direction: column;
 }
 
-.headers {
-    height: 50px;
-    display: flex;
-    flex-direction: row;
-    flex-grow: 0;
+.table {
+    width: 100%;
 
-}
-
-.headerCell {
-    display: flex;
-    flex-direction: row;
-    flex-grow: 1;
-    color: white;
-    justify-content: center;
-    align-items: center;
-
-    span {
-        font-family: SourceSansPro;
-        font-size: 16px;
+    th {
+        text-align: center;
+        height: 50px;
+        color: $WHITE;
     }
 }
 
-.icon {
-    font-size: 5px;
-    color: white;
-    margin-left: 2%;
+.sortIcon {
+    color: $WHITE;
+    margin-left: 5px;
+    font-size: 10px;
 
     &:hover {
-        color: white;
+        color: $WHITE;
         cursor: pointer;
+
     }
-}
-
-.tournament-list {
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  flex-grow: 1;
-  flex-basis: 100%;
-
-  @media(max-width: 768px) {
-    flex-direction: column;
-  }
 }

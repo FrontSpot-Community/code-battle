@@ -7,31 +7,66 @@ const tournaments = [
     id: 'simplify-the-solution',
     title: 'Simplify the solution',
     category: 'JavaScript',
-    author: 'Rufat Khaslarov'
+    author: 'Rufat Khaslarov',
+    tags: ['Javascript', 'Math'],
+    numberOfTasks: 6,
+    status: 'Started',
+      language: 'Javascript',
+      difficulty: 'Mortal',
+      department: 'Level Seven',
+      remaining: '2h'
   },
   {
     id: 'string-etc',
     title: 'string etc',
     category: 'JavaScript',
-    author: 'lihuanshuai'
+    author: 'lihuanshuai',
+      tags: ['Javascript', 'Math'],
+      numberOfTasks: 6,
+      status: 'Started',
+      language: 'Javascript',
+      difficulty: 'Mortal',
+      department: 'Level Seven',
+      remaining: '2h'
   },
   {
     id: 'yet-To-Solve',
     title: 'yet To Solve',
     category: 'JavaScript',
-    author: 'saiful110816'
+    author: 'saiful110816',
+      tags: ['Javascript', 'Math'],
+      numberOfTasks: 6,
+      status: 'Started',
+      language: 'Javascript',
+      difficulty: 'Mortal',
+      department: 'Level Seven',
+      remaining: '2h'
   },
   {
     id: 'simplify-the-solution4',
     title: 'Simplify the solution',
     category: 'JavaScript',
-    author: 'Rufat Khaslarov'
+    author: 'Rufat Khaslarov',
+      tags: ['Javascript', 'Math'],
+      numberOfTasks: 6,
+      status: 'Started',
+      language: 'Javascript',
+      difficulty: 'Mortal',
+      department: 'Level Seven',
+      remaining: '2h'
   },
   {
     id: 'simplify-the-solution2',
     title: 'Simplify the solution2',
     category: 'JavaScript',
-    author: 'Rufat Khaslarov'
+    author: 'Rufat Khaslarov',
+      tags: ['Javascript', 'Math'],
+      numberOfTasks: 6,
+      status: 'Started',
+      language: 'Javascript',
+      difficulty: 'Mortal',
+      department: 'Level Seven',
+      remaining: '2h'
   }
 ];
 

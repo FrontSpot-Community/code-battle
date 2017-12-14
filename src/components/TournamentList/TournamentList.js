@@ -1,10 +1,16 @@
 import React, {Component} from 'react';
-import Tournament from '../Tournament/Tournament';
+import TournamentRow from '../TournamentRow';
 import IconInput from '../Common/IconInput';
 
 import style from './style.scss';
 
 const headerCellNames = [
+    {
+        component: <IconInput placeholder={'Search...'}
+                              iconClass={'glyphicon glyphicon-search'}/>,
+        propName: 'tournamentName'
+
+    },
     {
         displayName: 'Tasks',
         propName: 'numberOfTasks'
@@ -28,46 +34,48 @@ const headerCellNames = [
 ];
 
 export default class TournamentList extends Component {
-    renderHeader = () => {
-        return (
-            <div className={style.headers}>
-                <div className={style.headerCell}>
-                    <IconInput placeholder={'Search...'}
-                               iconClass={'glyphicon glyphicon-search'}/>
-                </div>
-                {headerCellNames.map((item) => {
-                    return (
-                        <div className={style.headerCell}>
-                            <span>{item.displayName}</span>
-                            <a className={style.icon}>
-                                <i className={
-                                    'glyphicon glyphicon-triangle-bottom'
-                                }></i>
-                            </a>
-                        </div>
-                    );
-                })}
-            </div>);
-    };
   renderList = () => {
-    return this.props.tournaments && this.props.tournaments.map((t) => {
-      return (
-        <Tournament key={t.id} {...t} />
-      );
-    });
+    const mapHandler = (tournament) => (
+        <TournamentRow key={tournament.id}
+                            headerCells={headerCellNames}
+                            tournament={tournament}/>
+    );
+
+    return this.props.tournaments.map(mapHandler);
+  };
+
+  renderTableHeaderCell = (headerCell) => {
+      if (headerCell.displayName) {
+          return (
+              <span>
+                  <span>{headerCell.displayName}</span>
+                  <a className={style.sortIcon}>
+                      <i className={'glyphicon glyphicon-triangle-bottom'}/>
+                  </a>
+              </span>
+          );
+      } else {
+          return headerCell.component;
+      }
   };
 
   render() {
     return (
         <div className={style.wrapper}>
-            {this.renderHeader()}
-
-            <div className="tournament-count">
-                {this.props.tournaments.length} Tournaments Found
-            </div>
-            <div className="tournament-list">
+            <table className={style.table}>
+                <thead>
+                <tr>
+                    {headerCellNames.map((item) => (
+                        <th key={item.propName}>
+                            {this.renderTableHeaderCell(item)}
+                        </th>
+                    ))}
+                </tr>
+                </thead>
+                <tbody>
                 {this.renderList()}
-            </div>
+                </tbody>
+            </table>
         </div>
     );
   }
