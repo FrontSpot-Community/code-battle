@@ -18,8 +18,8 @@ export default class Navigation extends Component {
                         <img src={codeBattleLogo} className={styles.logo}/>
                         CODE BATTLE
                     </a>
-               </Navbar.Header>
-               <Nav>
+                </Navbar.Header>
+                <Nav>
                 {this.props.links.map((link, index) => {
                     return (
                         <LinkContainer key={index} to={link.path}>
@@ -27,8 +27,8 @@ export default class Navigation extends Component {
                         </LinkContainer>
                   );
                 })}
-               </Nav>
-             </Navbar>
+                </Nav>
+            </Navbar>
         );
     }
 }
