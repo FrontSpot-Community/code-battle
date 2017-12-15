@@ -70,6 +70,7 @@ export default class TournamentTable extends Component {
   render() {
     return (
         <div className={style.wrapper}>
+            {this.props.render()}
             <table className={style.table}>
                 <thead>
                 <tr>

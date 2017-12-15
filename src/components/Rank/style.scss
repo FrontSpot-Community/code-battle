@@ -3,9 +3,9 @@
 .wrapper {
     display: flex;
     flex: 1;
-    height: 80vh;
     flex-direction: column;
     background-color: $bg_dark;
+    height: 100%;
 }
 
 .generalScore {
@@ -49,4 +49,68 @@
 .userScoreList {
     display: flex;
     flex: .9;
+    padding: 10px;
+    flex-direction: column;
+}
+
+.userScoreListItem {
+    display: flex;
+    border-bottom: 1px solid $MINE_SHAFT;
+    height: 80px;
+}
+
+.avatar {
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.imageWrapper {
+    background-color: yellow;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    border-radius: 25px;
+
+
+    img {
+        width: 100%;
+        border-radius: 25px;
+    }
+}
+
+.userInfo {
+    flex: 3;
+    justify-content: center;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.userName {
+    font-family: SourceSansPro;
+    font-size: 14px;
+    color: $WHITE;
+}
+
+.userScore {
+    height: 16px;
+    font-family: SourceSansPro;
+    font-size: 14px;
+    color: $DUSTY_GRAY;
+}
+
+.index {
+    flex: .5;
+    font-family: SourceSansPro;
+    font-size: 14px;
+    color: $DUSTY_GRAY;
+    justify-content: flex-end;
+    display: flex;
+    align-items: center;
+
+    span {
+        height: 16px;
+    }
 }

@@ -5,10 +5,12 @@
     display: flex;
     flex: 1;
     justify-content: space-between;
+    height: 90%;
 }
 
 .tableContainer {
     flex: 5;
+    height: 100%;
 }
 
 .rankContainer {

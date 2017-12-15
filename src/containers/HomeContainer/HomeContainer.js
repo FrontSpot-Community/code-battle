@@ -54,8 +54,8 @@ class HomeContainer extends React.Component {
       return (
         <div className={style.wrapper}>
             <div className={style.tableContainer}>
-                <Tabs/>
-                <TournamentTable tournaments={this.props.tournaments}/>
+                <TournamentTable tournaments={this.props.tournaments} 
+                                 render={() => (<Tabs/>)}/>
             </div>
             <div className={style.rankContainer}>
                 <Rank rankPosition={102}

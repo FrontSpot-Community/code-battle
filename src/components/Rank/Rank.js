@@ -24,7 +24,27 @@ export default class Rank extends Component {
                     </div>
                 </div>
                 <div className={style.userScoreList}>
-
+                    {this.props.userScoreList.map((user, index) => (
+                        <div className={style.userScoreListItem}
+                             key={user.username + index}>
+                            <div className={style.avatar}>
+                                <div className={style.imageWrapper}>
+                                    <img src={user.avatar} alt=""/>
+                                </div>
+                            </div>
+                            <div className={style.userInfo}>
+                                <div className={style.userName}>
+                                    {user.username}
+                                 </div>
+                                <div className={style.userScore}>
+                                    {user.totalScore}
+                                </div>
+                            </div>
+                            <div className={style.index}>
+                                <span>{index +1}</span>
+                            </div>
+                        </div>
+                    ))}
                 </div>
 
             </div>
