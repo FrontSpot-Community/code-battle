@@ -40,52 +40,52 @@ const headerCellNames = [
 
 export default class TournamentTable extends Component {
     renderRows = () => {
-    const mapHandler = (tournament) => (
-        <TournamentRow key={tournament.id}
-                            headerCells={headerCellNames}
-                            tournament={tournament}/>
-    );
+        const mapHandler = (tournament) => (
+            <TournamentRow key={tournament.id}
+                           headerCells={headerCellNames}
+                           tournament={tournament}/>
+        );
 
-    return this.props.tournaments.map(mapHandler);
-  };
+        return this.props.tournaments.map(mapHandler);
+    };
 
-  renderTableHeaderCell = (headerCell) => {
-      if (headerCell.displayName) {
-          return (
-              <span>
+    renderTableHeaderCell = (headerCell) => {
+        if (headerCell.displayName) {
+            return (
+                <span>
                   <span className={headerCell.disabled && style.disabled}>
                       {headerCell.displayName}
                   </span>
-                  {headerCell.sort &&
-                  <a className={style.sortIcon} >
-                      <i className={'glyphicon glyphicon-triangle-bottom'}/>
-                  </a>}
+                    {headerCell.sort &&
+                    <a className={style.sortIcon}>
+                        <i className={'glyphicon glyphicon-triangle-bottom'}/>
+                    </a>}
               </span>
-          );
-      } else {
-          return headerCell.component;
-      }
-  };
+            );
+        } else {
+            return headerCell.component;
+        }
+    };
 
-  render() {
-    return (
-        <div className={style.wrapper}>
-            {this.props.render()}
-            <table className={style.table}>
-                <thead>
-                <tr>
-                    {headerCellNames.map((item) => (
-                        <th key={item.propName}>
-                            {this.renderTableHeaderCell(item)}
-                        </th>
-                    ))}
-                </tr>
-                </thead>
-                <tbody>
-                {this.renderRows()}
-                </tbody>
-            </table>
-        </div>
-    );
-  }
+    render() {
+        return (
+            <div className={style.wrapper}>
+                {this.props.render()}
+                <table className={style.table}>
+                    <thead>
+                    <tr>
+                        {headerCellNames.map((item) => (
+                            <th key={item.propName}>
+                                {this.renderTableHeaderCell(item)}
+                            </th>
+                        ))}
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {this.renderRows()}
+                    </tbody>
+                </table>
+            </div>
+        );
+    }
 }
