@@ -1,30 +1,28 @@
 import React, {Component} from 'react';
-import {LinkContainer} from 'react-router-bootstrap';
-import {
-  Navbar,
-  NavItem,
-  Nav
-} from 'react-bootstrap';
+import logoImage from '../../assets/logo.svg';
+import {Link} from 'react-router-dom';
+
+import styles from './style.scss';
 
 export default class Navigation extends Component {
+    constructor(props) {
+        super(props);
+        this.brandTitle = 'Code Battle';
+    }
     render() {
         return (
-            <Navbar>
-               <Navbar.Header>
-                 <Navbar.Brand>
-                   <a href="#">React-Bootstrap</a>
-                 </Navbar.Brand>
-               </Navbar.Header>
-               <Nav>
-                {this.props.links.map((link, index) => {
-                  return (
-                    <LinkContainer key={index} to={link.path}>
-                      <NavItem eventKey={index}>{link.title}</NavItem>
-                    </LinkContainer>
-                  );
-                })}
-               </Nav>
-             </Navbar>
+            <div className={styles.header}>
+                <div className={styles.brand_logo}>
+                    <img src={logoImage}/>
+                </div>
+                <div className={styles.brand_title}>
+                    <Link to={'/'}
+                          className={styles.title}>
+                        {this.brandTitle}
+                    </Link>
+                </div>
+                <div className={styles.space}></div>
+            </div>
         );
     }
 }
