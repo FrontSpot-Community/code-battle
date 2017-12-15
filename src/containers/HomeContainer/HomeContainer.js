@@ -2,8 +2,48 @@ import React from 'react';
 import style from './style.scss';
 import {connect} from 'react-redux';
 
-import TournamentList from '../../components/TournamentList';
+import TournamentTable from '../../components/TournamentTable';
 import Tabs from '../../components/Tabs';
+import Rank from '../../components/Rank';
+import avatar from '../../assets/flip.jpg';
+
+const userScoreList = [
+    {
+        username: 'Konstantin-Paulukave',
+        totalScore: 203459,
+        avatar
+    },
+    {
+        username: 'Egor-Tsukanov',
+        totalScore: 203459,
+        avatar
+    },
+    {
+        username: 'Konstantin-Paulukave',
+        totalScore: 203459,
+        avatar
+    },
+    {
+        username: 'Konstantin-Paulukave',
+        totalScore: 203459,
+        avatar
+    },
+    {
+        username: 'Konstantin-Paulukave',
+        totalScore: 203459,
+        avatar
+    },
+    {
+        username: 'Konstantin-Paulukave',
+        totalScore: 203459,
+        avatar
+    },
+    {
+        username: 'Konstantin-Paulukave',
+        totalScore: 203459,
+        avatar
+    }
+];
 
 class HomeContainer extends React.Component {
   constructor(props) {
@@ -13,11 +53,16 @@ class HomeContainer extends React.Component {
   render() {
       return (
         <div className={style.wrapper}>
-            <div className={style.listContainer}>
+            <div className={style.tableContainer}>
                 <Tabs/>
-                <TournamentList tournaments={this.props.tournaments}/>
+                <TournamentTable tournaments={this.props.tournaments}/>
             </div>
-            <div className={style.rankContainer}></div>
+            <div className={style.rankContainer}>
+                <Rank rankPosition={102}
+                      totalRankPosition={654}
+                      totalScore={190354}
+                      userScoreList={userScoreList}/>
+            </div>
         </div>
       );
   }

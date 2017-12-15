@@ -14,7 +14,14 @@
         text-align: center;
         height: 50px;
         color: $WHITE;
+        font-family: SourceSansPro;
+        font-size: 14px;
+        border-bottom: 1px solid $MINE_SHAFT;
     }
+}
+
+.disabled {
+    color: $DUSTY_GRAY;
 }
 
 .sortIcon {

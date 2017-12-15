@@ -4,12 +4,14 @@
     margin: 2%;
     display: flex;
     flex: 1;
+    justify-content: space-between;
 }
 
-.listContainer {
+.tableContainer {
     flex: 5;
 }
 
 .rankContainer {
     flex: 2;
+    margin-left: 2%;
 }

@@ -1,6 +1,3 @@
-/**
- * Created by Vlad on 12/14/2017.
- */
 import React, {Component} from 'react';
 import style from './style.scss';
 
@@ -20,8 +17,8 @@ export default class TournamentListItem extends Component {
 
         return (
             <tr className={style.row}>
-                <td className={style.tournamentName}>
-                    <div>{title}</div>
+                <td className={style.tournamentInfo}>
+                    <div className={style.tournamentName}>{title}</div>
                     {tags.map((tag) => (
                         <span className={style.tag}
                               key={tag + title}>{tag}
@@ -35,9 +32,9 @@ export default class TournamentListItem extends Component {
                 <td>{language}</td>
                 <td>{department}</td>
                 <td>
-                    <span>{status}</span>
+                    <span className={style[`status${status}`]}>{status}</span>
                     <br/>
-                    <span>{remaining}</span>
+                    {status === 'Started' && <span>{remaining}</span>}
                 </td>
             </tr>
         );

@@ -1,6 +1,3 @@
-/**
- * Created by Vlad on 12/14/2017.
- */
 import React, {Component} from 'react';
 import style from './style.scss';
 

@@ -9,27 +9,44 @@
 
 .row {
     margin-left: 2%;
-    border-bottom: 1px solid #333333;
+    border-bottom: 1px solid $MINE_SHAFT;
 
     td {
-        color: $WHITE;
+        color: $DUSTY_GRAY;
         text-align: center;
+        padding: 5px 0 5px 0;
+        font-family: SourceSansPro;
+        line-height: 1.43;
+        font-size: 14px;
     }
 
-    .tournamentName {
-        font-family: SourceSansPro;
-        font-size: 16px;
+    .tournamentInfo {
         color: $WHITE;
         text-align: left;
         padding-left: 10px;
+    }
+}
 
+.tournamentName {
+    font-family: SourceSansPro;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.status {
+    &Started {
+        color: $DARK_GREEN;
+    }
+
+    &Preparing {
+        color: $AMBER;
     }
 }
 
 .tag {
     margin-right: 5px;
-    background-color: #333333;
-    color: #999999;
+    background-color: $MINE_SHAFT;
+    color: $DUSTY_GRAY;
     font-size: 10px;
-
+    padding: 2px;
 }

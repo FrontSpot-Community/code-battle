@@ -13,28 +13,33 @@ const headerCellNames = [
     },
     {
         displayName: 'Tasks',
-        propName: 'numberOfTasks'
+        propName: 'numberOfTasks',
+        sort: true
     },
     {
         displayName: 'Difficulty',
-        propName: 'difficulty'
+        propName: 'difficulty',
+        sort: true
     },
     {
         displayName: 'Language',
-        propName: 'language'
+        propName: 'language',
+        sort: true
     },
     {
         displayName: 'Created By Team',
-        propName: 'createdByTeam'
+        propName: 'createdByTeam',
+        disabled: true
     },
     {
         displayName: 'Status',
-        propName: 'status'
+        propName: 'status',
+        sort: true
     }
 ];
 
-export default class TournamentList extends Component {
-  renderList = () => {
+export default class TournamentTable extends Component {
+    renderRows = () => {
     const mapHandler = (tournament) => (
         <TournamentRow key={tournament.id}
                             headerCells={headerCellNames}
@@ -48,10 +53,13 @@ export default class TournamentList extends Component {
       if (headerCell.displayName) {
           return (
               <span>
-                  <span>{headerCell.displayName}</span>
-                  <a className={style.sortIcon}>
+                  <span className={headerCell.disabled && style.disabled}>
+                      {headerCell.displayName}
+                  </span>
+                  {headerCell.sort &&
+                  <a className={style.sortIcon} >
                       <i className={'glyphicon glyphicon-triangle-bottom'}/>
-                  </a>
+                  </a>}
               </span>
           );
       } else {
@@ -73,7 +81,7 @@ export default class TournamentList extends Component {
                 </tr>
                 </thead>
                 <tbody>
-                {this.renderList()}
+                {this.renderRows()}
                 </tbody>
             </table>
         </div>

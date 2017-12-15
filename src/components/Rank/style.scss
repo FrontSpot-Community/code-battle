@@ -1,0 +1,52 @@
+@import '../../constants/colors';
+
+.wrapper {
+    display: flex;
+    flex: 1;
+    height: 80vh;
+    flex-direction: column;
+    background-color: $bg_dark;
+}
+
+.generalScore {
+    flex: .1;
+    display: flex;
+    border-bottom: 1px solid $MINE_SHAFT;
+}
+
+.title {
+    color: $DUSTY_GRAY;
+    font-family: SourceSansPro;
+    font-size: 14px;
+}
+
+.halfOfBlock {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.score {
+    color: $WHITE;
+    font-family: Oswald;
+    font-size: 24px;
+}
+
+.rankNumber {
+    color: $DARK_BLUE;
+    border-bottom: 1px dotted $DARK_BLUE;
+}
+
+.totalScore {
+    background-color: $DARK_GREEN;
+    display: flex;
+    flex: 1;
+}
+
+.userScoreList {
+    display: flex;
+    flex: .9;
+}
