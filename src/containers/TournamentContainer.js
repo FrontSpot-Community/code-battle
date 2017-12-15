@@ -25,18 +25,18 @@ class TournamentContainer extends React.Component {
   }
 
   render() {
-      const tournamentId = this.props.match.params.id;
+    const tournamentId = this.props.match.params.id;
 
-      return (
-        <Grid>
-          <h1>{tournamentId}</h1>
-          <Row >
-            <Col xs={12} sm={12} md={12} lg={12}>
-              <TaskList tournament={tournamentId} {...this.state} />
-            </Col>
-          </Row>
-        </Grid>
-      );
+    return (
+      <Grid>
+        <h1>{tournamentId}</h1>
+        <Row>
+          <Col xs={12} sm={12} md={12} lg={12}>
+            <TaskList tournament={tournamentId} {...this.state} />
+          </Col>
+        </Row>
+      </Grid>
+    );
   }
 }
 

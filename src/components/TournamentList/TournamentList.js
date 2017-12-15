@@ -14,12 +14,12 @@ export default class TournamentList extends Component {
 
   render() {
     return [
-        <div className="tournament-count">
-          {this.props.tournaments.length} Tournaments Found
-        </div>,
-        <div className="tournament-list">
-          {this.renderList()}
-        </div>
+      <div className="tournament-count">
+        {this.props.tournaments.length} Tournaments Found
+      </div>,
+      <div className="tournament-list">
+        {this.renderList()}
+      </div>
     ];
   }
 }

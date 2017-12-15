@@ -14,15 +14,15 @@ class HomeContainer extends React.Component {
   }
 
   render() {
-      return (
-        <Grid>
-          <Row>
-            <Col md={12}>
-              <TournamentList {...this.props} />
-            </Col>
-          </Row>
-        </Grid>
-      );
+    return (
+      <Grid>
+        <Row>
+          <Col md={12}>
+            <TournamentList {...this.props} />
+          </Col>
+        </Row>
+      </Grid>
+    );
   }
 }
 

@@ -7,10 +7,10 @@ export default class TaskContainer extends React.Component {
   }
 
   render() {
-      return (
-        <div>
-            <TaskPanel match={this.props.match}/>
-        </div>
-      );
+    return (
+      <div>
+        <TaskPanel match={this.props.match}/>
+      </div>
+    );
   }
 }

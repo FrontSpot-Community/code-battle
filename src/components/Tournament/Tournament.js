@@ -7,12 +7,12 @@ import TournamentInfo from './TournamentInfo';
 import './tournament.scss';
 
 export default class Tournament extends Component {
-    render() {
-        return (
-            <div className="tournament">
-              <TournamentIcon icon="book" />
-              <TournamentInfo {...this.props} />
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div className="tournament">
+        <TournamentIcon icon="book"/>
+        <TournamentInfo {...this.props} />
+      </div>
+    );
+  }
 }
