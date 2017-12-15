@@ -6,6 +6,7 @@ export default class TournamentListItem extends Component {
   render() {
     const {tournament} = this.props;
     const {
+      id,
       tags,
       title,
       numberOfTasks,
@@ -19,7 +20,7 @@ export default class TournamentListItem extends Component {
     return (
       <tr className={style.row}>
         <td className={style.tournamentInfo}>
-          <Link className={style.tournamentName} to={`/${title}`}>{title}</Link>
+          <Link className={style.tournamentName} to={`/${id}`}>{title}</Link>
           {tags.map((tag) => (
             <span className={style.tag}
               key={tag + title}>{tag}

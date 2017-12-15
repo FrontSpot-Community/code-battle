@@ -10,7 +10,7 @@ export class App extends React.Component {
       <div className={styles.wrapper}>
         <Header />
         <ProgressBar />
-        <main>
+        <main className={styles.main}>
           {this.props.children}
         </main>
       </div>

@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const outputPath = path.resolve(__dirname, './dist');
 const srcPath = path.resolve(__dirname, './src');
+const styleColors = path.resolve(__dirname, './src/constants/colors.scss');
 
 module.exports = {
     entry: [
@@ -16,6 +17,10 @@ module.exports = {
       filename: 'bundle.js'
     },
     resolve: {
+      alias: {
+        src: srcPath,
+        'Colors': styleColors
+      },
       extensions: ['.js', '.jsx']
     },
     module: {

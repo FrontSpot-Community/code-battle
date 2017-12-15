@@ -1,6 +1,7 @@
 import {
   TOURNAMENTS_FETCH_SUCCESS,
-  TOURNAMENTS_FETCH_FAILED
+  TOURNAMENTS_FETCH_FAILED,
+  TOURNAMENTS_LOADING
 } from '../constants';
 
 const initialState = {
@@ -11,15 +12,22 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+  case TOURNAMENTS_LOADING:
+    return {
+      ...state,
+      isLoading: !state.isLoading
+    };
   case TOURNAMENTS_FETCH_SUCCESS:
     return {
       ...state,
-      data: action.tournaments
+      data: action.tournaments,
+      isLoading: !state.isLoading
     };
   case TOURNAMENTS_FETCH_FAILED:
     return {
       ...state,
-      error: action.error
+      error: action.error,
+      isLoading: !state.isLoading
     };
   default:
     return state;
