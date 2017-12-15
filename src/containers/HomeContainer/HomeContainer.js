@@ -5,45 +5,8 @@ import {connect} from 'react-redux';
 import TournamentTable from '../../components/TournamentTable';
 import Tabs from '../../components/Tabs';
 import Rank from '../../components/Rank';
-import avatar from '../../assets/flip.jpg';
 
-const userScoreList = [
-    {
-        username: 'Konstantin-Paulukave',
-        totalScore: 203459,
-        avatar
-    },
-    {
-        username: 'Egor-Tsukanov',
-        totalScore: 203459,
-        avatar
-    },
-    {
-        username: 'Konstantin-Paulukave',
-        totalScore: 203459,
-        avatar
-    },
-    {
-        username: 'Konstantin-Paulukave',
-        totalScore: 203459,
-        avatar
-    },
-    {
-        username: 'Konstantin-Paulukave',
-        totalScore: 203459,
-        avatar
-    },
-    {
-        username: 'Konstantin-Paulukave',
-        totalScore: 203459,
-        avatar
-    },
-    {
-        username: 'Konstantin-Paulukave',
-        totalScore: 203459,
-        avatar
-    }
-];
+import userScoreList from './mockUsers';
 
 class HomeContainer extends React.Component {
   constructor(props) {
@@ -54,7 +17,7 @@ class HomeContainer extends React.Component {
       return (
         <div className={style.wrapper}>
             <div className={style.tableContainer}>
-                <TournamentTable tournaments={this.props.tournaments} 
+                <TournamentTable tournaments={this.props.tournaments}
                                  render={() => (<Tabs/>)}/>
             </div>
             <div className={style.rankContainer}>
