@@ -10,7 +10,7 @@ export default class TournamentList extends Component {
         <Tournament key={t.id} {...t} />
       );
     });
-  }
+  };
 
   render() {
     return [

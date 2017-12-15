@@ -6,10 +6,11 @@ import {Link} from 'react-router-dom';
 
 export default class Task extends Component {
     render() {
+        const {tournament, taskId} = this.props;
         return (
             <section>
                 <h1>
-                  <Link to={`/battle/${this.props.battle}/${this.props.taskId}`}>
+                  <Link to={`/tournament/${tournament}/${taskId}`}>
                     {this.props.taskTitle}
                   </Link>
                 </h1>

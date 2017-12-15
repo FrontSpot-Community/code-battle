@@ -7,7 +7,7 @@ import {configureStore} from './store/configureStore';
 import {App} from './containers/App';
 import {TOURNAMENTS_FETCH_REQUESTED} from './constants';
 import HomeContainer from './containers/HomeContainer';
-import BattleContainer from './containers/BattleContainer';
+import TournamentContainer from './containers/TournamentContainer';
 import TaskContainer from './containers/TaskContainer';
 import TaskTrainContainer from './containers/TaskTrainContainer';
 import LoginContainer from './containers/LoginContainer';
@@ -26,14 +26,14 @@ render(
                     <Route exact path="/" component={HomeContainer} />
                     <Route exact path="/login" component={LoginContainer} />
                     <Route exact
-                           path="/battle/:id"
-                           component={BattleContainer} />
+                           path="/tournament/:id"
+                           component={TournamentContainer} />
                     <Route exact
-                           path="/battle/:id/:taskId"
+                           path="/tournament/:id/:taskId"
                            component={TaskContainer}
                     />
                     <Route exact
-                           path="/battle/:id/:taskId/train"
+                           path="/tournament/:id/:taskId/train"
                            component={TaskTrainContainer}
                     />
                 </Switch>
