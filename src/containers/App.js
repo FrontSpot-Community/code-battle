@@ -1,12 +1,13 @@
 import React from 'react';
 import {ProgressBar} from '../components/Common';
 import Header from '../components/Header';
-import './App.scss';
+
+import styles from './App.scss';
 
 export class App extends React.Component {
   render() {
     return (
-      <div className="wrapper">
+      <div className={styles.wrapper}>
         <Header />
         <ProgressBar />
         <main>

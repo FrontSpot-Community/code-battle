@@ -15,10 +15,7 @@
 
 body {
   height: 100%;
-
-  #app {
-    height: 100%;
-  }
+    overflow: hidden;
 }
 
 a:hover, a:active, a:focus {

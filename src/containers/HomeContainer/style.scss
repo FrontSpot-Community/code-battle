@@ -1,0 +1,19 @@
+@import '../../constants/colors';
+
+.wrapper {
+    margin: 2%;
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    height: 90%;
+}
+
+.tableContainer {
+    flex: 5;
+    height: 100%;
+}
+
+.rankContainer {
+    flex: 2;
+    margin-left: 2%;
+}

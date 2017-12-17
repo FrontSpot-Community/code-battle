@@ -1,0 +1,43 @@
+@import '../../constants/colors';
+
+.header {
+    position: relative;
+    background-color: $bg_dark;
+    display: flex;
+    flex: 1;
+    height: 60px;
+}
+
+.brand_logo {
+    flex: 1;
+    justify-content: flex-end;
+    align-items: center;
+    display: flex;
+    margin-right: 5px;
+}
+
+.brand_title {
+    display: flex;
+    flex: 4;
+}
+
+.title{
+    font-family: Oswald;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    text-align: left;
+    color: #ffffff !important;
+    align-self: center;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    &:hover, &:active, &:focus {
+        text-decoration: none;
+    }
+
+}
+
+.space {
+    flex: 10
+}

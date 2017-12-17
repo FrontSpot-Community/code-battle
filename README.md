@@ -1,3 +1,11 @@
+### Release 1.0 (Planned date 29.12.2017)
+- [ ] Design migration
+- [ ] Integrate task verification process with UI
+- [ ] Create First ('Happy New Year') Tournament
+- [ ] Possible bugs fix
+- [ ] CI
+- [ ] What about administration of tournament (release 1.1 possible feature)
+
 # Code-Battle
 
 ## How to install ?
