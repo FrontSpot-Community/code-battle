@@ -2,9 +2,10 @@
 
 .wrapper {
     display: flex;
-    flex: 1;
     flex-direction: column;
     background-color: $bg_dark;
     height: 100%;
+    flex: 2;
+    margin-left: 2%;
 }
 
