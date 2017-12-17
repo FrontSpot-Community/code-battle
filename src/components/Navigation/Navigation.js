@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import logoImage from '../../assets/logo.svg';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 
 import styles from './style.scss';
 
-export default class Navigation extends Component {
+class Navigation extends Component {
     constructor(props) {
         super(props);
         this.brandTitle = 'Code Battle';
@@ -26,3 +26,5 @@ export default class Navigation extends Component {
         );
     }
 }
+
+export default withRouter(Navigation);

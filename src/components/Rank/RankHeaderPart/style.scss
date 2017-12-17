@@ -1,0 +1,21 @@
+@import '../../../constants/colors';
+
+.rankHeaderPart {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    color: $DUSTY_GRAY;
+    font-family: SourceSansPro;
+    font-size: 14px;
+}
+
+.info {
+    color: $WHITE;
+    font-family: Oswald;
+    font-size: 24px;
+}
