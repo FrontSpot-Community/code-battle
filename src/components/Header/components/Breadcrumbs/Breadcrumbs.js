@@ -1,17 +1,43 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Route, Link} from 'react-router-dom';
 
-const crumb = (part, partIndex, parts) => {
-  const path = ['', ...parts.slice(0, partIndex+1)].join('/');
-  return <Link key={path} to={path} >{part}</Link>;
-};
+import styles from './breadcrumbs.scss';
 
-const Breadcrumbs = () => <Route path="*" render={(props) => {
-  let parts = props.location.pathname.split('/');
-  const place = parts[parts.length - 1];
-  parts = parts.slice(1, parts.length-1);
-  return <p>{parts.map(crumb)} {place} </p>;
-}} />;
+class Breadcrumbs extends Component {
+  renderRoute = (props) => {
+    let paths = props.location.pathname.split('/');
+    const currentPath = paths[paths.length - 1];
+    paths = paths.slice(1, paths.length - 1);
+
+    return currentPath.length > 0 ? (
+      <div className={styles.breadcrumbsWrapper}>
+        {paths.map(this.generateLink).length > 0 &&
+          paths.map(this.generateLink)
+        }
+        <div className={styles.crumb}>
+          {currentPath.toUpperCase()}
+        </div>
+      </div>
+    ) : null;
+  };
+
+  generateLink = (prevPath, partIndex, paths) => {
+    const path = ['', ...paths.slice(0, partIndex + 1)].join('/');
+
+    return (
+      <Link className={styles.crumb} key={path} to={path}>
+        {prevPath.toUpperCase()}
+      </Link>
+    );
+  };
+
+  render() {
+    return (
+      <Route path="*" render={this.renderRoute} />
+    );
+  }
+}
 
 export default Breadcrumbs;
+
 
