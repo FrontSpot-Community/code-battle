@@ -44,6 +44,12 @@ export default class CodeEditor extends Component {
         this.setState({fontSize});
     };
 
+    renderMenuItems = (items) => {
+        return items.map((item) => (
+            <MenuItem eventKey={item}>{item}</MenuItem>
+        ));
+    };
+
     render() {
         return (
             <section>
@@ -53,28 +59,25 @@ export default class CodeEditor extends Component {
                         key={'dropdown-language'}
                         onSelect={this.setMode}
                     >
-                        <MenuItem eventKey={'JavaScript'}>JavaScript</MenuItem>
-                        <MenuItem eventKey={'CSS'}>CSS</MenuItem>
-                        <MenuItem eventKey={'HTML'}>HTML</MenuItem>
+                        {this.renderMenuItems(['JavaScript', 'CSS', 'HTML'])}
                     </DropdownButton>
                     <DropdownButton
                         title={`Theme: ${this.state.theme}`}
                         key={'dropdown-theme'}
                         onSelect={this.setTheme}
                     >
-                        <MenuItem eventKey={'Twilight'}>Twilight</MenuItem>
-                        <MenuItem eventKey={'Tomorrow'}>Tomorrow</MenuItem>
-                        <MenuItem eventKey={'Monokai'}>Monokai</MenuItem>
+                        {this.renderMenuItems([
+                            'Twilight',
+                            'Tomorrow',
+                            'Monokai'
+                        ])}
                     </DropdownButton>
                     <DropdownButton
                         title={`Font size: ${this.state.fontSize}`}
                         key={'dropdown-fontSize'}
                         onSelect={this.setFontSize}
                     >
-                        <MenuItem eventKey={14}>14</MenuItem>
-                        <MenuItem eventKey={16}>16</MenuItem>
-                        <MenuItem eventKey={18}>18</MenuItem>
-                        <MenuItem eventKey={20}>20</MenuItem>
+                        {this.renderMenuItems([14, 16, 18, 20])}
                     </DropdownButton>
                 </ButtonGroup>
                 <AceEditor
