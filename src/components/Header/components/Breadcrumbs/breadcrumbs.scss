@@ -6,7 +6,7 @@
   font-family: 'Oswald Regular', sans-serif;
   font-size: 16px;
   color: #ffffff;
-  text-align: left;
+  background-color: #2b2b2b;
 }
 
 .breadcrumbsWrapper:after  {
@@ -21,13 +21,17 @@
   border-left: 9px solid #222222;
 }
 
-.crumb, .crumb:hover {
+.crumb, .crumb:hover, .crumb:active, .crumb:focus {
   display: flex;
   height: 60px;
   align-items: center;
   text-decoration: none;
   color: #ffffff;
   padding: 0 18px 0 18px;
+}
+
+div.crumb {
+  background-color: #383838;
 }
 
 a.crumb {
