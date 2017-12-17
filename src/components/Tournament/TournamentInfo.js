@@ -5,7 +5,7 @@ const TournamentInfo = ({id, title, author}) => {
   return (
     <div className="tournament-info">
       <div className="tournament-title">
-        <Link to={`/tournament/${id}`}>
+        <Link to={`/${id}`}>
           {title}
         </Link>
       </div>

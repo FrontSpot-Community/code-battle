@@ -8,7 +8,7 @@ export default class Task extends Component {
     return (
       <section>
         <h1>
-          <Link to={`/tournament/${tournament}/${taskId}`}>
+          <Link to={`/${tournament}/${taskId}`}>
             {this.props.taskTitle}
           </Link>
         </h1>
