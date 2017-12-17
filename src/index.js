@@ -9,7 +9,6 @@ import {TOURNAMENTS_FETCH_REQUESTED} from './constants';
 import HomeContainer from './containers/HomeContainer';
 import TournamentContainer from './containers/TournamentContainer';
 import TaskContainer from './containers/TaskContainer';
-import TaskTrainContainer from './containers/TaskTrainContainer';
 import LoginContainer from './containers/LoginContainer';
 import rootSaga from './sagas';
 
@@ -27,11 +26,6 @@ render(
           <Route exact path="/login" component={LoginContainer} />
           <Route exact path="/:id" component={TournamentContainer} />
           <Route exact path="/:id/:taskId" component={TaskContainer} />
-          <Route
-            exact
-            path="/:id/:taskId/train"
-            component={TaskTrainContainer}
-          />
         </Switch>
       </App>
     </Router>

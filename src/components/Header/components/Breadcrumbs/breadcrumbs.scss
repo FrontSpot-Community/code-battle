@@ -1,6 +1,7 @@
 .breadcrumbsWrapper {
   display: flex;
   align-items: center;
+  position: relative;
   height: 60px;
   font-family: 'Oswald Regular', sans-serif;
   font-size: 16px;
@@ -8,8 +9,40 @@
   text-align: left;
 }
 
+.breadcrumbsWrapper:after  {
+  position: absolute;
+  content: '';
+  left: 0;
+  top: 21px;
+  width: 0;
+  height: 0;
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;
+  border-left: 9px solid #222222;
+}
+
 .crumb, .crumb:hover {
+  display: flex;
+  height: 60px;
+  align-items: center;
   text-decoration: none;
   color: #ffffff;
   padding: 0 18px 0 18px;
+}
+
+a.crumb {
+  position: relative;
+  background-color: #2b2b2b;
+}
+
+a.crumb:after {
+  position: absolute;
+  content: '';
+  right: -9px;
+  top: 21px;
+  width: 0;
+  height: 0;
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;
+  border-left: 9px solid #2b2b2b;
 }

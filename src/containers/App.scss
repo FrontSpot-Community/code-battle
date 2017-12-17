@@ -21,6 +21,10 @@ body {
   }
 }
 
+a:hover, a:active, a:focus {
+  outline: 0;
+}
+
 .wrapper {
   height: 100%;
   background-color: #303133;
