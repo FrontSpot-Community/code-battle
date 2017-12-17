@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import style from './style.scss';
 
 export default class TournamentListItem extends Component {
@@ -13,6 +14,7 @@ export default class TournamentListItem extends Component {
     render() {
         const {tournament} = this.props;
         const {
+            id,
             tags,
             title,
             numberOfTasks,
@@ -26,7 +28,9 @@ export default class TournamentListItem extends Component {
         return (
             <tr className={style.row}>
                 <td className={style.tournamentInfo}>
-                    <div className={style.tournamentName}>{title}</div>
+                    <div className={style.tournamentName}>
+                        <Link to={`/battle/${id}`}>{title}</Link>
+                    </div>
                     {this.renderTags(tags, title)}
                 </td>
                 <td>{numberOfTasks} tasks</td>

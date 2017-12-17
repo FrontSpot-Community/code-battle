@@ -31,6 +31,12 @@
     font-family: SourceSansPro;
     font-size: 18px;
     font-weight: bold;
+
+    a {
+
+        text-decoration: none;
+        color: $WHITE;
+    }
 }
 
 .status {
