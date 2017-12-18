@@ -5,6 +5,7 @@ import Breadcrumbs from './components/Breadcrumbs';
 
 import logo from '../../assets/images/logo.svg';
 import styles from './header.scss';
+import {colors} from '../../constants';
 
 class Header extends Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class Header extends Component {
     this.state = {
       brandTitle: 'CODE BATTLE',
       headerStyles: {
-        backgroundColor: '#222222'
+        backgroundColor: colors.bgDark
       }
     };
   }

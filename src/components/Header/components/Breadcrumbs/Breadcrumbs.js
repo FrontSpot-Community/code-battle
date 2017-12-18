@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {withRouter, Link} from 'react-router-dom';
 
 import styles from './breadcrumbs.scss';
+import {colors} from '../../../../constants';
 
 class Breadcrumbs extends Component {
   shouldComponentUpdate(nextProps) {
@@ -14,13 +15,13 @@ class Breadcrumbs extends Component {
     if (this.props.location.pathname !== nextProps.location.pathname) {
       switch (paths.length) {
       case 0:
-        this.props.setHeaderBackground('#222222');
+        this.props.setHeaderBackground(colors.bgDark);
         break;
       case 1:
-        this.props.setHeaderBackground('#2b2b2b');
+        this.props.setHeaderBackground(colors.mediumBlack);
         break;
       case 2:
-        this.props.setHeaderBackground('#383838');
+        this.props.setHeaderBackground(colors.lightBlack);
         break;
       default: break;
       }
