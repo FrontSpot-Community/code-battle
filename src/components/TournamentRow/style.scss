@@ -27,8 +27,12 @@
     }
 }
 
-.tournamentName {
+.tournamentName,
+.tournamentName:hover,
+.tournamentName:focus {
+    color: $WHITE;
     font-family: SourceSansPro;
+    text-decoration: none;
     font-size: 18px;
     font-weight: bold;
 }

@@ -1,0 +1,25 @@
+.header {
+  display: flex;
+  background-color: #222222;
+}
+
+.logoWrapper, .logoWrapper:hover, .logoWrapper:active, .logoWrapper:focus {
+  display: flex;
+  align-items: center;
+  padding: 0 20px 0 18px;
+  height: 60px;
+  font-size: 22px;
+  color: #fff;
+  font-family: 'Oswald Regular', sans-serif;
+  text-transform: uppercase;
+  text-decoration: none;
+  vertical-align: middle;
+  background: #222;
+  white-space: nowrap;
+}
+
+.logo {
+  height: 34px;
+  width: 31px;
+  margin-right: 8px;
+}

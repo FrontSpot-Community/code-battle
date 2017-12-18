@@ -14,20 +14,20 @@ class HomeContainer extends React.Component {
   }
 
   render() {
-      return (
-        <div className={style.wrapper}>
-            <div className={style.tableContainer}>
-                <TournamentTable tournaments={this.props.tournaments}
-                                 render={() => (<Tabs/>)}/>
-            </div>
-            <div className={style.rankContainer}>
-                <Rank rankPosition={102}
-                      totalRankPosition={654}
-                      totalScore={190354}
-                      userScoreList={userScoreList}/>
-            </div>
+    return (
+      <div className={style.wrapper}>
+        <div className={style.tableContainer}>
+          <TournamentTable tournaments={this.props.tournaments}
+            render={() => (<Tabs />)}/>
         </div>
-      );
+        <div className={style.rankContainer}>
+          <Rank rankPosition={102}
+            totalRankPosition={654}
+            totalScore={190354}
+            userScoreList={userScoreList}/>
+        </div>
+      </div>
+    );
   }
 }
 

@@ -6,7 +6,7 @@ import {
 const TournamentIcon = ({icon}) => {
   return (
     <div className="tournament-icon">
-      <Glyphicon glyph={icon} />
+      <Glyphicon glyph={icon}/>
     </div>
   );
 };

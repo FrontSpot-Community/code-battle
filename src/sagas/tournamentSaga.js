@@ -6,15 +6,15 @@ import {fetchSuccess, fetchFailed} from '../actions/tournamentActions';
 import {TOURNAMENTS_FETCH_REQUESTED} from '../constants';
 
 function* fetchTournaments() {
-   try {
-      yield put(showLoading());
-      const tournaments = yield call(Api.fetchAll);
-      yield put(fetchSuccess(tournaments));
-   } catch (e) {
-      yield put(fetchFailed(e));
-   } finally {
-      yield put(hideLoading());
-   }
+  try {
+    yield put(showLoading());
+    const tournaments = yield call(Api.fetchAll);
+    yield put(fetchSuccess(tournaments));
+  } catch (e) {
+    yield put(fetchFailed(e));
+  } finally {
+    yield put(hideLoading());
+  }
 }
 
 function* tourSaga() {
