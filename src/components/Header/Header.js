@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 
 import Breadcrumbs from './components/Breadcrumbs';
+import Notifications from './components/Notifications';
 
 import logo from '../../assets/images/logo.svg';
 import styles from './header.scss';
@@ -33,7 +34,7 @@ class Header extends Component {
           {this.state.brandTitle}
         </Link>
         <Breadcrumbs setHeaderBackground={this.setHeaderBackground}/>
-        {/* <Notifications />*/}
+        <Notifications />
         {/* <ProfileItem />*/}
       </header>
     );
