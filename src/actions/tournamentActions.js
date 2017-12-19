@@ -1,7 +1,14 @@
 import {
   TOURNAMENTS_FETCH_SUCCESS,
-  TOURNAMENTS_FETCH_FAILED
+  TOURNAMENTS_FETCH_FAILED,
+  TOURNAMENTS_LOADING
 } from '../constants';
+
+export const tournamentsLoading = () => {
+  return {
+    type: TOURNAMENTS_LOADING
+  };
+};
 
 export const fetchSuccess = (tournaments) => {
   return {
