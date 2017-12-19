@@ -57,9 +57,9 @@ export default class TournamentTable extends Component {
               {headerCell.displayName}
             </span>
             {headerCell.sort &&
-                    <a className={style.sortIcon}>
-                      <i className={'glyphicon glyphicon-triangle-bottom'}/>
-                    </a>}
+              <a className={style.sortIcon}>
+                <i className={'glyphicon glyphicon-triangle-bottom'}/>
+              </a>}
           </span>
         );
       } else {
