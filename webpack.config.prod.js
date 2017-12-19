@@ -33,11 +33,10 @@ module.exports = {
         {
           test: /\.s?css$/,
           include: srcPath,
-          use: [
-            'style-loader',
-            'css-loader',
-            'sass-loader'
-          ]
+          use: ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: 'css-loader?modules&importLoaders=1&localIdentName=sn-[local]___[hash:base64:5]!sass-loader',
+          })
         },
         {
           test: /\.(png|jpe?g)$/,
