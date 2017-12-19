@@ -15,17 +15,38 @@ class ProfileItem extends Component {
     };
   }
 
-  toggleDropDown = () => {
+  // toggleDropDown = () => {
+  //   this.setState({isOpen: !this.state.isOpen});
+  // };
+
+  handleOffClick = () => {
+    if (!this.state.isOpen) {
+      document.addEventListener('click', this.handleOffClickChecker, false);
+    } else {
+      document.removeEventListener('click', this.handleOffClickChecker, false);
+    }
     this.setState({isOpen: !this.state.isOpen});
   };
 
+  handleOffClickChecker(e) {
+    // console.log(this);
+    // console.log(this.node);
+    // console.log(e);
+    if (this.node.contains(e.target)) {
+      return;
+    }
+    this.handleOffClick();
+  }
 
   render() {
     const {isOpen} = this.state;
     return (
       <div
         className={isOpen ? styles.containerHover : styles.container}
-        onClick={this.toggleDropDown}
+        onClick={this.handleOffClick}
+        ref={(node) => {
+          this.node = node;
+        }}
       >
         <img className={styles.userPic} src={userPic} />
         <img
