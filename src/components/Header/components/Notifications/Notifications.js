@@ -7,7 +7,7 @@ class Notifications extends Component {
   render() {
     return (
       <div className={styles.container}>
-        <img src={bellIcon} />
+        <img className={styles.bell} src={bellIcon} />
       </div>
     );
   }
