@@ -1,8 +1,9 @@
 import {
   TOURNAMENTS_FETCH_SUCCESS,
   TOURNAMENTS_FETCH_FAILED,
-  TOURNAMENTS_LOADING
-} from '../constants';
+  TOURNAMENTS_LOADING,
+  TOURNAMENTS_FETCH_REQUESTED
+} from '../actions';
 
 export const tournamentsLoading = () => {
   return {
@@ -23,3 +24,8 @@ export const fetchFailed = (error) => {
     error
   };
 };
+
+export const tournamentsRequest = (data) => ({
+  type: TOURNAMENTS_FETCH_REQUESTED,
+  payload: data
+});

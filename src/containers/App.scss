@@ -13,6 +13,21 @@
   src: local('Oswald Light'), url('../assets/fonts/font-oswald/oswald-light.woff') format('woff');
 }
 
+@font-face {
+  font-family: 'Source Sans Pro Light';
+  src: local('Source Sans Pro Light'), url('../assets/fonts/font-SourceSansPro/SourceSansPro-Light.otf') format('otf');
+}
+
+@font-face {
+  font-family: 'Source Sans Pro Regular';
+  src: local('Source Sans Pro Regular'), url('../assets/fonts/font-SourceSansPro/SourceSansPro-Regular.otf') format('otf');
+}
+
+@font-face {
+  font-family: 'Source Sans Pro Bold';
+  src: local('Source Sans Pro Bold'), url('../assets/fonts/font-SourceSansPro/SourceSansPro-Bold.otf') format('otf');
+}
+
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
