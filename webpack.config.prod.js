@@ -72,7 +72,10 @@ module.exports = {
       }),
       new webpack.optimize.OccurrenceOrderPlugin(),
       new webpack.DefinePlugin({
-          'process.env.NODE_ENV': JSON.stringify('production'),
+        'process.env': {
+          NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+          API_URL: JSON.stringify('http://code-battle.westeurope.cloudapp.azure.com/api')
+        },
       }),
       new ExtractTextPlugin('style.css'),
       new webpack.LoaderOptionsPlugin({

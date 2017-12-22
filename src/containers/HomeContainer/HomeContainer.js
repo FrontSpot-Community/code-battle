@@ -1,10 +1,11 @@
 import React from 'react';
 import style from './style.scss';
 import {connect} from 'react-redux';
-
-import TournamentTable from '../../components/TournamentTable';
+import {bindActionCreators} from 'redux';
+import TournamentList from '../../components/TournamentList';
 import Tabs from '../../components/Tabs';
 import Rank from '../../components/Rank';
+import {tournamentsRequest} from '../../actions/action_creators/tournamentActionCreators';
 
 import userScoreList from './mockUsers';
 
@@ -13,12 +14,18 @@ class HomeContainer extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    this.props.tournamentsRequest({a: 'a'});
+  }
+
+  renderTabs = () => (<Tabs />);
+
   render() {
     return (
       <div className={style.wrapper}>
         <div className={style.tableContainer}>
-          <TournamentTable tournaments={this.props.tournaments}
-            render={() => (<Tabs />)}/>
+          <TournamentList tournaments={this.props.tournaments}
+            render={this.renderTabs}/>
         </div>
         <div className={style.rankContainer}>
           <Rank rankPosition={102}
@@ -37,4 +44,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(HomeContainer);
+const mapActionsToProps = (dispatch) => (bindActionCreators({tournamentsRequest}, dispatch));
+
+export default connect(mapStateToProps, mapActionsToProps)(HomeContainer);

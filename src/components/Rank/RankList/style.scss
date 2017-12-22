@@ -1,0 +1,72 @@
+@import '~Colors';
+
+.rankList {
+  display: flex;
+  flex: .9;
+  padding: 10px;
+  flex-direction: column;
+
+  &Item {
+    display: flex;
+    border-bottom: 1px solid $MINE_SHAFT;
+    height: 80px;
+  }
+}
+
+.avatar {
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.imageWrapper {
+  background-color: yellow;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  border-radius: 25px;
+
+
+  img {
+    width: 100%;
+    border-radius: 25px;
+  }
+}
+
+.userInfo {
+  flex: 3;
+  justify-content: center;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.user {
+  &Name {
+    font-family: SourceSansPro;
+    color: $WHITE;
+    font-size: 14px;
+  }
+
+  &Score {
+    color: $DUSTY_GRAY;
+    font-size: 14px;
+    font-family: SourceSansPro;
+  }
+
+  &Index {
+    flex: .5;
+    color: $DUSTY_GRAY;
+    justify-content: flex-end;
+    display: flex;
+    align-items: center;
+
+    span {
+      font-size: 14px;
+      font-family: SourceSansPro;
+      height: 16px;
+    }
+  }
+
+}

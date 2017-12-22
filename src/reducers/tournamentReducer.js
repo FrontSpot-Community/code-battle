@@ -2,12 +2,13 @@ import {
   TOURNAMENTS_FETCH_SUCCESS,
   TOURNAMENTS_FETCH_FAILED,
   TOURNAMENTS_LOADING
-} from '../constants';
+} from '../actions/actions';
 
 const initialState = {
   isLoading: false,
   error: null,
-  data: []
+  data: [],
+  count: 0
 };
 
 export default (state = initialState, action) => {
@@ -20,8 +21,9 @@ export default (state = initialState, action) => {
   case TOURNAMENTS_FETCH_SUCCESS:
     return {
       ...state,
-      data: action.tournaments,
-      isLoading: !state.isLoading
+      data: action.tournaments.data,
+      isLoading: !state.isLoading,
+      count: action.tournaments.count
     };
   case TOURNAMENTS_FETCH_FAILED:
     return {

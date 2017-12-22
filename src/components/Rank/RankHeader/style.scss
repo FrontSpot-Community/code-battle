@@ -1,0 +1,12 @@
+@import '~Colors';
+
+.rankHeader {
+  flex: .1;
+  display: flex;
+  border-bottom: 1px solid $MINE_SHAFT;
+}
+
+.rankNumber {
+  color: $DARK_BLUE;
+  border-bottom: 1px dotted $DARK_BLUE;
+}
