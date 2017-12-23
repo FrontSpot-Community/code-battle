@@ -355,7 +355,7 @@ export default class Tours {
   static fetchAll() {
     return new Promise((resolve) => {
       setTimeout(() => {
-        resolve([...tournaments]);
+        resolve({data: [...tournaments], count: 6});
       }, delay);
     });
   }

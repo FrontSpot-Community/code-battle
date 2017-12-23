@@ -15,6 +15,7 @@ export default class TournamentTableRow extends Component {
     const {tournament} = this.props;
     const {
       id,
+      title,
       tags,
       name,
       difficulty,
@@ -22,16 +23,17 @@ export default class TournamentTableRow extends Component {
       department,
       remaining,
       status,
-      taskIds
+      taskIds,
+      numberOfTasks
     } = tournament;
 
-    const numberOfTasks = taskIds.length;
+    // const numberOfTasks = taskIds.length;
 
     return (
       <tr className={style.row}>
         <td className={style.tournamentInfo}>
           <Link className={style.tournamentName}
-            to={`/${id}`}>{name}
+            to={`/${id}`}>{title}
           </Link>
           {this.renderTags(tags, name)}
         </td>

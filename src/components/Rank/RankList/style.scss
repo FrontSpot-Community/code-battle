@@ -2,14 +2,16 @@
 
 .rankList {
   display: flex;
-  flex: .9;
-  padding: 10px;
+  flex: .85;
+  padding: 0 10px 10px 10px;
   flex-direction: column;
+  overflow-y: auto;
 
   &Item {
     display: flex;
     border-bottom: 1px solid $MINE_SHAFT;
-    height: 80px;
+    height: 70px;
+    flex-shrink: 0;
   }
 }
 
