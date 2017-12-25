@@ -16,10 +16,12 @@ export class Actions {
     this.actionName = actionName;
   }
 
-  request = (data) => ({
-    type: `${this.actionName}`,
-    payload: data
-  });
+  request = (data) => {
+    return {
+      type: `${this.actionName}`,
+      payload: data
+    };
+  };
 
   success = (payload) => {
     return {

@@ -16,7 +16,7 @@ class HttpService {
     return this.service.request({
       method,
       url,
-      responseType: 'json',
+      // responseType: 'json',
       data
     })
       .then(({data}) => data);
@@ -34,25 +34,22 @@ class HttpService {
     return this.request({
       method: 'post',
       url,
-      responseType: 'json',
       data
     });
   }
 
   put(url, data) {
     return this.request({
-      method: 'post',
+      method: 'put',
       url,
-      responseType: 'json',
       data
     });
   }
 
   delete(url, data) {
     return this.request(url, {
-      method: 'post',
+      method: 'delete',
       url,
-      responseType: 'json',
       data
     });
   }
