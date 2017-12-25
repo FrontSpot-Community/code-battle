@@ -6,9 +6,14 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  overflow-y: scroll;
 }
 
-.table {
+.body {
+  height: -moz-calc(100% - 50px);
+  height: -webkit-calc(100% - 50px);
+  height: calc(100% - 50px);
   width: 100%;
+  padding-left: 18px;
+  padding-right: 10px;
+  overflow-y: scroll;
 }

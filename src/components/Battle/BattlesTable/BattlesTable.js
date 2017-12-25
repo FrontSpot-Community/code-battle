@@ -7,26 +7,22 @@ import style from './style.scss';
 const BattleTable = (props) => {
   return (
     <div className={style.wrapper}>
-      <table className={style.table}>
-        <thead>
-          <BattleHeadRow
-            headerCells={props.headerCells}
-            onClickSort={props.onClickSort}
-            nextSorts={props.nextSorts}
-          />
-        </thead>
-        <tbody>
-          {
-            props.tasks.map((item, idx) => (
-              <BattleBodyRow
-                task={item}
-                key={idx}
-                preLink={props.preLink}
-              />
-            ))
-          }
-        </tbody>
-      </table>
+      <BattleHeadRow
+        headerCells={props.headerCells}
+        onClickSort={props.onClickSort}
+        nextSorts={props.nextSorts}
+      />
+      <section className={style.body}>
+        {
+          props.tasks.map((item, idx) => (
+            <BattleBodyRow
+              task={item}
+              key={idx}
+              preLink={props.preLink}
+            />
+          ))
+        }
+      </section>
     </div>
   );
 };
