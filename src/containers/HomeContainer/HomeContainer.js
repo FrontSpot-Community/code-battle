@@ -47,6 +47,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapActionsToProps = (dispatch) => (bindActionCreators({tournamentsRequest}, dispatch));
+const mapActionsToProps = (dispatch) => (
+  bindActionCreators({tournamentsRequest}, dispatch)
+);
 
 export default connect(mapStateToProps, mapActionsToProps)(HomeContainer);

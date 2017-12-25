@@ -1,7 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
-
+import {bindActionCreators} from 'redux';
+import {withRouter} from 'react-router-dom';
 import {BattleTable, Summary} from 'src/components/Battle';
+import {tournamentsByIdRequest} from 'src/actions/action_creators/tournamentActionCreators';
 import style from './style.scss';
 import sorts from './sorts';
 
@@ -54,6 +56,12 @@ class BattleContainer extends React.Component {
       solvedByNextSortIncr: false,
       statusNextSortIncr: false
     };
+  }
+
+  componentDidMount() {
+    const {id} = this.props.match.params;
+    const requestData = {id: id};
+    this.props.tournamentsByIdRequest(requestData);
   }
 
   onClickSort = (identifier) => {
@@ -129,8 +137,16 @@ class BattleContainer extends React.Component {
 const mapStateToProps = (state) => {
   return {
     tournaments: state.tournaments.data,
+    tournamentById: state.tournamentById,
     tournamentsLoading: state.tournaments.isLoading
   };
 };
 
-export default connect(mapStateToProps)(BattleContainer);
+const mapActionsToProps = (dispatch) => (
+  bindActionCreators({tournamentsByIdRequest}, dispatch)
+);
+
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(withRouter(BattleContainer));

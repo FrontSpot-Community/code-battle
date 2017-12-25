@@ -23,7 +23,7 @@ export default class TournamentTableRow extends Component {
       department,
       remaining,
       status,
-      taskIds,
+      // taskIds,
       numberOfTasks
     } = tournament;
 
@@ -33,7 +33,7 @@ export default class TournamentTableRow extends Component {
       <tr className={style.row}>
         <td className={style.tournamentInfo}>
           <Link className={style.tournamentName}
-            to={`/${id}`}>{title}
+            to={{pathname: `/${id}`, params: {testvalue: 'hello'}}}>{title}
           </Link>
           {this.renderTags(tags, name)}
         </td>
