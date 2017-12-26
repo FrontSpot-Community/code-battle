@@ -7,7 +7,7 @@ import ProfileItem from './components/ProfileItem';
 
 import logo from '../../assets/images/logo.svg';
 import styles from './header.scss';
-import {colors} from '../../constants';
+import {colors} from '../../constants/colors';
 
 class Header extends Component {
   constructor(props) {

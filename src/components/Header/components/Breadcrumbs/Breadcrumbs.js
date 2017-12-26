@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {withRouter, Link} from 'react-router-dom';
 
 import styles from './breadcrumbs.scss';
-import {colors} from '../../../../constants';
+import {colors} from '../../../../constants/colors';
 
 class Breadcrumbs extends Component {
   shouldComponentUpdate(nextProps) {

@@ -5,18 +5,15 @@ import {Provider} from 'react-redux';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import {configureStore} from './store/configureStore';
 import {App} from './containers/App';
-import {TOURNAMENTS_FETCH_REQUESTED} from './constants';
 import HomeContainer from './containers/HomeContainer';
 import TournamentContainer from './containers/TournamentContainer';
 import TaskContainer from './containers/TaskContainer';
+import TaskTrainContainer from './containers/TaskTrainContainer';
 import LoginContainer from './containers/LoginContainer';
 import rootSaga from './sagas';
 
 const store = configureStore();
 store.runSaga(rootSaga);
-
-store.dispatch({type: TOURNAMENTS_FETCH_REQUESTED});
-
 render(
   <Provider store={store}>
     <Router>
@@ -26,6 +23,7 @@ render(
           <Route exact path="/login" component={LoginContainer} />
           <Route exact path="/:id" component={TournamentContainer} />
           <Route exact path="/:id/:taskId" component={TaskContainer} />
+          <Route exact path="/:id/:taskId/train" component={TaskTrainContainer} />
         </Switch>
       </App>
     </Router>

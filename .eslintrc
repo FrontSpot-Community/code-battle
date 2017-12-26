@@ -24,6 +24,7 @@
         "jquery": true
     },
     "rules": {
+        "import/no-unresolved": "off",
         "indent": ["error", 2],
         "no-unused-vars": ["error", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }],
         "react/jsx-uses-react": "error",
@@ -32,7 +33,7 @@
             "error",
             "never"
         ],
-        "max-len": ["error", {
+        "max-len": ["error", 100, {
             "ignoreComments": true,
             "ignoreTemplateLiterals": true,
             "ignoreTrailingComments": true,
@@ -42,7 +43,8 @@
         "new-cap": ["error", {
             "properties": false
         }],
-        "require-jsdoc": 0
+        "require-jsdoc": 0,
+        "linebreak-style": 0
     },
     "settings": {
         "import/ignore": [".(scss|less|css)$"]

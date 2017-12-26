@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const outputPath = path.resolve(__dirname, './dist');
 const srcPath = path.resolve(__dirname, './src');
+const styleColors = path.resolve(__dirname, './src/constants/colors.scss');
 
 module.exports = {
     devtool: 'source-map',
@@ -16,6 +17,10 @@ module.exports = {
       filename: 'bundle.js'
     },
     resolve: {
+      alias: {
+        src: srcPath,
+        Colors: styleColors
+      },
       extensions: ['.js', '.jsx']
     },
     module: {
@@ -28,11 +33,10 @@ module.exports = {
         {
           test: /\.s?css$/,
           include: srcPath,
-          use: [
-            'style-loader',
-            'css-loader',
-            'sass-loader'
-          ]
+          use: ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: 'css-loader?modules&importLoaders=1&localIdentName=sn-[local]___[hash:base64:5]!sass-loader',
+          })
         },
         {
           test: /\.(png|jpe?g)$/,
@@ -68,7 +72,10 @@ module.exports = {
       }),
       new webpack.optimize.OccurrenceOrderPlugin(),
       new webpack.DefinePlugin({
-          'process.env.NODE_ENV': JSON.stringify('production'),
+        'process.env': {
+          NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+          API_URL: JSON.stringify('http://code-battle.westeurope.cloudapp.azure.com/api')
+        },
       }),
       new ExtractTextPlugin('style.css'),
       new webpack.LoaderOptionsPlugin({

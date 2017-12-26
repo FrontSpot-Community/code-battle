@@ -35,5 +35,95 @@ export default [
     username: 'Konstantin-Paulukave',
     totalScore: 203459,
     avatar
+  },
+  {
+    username: 'Konstantin-Paulukave',
+    totalScore: 203459,
+    avatar
+  },
+  {
+    username: 'Konstantin-Paulukave',
+    totalScore: 203459,
+    avatar
+  },
+  {
+    username: 'Konstantin-Paulukave',
+    totalScore: 203459,
+    avatar
+  },
+  {
+    username: 'Konstantin-Paulukave',
+    totalScore: 203459,
+    avatar
+  },
+  {
+    username: 'Konstantin-Paulukave',
+    totalScore: 203459,
+    avatar
+  },
+  {
+    username: 'Konstantin-Paulukave',
+    totalScore: 203459,
+    avatar
+  },
+  {
+    username: 'Konstantin-Paulukave',
+    totalScore: 203459,
+    avatar
+  },
+  {
+    username: 'Konstantin-Paulukave',
+    totalScore: 203459,
+    avatar
+  },
+  {
+    username: 'Konstantin-Paulukave',
+    totalScore: 203459,
+    avatar
+  },
+  {
+    username: 'Konstantin-Paulukave',
+    totalScore: 203459,
+    avatar
+  },
+  {
+    username: 'Konstantin-Paulukave',
+    totalScore: 203459,
+    avatar
+  },
+  {
+    username: 'Konstantin-Paulukave',
+    totalScore: 203459,
+    avatar
+  },
+  {
+    username: 'Konstantin-Paulukave',
+    totalScore: 203459,
+    avatar
+  },
+  {
+    username: 'Konstantin-Paulukave',
+    totalScore: 203459,
+    avatar
+  },
+  {
+    username: 'Konstantin-Paulukave',
+    totalScore: 203459,
+    avatar
+  },
+  {
+    username: 'Konstantin-Paulukave',
+    totalScore: 203459,
+    avatar
+  },
+  {
+    username: 'Konstantin-Paulukave',
+    totalScore: 203459,
+    avatar
+  },
+  {
+    username: 'Konstantin-Paulukave',
+    totalScore: 203459,
+    avatar
   }
 ];

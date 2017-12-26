@@ -1,11 +1,17 @@
 @import '../../constants/colors';
 
 .wrapper {
-    margin: 2%;
     display: flex;
     flex: 1;
     justify-content: space-between;
     height: 90%;
+}
+
+.mainWrapper {
+  padding: 18px;
+  height: 100%;
+  width: 100%;
+  position: relative;
 }
 
 .tableContainer {
@@ -15,5 +21,5 @@
 
 .rankContainer {
     flex: 2;
-    margin-left: 2%;
+    margin-left: 18px;
 }

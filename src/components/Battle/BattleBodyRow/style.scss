@@ -1,0 +1,41 @@
+@import '~Colors';
+
+.tr {
+  margin-left: 2%;
+  border-bottom: 1px solid $MINE_SHAFT;
+
+  td {
+    padding: 0 10px;
+    height: 50px;
+    color: $WHITE;
+    font-family: SourceSansPro;
+    font-size: 14px;
+
+    i {
+      margin-right: 5px;
+    }
+  }
+
+  .status_open {
+    color: #27f4ff;
+  }
+  
+  .status_resolved {
+    color: #c3ff5b;
+  }
+}
+
+.title {
+  color: $WHITE;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: $WHITE;
+  }
+}
+
+.faint {
+  opacity: 0.5;
+}
+

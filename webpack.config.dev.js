@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const outputPath = path.resolve(__dirname, './dist');
 const srcPath = path.resolve(__dirname, './src');
+const styleColors = path.resolve(__dirname, './src/constants/colors.scss');
 
 module.exports = {
     entry: [
@@ -15,7 +16,12 @@ module.exports = {
       publicPath: '/',
       filename: 'bundle.js'
     },
+    devtool: 'inline-source-map',
     resolve: {
+      alias: {
+        src: srcPath,
+        'Colors': styleColors
+      },
       extensions: ['.js', '.jsx']
     },
     module: {
@@ -63,6 +69,10 @@ module.exports = {
           use:'url-loader?prefix=font/&limit=50000'
         },
         {
+          test: /\.(otf)$/,
+          use:'url-loader?prefix=font/&limit=50000'
+        },
+        {
           test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
           use: 'url-loader?limit=10000&mimetype=application/octet-stream'
         },
@@ -80,7 +90,13 @@ module.exports = {
       }),
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NamedModulesPlugin(),
-      new webpack.NoEmitOnErrorsPlugin()
+      new webpack.NoEmitOnErrorsPlugin(),
+      new webpack.DefinePlugin({
+        'process.env': {
+          NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+          API_URL: JSON.stringify('http://localhost:3002')
+        },
+      })
     ],
     devServer : {
       stats: 'errors-only',
