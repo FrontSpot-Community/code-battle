@@ -15,7 +15,7 @@ class HomeContainer extends React.Component {
   }
 
   componentDidMount() {
-    this.props.tournamentsRequest({a: 'a'});
+    this.props.tournamentsRequest();
   }
 
   renderTabs = () => (<Tabs />);

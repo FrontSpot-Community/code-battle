@@ -1,8 +1,8 @@
 import {
+  TOURNAMENTS_FETCH,
   TOURNAMENTS_FETCH_SUCCESS,
   TOURNAMENTS_FETCH_FAILED,
-  TOURNAMENTS_LOADING,
-  TOURNAMENT_BY_ID_FETCH_REQUESTED,
+  TOURNAMENT_BY_ID_FETCH,
   TOURNAMENT_BY_ID_FETCH_SUCCESS,
   TOURNAMENT_BY_ID_FETCH_FAILED
 } from '../actions/actions';
@@ -17,17 +17,17 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-  case TOURNAMENTS_LOADING:
+  case TOURNAMENTS_FETCH:
     return {
       ...state,
-      isLoading: !state.isLoading
+      isLoading: true
     };
   case TOURNAMENTS_FETCH_SUCCESS:
     return {
       ...state,
-      data: action.tournaments.data,
-      isLoading: !state.isLoading,
-      count: action.tournaments.count
+      data: [...action.payload.data],
+      isLoading: false,
+      count: action.payload.count
     };
   case TOURNAMENTS_FETCH_FAILED:
     return {
@@ -35,7 +35,7 @@ export default (state = initialState, action) => {
       error: action.error,
       isLoading: !state.isLoading
     };
-  case TOURNAMENT_BY_ID_FETCH_REQUESTED:
+  case TOURNAMENT_BY_ID_FETCH:
     return {
       ...state,
       isLoading: true
@@ -51,7 +51,7 @@ export default (state = initialState, action) => {
       ...state,
       tournamentById: null,
       isLoading: false,
-      error: action.payload
+      error: action.error
     };
   default:
     return state;
