@@ -22,18 +22,21 @@ class HomeContainer extends React.Component {
 
   render() {
     return (
-      <div className={style.wrapper}>
-        <div className={style.tableContainer}>
-          <TournamentList tournaments={this.props.tournaments}
-            render={this.renderTabs}/>
-        </div>
-        <div className={style.rankContainer}>
-          <Rank rankPosition={102}
-            totalRankPosition={654}
-            totalScore={190354}
-            userScoreList={userScoreList}/>
+      <div className={style.mainWrapper}>
+        <div className={style.wrapper}>
+          <div className={style.tableContainer}>
+            <TournamentList tournaments={this.props.tournaments}
+              render={this.renderTabs}/>
+          </div>
+          <div className={style.rankContainer}>
+            <Rank rankPosition={102}
+              totalRankPosition={654}
+              totalScore={190354}
+              userScoreList={userScoreList}/>
+          </div>
         </div>
       </div>
+
     );
   }
 }
@@ -44,6 +47,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapActionsToProps = (dispatch) => (bindActionCreators({tournamentsRequest}, dispatch));
+const mapActionsToProps = (dispatch) => (
+  bindActionCreators({tournamentsRequest}, dispatch)
+);
 
 export default connect(mapStateToProps, mapActionsToProps)(HomeContainer);
