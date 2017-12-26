@@ -13,7 +13,7 @@ import TaskOutput from '../../components/TaskOutput/TaskOutput';
 import CodeEditor from '../../components/CodeEditor/CodeEditor';
 import Button from '../../components/Common/Button';
 import {solutionRequest} from '../../actions/action_creators/solutionActionCreators';
-import {bindActionCreators} from '../../../../../../.cache/typescript/2.6/node_modules/redux';
+import {bindActionCreators} from 'redux';
 
 class TaskTrainContainer extends React.Component {
   constructor() {

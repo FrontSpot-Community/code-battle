@@ -28,7 +28,7 @@ export class Actions {
       type: `${this.actionName}${postfix.SUCCESS}`,
       payload
     };
-  }
+  };
 
   failed = (error) => {
     return {
