@@ -22,6 +22,7 @@ class HomeContainer extends React.Component {
 
   render() {
     return (
+
       <div className={style.mainWrapper}>
         <div className={style.wrapper}>
           <div className={style.tableContainer}>

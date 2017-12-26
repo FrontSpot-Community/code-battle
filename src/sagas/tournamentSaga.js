@@ -28,7 +28,7 @@ function* fetchTournamentById({payload}) {
     const tournament = yield call(getTournamentById, payload.id, payload.params);
     yield put(tournamentsByIdFetchSuccess(tournament));
   } catch (e) {
-    yield put(tournamentsByIdFetchFailed(e));
+    yield put(tournamentsByIdFetchFailed(JSON.stringify(e)));
   }
 }
 
