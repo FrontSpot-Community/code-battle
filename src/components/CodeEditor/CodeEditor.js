@@ -30,6 +30,10 @@ export default class CodeEditor extends Component {
     this.setState({
       value: newValue
     });
+
+    if (typeof this.props.onChange === 'function') {
+      this.props.onChange(newValue);
+    }
   };
 
   setMode = (mode) => {

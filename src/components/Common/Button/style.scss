@@ -1,0 +1,16 @@
+@import '../../../constants/colors';
+
+.button {
+  background-color: $LIME_GREEN;
+  border: none;
+  height: 32px;
+  width: 65px;
+}
+
+.buttonText {
+  color: $WHITE;
+  font-family: 'Oswald Regular', sans-serif;
+  font-size: 14px;
+  line-height: 1.71;
+  text-align: center;
+}
