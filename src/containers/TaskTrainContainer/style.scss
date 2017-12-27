@@ -1,6 +1,74 @@
 @import '~Colors';
 
 .container {
+  height: 100%;
   padding: 18px;
-  background-color: $LIGHT_BLACK;
 }
+
+.taskName {
+  font-family: 'Oswald Regular', sans-serif;
+  font-size: 24px;
+  letter-spacing: 0.2px;
+  color: $WHITE;
+  margin-bottom: 12px;
+}
+
+.row {
+  height: calc(50% - 154px);
+  display: flex;
+  justify-content: space-between;
+}
+
+.contentBlock {
+  height: 100%;
+  width: calc(50% - 9px);
+}
+
+.contentBlockHeader {
+  display: flex;
+  background-color: $bg_dark;
+  padding: 12px 18px 12px 8px;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.contentBlockName {
+  font-family: 'Oswald Regular', sans-serif;
+  font-size: 14px;
+  color: $WHITE;
+  line-height: 34px;
+}
+
+.contentBlockHeaderRightArea {
+  display: inline-block;
+}
+
+.resetButton {
+  background-color: transparent;
+  border: 1px solid $MEDIUM_GRAY;
+  padding: 4px 12px;
+  margin-right: 6px;
+}
+
+.resetButtonText {
+  color: $WHITE;
+  font-family: 'Oswald Regular', sans-serif;
+  font-size: 14px;
+  line-height: 1.71;
+  text-align: center;
+}
+
+.runTestsButton {
+  background-color: transparent;
+  border: 1px solid $DARK_GREEN;
+  padding: 4px 12px;
+}
+
+.runTestsButtonText {
+  color: $DARK_GREEN;
+  font-family: 'Oswald Regular', sans-serif;
+  font-size: 14px;
+  line-height: 1.71;
+  text-align: center;
+}
+
