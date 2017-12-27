@@ -43,7 +43,7 @@ export default (state = initialState, action) => {
   case TOURNAMENT_BY_ID_FETCH_SUCCESS:
     return {
       ...state,
-      tournamentById: action.payload,
+      tournamentById: action.payload.data,
       isLoading: false
     };
   case TOURNAMENT_BY_ID_FETCH_FAILED:

@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 
+import {taskByIdRequest} from 'src/actions/action_creators/taskActionCreators';
 import {TaskPreviewHeader, TaskPreviewInfo, TaskPreviewDiscuss} from 'src/components/TaskPreview';
 import style from './style.scss';
 
@@ -13,6 +15,11 @@ class TaskContainer extends React.Component {
       task: {},
       infoState: 'details'
     };
+  }
+
+  componentDidMount() {
+    const {taskId} = this.props.match.params;
+    this.props.taskByIdRequest(taskId);
   }
 
   onChangeInfoState = (newInfoState) => {
@@ -36,41 +43,22 @@ class TaskContainer extends React.Component {
     this.props.history.push(`${this.props.match.url}/train`);
   };
 
-  getTaskInfo() {
-    const battleId = this.props.match.params.id;
-    const taskId = this.props.match.params.taskId;
-    const tournament = this.props.tournaments.find((tournament) => tournament.id === battleId);
-    if (!tournament) {
-      this.props.history.push('/about');
-      return;
-    }
-    const task = tournament.tasks.find((task) => task.id === taskId);
-    this.setState({
-      existionChecked: true,
-      nextTaskLoading: false,
-      task,
-      tournament
-    });
-  }
-
   renderData() {
-    if (!this.state.existionChecked) {
-      this.getTaskInfo();
-      return;
+    if (!this.props.task) {
+      return null;
     }
-    const {infoState, task} =this.state;
     return (
       <div className={style.wrapper}>
-        <TaskPreviewHeader task={this.state.task} />
+        <TaskPreviewHeader task={this.props.task} />
         <div className={style.body}>
           <TaskPreviewInfo
-            infoState={infoState}
-            task={task}
+            infoState={'details'}
+            task={this.props.task}
             onChangeInfoState={this.onChangeInfoState}
             onNextTask={this.onNextTask}
             onStartTrain={this.onStartTrain}
           />
-          <TaskPreviewDiscuss task={this.state.task} />
+          <TaskPreviewDiscuss task={this.props.task} />
         </div>
       </div>
     );
@@ -80,7 +68,7 @@ class TaskContainer extends React.Component {
     return (
       <div className={style.mainWrapper}>
         {
-          this.props.tournamentsLoading
+          this.props.taskLoading
             ? <div className={style.loader} />
             : this.renderData()
         }
@@ -91,9 +79,13 @@ class TaskContainer extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    tournaments: state.tournaments.data,
-    tournamentsLoading: state.tournaments.isLoading
+    task: state.tasks.taskById,
+    taskLoading: state.tasks.isLoading
   };
 };
 
-export default connect(mapStateToProps)(TaskContainer);
+const mapActionsToProps = (dispatch) => (
+  bindActionCreators({taskByIdRequest}, dispatch)
+);
+
+export default connect(mapStateToProps, mapActionsToProps)(TaskContainer);
