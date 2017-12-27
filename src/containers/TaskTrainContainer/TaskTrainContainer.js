@@ -31,13 +31,13 @@ class TaskTrainContainer extends React.Component {
       taskId: '5a40b0f8d999dc0115e77e2f',
       solutionCode: this.state.solution
     });
-  }
+  };
 
   onCodeEditorChange = (newText) => {
     this.setState({
       solution: newText
     });
-  }
+  };
 
   render() {
     const {solution} = this.props;
