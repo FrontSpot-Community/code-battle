@@ -37,7 +37,7 @@ class ProfileItem extends Component {
           className={styles.dropDown}
         >
           <span className={styles.userName}>{this.state.userName}</span>
-          <Link className={styles.dropDownItem} to={''}>My Profile</Link>
+          <Link className={styles.dropDownItem} to={'/profile'}>My Profile</Link>
           <Link className={styles.dropDownItem} to={''}>Resolved Tasks</Link>
           <Link className={styles.logout} to={''}>LOGOUT</Link>
         </div>

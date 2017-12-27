@@ -1,0 +1,29 @@
+@import '../../constants/colors';
+
+.mainWrapper {
+  height: 100%;
+  padding: 18px;
+  width: 100%;
+  position: relative;
+}
+
+.wrapper {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  height: 90%;
+}
+
+.statisticsContainer {
+  display: grid;
+  grid-template-columns: 200px 200px 200px;
+  grid-template-rows: 300px auto 300px;
+  grid-column-gap: 10px;
+  grid-row-gap: 15px;
+  height: 100%;
+}
+
+.detailsContainer {
+  flex: 2;
+  margin-left: 2%;
+}
