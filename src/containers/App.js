@@ -8,7 +8,7 @@ export class App extends React.Component {
   render() {
     return (
       <div className={styles.wrapper}>
-        <Header />
+        {location.pathname !== '/login' ? <Header /> : null}
         <ProgressBar />
         <main className={styles.main}>
           {this.props.children}
