@@ -29,7 +29,7 @@
   position: absolute;
   right: 0;
   top: 100%;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: flex-start;
   font-family: 'Oswald Regular', sans-serif;
@@ -40,6 +40,10 @@
   min-width: 180px;
   padding: 6px 0;
   z-index: 500;
+}
+
+.open > .dropDown {
+  display: flex;
 }
 
 .userName {
