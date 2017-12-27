@@ -1,29 +1,46 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-// import TaskDescription from '../../components/TaskDescription/TaskDescription';
-// import TaskOutput from '../../components/TaskOutput/TaskOutput';
-import CodeEditor from '../../components/CodeEditor/CodeEditor';
-import Button from '../../components/Common/Button';
+import Solution from '../../components/Solution';
+import SampleTests from '../../components/SampleTests';
+import TaskDetails from '../../components/TaskDetails';
+import Output from '../../components/Output';
+
 import {solutionRequest} from '../../actions/action_creators/solutionActionCreators';
 import {bindActionCreators} from 'redux';
 
 import style from './style.scss';
 
+const mockData = {
+  solution: 'function findEvenIndex(arr)\n' +
+  '{\n' +
+  '    //Code goes here!\n' +
+  '}',
+  sampleTests: 'Test.describe("FindEvenIndex", function() {\n' +
+  '  Test.it("Tests", function() {\n' +
+  '    Test.assertEquals(findEvenIndex([1,2,3,4,5,6]),-1, "The array: [1,2,3,4,5,6] \\n");\n' +
+  '  });\n' +
+  '});',
+  details: 'You are going to be given an array of integers. ' +
+  'Your job is to take that array and find an index N where the ' +
+  'sum of the integers to the left of N is equal to the sum of the integers to the right of N. ' +
+  'If there is no index that would make this happen, return   -1  .'
+};
+
 class TaskTrainContainer extends React.Component {
   constructor() {
     super();
     this.state = {
-      description: 'Task Description',
-      solution: 'function findEvenIndex(arr)\n' +
-      '{\n' +
-      '    //Code goes here!\n' +
-      '}',
-      sampleTests: 'Test.describe("FindEvenIndex", function() {\n' +
-      '  Test.it("Tests", function() {\n' +
-      '    Test.assertEquals(findEvenIndex([1,2,3,4,5,6]),-1, "The array: [1,2,3,4,5,6] \\n");\n' +
-      '  });\n' +
-      '});'
+      solution: mockData.solution,
+      sampleTests: mockData.sampleTests,
+      details: mockData.details,
+      output: {
+        details: 'To be continued...',
+        time: '321ms',
+        passed: '0',
+        failed: '2',
+        errors: '1'
+      }
     };
   }
 
@@ -34,11 +51,17 @@ class TaskTrainContainer extends React.Component {
     });
   };
 
-  runTests = () => {
+  runSampleTests = () => {
     // run test action
   };
 
-  onCodeEditorChange = (newText) => {
+  onSolutionChange = (newText) => {
+    this.setState({
+      solution: newText
+    });
+  };
+
+  onSampleTestsChange = (newText) => {
     this.setState({
       solution: newText
     });
@@ -55,33 +78,26 @@ class TaskTrainContainer extends React.Component {
       <div className={style.container}>
         <div className={style.taskName}>{this.props.match.params.id}</div>
         <div className={style.row}>
-          <div className={style.contentBlock}>
-            <div className={style.contentBlockHeader}>
-              <span className={style.contentBlockName}>SOLUTION</span>
-              <div className={style.contentBlockHeaderRightArea}>
-                <button onClick={this.resetSolution} className={style.resetButton}>
-                  <span className={style.resetButtonText}>RESET</span>
-                </button>
-                <Button onClick={this.submitTask}>SUBMIT</Button>
-              </div>
-            </div>
-            <CodeEditor
-              value={this.state.solution}
-              onCodeEditorChange={this.onCodeEditorChange}
-            />
-          </div>
-          <div className={style.contentBlock}>
-            <div className={style.contentBlockHeader}>
-              <span className={style.contentBlockName}>SAMPLE TESTS</span>
-              <button onClick={this.runTests} className={style.runTestsButton}>
-                <span className={style.runTestsButtonText}>RUN TESTS</span>
-              </button>
-            </div>
-            <CodeEditor
-              value={this.state.sampleTests}
-              onCodeEditorChange={this.onCodeEditorChange}
-            />
-          </div>
+          <Solution
+            solution={this.state.solution}
+            onSolutionChange={this.onSolutionChange}
+            resetSolution={this.resetSolution}
+          />
+          <SampleTests
+            sampleTests={this.state.sampleTests}
+            runSampleTests={this.runSampleTests}
+            onSampleTestsChange={this.onSampleTestsChange}
+          />
+        </div>
+        <div className={style.row}>
+          <TaskDetails details={this.state.details} />
+          <Output
+            details={this.state.output.details}
+            time={this.state.output.time}
+            passed={this.state.output.passed}
+            failed={this.state.output.failed}
+            errors={this.state.output.errors}
+          />
         </div>
       </div>
     );

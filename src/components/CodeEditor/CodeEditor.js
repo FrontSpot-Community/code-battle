@@ -1,20 +1,18 @@
 import React, {Component} from 'react';
 import AceEditor from 'react-ace';
 
+// Languages
 import 'brace/mode/javascript';
-import 'brace/mode/css';
-import 'brace/mode/html';
 
+// Color Themes
 import 'brace/theme/twilight';
-import 'brace/theme/monokai';
-import 'brace/theme/tomorrow';
 
 export default class CodeEditor extends Component {
   constructor(props) {
     super(props);
     this.state = {
       mode: 'JavaScript',
-      theme: 'monokai',
+      theme: 'twilight',
       fontSize: 14,
       highlightActiveLine: true
     };
@@ -29,7 +27,7 @@ export default class CodeEditor extends Component {
         fontSize={this.state.fontSize}
         highlightActiveLine={this.state.highlightActiveLine}
         width={'100%'}
-        height={'100%'}
+        height={'calc(100% - 58px'}
         onChange={this.props.onCodeEditorChange}
       />
     );
