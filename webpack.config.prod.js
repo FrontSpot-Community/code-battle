@@ -74,7 +74,8 @@ module.exports = {
       new webpack.DefinePlugin({
         'process.env': {
           NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-          API_URL: JSON.stringify('http://code-battle.westeurope.cloudapp.azure.com/api')
+          API_URL: JSON.stringify('http://code-battle.westeurope.cloudapp.azure.com/api'),
+          LOGIN_URL: JSON.stringify('http://code-battle.westeurope.cloudapp.azure.com/api/auth/github')
         },
       }),
       new ExtractTextPlugin('style.css'),
