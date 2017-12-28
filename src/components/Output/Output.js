@@ -15,9 +15,7 @@ class Output extends Component {
             <span className={style.stat}>Errors: {errors}</span>
           </div>
         </div>
-        <div className={style.output}>
-          {details}
-        </div>
+        <div className={style.output} dangerouslySetInnerHTML={{__html: details}} />
       </div>
     );
   }
