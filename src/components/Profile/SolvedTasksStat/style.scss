@@ -1,0 +1,26 @@
+@import '~Colors';
+
+.wrapper {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  background-color: $bg_dark;
+  overflow-y: scroll;
+  grid-column: 1 / 6;
+  grid-row: 5 / 8;
+}
+
+.header {
+  align-items: center;
+  padding: 13px;
+  border-bottom: 1px solid $MINE_SHAFT;
+}
+
+.title {
+  text-transform: uppercase;
+  font-family: Oswald;
+  font-size: 14px;
+  line-height: 1.71;
+  text-align: left;
+  color: $WHITE;
+}

@@ -8,10 +8,12 @@ export default class ProgressChart extends Component {
         ['x', 'Category1', 'Category2'],
         ['value', 300, 400]
       ],
-      type: 'bar'
+      type: 'bar',
+      width: 100
     };
 
     const chartConfig = {
+      width: 10,
       axis: {
         rotated: true,
         x: {

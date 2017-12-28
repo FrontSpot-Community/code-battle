@@ -12,7 +12,7 @@ import TournamentContainer from './containers/TournamentContainer';
 import TaskContainer from './containers/TaskContainer';
 import TaskTrainContainer from './containers/TaskTrainContainer';
 import ProfileContainer from './containers/ProfileContainer';
-// import LoginContainer from './containers/LoginContainer';
+import LoginContainer from './containers/LoginContainer';
 
 import rootSaga from './sagas';
 
