@@ -4,6 +4,7 @@ import {bindActionCreators} from 'redux';
 import {withRouter} from 'react-router-dom';
 import {BattleTable, Summary} from 'src/components/Battle';
 import {tournamentsByIdRequest} from 'src/actions/action_creators/tournamentActionCreators';
+import {tasksByIdRequest} from 'src/actions/action_creators/taskActionCreators';
 import style from './style.scss';
 import sorts from './sorts';
 
@@ -68,17 +69,11 @@ class BattleContainer extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.tournamentById) {
-      this.setState({
-        ...this.state,
-        tasks: [...nextProps.tournamentById.taskIds],
-        tournament: nextProps.tournamentById
-      });
+    if (!nextProps.tournamentsLoading && !this.props.tasks.length) {
+      this.props.tasksByIdRequest(nextProps.tournamentById.tasks);
     }
   }
 
-  componentDidUpdate() {
-  }
 
   onClickSort = (identifier) => {
     const tasks = [...this.state.tasks];
@@ -89,7 +84,9 @@ class BattleContainer extends React.Component {
     this.setState(newState);
   };
 
-  renderData = () => {
+  renderData() {
+    const tournament = this.props.tournamentById;
+
     const nextSorts = {
       difficulty: this.state.difficultyNextSortIncr,
       stars: this.state.starsNextSortIncr,
@@ -103,16 +100,16 @@ class BattleContainer extends React.Component {
         <div className={style.tableContainer}>
           <BattleTable
             headerCells={headerCells}
-            tasks={this.state.tasks}
+            tasks={this.props.tasks}
             onClickSort={this.onClickSort}
             nextSorts={nextSorts}
-            preLink={this.state.tournament.id}
+            preLink={tournament.id}
           />
         </div>
         <div className={style.summaryContainer}>
           <Summary
             status='Started'
-            tournament={this.state.tournament}
+            tournament={tournament}
           />
         </div>
       </div>
@@ -122,7 +119,11 @@ class BattleContainer extends React.Component {
   render() {
     return (
       <div className={style.mainWrapper}>
-        {this.renderData()}
+        {
+          !this.props.tournamentById
+            ? <div className={style.loader} />
+            : this.renderData()
+        }
       </div>
     );
   }
@@ -130,13 +131,15 @@ class BattleContainer extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    tournaments: state.tournaments.data,
     tournamentById: state.tournaments.tournamentById,
-    tournamentsLoading: state.tournaments.isLoading
+    tournamentsLoading: state.tournaments.isLoading,
+    tasks: state.tasks.tasksById
   };
 };
 
 const mapActionsToProps = (dispatch) => (
-  bindActionCreators({tournamentsByIdRequest}, dispatch)
+  bindActionCreators({tournamentsByIdRequest, tasksByIdRequest}, dispatch)
 );
 
 export default connect(

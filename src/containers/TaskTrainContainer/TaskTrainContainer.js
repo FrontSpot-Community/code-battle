@@ -67,7 +67,7 @@ class TaskTrainContainer extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Button onClick={this.submitTask}>SUBMIT</Button>
+          <Button mod='success' onClick={this.submitTask}>SUBMIT</Button>
         </Row>
       </Grid>
     );

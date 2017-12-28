@@ -27,42 +27,10 @@ const tournaments = [
       learn the intricacies of a programming language, prepare for 
       job interviews, learn new algorithms, and more.`,
     tasks: [
-      {
-        id: 'strings',
-        title: 'Strings',
-        difficulty: 'Mortal',
-        stars: 1,
-        satisfaction: '95% of 235',
-        solvedBy: '10 of 34',
-        status: 'Open'
-      },
-      {
-        id: 'arrays',
-        title: 'arrays',
-        difficulty: 'Fighter',
-        stars: 3,
-        satisfaction: '55% of 135',
-        solvedBy: '11 of 32',
-        status: 'Resolved'
-      },
-      {
-        id: 'Numbers-and-Strings',
-        title: 'Numbers and Strings',
-        difficulty: 'Fighter',
-        stars: 2,
-        satisfaction: '15% of 133',
-        solvedBy: '21 of 32',
-        status: 'Open'
-      },
-      {
-        id: 'From-Newbie-To-Over',
-        title: 'From Newbie To Over',
-        difficulty: 'Mortal',
-        stars: 2,
-        satisfaction: '78% of 133',
-        solvedBy: '21 of 22',
-        status: 'Open'
-      }
+      'strings',
+      'Greetings-The-New-Internet-Explorer',
+      'Type-Script',
+      'Objects'
     ]
   },
   {
@@ -89,51 +57,10 @@ const tournaments = [
     learn the intricacies of a programming language, prepare for 
     job interviews, learn new algorithms, and more.`,
     tasks: [
-      {
-        id: 'numbers',
-        title: 'numbers',
-        difficulty: 'Mortal',
-        stars: 1,
-        satisfaction: '95% of 235',
-        solvedBy: '10 of 34',
-        status: 'Open'
-      },
-      {
-        id: 'Declare-Variables-Not-War',
-        title: 'Declare Variables Not War',
-        difficulty: 'Fighter',
-        stars: 3,
-        satisfaction: '55% of 135',
-        solvedBy: '11 of 32',
-        status: 'Resolved'
-      },
-      {
-        id: 'Numbers-and-Strings',
-        title: 'Numbers and Strings',
-        difficulty: 'Fighter',
-        stars: 2,
-        satisfaction: '15% of 133',
-        solvedBy: '21 of 32',
-        status: 'Open'
-      },
-      {
-        id: 'From-Newbie-To-Over',
-        title: 'From Newbie To Over',
-        difficulty: 'Mortal',
-        stars: 2,
-        satisfaction: '78% of 133',
-        solvedBy: '21 of 22',
-        status: 'Open'
-      },
-      {
-        id: 'Hello-world',
-        title: 'Hello world',
-        difficulty: 'Mortal',
-        stars: 3,
-        satisfaction: '28% of 133',
-        solvedBy: '23 of 22',
-        status: 'Resolved'
-      }
+      'HipHip-Array',
+      'Hello-world-2',
+      'Type-Script',
+      'Objects'
     ]
   },
   {
@@ -160,51 +87,10 @@ const tournaments = [
     learn the intricacies of a programming language, prepare for 
     job interviews, learn new algorithms, and more.`,
     tasks: [
-      {
-        id: 'Objects',
-        title: 'Objects',
-        difficulty: 'Mortal',
-        stars: 1,
-        satisfaction: '95% of 235',
-        solvedBy: '10 of 34',
-        status: 'Open'
-      },
-      {
-        id: 'Declare-Variables-Not-War',
-        title: 'Declare Variables Not War',
-        difficulty: 'Fighter',
-        stars: 3,
-        satisfaction: '55% of 135',
-        solvedBy: '11 of 32',
-        status: 'Resolved'
-      },
-      {
-        id: 'Greetings-The-New-Internet-Explorer',
-        title: 'Greetings The New Internet Explorer',
-        difficulty: 'Mortal',
-        stars: 1,
-        satisfaction: '15% of 133',
-        solvedBy: '21 of 32',
-        status: 'Open'
-      },
-      {
-        id: 'From-Newbie-To-Over',
-        title: 'From Newbie To Over',
-        difficulty: 'Mortal',
-        stars: 2,
-        satisfaction: '78% of 133',
-        solvedBy: '21 of 22',
-        status: 'Open'
-      },
-      {
-        id: 'Hello-world-2',
-        title: 'Hello world 2',
-        difficulty: 'Mortal',
-        stars: 2,
-        satisfaction: '28% of 133',
-        solvedBy: '23 of 22',
-        status: 'Resolved'
-      }
+      'HipHip-Array',
+      'Dont-worry,-be-happy',
+      'Numbers-and-Strings',
+      'Objects'
     ]
   },
   {
@@ -231,51 +117,11 @@ const tournaments = [
     learn the intricacies of a programming language, prepare for 
     job interviews, learn new algorithms, and more.`,
     tasks: [
-      {
-        id: 'Objects',
-        title: 'Objects',
-        difficulty: 'Mortal',
-        stars: 1,
-        satisfaction: '95% of 235',
-        solvedBy: '10 of 34',
-        status: 'Open'
-      },
-      {
-        id: 'Declare-Variables-Not-War',
-        title: 'Declare Variables Not War',
-        difficulty: 'Fighter',
-        stars: 3,
-        satisfaction: '55% of 135',
-        solvedBy: '11 of 32',
-        status: 'Resolved'
-      },
-      {
-        id: 'Greetings-The-New-Internet-Explorer',
-        title: 'Greetings The New Internet Explorer',
-        difficulty: 'Mortal',
-        stars: 1,
-        satisfaction: '15% of 133',
-        solvedBy: '21 of 32',
-        status: 'Open'
-      },
-      {
-        id: 'From-Newbie-To-Over',
-        title: 'From Newbie To Over',
-        difficulty: 'Mortal',
-        stars: 2,
-        satisfaction: '78% of 133',
-        solvedBy: '21 of 22',
-        status: 'Open'
-      },
-      {
-        id: 'Hello-world-2',
-        title: 'Hello world 2',
-        difficulty: 'Mortal',
-        stars: 2,
-        satisfaction: '28% of 133',
-        solvedBy: '23 of 22',
-        status: 'Resolved'
-      }
+      'arrays',
+      'numbers',
+      'Numbers-and-Strings',
+      'Objects',
+      'Declare-Variables-Not-War'
     ]
   },
   {
@@ -302,51 +148,7 @@ const tournaments = [
     learn the intricacies of a programming language, prepare for 
     job interviews, learn new algorithms, and more.`,
     tasks: [
-      {
-        id: 'HipHip-Array',
-        title: '[Hip,Hip] Array',
-        difficulty: 'Mortal',
-        stars: 3,
-        satisfaction: '95% of 225',
-        solvedBy: '10 of 84',
-        status: 'Resolved'
-      },
-      {
-        id: 'Type-Script',
-        title: 'Type Script',
-        difficulty: 'Fighter',
-        stars: 3,
-        satisfaction: '55% of 135',
-        solvedBy: '11 of 32',
-        status: 'Open'
-      },
-      {
-        id: 'Dont-worry,-be-happy',
-        title: 'Don\'t worry, be happy',
-        difficulty: 'Mortal',
-        stars: 1,
-        satisfaction: '15% of 133',
-        solvedBy: '21 of 32',
-        status: 'Open'
-      },
-      {
-        id: 'From-Newbie-To-Over',
-        title: 'From Newbie To Over',
-        difficulty: 'Mortal',
-        stars: 2,
-        satisfaction: '78% of 133',
-        solvedBy: '21 of 22',
-        status: 'Open'
-      },
-      {
-        id: 'hello-world-2',
-        title: 'Hello world 2',
-        difficulty: 'Mortal',
-        stars: 2,
-        satisfaction: '28% of 133',
-        solvedBy: '23 of 22',
-        status: 'Resolved'
-      }
+
     ]
   }
 ];
@@ -356,6 +158,13 @@ export default class Tours {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve({data: [...tournaments], count: 6});
+      }, delay);
+    });
+  }
+  static fetchById(id) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({data: tournaments.find((item) => item.id === id)});
       }, delay);
     });
   }
