@@ -69,7 +69,7 @@ class BattleContainer extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!nextProps.tournamentsLoading && !this.props.tasks.length) {
+    if (!nextProps.tournamentsLoading) {
       this.props.tasksByIdRequest(nextProps.tournamentById.tasks);
     }
   }
@@ -100,7 +100,7 @@ class BattleContainer extends React.Component {
         <div className={style.tableContainer}>
           <BattleTable
             headerCells={headerCells}
-            tasks={this.props.tasks}
+            tasks={tournament.taskIds}
             onClickSort={this.onClickSort}
             nextSorts={nextSorts}
             preLink={tournament.id}

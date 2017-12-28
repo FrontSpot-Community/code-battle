@@ -1,5 +1,4 @@
 import {call, put, takeEvery} from 'redux-saga/effects';
-import {getTournamentById} from '../api/tournaments';
 import {getTournamentById, gettAllTournamnets} from '../api/tournaments';
 
 import {
@@ -25,8 +24,7 @@ function* fetchTournaments() {
 
 function* fetchTournamentById({payload}) {
   try {
-    // const tournament = yield call(getTournamentById, payload.id, payload.params);
-    const tournament = yield call(tournamentsMock.fetchById, payload.id);
+    const tournament = yield call(getTournamentById, payload.id, payload.params);
     yield put(tournamentsByIdFetchSuccess(tournament));
   } catch (e) {
     yield put(tournamentsByIdFetchFailed(JSON.stringify(e)));

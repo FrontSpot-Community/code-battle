@@ -64,7 +64,7 @@ export default (state = initialState, action) => {
   case TASK_BY_ID_FETCH_SUCCESS:
     return {
       ...state,
-      taskById: action.payload.data,
+      taskById: action.payload,
       isLoading: false
     };
   case TASK_BY_ID_FETCH_FAILED:

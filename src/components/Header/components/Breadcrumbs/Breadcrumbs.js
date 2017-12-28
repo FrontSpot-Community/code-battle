@@ -10,21 +10,30 @@ class Breadcrumbs extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    let paths = nextProps.location.pathname.split('/').slice(1);
-    paths = paths[0].length > 0 ? paths : paths.slice(1);
     if (this.props.location.pathname !== nextProps.location.pathname) {
-      switch (paths.length) {
-      case 0:
-        this.props.setHeaderBackground(colors.bgDark);
-        break;
-      case 1:
-        this.props.setHeaderBackground(colors.mediumBlack);
-        break;
-      case 2:
-        this.props.setHeaderBackground(colors.lightBlack);
-        break;
-      default: break;
-      }
+      this.setHeaderBackgroundColor(nextProps);
+    }
+  }
+
+  componentDidMount() {
+    this.setHeaderBackgroundColor(this.props);
+  }
+
+  setHeaderBackgroundColor = (props) => {
+    let paths = props.location.pathname.split('/').slice(1);
+    paths = paths[0].length > 0 ? paths : paths.slice(1);
+    paths.length === 3 && paths.pop();
+    switch (paths.length) {
+    case 0:
+      this.props.setHeaderBackground(colors.bgDark);
+      break;
+    case 1:
+      this.props.setHeaderBackground(colors.mediumBlack);
+      break;
+    case 2:
+      this.props.setHeaderBackground(colors.lightBlack);
+      break;
+    default: break;
     }
   }
 
@@ -40,6 +49,7 @@ class Breadcrumbs extends Component {
 
   render() {
     let paths = this.props.location.pathname.split('/');
+    paths.length === 4 && paths.pop();
     const currentPath = paths[paths.length - 1];
     const restPaths = paths.slice(1, paths.length - 1);
     return (currentPath.length > 0 ? (
