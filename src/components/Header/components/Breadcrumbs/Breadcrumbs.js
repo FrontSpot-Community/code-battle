@@ -33,7 +33,7 @@ class Breadcrumbs extends Component {
 
     return (
       <Link className={styles.crumb} key={path} to={path}>
-        {prevPath.toUpperCase()}
+        {prevPath.split('_').join(' ').toUpperCase()}
       </Link>
     );
   };
@@ -48,7 +48,7 @@ class Breadcrumbs extends Component {
           restPaths.map(this.generateLink)
         }
         <div className={styles.crumb}>
-          {currentPath.toUpperCase()}
+          {currentPath.split('_').join(' ').toUpperCase()}
         </div>
       </div>
     ) : null);

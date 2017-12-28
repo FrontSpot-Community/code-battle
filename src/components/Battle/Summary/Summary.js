@@ -75,7 +75,7 @@ const Summary = (props) => {
           <dt>End Date</dt><dd>{getDateFromUTC(props.tournament.end)}</dd>
           <dt>Difficulty</dt><dd>{props.tournament.difficulty}</dd>
           <dt>Language</dt><dd>{props.tournament.language}</dd>
-          <dt>Tasks</dt><dd>{props.tournament.tasks.length}</dd>
+          <dt>Tasks</dt><dd>{props.tournament.taskIds.length}</dd>
           <dt>Created by</dt><dd>{props.tournament.author}</dd>
         </dl>
       </section>

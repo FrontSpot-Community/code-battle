@@ -49,7 +49,10 @@ class BattleContainer extends React.Component {
     this.state = {
       existionChecked: false,
       tasks: [],
-      tournament: {},
+      tournament: {
+        tags: [],
+        taskIds: []
+      },
       difficultyNextSortIncr: false,
       starsNextSortIncr: false,
       satisfactionNextSortIncr: false,
@@ -60,8 +63,21 @@ class BattleContainer extends React.Component {
 
   componentDidMount() {
     const {id} = this.props.match.params;
-    const requestData = {id: id};
+    const requestData = {id: `${id}?populateField=taskIds`};
     this.props.tournamentsByIdRequest(requestData);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.tournamentById) {
+      this.setState({
+        ...this.state,
+        tasks: [...nextProps.tournamentById.taskIds],
+        tournament: nextProps.tournamentById
+      });
+    }
+  }
+
+  componentDidUpdate() {
   }
 
   onClickSort = (identifier) => {
@@ -73,26 +89,7 @@ class BattleContainer extends React.Component {
     this.setState(newState);
   };
 
-  getTasks() {
-    const battleId = this.props.match.params.id;
-    const tournament = this.props.tournaments.filter((tournament) => {
-      return tournament.id === battleId;
-    });
-    if (!tournament.length) {
-      this.props.history.push('/about');
-    }
-    this.setState({
-      existionChecked: true,
-      tasks: tournament[0].tasks,
-      tournament: tournament[0]
-    });
-  }
-
-  renderData() {
-    if (!this.state.existionChecked) {
-      this.getTasks();
-      return;
-    }
+  renderData = () => {
     const nextSorts = {
       difficulty: this.state.difficultyNextSortIncr,
       stars: this.state.starsNextSortIncr,
@@ -100,6 +97,7 @@ class BattleContainer extends React.Component {
       solvedBy: this.state.solvedByNextSortIncr,
       status: this.state.statusNextSortIncr
     };
+
     return (
       <div className={style.wrapper}>
         <div className={style.tableContainer}>
@@ -124,11 +122,7 @@ class BattleContainer extends React.Component {
   render() {
     return (
       <div className={style.mainWrapper}>
-        {
-          this.props.tournamentsLoading
-            ? <div className={style.loader} />
-            : this.renderData()
-        }
+        {this.renderData()}
       </div>
     );
   }
@@ -136,8 +130,7 @@ class BattleContainer extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    tournaments: state.tournaments.data,
-    tournamentById: state.tournamentById,
+    tournamentById: state.tournaments.tournamentById,
     tournamentsLoading: state.tournaments.isLoading
   };
 };

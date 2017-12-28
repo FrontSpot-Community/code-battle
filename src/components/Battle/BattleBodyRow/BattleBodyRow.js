@@ -11,7 +11,7 @@ const BattleBodyRow = (props) => {
   }
   return (
     <tr className={style.tr}>
-      <td><Link className={style.title} to={`${props.preLink}/${task.id}`}>{task.title}</Link></td>
+      <td><Link className={style.title} to={`${props.preLink}/${task.id}`}>{task.name}</Link></td>
       <td className={style.faint}>{task.difficulty}</td>
       <td className={style.faint}>{stars}</td>
       <td className={style.faint}>{task.satisfaction}</td>
