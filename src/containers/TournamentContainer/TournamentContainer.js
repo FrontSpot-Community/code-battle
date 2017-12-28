@@ -50,7 +50,10 @@ class BattleContainer extends React.Component {
     this.state = {
       existionChecked: false,
       tasks: [],
-      tournament: {},
+      tournament: {
+        tags: [],
+        taskIds: []
+      },
       difficultyNextSortIncr: false,
       starsNextSortIncr: false,
       satisfactionNextSortIncr: false,
@@ -61,7 +64,7 @@ class BattleContainer extends React.Component {
 
   componentDidMount() {
     const {id} = this.props.match.params;
-    const requestData = {id: id};
+    const requestData = {id: `${id}?populateField=taskIds`};
     this.props.tournamentsByIdRequest(requestData);
   }
 
@@ -70,6 +73,7 @@ class BattleContainer extends React.Component {
       this.props.tasksByIdRequest(nextProps.tournamentById.tasks);
     }
   }
+
 
   onClickSort = (identifier) => {
     const tasks = [...this.state.tasks];
@@ -82,6 +86,7 @@ class BattleContainer extends React.Component {
 
   renderData() {
     const tournament = this.props.tournamentById;
+
     const nextSorts = {
       difficulty: this.state.difficultyNextSortIncr,
       stars: this.state.starsNextSortIncr,
@@ -89,6 +94,7 @@ class BattleContainer extends React.Component {
       solvedBy: this.state.solvedByNextSortIncr,
       status: this.state.statusNextSortIncr
     };
+
     return (
       <div className={style.wrapper}>
         <div className={style.tableContainer}>
