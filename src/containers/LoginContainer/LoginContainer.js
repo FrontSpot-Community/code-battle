@@ -20,6 +20,7 @@ class LoginContainer extends React.Component {
             <div className={style.welcome}>
               <p>Welcome Hero!</p>
               <p>Please choose account to sign in</p>
+              <a href="http://localhost:3002/auth/github">LOGIN WITH GITHUB</a>
             </div>
             <div className={style.buttons}>
             </div>
