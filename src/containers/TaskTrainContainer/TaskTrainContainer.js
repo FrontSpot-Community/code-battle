@@ -70,9 +70,10 @@ class TaskTrainContainer extends React.Component {
   resetSolution = () => this.setState({solution: ''});
 
   render() {
-    // const {solution} = this.props;
-
-    // const solutionOutput = solution && solution.runOutput || '';
+    const {solutionResult} = this.props;
+    const solutionOutput = solutionResult
+      && solutionResult.runOutput.replace(/<IT::>/g, '<br/><br/>')
+      || this.state.details;
 
     return (
       <div className={style.container}>
@@ -82,6 +83,7 @@ class TaskTrainContainer extends React.Component {
             solution={this.state.solution}
             onSolutionChange={this.onSolutionChange}
             resetSolution={this.resetSolution}
+            onSubmitTask={this.submitTask}
           />
           <SampleTests
             sampleTests={this.state.sampleTests}
@@ -92,7 +94,7 @@ class TaskTrainContainer extends React.Component {
         <div className={style.row}>
           <TaskDetails details={this.state.details} />
           <Output
-            details={this.state.output.details}
+            details={solutionOutput}
             time={this.state.output.time}
             passed={this.state.output.passed}
             failed={this.state.output.failed}
@@ -106,7 +108,7 @@ class TaskTrainContainer extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    solution: state.solution.result,
+    solutionResult: state.solution.result,
     solutionError: state.solution.error,
     solutionLoading: state.solution.isLoading
   };
