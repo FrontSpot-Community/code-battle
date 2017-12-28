@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>CC16647B-BF76-426D-B9E1-0AAA98FAD543</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="622" height="528"></rect>
+    </defs>
+    <g id="Task_Preview" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-198.000000, -170.000000)">
+        <g id="Group-7" transform="translate(18.000000, 154.000000)">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Rectangle-Copy" fill="#222222" xlink:href="#path-1"></use>
+            <g id="Group-4" mask="url(#mask-2)">
+                <g transform="translate(180.000000, 12.000000)" id="Group-15">
+                    <g transform="translate(3.000000, 6.000000)">
+                        <path d="M2.72727273,5.45454545 L7.09090909,5.45454545 L7.09090909,3.81818182 C7.09090909,2.61647727 6.11079545,1.63636364 4.90909091,1.63636364 C3.70738636,1.63636364 2.72727273,2.61647727 2.72727273,3.81818182 L2.72727273,5.45454545 Z M9.81818182,6.27272727 L9.81818182,11.1818182 C9.81818182,11.6335227 9.45170455,12 9,12 L0.818181818,12 C0.366477273,12 0,11.6335227 0,11.1818182 L0,6.27272727 C0,5.82102273 0.366477273,5.45454545 0.818181818,5.45454545 L1.09090909,5.45454545 L1.09090909,3.81818182 C1.09090909,1.72159091 2.8125,0 4.90909091,0 C7.00568182,0 8.72727273,1.72159091 8.72727273,3.81818182 L8.72727273,5.45454545 L9,5.45454545 C9.45170455,5.45454545 9.81818182,5.82102273 9.81818182,6.27272727 Z" id="lock---FontAwesome" fill="#666666"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

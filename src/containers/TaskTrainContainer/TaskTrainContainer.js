@@ -46,7 +46,7 @@ class TaskTrainContainer extends React.Component {
 
   submitTask = () => {
     this.props.solutionRequest({
-      taskId: '5a40b0f8d999dc0115e77e2f',
+      taskId: '5a44c84b7a50db7e70a44a81',
       solutionCode: this.state.solution
     });
   };

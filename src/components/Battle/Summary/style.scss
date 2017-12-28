@@ -11,6 +11,7 @@
 
 .header {
   height: 50px;
+  padding: 14px 18px;
   border-bottom: 1px solid $MINE_SHAFT;
 }
 
@@ -34,7 +35,6 @@
 
 .title, .topStatus {
   display: inline-block;
-  padding: 10px;
   height: 50px;
 }
 
@@ -47,7 +47,7 @@
 }
 
 .status {
-  padding: 12px 15px;
+  padding: 14px 18px;
   border-bottom: 1px solid $MINE_SHAFT;
 }
 
@@ -117,7 +117,7 @@
 }
 
 .description {
-  padding: 15px;
+  padding: 14px 18px;
   border-bottom: 1px solid $MINE_SHAFT;
 }
 
@@ -152,7 +152,7 @@
 }
 
 .details {
-  padding: 15px;
+  padding: 14px 18px;
 }
 
 .detailsDefinitions {
