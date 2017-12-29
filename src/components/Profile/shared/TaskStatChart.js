@@ -27,7 +27,7 @@ export default class TaskStatChart extends Component {
       },
       tooltip: {
         format: {
-          value: (value) => `${value} ${units}`
+          value: (value) => `${value}`
         }
       }
     };

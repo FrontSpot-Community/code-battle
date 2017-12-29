@@ -14,7 +14,7 @@ export default class Totals extends Component {
           Object.entries(totalValuesMap).map(([key, value]) => {
             return (
               <div className={style.total} key={key}>
-                <TotalValue title={key} units="Count" value={value} />
+                <TotalValue title={key} value={value} />
               </div>
             );
           })

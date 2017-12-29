@@ -9,7 +9,7 @@ export default class TotalValue extends Component {
 
     return (
       <div className={style.total}>
-        <div className={style.totalLabel}>{title}<br />{units}</div>
+        <div className={style.totalLabel}>{title}</div>
         <div className={style.totalValue}>{value || '--'}</div>
       </div>
     );
@@ -18,6 +18,5 @@ export default class TotalValue extends Component {
 
 TotalValue.propTypes = {
   title: PropTypes.string.isRequired,
-  units: PropTypes.string.isRequired,
   value: PropTypes.number
 };

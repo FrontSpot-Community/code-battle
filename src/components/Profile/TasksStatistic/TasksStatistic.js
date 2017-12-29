@@ -21,7 +21,7 @@ export default class TasksStatistic extends Component {
 
     return (
       <div className={style.wrapper}>
-        {/* <dl className={style.header}>
+        <dl className={style.header}>
           <dt className={style.title}>
             TasksStatistic
           </dt>
@@ -29,7 +29,7 @@ export default class TasksStatistic extends Component {
         <Totals
           totalValuesMap={metricsMap}
         />
-        <ProgressChart/> */}
+        <ProgressChart/>
       </div>
     );
   }
