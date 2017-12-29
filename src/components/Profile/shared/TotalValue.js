@@ -5,7 +5,7 @@ import style from './style.scss';
 
 export default class TotalValue extends Component {
   render() {
-    const {title, units, value} = this.props;
+    const {title, value} = this.props;
 
     return (
       <div className={style.total}>

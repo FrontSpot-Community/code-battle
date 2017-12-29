@@ -25,11 +25,12 @@ render(
       <App>
         <Switch>
           <Route exact path="/" component={HomeContainer} />
-          <Route exact path="/login" component={ProfileContainer} />
+          <Route exact path="/login" component={LoginContainer} />
+          <Route exact path="/profile" component={ProfileContainer} />
           <Route exact path="/:id" component={TournamentContainer} />
           <Route exact path="/:id/:taskId" component={TaskContainer} />
           <Route exact path="/:id/:taskId/train" component={TaskTrainContainer} />
-          <Route exact path="/profile" component={ProfileContainer} />
+          <Route path="*" component={HomeContainer} />
         </Switch>
       </App>
     </Router>

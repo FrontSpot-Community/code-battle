@@ -10,7 +10,6 @@ export default class TasksStatistic extends Component {
 
   render() {
     const {metrics} = this.props;
-    const {acceptedInputs, acceptedOutputs} = metrics;
 
     const metricsMap = {
       'Assigned': metrics.assigned,

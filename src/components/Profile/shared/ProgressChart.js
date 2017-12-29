@@ -5,15 +5,22 @@ export default class ProgressChart extends Component {
   render() {
     const data = {
       columns: [
-        ['x', 'Category1', 'Category2'],
-        ['value', 300, 400]
+        ['x', 'Category1', 'Category2', 'Category3'],
+        ['value', 300, 400, 40]
       ],
       type: 'bar',
-      width: 100
+      width: 100,
+      size: {
+        height: 100
+      }
     };
 
     const chartConfig = {
       width: 10,
+      size: {
+        width: 640,
+        height: 100
+      },
       axis: {
         rotated: true,
         x: {

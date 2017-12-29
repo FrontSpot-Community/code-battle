@@ -31,6 +31,7 @@ class ProfileContainer extends Component {
       totalAttempts: 1921
     };
 
+    // TODO
     const profileDetails = {
       firstName: 'Evgeny',
       lastName: 'Tartakovskiy',
@@ -54,6 +55,9 @@ class ProfileContainer extends Component {
           </div>
           <div className={style.detailsContainer}>
             <ProfileDetails
+              rankPosition={102}
+              totalRankPosition={654}
+              totalScore={190354}
               profileDetails={profileDetails}
             />
           </div>
