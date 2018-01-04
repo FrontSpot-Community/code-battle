@@ -11,13 +11,18 @@ class HttpService {
       },
       withCredentials: true
     });
+
+    this.service.interceptors.response.use(
+      responseSuccessInterceptor,
+      responseFailureInterceptor
+    );
   }
 
   request({method, url, data}) {
     return this.service.request({
       method,
       url,
-      // responseType: 'json',
+      responseType: 'json',
       data
     })
       .then(({data}) => data);
@@ -55,6 +60,19 @@ class HttpService {
     });
   }
 }
+
+const responseSuccessInterceptor = (response) => {
+  return response;
+};
+
+const responseFailureInterceptor = (error) => {
+  if (error.response.data) {
+    if (error.response.data.status === 401) {
+      window.location.href = `${location.origin}/login`;
+    }
+  }
+  return Promise.reject(error.response);
+};
 
 const httpClient = new HttpService(process.env.API_URL);
 
