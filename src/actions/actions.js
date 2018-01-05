@@ -36,3 +36,9 @@ export const [
   TASKS_BY_ID_FETCH_SUCCESS,
   TASKS_BY_ID_FETCH_FAILED
 ] = createFetchActions('TASKS_BY_ID_FETCH');
+
+export const [
+  USER_FETCH,
+  USER_FETCH_SUCCESS,
+  USER_FETCH_FAILED
+] = createFetchActions('USER_FETCH');
