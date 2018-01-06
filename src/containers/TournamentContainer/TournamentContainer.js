@@ -74,7 +74,6 @@ class BattleContainer extends React.Component {
     }
   }
 
-
   onClickSort = (identifier) => {
     const tasks = [...this.state.tasks];
     sorts[identifier](tasks, this.state[`${identifier}NextSortIncr`]);

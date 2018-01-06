@@ -9,7 +9,9 @@ import HomeContainer from './containers/HomeContainer';
 import TournamentContainer from './containers/TournamentContainer';
 import TaskContainer from './containers/TaskContainer';
 import TaskTrainContainer from './containers/TaskTrainContainer';
+import ProfileContainer from './containers/ProfileContainer';
 import LoginContainer from './containers/LoginContainer';
+
 import rootSaga from './sagas';
 import {userRequest} from './actions/action_creators/userActionCreators';
 
@@ -24,9 +26,11 @@ render(
         <Switch>
           <Route exact path="/" component={HomeContainer} />
           <Route exact path="/login" component={LoginContainer} />
+          <Route exact path="/profile" component={ProfileContainer} />
           <Route exact path="/:id" component={TournamentContainer} />
           <Route exact path="/:id/:taskId" component={TaskContainer} />
           <Route exact path="/:id/:taskId/train" component={TaskTrainContainer} />
+          <Route path="*" component={HomeContainer} />
         </Switch>
       </App>
     </Router>
