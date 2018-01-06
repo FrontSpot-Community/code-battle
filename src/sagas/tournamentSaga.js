@@ -16,9 +16,10 @@ import {
 function* fetchTournaments() {
   try {
     const tournaments = yield call(gettAllTournamnets);
+
     yield put(tournamentsFetchSuccess(tournaments));
-  } catch (e) {
-    yield put(tournamentsFetchFailed(e));
+  } catch (error) {
+    yield put(tournamentsFetchFailed(error.data));
   }
 }
 

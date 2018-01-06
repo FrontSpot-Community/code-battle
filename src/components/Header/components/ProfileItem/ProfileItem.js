@@ -11,13 +11,24 @@ class ProfileItem extends Component {
     super(props);
     this.state = {
       isOpen: false,
-      userName: 'User Name'
+      userName: 'User Name',
+      avatarUrl: ''
     };
   }
 
   toggleDropDown = () => {
     this.setState({isOpen: !this.state.isOpen});
   };
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.user) {
+      this.setState({
+        ...this.state,
+        userName: nextProps.user.githubUsername,
+        avatarUrl: nextProps.user.gitHubAvatar_url
+      });
+    }
+  }
 
 
   render() {
@@ -27,7 +38,7 @@ class ProfileItem extends Component {
         className={isOpen ? styles.containerHover : styles.container}
         onClick={this.toggleDropDown}
       >
-        <img className={styles.userPic} src={userPic} />
+        <img className={styles.userPic} src={this.state.avatarUrl || userPic} />
         <img
           style={{transform: `rotate(${isOpen ? '180deg' : '0deg'})`}}
           src={caretIcon}

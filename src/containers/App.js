@@ -1,15 +1,14 @@
 import React from 'react';
-import {ProgressBar} from '../components/Common';
 import Header from '../components/Header';
+import {connect} from 'react-redux';
 
 import styles from './App.scss';
 
-export class App extends React.Component {
+class App extends React.Component {
   render() {
     return (
       <div className={styles.wrapper}>
-        {location.pathname !== '/login' ? <Header /> : null}
-        <ProgressBar />
+        {location.pathname !== '/login' && <Header user={this.props.userInfo}/>}
         <main className={styles.main}>
           {this.props.children}
         </main>
@@ -17,3 +16,9 @@ export class App extends React.Component {
     );
   }
 }
+
+const mapStateToProps = (state) => (
+  {userInfo: state.user.userInfo}
+);
+
+export default connect(mapStateToProps)(App);
