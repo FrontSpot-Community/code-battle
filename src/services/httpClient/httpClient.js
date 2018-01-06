@@ -68,7 +68,9 @@ const responseSuccessInterceptor = (response) => {
 const responseFailureInterceptor = (error) => {
   if (error.response.data) {
     if (error.response.data.status === 401) {
-      window.location.href = `${location.origin}/login`;
+      location.pathname !== '/login'
+        ? window.location.href = `${location.origin}/login`
+        : null;
     }
   }
   return Promise.reject(error.response);
