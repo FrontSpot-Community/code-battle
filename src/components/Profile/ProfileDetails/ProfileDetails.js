@@ -28,6 +28,10 @@ export default class ProfileDetails extends Component {
         />
         <ProfileDetailsList
           profileDetails={profileDetails}
+          onChangeProfileDetail={this.props.onChangeProfileDetail}
+          onResetProfileDetails={this.props.onResetProfileDetails}
+          onSubmitProfileDetails={this.props.onSubmitProfileDetails}
+          isProfileDetailsChanged={this.props.isProfileDetailsChanged}
         />
       </div>
     );

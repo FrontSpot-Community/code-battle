@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
+import ListItem from './ListItem';
 import style from './style.scss';
+import {Button} from 'src/components/Common';
 
 export default class ProfileDetailsList extends Component {
   constructor(props) {
@@ -7,29 +9,31 @@ export default class ProfileDetailsList extends Component {
   }
 
   render() {
-    const {profileDetails} = this.props;
-
     return (
-      <div className={style.profileDetailsList}>
+      <form
+        onSubmit={this.props.onSubmitProfileDetails}
+        onReset={this.props.onResetProfileDetails}
+        className={style.profileDetailsList}
+      >
         {Object
-          .entries(profileDetails)
-          .map(([profileDetail, value]) => {
-            <div
-              key={profileDetail}
-              className={style.profileDetailsListItem}
-            >
-              <div className={style.profileDetail}>
-                <div className={style.profileDetailName}>
-                  {profileDetail}
-                </div>
-                <div className={style.profileDetailValue}>
-                  {value}
-                </div>
-              </div>
-            </div>;
-          })
+          .entries(this.props.profileDetails)
+          .map(([title, value]) => (
+            <ListItem
+              key={title}
+              editable={title !== 'githubLogin'}
+              title={title}
+              value={value}
+              onChangeProfileDetail={this.props.onChangeProfileDetail}
+            />
+          ))
         }
-      </div>
+        {this.props.isProfileDetailsChanged
+          ? <div className={style.buttonsBlock}>
+            <Button type='reset' mod='cancel'>Reset</Button>
+            <Button type='submit' mod='success'>Save changes</Button>
+          </div>
+          : null}
+      </form>
     );
   }
 }
