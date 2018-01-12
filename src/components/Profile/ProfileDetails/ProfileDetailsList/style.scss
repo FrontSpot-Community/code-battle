@@ -29,8 +29,16 @@
   }
 
   &Value {
+    width: 100%;
     color: $DUSTY_GRAY;
     font-size: 14px;
     font-family: SourceSansPro;
+    background-color: transparent;
+    border: 0;
+    outline: none;
   }
+}
+
+.buttonsBlock {
+  margin-top: 15px;
 }

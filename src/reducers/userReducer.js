@@ -1,7 +1,8 @@
 import {
   USER_FETCH,
   USER_FETCH_SUCCESS,
-  USER_FETCH_FAILED
+  USER_FETCH_FAILED,
+  USER_LOADING
 } from '../actions/actions';
 
 const initialState = {
@@ -29,6 +30,11 @@ export default (state = initialState, action) => {
       isLoading: false,
       error: action.error,
       userInfo: null
+    };
+  case USER_LOADING:
+    return {
+      ...state,
+      isLoading: true
     };
   default: {
     return state;

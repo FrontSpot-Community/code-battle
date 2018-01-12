@@ -42,3 +42,8 @@ export const [
   USER_FETCH_SUCCESS,
   USER_FETCH_FAILED
 ] = createFetchActions('USER_FETCH');
+
+export const USER_LOADING = 'USER_LOADING';
+export const [
+  USER_PUT
+] = createFetchActions('USER_PUT');
