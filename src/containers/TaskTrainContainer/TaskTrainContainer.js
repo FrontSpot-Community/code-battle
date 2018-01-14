@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import Solution from '../../components/Solution';
+import StatusBar from '../../components/StatusBar';
 import SampleTests from '../../components/SampleTests';
 import TaskDetails from '../../components/TaskDetails';
 import Output from '../../components/Output';
@@ -24,7 +25,16 @@ const mockData = {
   details: 'You are going to be given an array of integers. ' +
   'Your job is to take that array and find an index N where the ' +
   'sum of the integers to the left of N is equal to the sum of the integers to the right of N. ' +
-  'If there is no index that would make this happen, return   -1  .'
+  'If there is no index that would make this happen, return   -1  .',
+  statusBar: {
+    complexity: 'Mortal',
+    contentmentPercent: '90%',
+    contentmentQuantity: '3 251',
+    resolvedSuccessfully: '777',
+    resolvedQuantity: '15 358',
+    authorName: 'Evil JS Forest Troll',
+    taskStatus: 'Open'
+  }
 };
 
 class TaskTrainContainer extends React.Component {
@@ -78,6 +88,15 @@ class TaskTrainContainer extends React.Component {
     return (
       <div className={style.container}>
         <div className={style.taskName}>{this.props.match.params.id}</div>
+        <StatusBar
+          complexity={mockData.statusBar.complexity}
+          contentmentPercent={mockData.statusBar.contentmentPercent}
+          contentmentQuantity={mockData.statusBar.contentmentQuantity}
+          resolvedSuccessfully={mockData.statusBar.resolvedSuccessfully}
+          resolvedQuantity={mockData.statusBar.resolvedQuantity}
+          authorName={mockData.statusBar.authorName}
+          taskStatus={mockData.statusBar.taskStatus}
+        />
         <div className={style.row}>
           <Solution
             solution={this.state.solution}

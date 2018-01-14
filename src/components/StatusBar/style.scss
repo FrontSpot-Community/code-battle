@@ -1,0 +1,30 @@
+@import '~Colors';
+
+.container {
+  display: flex;
+  margin-bottom: 12px;
+}
+
+.icon {
+  margin-right: 4px;
+}
+
+.label {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  color: $DUSTY_GRAY;
+  vertical-align: middle;
+  margin-right: 26px;
+  padding-top: 2px;
+}
+
+.pretext {
+  font-family: 'Source Sans Pro Bold', sans-serif;
+  color: $MEDIUM_GRAY;
+  margin: 0 5px;
+}
+
+.status {
+  color: $SHARP_BLUE
+}
