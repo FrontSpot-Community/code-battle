@@ -4,6 +4,7 @@
   height: 100%;
   width: calc(50% - 9px);
   background-color: $bg_dark;
+  overflow-y: scroll;
 }
 
 .header {
@@ -39,3 +40,52 @@
   color: $WHITE;
   padding: 18px 41px 0 18px;
 }
+
+.suite {
+  font-size: 14px;
+  color: $WHITE;
+}
+
+.test {
+  padding: 12px 0 0 12px;
+}
+
+.error {
+  padding: 2px 0 0 24px;
+}
+
+.error pre {
+  background-color: $bg_dark;
+  border: none;
+  color: $RASPBERRY;
+  font-size: 12px;
+}
+
+.passedTest {
+  color: $LIME_GREEN;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 0 0 24px;
+}
+
+.failedTest {
+  color: $RASPBERRY;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 0 0 24px;
+}
+
+.timeTest {
+  color: $DUSTY_GRAY;
+  font-size: 12px;
+  font-weight: bold;
+  padding-left: 24px;
+}
+
+.timeSuite {
+  color: $DUSTY_GRAY;
+  font-size: 12px;
+  font-weight: bold;
+  padding-top: 10px;
+}
+
