@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import C3Component from './baseC3';
+import C3Component from './BaseC3';
 
 export default class ProgressChart extends Component {
   render() {

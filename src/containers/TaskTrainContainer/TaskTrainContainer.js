@@ -6,6 +6,7 @@ import SampleTests from '../../components/SampleTests';
 import TaskDetails from '../../components/TaskDetails';
 import Output from '../../components/Output';
 
+import {taskByIdRequest} from 'src/actions/action_creators/taskActionCreators';
 import {solutionRequest} from '../../actions/action_creators/solutionActionCreators';
 import {bindActionCreators} from 'redux';
 
@@ -15,38 +16,32 @@ const mockData = {
   solution: 'function findEvenIndex(arr)\n' +
   '{\n' +
   '    //Code goes here!\n' +
-  '}',
-  sampleTests: 'Test.describe("FindEvenIndex", function() {\n' +
-  '  Test.it("Tests", function() {\n' +
-  '    Test.assertEquals(findEvenIndex([1,2,3,4,5,6]),-1, "The array: [1,2,3,4,5,6] \\n");\n' +
-  '  });\n' +
-  '});',
-  details: 'You are going to be given an array of integers. ' +
-  'Your job is to take that array and find an index N where the ' +
-  'sum of the integers to the left of N is equal to the sum of the integers to the right of N. ' +
-  'If there is no index that would make this happen, return   -1  .'
+  '}'
 };
 
 class TaskTrainContainer extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    const {task} = props;
     this.state = {
-      solution: mockData.solution,
-      sampleTests: mockData.sampleTests,
-      details: mockData.details,
+      solution: task && task.solution || mockData.solution,
+      sampleTests: '',
+      details: task && task.description || '',
       output: {
-        details: 'To be continued...',
-        time: '321ms',
-        passed: '0',
-        failed: '2',
-        errors: '1'
+        details: 'To be continued...'
       }
     };
   }
 
+  componentDidMount() {
+    const {taskId} = this.props.match.params;
+    this.props.taskByIdRequest(taskId);
+  }
+
   submitTask = () => {
+    const {taskId} = this.props.match.params;
     this.props.solutionRequest({
-      taskId: '5a44c84b7a50db7e70a44a81',
+      taskId: taskId,
       solutionCode: this.state.solution
     });
   };
@@ -69,11 +64,38 @@ class TaskTrainContainer extends React.Component {
 
   resetSolution = () => this.setState({solution: ''});
 
+  getRunStatistics = (stat) => {
+    if (!stat) {
+      return {
+        time: '-',
+        passed: '-',
+        failed: '-',
+        errors: '-'
+      };
+    }
+    const {time, passed, failed, error} = stat;
+    const getNumberOrDash = (value) => !value && value !== 0 ? '-': value;
+
+    return {
+      time: getNumberOrDash(time),
+      passed: getNumberOrDash(passed),
+      failed: getNumberOrDash(failed),
+      errors: getNumberOrDash(error)
+    };
+  }
+
+  getOutput = (jsonResult) => {
+    try {
+      return JSON.parse(jsonResult);
+    } catch (err) {
+      return null;
+    }
+  }
+
   render() {
-    const {solutionResult} = this.props;
-    const solutionOutput = solutionResult
-      && solutionResult.runOutput.replace(/<IT::>/g, '<br/><br/>')
-      || this.state.details;
+    const {solutionResult, task} = this.props;
+    const outputData = this.getOutput(solutionResult && solutionResult.jsonResult);
+    const statistics = this.getRunStatistics(solutionResult && solutionResult.statistics);
 
     return (
       <div className={style.container}>
@@ -86,19 +108,19 @@ class TaskTrainContainer extends React.Component {
             onSubmitTask={this.submitTask}
           />
           <SampleTests
-            sampleTests={this.state.sampleTests}
-            runSampleTests={this.runSampleTests}
+            defaultTests={task && task.test}
+            sampleTests={this.state.sampleTests} runSampleTests={this.runSampleTests}
             onSampleTestsChange={this.onSampleTestsChange}
           />
         </div>
         <div className={style.row}>
-          <TaskDetails details={this.state.details} />
+          <TaskDetails details={task && task.description} />
           <Output
-            details={solutionOutput}
-            time={this.state.output.time}
-            passed={this.state.output.passed}
-            failed={this.state.output.failed}
-            errors={this.state.output.errors}
+            outputData={outputData}
+            time={statistics.time}
+            passed={statistics.passed}
+            failed={statistics.failed}
+            errors={statistics.errors}
           />
         </div>
       </div>
@@ -108,12 +130,15 @@ class TaskTrainContainer extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    task: state.tasks.taskById,
     solutionResult: state.solution.result,
     solutionError: state.solution.error,
     solutionLoading: state.solution.isLoading
   };
 };
 
-const mapActionsToProps = (dispatch) => (bindActionCreators({solutionRequest}, dispatch));
+const mapActionsToProps = (dispatch) => {
+  return bindActionCreators({solutionRequest, taskByIdRequest}, dispatch);
+};
 
 export default connect(mapStateToProps, mapActionsToProps)(TaskTrainContainer);
