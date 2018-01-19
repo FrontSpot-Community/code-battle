@@ -3,7 +3,7 @@ import CodeEditor from '../../components/CodeEditor';
 
 import style from './style.scss';
 
-class Solution extends React.Component {
+class SampleTests extends React.Component {
   render() {
     return (
       <div className={style.container}>
@@ -16,7 +16,7 @@ class Solution extends React.Component {
           </div>
         </div>
         <CodeEditor
-          value={this.props.sampleTests}
+          value={this.props.defaultTests || this.props.sampleTests}
           onCodeEditorChange={this.props.onSampleTestsChange}
         />
       </div>
@@ -24,4 +24,4 @@ class Solution extends React.Component {
   }
 }
 
-export default Solution;
+export default SampleTests;
