@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import Solution from '../../components/Solution';
-import StatusBar from '../../components/StatusBar';
+import TooltipsBoard from 'src/components/TooltipsBoard';
 import SampleTests from '../../components/SampleTests';
 import TaskDetails from '../../components/TaskDetails';
 import Output from '../../components/Output';
@@ -106,42 +106,41 @@ class TaskTrainContainer extends React.Component {
     const {solutionResult, task} = this.props;
     const outputData = this.getOutput(solutionResult && solutionResult.jsonResult);
     const statistics = this.getRunStatistics(solutionResult && solutionResult.statistics);
-
     return (
       <div className={style.container}>
-        <div className={style.taskName}>{this.props.match.params.id}</div>
-        <StatusBar
-          complexity={mockData.statusBar.complexity}
-          contentmentPercent={mockData.statusBar.contentmentPercent}
-          contentmentQuantity={mockData.statusBar.contentmentQuantity}
-          resolvedSuccessfully={mockData.statusBar.resolvedSuccessfully}
-          resolvedQuantity={mockData.statusBar.resolvedQuantity}
-          authorName={mockData.statusBar.authorName}
-          taskStatus={mockData.statusBar.taskStatus}
-        />
-        <div className={style.row}>
-          <Solution
-            solution={this.state.solution}
-            onSolutionChange={this.onSolutionChange}
-            resetSolution={this.resetSolution}
-            onSubmitTask={this.submitTask}
-          />
-          <SampleTests
-            defaultTests={task && task.test}
-            sampleTests={this.state.sampleTests} runSampleTests={this.runSampleTests}
-            onSampleTestsChange={this.onSampleTestsChange}
-          />
-        </div>
-        <div className={style.row}>
-          <TaskDetails details={task && task.description} />
-          <Output
-            outputData={outputData}
-            time={statistics.time}
-            passed={statistics.passed}
-            failed={statistics.failed}
-            errors={statistics.errors}
-          />
-        </div>
+        {
+          !task
+            ? <div className={style.loader} />
+            : (
+              <div className={style.dataContainer}>
+                <div className={style.taskName}>{this.props.match.params.id}</div>
+                <TooltipsBoard className={style.tooltips} task={this.props.task} />
+                <div className={style.row}>
+                  <Solution
+                    solution={this.state.solution}
+                    onSolutionChange={this.onSolutionChange}
+                    resetSolution={this.resetSolution}
+                    onSubmitTask={this.submitTask}
+                  />
+                  <SampleTests
+                    defaultTests={task && task.test}
+                    sampleTests={this.state.sampleTests} runSampleTests={this.runSampleTests}
+                    onSampleTestsChange={this.onSampleTestsChange}
+                  />
+                </div>
+                <div className={style.row}>
+                  <TaskDetails details={task && task.description} />
+                  <Output
+                    outputData={outputData}
+                    time={statistics.time}
+                    passed={statistics.passed}
+                    failed={statistics.failed}
+                    errors={statistics.errors}
+                  />
+                </div>
+              </div>
+            )
+        }
       </div>
     );
   }
@@ -150,6 +149,7 @@ class TaskTrainContainer extends React.Component {
 const mapStateToProps = (state) => {
   return {
     task: state.tasks.taskById,
+    taskLoading: state.tasks.isLoading,
     solutionResult: state.solution.result,
     solutionError: state.solution.error,
     solutionLoading: state.solution.isLoading
