@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../components/Header';
 import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom';
 
 import styles from './App.scss';
 
@@ -21,4 +22,4 @@ const mapStateToProps = (state) => (
   {userInfo: state.user.userInfo}
 );
 
-export default connect(mapStateToProps)(App);
+export default withRouter(connect(mapStateToProps)(App));
