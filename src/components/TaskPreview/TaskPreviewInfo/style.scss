@@ -76,3 +76,10 @@
 .runButton {
   margin-left: 8px;
 }
+
+.codeBlock {
+  background-color: $bg_dark;
+  border: none;
+  color: $WHITE;
+  overflow-x: hidden;
+}

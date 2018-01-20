@@ -18,19 +18,19 @@ export default (state = initialState, action) => {
   case SUBMIT_SOLUTION_FETCH:
     return {
       ...state,
-      isLoading: true
+      isSubmitLoading: true
     };
   case SUBMIT_SOLUTION_FETCH_SUCCESS:
     return {
       ...state,
       result: action.payload,
-      isLoading: false
+      isSubmitLoading: false
     };
   case SUBMIT_SOLUTION_FETCH_FAILED:
     return {
       ...state,
       error: action.error && action.error.data || 'Solution fetch failed',
-      isLoading: false
+      isSubmitLoading: false
     };
 
   case SOLUTION_BY_TASK_ID_FETCH:

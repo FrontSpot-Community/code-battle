@@ -1,6 +1,9 @@
 import {call, put, takeEvery} from 'redux-saga/effects';
 
-import {submitSolution} from '../api/solutions';
+import {
+  submitSolution,
+  getSolutionByTaskId
+} from '../api/solutions';
 import {
   submitSolutionSuccess,
   submitSolutionFailed,
@@ -25,13 +28,13 @@ function* sendSolution({payload}) {
   }
 }
 
-function* getSolutionByTaskId({payload}) {
+function* getSolution({payload}) {
   try {
     const {taskId} = payload;
     if (!taskId) {
       return put(solutionByTaskIdFailed('Empty solution'));
     }
-    const submitResult = yield call(submitSolution, taskId);
+    const submitResult = yield call(getSolutionByTaskId, taskId);
     yield put(solutionByTaskIdSuccess(submitResult));
   } catch (e) {
     yield put(solutionByTaskIdFailed(e));
@@ -40,7 +43,7 @@ function* getSolutionByTaskId({payload}) {
 
 function* tournamentSaga() {
   yield takeEvery(SUBMIT_SOLUTION_FETCH, sendSolution);
-  yield takeEvery(SOLUTION_BY_TASK_ID_FETCH, getSolutionByTaskId);
+  yield takeEvery(SOLUTION_BY_TASK_ID_FETCH, getSolution);
 }
 
 export default tournamentSaga;

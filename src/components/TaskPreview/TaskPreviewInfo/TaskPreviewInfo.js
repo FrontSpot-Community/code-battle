@@ -43,6 +43,10 @@ const TaskPreviewInfo = (props) => {
 
       <section className={style.textBlock}>
         {props.infoState === 'details' ? parser(props.task.description) : null}
+        {props.infoState === 'your-solution'
+          ? <pre className={style.codeBlock}>{props.solution}</pre>
+          : null
+        }
       </section>
 
       <section className={style.runButtonsBlock}>
@@ -62,7 +66,8 @@ const TaskPreviewInfo = (props) => {
           }}
           mod='success'
         >
-          Start train
+          {props.isSolutionComplete ? 'Check solution' : 'Start train'}
+
         </Button>
       </section>
     </div>

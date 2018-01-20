@@ -17,28 +17,12 @@ import {bindActionCreators} from 'redux';
 
 import style from './style.scss';
 
-const mockData = {
-  solution: 'function findEvenIndex(arr)\n' +
-  '{\n' +
-  '    //Code goes here!\n' +
-  '}',
-  statusBar: {
-    complexity: 'Mortal',
-    contentmentPercent: '90%',
-    contentmentQuantity: '3 251',
-    resolvedSuccessfully: '777',
-    resolvedQuantity: '15 358',
-    authorName: 'Evil JS Forest Troll',
-    taskStatus: 'Open'
-  }
-};
-
 class TaskTrainContainer extends React.Component {
   constructor(props) {
     super(props);
     const {task} = props;
     this.state = {
-      solution: task && task.solution || mockData.solution,
+      solution: task && task.solution || '',
       sampleTests: '',
       details: task && task.description || '',
       output: {
@@ -47,13 +31,14 @@ class TaskTrainContainer extends React.Component {
     };
   }
 
-  // componentWillReceiveProps(newProps) {
-  //   const {task} = this.props;
-  //   if (task) return;
+  componentWillReceiveProps(newProps) {
+    const {solutionResult} = this.props;
+    if (solutionResult) return;
 
-  //   if (newProps.task)
-
-  // }
+    if (newProps.solutionResult) {
+      this.setState({solution: newProps.solutionResult.solutionCode});
+    }
+  }
 
   componentDidMount() {
     const {taskId} = this.props.match.params;
@@ -115,15 +100,38 @@ class TaskTrainContainer extends React.Component {
     }
   }
 
+  renderOutput(outputData, statistics, solutionSubmitLoading) {
+    if (solutionSubmitLoading) {
+      return <div className={style.outputContainer}>
+        <Loader />
+      </div>;
+    }
+    return (
+      <Output
+        outputData={outputData}
+        time={statistics.time}
+        passed={statistics.passed}
+        failed={statistics.failed}
+        errors={statistics.errors}
+      />
+    );
+  }
+
   renderData() {
-    const {solutionResult, task} = this.props;
+    const {solutionResult, solutionSubmitLoading, task} = this.props;
     const outputData = this.getOutput(solutionResult && solutionResult.jsonResult);
     const statistics = this.getRunStatistics(solutionResult && solutionResult.statistics);
+    const tooltipData = {
+      difficulty: task && task.difficulty,
+      author: task && task.author,
+      satisfaction: task && task.satisfaction,
+      status: solutionResult && solutionResult.completed && 'Resolved' || 'Open'
+    };
     return (
       <div className={style.container}>
         <div className={style.dataContainer}>
-          <div className={style.taskName}>{this.props.match.params.id}</div>
-          <TooltipsBoard className={style.tooltips} task={task} />
+          <div className={style.taskName}>{task && task.name}</div>
+          <TooltipsBoard className={style.tooltips} task={tooltipData} />
           <div className={style.row}>
             <Solution
               solution={this.state.solution}
@@ -139,13 +147,7 @@ class TaskTrainContainer extends React.Component {
           </div>
           <div className={style.row}>
             <TaskDetails details={task && task.description} />
-            <Output
-              outputData={outputData}
-              time={statistics.time}
-              passed={statistics.passed}
-              failed={statistics.failed}
-              errors={statistics.errors}
-            />
+            {this.renderOutput(outputData, statistics, solutionSubmitLoading)}
           </div>
         </div>
       </div>
@@ -156,7 +158,7 @@ class TaskTrainContainer extends React.Component {
     return (
       <div className={style.mainWrapper}>
         {
-          !this.props.task || this.props.solutionLoading
+          this.props.taskLoading || this.props.solutionLoading
             ? <Loader />
             : this.renderData()
         }
@@ -171,7 +173,8 @@ const mapStateToProps = (state) => {
     taskLoading: state.tasks.isLoading,
     solutionResult: state.solution.result,
     solutionError: state.solution.error,
-    solutionLoading: state.solution.isLoading
+    solutionLoading: state.solution.isLoading,
+    solutionSubmitLoading: state.solution.isSubmitLoading
   };
 };
 
