@@ -3,13 +3,12 @@ import React from 'react';
 import style from './style.scss';
 import TooltipsBoard from 'src/components/TooltipsBoard';
 
-const TaskPreviewHeader = (props) => {
-  const {task} = props;
-
+const TaskPreviewHeader = ({task}) => {
+  const {name, ...others} = task;
   return (
     <div className={style.wrapper}>
-      <h1>{task.name}</h1>
-      <TooltipsBoard task={task}/>
+      <h1>{name}</h1>
+      <TooltipsBoard task={others}/>
     </div>
   );
 };

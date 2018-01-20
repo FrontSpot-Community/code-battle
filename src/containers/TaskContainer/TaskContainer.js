@@ -2,7 +2,12 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
-import {taskByIdRequest} from 'src/actions/action_creators/taskActionCreators';
+import {
+  taskByIdRequest
+} from 'src/actions/action_creators/taskActionCreators';
+import {
+  solutionByTaskIdRequest
+} from '../../actions/action_creators/solutionActionCreators';
 import {TaskPreviewHeader, TaskPreviewInfo, TaskPreviewDiscuss} from 'src/components/TaskPreview';
 import Loader from 'src/components/Loader';
 import style from './style.scss';
@@ -21,6 +26,7 @@ class TaskContainer extends React.Component {
   componentDidMount() {
     const {taskId} = this.props.match.params;
     this.props.taskByIdRequest(taskId);
+    this.props.solutionByTaskIdRequest({taskId});
   }
 
   onChangeInfoState = (newInfoState) => {
@@ -32,6 +38,7 @@ class TaskContainer extends React.Component {
   onNextTask = () => {
     const {task, tournament} = this.state;
     const taskIndex = tournament.tasks.findIndex((item) => item === task);
+
     const nextTask = tournament.tasks[taskIndex + 1] || tournament.tasks[0];
     if (nextTask === task) {
       return;
@@ -44,17 +51,35 @@ class TaskContainer extends React.Component {
     this.props.history.push(`${this.props.match.url}/train`);
   };
 
+  isSolutionComplete() {
+    const {solutionResult} = this.props;
+
+    return solutionResult && solutionResult.completed;
+  }
+
   renderData() {
-    if (!this.props.task) {
+    const {solutionResult, task} = this.props;
+    if (!task) {
       return null;
     }
+
+    const tooltipData = {
+      name: task && task.name,
+      difficulty: task && task.difficulty,
+      author: task && task.author,
+      satisfaction: task && task.satisfaction,
+      status: this.isSolutionComplete() ? 'Resolved' : 'Open'
+    };
+
     return (
       <div className={style.wrapper}>
-        <TaskPreviewHeader task={this.props.task} />
+        <TaskPreviewHeader task={tooltipData} />
         <div className={style.body}>
           <TaskPreviewInfo
-            infoState={'details'}
+            isSolutionComplete={this.isSolutionComplete()}
+            infoState={this.state.infoState}
             task={this.props.task}
+            solution={solutionResult && solutionResult.solutionCode}
             onChangeInfoState={this.onChangeInfoState}
             onNextTask={this.onNextTask}
             onStartTrain={this.onStartTrain}
@@ -69,7 +94,7 @@ class TaskContainer extends React.Component {
     return (
       <div className={style.mainWrapper}>
         {
-          this.props.taskLoading
+          this.props.taskLoading || this.props.solutionLoading
             ? <Loader />
             : this.renderData()
         }
@@ -81,12 +106,18 @@ class TaskContainer extends React.Component {
 const mapStateToProps = (state) => {
   return {
     task: state.tasks.taskById,
-    taskLoading: state.tasks.isLoading
+    taskLoading: state.tasks.isLoading,
+    solutionResult: state.solution.result,
+    solutionError: state.solution.error,
+    solutionLoading: state.solution.isLoading
   };
 };
 
 const mapActionsToProps = (dispatch) => (
-  bindActionCreators({taskByIdRequest}, dispatch)
+  bindActionCreators({
+    taskByIdRequest,
+    solutionByTaskIdRequest
+  }, dispatch)
 );
 
 export default connect(mapStateToProps, mapActionsToProps)(TaskContainer);

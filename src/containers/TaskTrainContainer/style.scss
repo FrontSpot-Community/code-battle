@@ -35,3 +35,9 @@
   padding: 18px;
   width: 100%;
 }
+
+.outputContainer {
+  height: 100%;
+  width: calc(50% - 9px);
+  background-color: $bg_dark;
+}
