@@ -59,10 +59,6 @@ class TaskContainer extends React.Component {
 
   renderData() {
     const {solutionResult, task} = this.props;
-    if (!task) {
-      return null;
-    }
-
     const tooltipData = {
       name: task && task.name,
       difficulty: task && task.difficulty,

@@ -1,8 +1,19 @@
 @import '~Colors';
 
-.table {
-  width: 100%;
+.wrapper {
+  border-top: 1px solid #333333;
   background-color: $bg_dark;
-  border-top: 1px solid $MINE_SHAFT;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.body {
+  height: -moz-calc(100% - 50px);
+  height: -webkit-calc(100% - 50px);
+  height: calc(100% - 50px);
+  width: 100%;
+  padding-left: 18px;
+  padding-right: 10px;
+  overflow-y: scroll;
 }

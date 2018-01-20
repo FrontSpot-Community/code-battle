@@ -57,6 +57,28 @@
   }
 }
 
+.githubLogin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 260px;
+  height: 48px;
+  font-family: 'Oswald Regular', sans-serif;
+  font-size: 16px;
+  color: $button-github-font_color;
+  background-color: $button-github-bg_color;
+
+  &:hover, &:active {
+    text-decoration: none;
+    background-color: darken($button-github-bg_color, 10%);
+    color: $button-github-font_color
+  }
+  
+  img {
+    margin-right: 8px;
+  }
+}
+
 .disabled {
   color: $button-disable_color;
   background-color: $button-disable_bg;

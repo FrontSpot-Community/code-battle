@@ -10,7 +10,6 @@ import statusOpenImg from './assets/status_open.svg';
 import statusResolvedImg from './assets/status_resolved.svg';
 
 const TooltipsBoard = ({className, task}) => {
-  if (!task) return null;
   const {
     difficulty='Unknown',
     author='Unknown',

@@ -4,9 +4,9 @@ import style from './style.scss';
 export default class TournamentTableHead extends Component {
   renderHeaderCells = (headerCells) => {
     return headerCells.map((item) => (
-      <th className={style.headerCell} key={item.propName}>
+      <div className={style.headerCell} key={item.propName}>
         {this.renderTableHeaderCell(item)}
-      </th>
+      </div>
     ));
   };
 
@@ -32,9 +32,9 @@ export default class TournamentTableHead extends Component {
     const {headerCells} = this.props;
 
     return (
-      <tr>
+      <header className={style.header}>
         {this.renderHeaderCells(headerCells)}
-      </tr>
+      </header>
     );
   }
 }

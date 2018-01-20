@@ -31,7 +31,7 @@
 }
 
 .headerText {
-  font-family: Oswald;
+  font-family: 'Oswald Regular', sans-serif;
   font-size: 36px;
   font-weight: 500;
   letter-spacing: 0.2px;
@@ -43,12 +43,12 @@
 .body {
   width: 100%;
   height: calc(100% - 220px);
-  padding: 35px 65px;
+  padding: 36px 65px;
   text-align: center;
 
   p {
     margin: 0;
-    font-family: SourceSansPro;
+    font-family: Source Sans Pro;
     font-size: 14px;
     letter-spacing: 0.1px;
     color: #999999;
@@ -56,15 +56,22 @@
 }
 
 .welcome {
-  margin-bottom: 35px;
+  margin-bottom: 36px;
 }
 
 .buttons {
-  margin-bottom: 35px;
+  margin-bottom: 36px;
+}
+
+.buttonInner {
+  & >span {
+    display: inline-block;
+    margin-left: 8px;
+  }
 }
 
 .support {
-  font-family: SourceSansPro;
+  font-family: Source Sans Pro;
   font-size: 12px;
   letter-spacing: 0.1px;
   color: #666666;
@@ -72,7 +79,7 @@
   &:hover,
   &:active,
   &:focus {
-    color: #666666;
+    color: lighten(#666666, 15%);
     text-decoration: none;
   }
 }

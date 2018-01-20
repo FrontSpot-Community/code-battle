@@ -6,6 +6,7 @@
   margin-left: 18px;
   border-top: 1px solid #333333;
   background-color: $bg_dark;
+  font-family: Source Sans Pro;
 }
 
 .header {
@@ -23,7 +24,7 @@
   padding: 0px;
   border-top: 12px solid transparent;
   border-bottom: 12px solid transparent;
-  font-family: Oswald;
+  font-family: 'Oswald Regular', sans-serif;
   font-size: 14px;
   line-height: 1.71;
   text-align: left;
@@ -40,7 +41,6 @@
   top: 0px;
   left: 53px;
   background-color: #333333;
-  font-family: SourceSansPro;
   font-size: 8px;
   font-weight: bold;
   text-align: center;
@@ -73,7 +73,6 @@
   border: 0;
   resize: none;
   outline: none;
-  font-family: SourceSansPro;
   font-size: 14px;
   line-height: 1.14;
   color: #666666;

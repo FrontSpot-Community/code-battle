@@ -2,6 +2,8 @@ import React from 'react';
 
 import style from './style.scss';
 import logo from 'src/assets/images/logo.svg';
+import github from './assets/github-logo.svg';
+import {Button} from 'src/components/Common';
 
 class LoginContainer extends React.Component {
   constructor(props) {
@@ -20,9 +22,17 @@ class LoginContainer extends React.Component {
             <div className={style.welcome}>
               <p>Welcome Hero!</p>
               <p>Please choose account to sign in</p>
-              <a href={process.env.LOGIN_URL}>LOGIN WITH GITHUB</a>
             </div>
             <div className={style.buttons}>
+              <Button
+                mod='githubLogin'
+                href={process.env.LOGIN_URL}
+              >
+                {[
+                  <img src={github} width='24px' height='24px' />,
+                  <span>GITHUB</span>
+                ]}
+              </Button>
             </div>
             <a className={style.support} href='#'>Support & Troubleshooting</a>
           </div>

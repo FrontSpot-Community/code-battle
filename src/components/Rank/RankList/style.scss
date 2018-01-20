@@ -2,10 +2,11 @@
 
 .rankList {
   display: flex;
-  flex: .85;
+  flex: .95;
   padding: 0 10px 10px 10px;
   flex-direction: column;
   overflow-y: auto;
+  font-family: Source Sans Pro;
 
   &Item {
     display: flex;
@@ -46,7 +47,6 @@
 
 .user {
   &Name {
-    font-family: SourceSansPro;
     color: $WHITE;
     font-size: 14px;
   }
@@ -54,7 +54,6 @@
   &Score {
     color: $DUSTY_GRAY;
     font-size: 14px;
-    font-family: SourceSansPro;
   }
 
   &Index {
@@ -66,7 +65,6 @@
 
     span {
       font-size: 14px;
-      font-family: SourceSansPro;
       height: 16px;
     }
   }

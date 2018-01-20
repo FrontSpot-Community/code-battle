@@ -18,14 +18,12 @@ export default class TournamentTable extends Component {
     const {tournaments} = this.props;
 
     return (
-      <table className={style.table}>
-        <thead>
-          <TournamentTableHeadRow headerCells={headerCellNames}/>
-        </thead>
-        <tbody>
+      <div className={style.wrapper}>
+        <TournamentTableHeadRow headerCells={headerCellNames}/>
+        <section className={style.body}>
           {this.renderRows(tournaments, headerCellNames)}
-        </tbody>
-      </table>
+        </section>
+      </div>
     );
   }
 }

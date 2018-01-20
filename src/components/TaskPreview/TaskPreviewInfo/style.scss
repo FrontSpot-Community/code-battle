@@ -5,6 +5,7 @@
   height: 100%;
   width: 100%;
   flex: 2;
+  font-family: Source Sans Pro;
   border-top: 1px solid #333333;
   background-color: $bg_dark;
   overflow: hidden;
@@ -31,7 +32,7 @@
   height: -webkit-calc(100% - 100px);
   height: calc(100% - 100px);
   padding: 18px;
-  font-family: SourceSansPro;
+  
   font-size: 14px;
   font-weight: normal;
   font-style: normal;
@@ -43,7 +44,6 @@
   overflow-y: scroll;
 
   p {
-    font-family: SourceSansPro;
     font-size: 14px;
     font-weight: normal;
     font-style: normal;

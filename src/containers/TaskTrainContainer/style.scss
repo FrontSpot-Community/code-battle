@@ -2,7 +2,6 @@
 
 .container {
   height: 100%;
-  padding: 18px;
 }
 
 .dataContainer {
@@ -32,7 +31,7 @@
   height: -moz-calc(100% - 60px);
   height: -webkit-calc(100% - 60px);
   height: calc(100% - 60px);
-  padding: 18px;
+  padding: 18px 18px 0;
   width: 100%;
 }
 

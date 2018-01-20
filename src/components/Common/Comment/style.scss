@@ -4,6 +4,7 @@
   display: flex;
   align-items: flex-start;
   margin-bottom: 10px;
+  font-family: Source Sans Pro;
 }
 
 .avatar {
@@ -28,7 +29,6 @@
 
 .name {
   margin-right: 6px;
-  font-family: SourceSansPro;
   font-size: 12px;
   font-weight: bold;
   line-height: 1.33;
@@ -38,7 +38,6 @@
 }
 
 .date {
-  font-family: SourceSansPro;
   font-size: 12px;
   line-height: 1.33;
   letter-spacing: normal;
@@ -48,7 +47,6 @@
 
 .text {
   margin: 0;
-  font-family: SourceSansPro;
   font-size: 13px;
   line-height: 1.15;
   text-align: left;

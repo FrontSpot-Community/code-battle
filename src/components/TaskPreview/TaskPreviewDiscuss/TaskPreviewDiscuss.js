@@ -15,7 +15,7 @@ const TaskPreviewDiscuss = (props) => {
 
       <section className={style.commentsBlock}>
         <div className={style.comments}>
-          {props.task.comments.map((item, idx) => (
+          {props.task && props.task.comments.map((item, idx) => (
             <Comment key={idx} comment={item} />
           ))}
         </div>
