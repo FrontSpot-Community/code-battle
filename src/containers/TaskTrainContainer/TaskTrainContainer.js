@@ -150,6 +150,7 @@ class TaskTrainContainer extends React.Component {
 const mapStateToProps = (state) => {
   return {
     task: state.tasks.taskById,
+    taskLoading: state.tasks.isLoading,
     solutionResult: state.solution.result,
     solutionError: state.solution.error,
     solutionLoading: state.solution.isLoading
