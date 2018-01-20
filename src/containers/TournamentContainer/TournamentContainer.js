@@ -86,7 +86,6 @@ class BattleContainer extends React.Component {
 
   renderData() {
     const tournament = this.props.tournamentById;
-
     const nextSorts = {
       difficulty: this.state.difficultyNextSortIncr,
       stars: this.state.starsNextSortIncr,

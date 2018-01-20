@@ -21,6 +21,7 @@ const getDateFromUTC = (utc) => {
 };
 
 const Summary = (props) => {
+  const {tournament, status} = props;
   return (
     <div className={style.wrapper}>
       <dl className={style.header}>
@@ -28,7 +29,7 @@ const Summary = (props) => {
           Tournaments summary
         </dt>
         <dd className={style.topStatus}>
-          {props.status}
+          {status}
         </dd>
       </dl>
 
@@ -36,32 +37,32 @@ const Summary = (props) => {
         <div className={style.statusLineBlock}>
           <span className={style.statusLineBlockTitle}>Solved</span>
           <span className={style.statusLineBlockTitleStatus}>
-            You have done {props.tournament.solving} %
+            You have done {tournament.solving} %
           </span>
           <div className={style.line}>
             <span className={style.lineFull}> </span>
-            <span className={style.linePartial} style={{width: `${props.tournament.solving}%`}}> </span>
+            <span className={style.linePartial} style={{width: `${tournament.solving}%`}}> </span>
           </div>
         </div>
         <div className={style.statusLineBlock}>
           <span className={style.statusLineBlockTitle}>Time left</span>
           <span className={style.statusLineBlockTitleStatusRed}>
-            {props.tournament.timeLeft} days
+            {tournament.timeLeft} days
           </span>
           <div className={style.line}>
             <span className={style.lineFull}> </span>
             <span
               className={style.linePartial}
-              style={{width: `${props.tournament.timeLeft / props.tournament.totalTime * 100}%`}}/>
+              style={{width: `${tournament.timeLeft / tournament.totalTime * 100}%`}}/>
           </div>
         </div>
       </section>
 
       <section className={style.description}>
-        <span className={style.descriptionTitle}>{props.tournament.title}</span>
-        <span className={style.descriptionText}>{props.tournament.description}</span>
+        <h4 className={style.descriptionTitle}>{tournament.title}</h4>
+        <p className={style.descriptionText}>{tournament.description}</p>
         {
-          props.tournament.tags.map((item, idx) => (
+          tournament.tags.map((item, idx) => (
             <span key={idx} className={style.descriptionTag}>{item}</span>
           ))
         }
@@ -71,12 +72,30 @@ const Summary = (props) => {
         <span className={style.detailsTitle}>Details</span>
 
         <dl className={style.detailsDefinitions}>
-          <dt>Start Date</dt><dd>{getDateFromUTC(props.tournament.start)}</dd>
-          <dt>End Date</dt><dd>{getDateFromUTC(props.tournament.end)}</dd>
-          <dt>Difficulty</dt><dd>{props.tournament.difficulty}</dd>
-          <dt>Language</dt><dd>{props.tournament.language}</dd>
-          <dt>Tasks</dt><dd>{props.tournament.taskIds.length}</dd>
-          <dt>Created by</dt><dd>{props.tournament.author}</dd>
+          {tournament.start
+            ? [
+              <dt key={0}>Start Date</dt>,
+              <dd key={1}>{getDateFromUTC(tournament.start)}</dd>
+            ]
+            : null}
+          {tournament.end
+            ? [
+              <dt key={0}>End Date</dt>,
+              <dd key={1}>{getDateFromUTC(tournament.end)}</dd>
+            ]
+            : null}
+          {tournament.difficulty
+            ? [<dt key={0}>Difficulty</dt>, <dd key={1}>{tournament.difficulty}</dd>]
+            : null}
+          {tournament.language
+            ? [<dt key={0}>Language</dt>, <dd key={1}>{tournament.language}</dd>]
+            : null}
+          {tournament.taskIds
+            ? [<dt key={0}>Tasks</dt>, <dd key={1}>{tournament.taskIds.length}</dd>]
+            : null}
+          {tournament.author
+            ? [<dt key={0}>Created by</dt>, <dd key={1}>{tournament.author}</dd>]
+            : null}
         </dl>
       </section>
 

@@ -42,7 +42,7 @@ const TaskPreviewInfo = (props) => {
       </header>
 
       <section className={style.textBlock}>
-        {props.infoState === 'details' ? parser(props.task.description) : null}
+        {props.infoState === 'details' && props.task ? parser(props.task.description) : null}
         {props.infoState === 'your-solution'
           ? <pre className={style.codeBlock}>{props.solution}</pre>
           : null

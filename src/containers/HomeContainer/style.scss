@@ -4,14 +4,19 @@
     display: flex;
     flex: 1;
     justify-content: space-between;
-    height: 90%;
+    height: -moz-calc(100% - 5px);
+    height: -webkit-calc(100% - 5px);
+    height: calc(100% - 5px);
+    font-family: Source Sans Pro;
+    font-size: 14px;
 }
 
 .mainWrapper {
-  padding: 18px;
-  height: 100%;
-  width: 100%;
-  position: relative;
+    height: -moz-calc(100% - 60px);
+    height: -webkit-calc(100% - 60px);
+    height: calc(100% - 60px);
+    padding: 18px;
+    width: 100%;
 }
 
 .tableContainer {

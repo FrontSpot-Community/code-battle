@@ -1,17 +1,20 @@
 @import '~Colors';
 
 .mainWrapper {
-  height: 100%;
+  height: -moz-calc(100% - 60px);
+  height: -webkit-calc(100% - 60px);
+  height: calc(100% - 60px);
   padding: 18px;
   width: 100%;
-  position: relative;
 }
 
 .wrapper {
   display: flex;
   flex: 1;
   justify-content: space-between;
-  height: 90%;
+  height: -moz-calc(100% - 5px);
+  height: -webkit-calc(100% - 5px);
+  height: calc(100% - 5px);
 }
 
 .tableContainer {
