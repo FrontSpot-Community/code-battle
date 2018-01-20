@@ -1,7 +1,10 @@
 import {
-  SOLUTION_LOADING,
-  SOLUTION_FETCH_FAILED,
-  SOLUTION_FETCH_SUCCESS
+  SUBMIT_SOLUTION_FETCH,
+  SUBMIT_SOLUTION_FETCH_FAILED,
+  SUBMIT_SOLUTION_FETCH_SUCCESS,
+  SOLUTION_BY_TASK_ID_FETCH,
+  SOLUTION_BY_TASK_ID_FETCH_SUCCESS,
+  SOLUTION_BY_TASK_ID_FETCH_FAILED
 } from '../actions/actions';
 
 const initialState = {
@@ -12,23 +15,42 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-  case SOLUTION_LOADING:
+  case SUBMIT_SOLUTION_FETCH:
     return {
       ...state,
       isLoading: true
     };
-  case SOLUTION_FETCH_SUCCESS:
+  case SUBMIT_SOLUTION_FETCH_SUCCESS:
     return {
       ...state,
       result: action.payload,
       isLoading: false
     };
-  case SOLUTION_FETCH_FAILED:
+  case SUBMIT_SOLUTION_FETCH_FAILED:
     return {
       ...state,
       error: action.error && action.error.data || 'Solution fetch failed',
       isLoading: false
     };
+
+  case SOLUTION_BY_TASK_ID_FETCH:
+    return {
+      ...state,
+      isLoading: true
+    };
+  case SOLUTION_BY_TASK_ID_FETCH_SUCCESS:
+    return {
+      ...state,
+      result: action.payload,
+      isLoading: false
+    };
+  case SOLUTION_BY_TASK_ID_FETCH_FAILED:
+    return {
+      ...state,
+      error: action.error && action.error.data || 'Solution fetch failed',
+      isLoading: false
+    };
+
   default:
     return state;
   }
