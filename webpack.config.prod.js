@@ -31,12 +31,16 @@ module.exports = {
           use: 'babel-loader'
         },
         {
-          test: /\.s?css$/,
-          include: srcPath,
-          use: ExtractTextPlugin.extract({
-            fallback: 'style-loader',
-            use: 'css-loader?modules&importLoaders=1&localIdentName=sn-[local]___[hash:base64:5]!sass-loader',
-          })
+          test: /\.scss$/,
+          loaders: [
+            'style-loader',
+            'css-loader?modules&importLoaders=1&localIdentName=sn-[local]___[hash:base64:5]',
+            'sass-loader'
+          ],
+          include: [
+            path.join(__dirname, 'src')
+          ],
+          exclude: []
         },
         {
           test: /\.(png|jpe?g)$/,
@@ -52,6 +56,10 @@ module.exports = {
         },
         {
           test: /\.(woff|woff2)$/,
+          use:'url-loader?prefix=font/&limit=50000'
+        },
+        {
+          test: /\.(otf)$/,
           use:'url-loader?prefix=font/&limit=50000'
         },
         {
