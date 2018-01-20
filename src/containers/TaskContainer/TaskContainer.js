@@ -4,6 +4,7 @@ import {bindActionCreators} from 'redux';
 
 import {taskByIdRequest} from 'src/actions/action_creators/taskActionCreators';
 import {TaskPreviewHeader, TaskPreviewInfo, TaskPreviewDiscuss} from 'src/components/TaskPreview';
+import Loader from 'src/components/Loader';
 import style from './style.scss';
 
 class TaskContainer extends React.Component {
@@ -69,7 +70,7 @@ class TaskContainer extends React.Component {
       <div className={style.mainWrapper}>
         {
           this.props.taskLoading
-            ? <div className={style.loader} />
+            ? <Loader />
             : this.renderData()
         }
       </div>

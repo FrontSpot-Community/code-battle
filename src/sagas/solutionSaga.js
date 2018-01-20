@@ -1,30 +1,46 @@
 import {call, put, takeEvery} from 'redux-saga/effects';
-import {showLoading, hideLoading} from 'react-redux-loading-bar';
 
 import {submitSolution} from '../api/solutions';
 import {
-  solutionSuccess,
-  solutionFailed,
-  solutionLoading
+  submitSolutionSuccess,
+  submitSolutionFailed,
+  solutionByTaskIdSuccess,
+  solutionByTaskIdFailed
 } from '../actions/action_creators/solutionActionCreators';
 
-import {SOLUTION_FETCH} from '../actions/actions';
+import {
+  SUBMIT_SOLUTION_FETCH, SOLUTION_BY_TASK_ID_FETCH
+} from '../actions/actions';
 
 function* sendSolution({payload}) {
   try {
-    yield put(showLoading());
-    yield put(solutionLoading());
+    const {solutionCode, taskId} = payload;
+    if (!(solutionCode && taskId)) {
+      return put(submitSolutionFailed('Empty solution'));
+    }
     const submitResult = yield call(submitSolution, payload);
-    yield put(solutionSuccess(submitResult));
+    yield put(submitSolutionSuccess(submitResult));
   } catch (e) {
-    yield put(solutionFailed(e));
-  } finally {
-    yield put(hideLoading());
+    yield put(submitSolutionFailed(e));
+  }
+}
+
+function* getSolutionByTaskId({payload}) {
+  try {
+    const {taskId} = payload;
+    if (!taskId) {
+      return put(solutionByTaskIdFailed('Empty solution'));
+    }
+    const submitResult = yield call(submitSolution, taskId);
+    yield put(solutionByTaskIdSuccess(submitResult));
+  } catch (e) {
+    yield put(solutionByTaskIdFailed(e));
   }
 }
 
 function* tournamentSaga() {
-  yield takeEvery(SOLUTION_FETCH, sendSolution);
+  yield takeEvery(SUBMIT_SOLUTION_FETCH, sendSolution);
+  yield takeEvery(SOLUTION_BY_TASK_ID_FETCH, getSolutionByTaskId);
 }
 
 export default tournamentSaga;
