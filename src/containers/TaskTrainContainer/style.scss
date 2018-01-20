@@ -5,6 +5,14 @@
   padding: 18px;
 }
 
+.dataContainer {
+  height: 100%;
+}
+
+.tooltips {
+  margin-bottom: 12px;
+}
+
 .taskName {
   font-family: 'Oswald Regular', sans-serif;
   font-size: 24px;
@@ -18,4 +26,12 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 18px;
+}
+
+.mainWrapper {
+  height: -moz-calc(100% - 60px);
+  height: -webkit-calc(100% - 60px);
+  height: calc(100% - 60px);
+  padding: 18px;
+  width: 100%;
 }

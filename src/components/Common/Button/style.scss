@@ -2,7 +2,7 @@
 
 .button {
   padding: 4px 12px;
-  font-family: Oswald;
+  font-family: 'Oswald Regular', sans-serif;
   font-size: 14px;
   font-weight: normal;
   font-style: normal;
@@ -44,11 +44,11 @@
 
 .navigation {
   height: 100%;
-  padding: 0px;
+  padding: 0;
   color: $MEDIUM_GRAY;
   background-color: transparent;
   text-transform: uppercase;
-  
+
   &:active,
   &:hover,
   &:focus {
@@ -62,7 +62,7 @@
   background-color: $button-disable_bg;
   border: 1px solid $button-disable_bg;
   cursor: default;
-  
+
   &:hover {
     background-color: $button-disable_bg;
   }

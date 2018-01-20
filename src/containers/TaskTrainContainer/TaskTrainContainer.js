@@ -2,12 +2,17 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import Solution from '../../components/Solution';
+import TooltipsBoard from 'src/components/TooltipsBoard';
 import SampleTests from '../../components/SampleTests';
 import TaskDetails from '../../components/TaskDetails';
 import Output from '../../components/Output';
+import Loader from '../../components/Loader';
 
 import {taskByIdRequest} from 'src/actions/action_creators/taskActionCreators';
-import {solutionRequest} from '../../actions/action_creators/solutionActionCreators';
+import {
+  submitSolutionRequest,
+  solutionByTaskIdRequest
+} from '../../actions/action_creators/solutionActionCreators';
 import {bindActionCreators} from 'redux';
 
 import style from './style.scss';
@@ -16,7 +21,16 @@ const mockData = {
   solution: 'function findEvenIndex(arr)\n' +
   '{\n' +
   '    //Code goes here!\n' +
-  '}'
+  '}',
+  statusBar: {
+    complexity: 'Mortal',
+    contentmentPercent: '90%',
+    contentmentQuantity: '3 251',
+    resolvedSuccessfully: '777',
+    resolvedQuantity: '15 358',
+    authorName: 'Evil JS Forest Troll',
+    taskStatus: 'Open'
+  }
 };
 
 class TaskTrainContainer extends React.Component {
@@ -33,14 +47,23 @@ class TaskTrainContainer extends React.Component {
     };
   }
 
+  // componentWillReceiveProps(newProps) {
+  //   const {task} = this.props;
+  //   if (task) return;
+
+  //   if (newProps.task)
+
+  // }
+
   componentDidMount() {
     const {taskId} = this.props.match.params;
     this.props.taskByIdRequest(taskId);
+    this.props.solutionByTaskIdRequest({taskId});
   }
 
   submitTask = () => {
     const {taskId} = this.props.match.params;
-    this.props.solutionRequest({
+    this.props.submitSolutionRequest({
       taskId: taskId,
       solutionCode: this.state.solution
     });
@@ -92,37 +115,51 @@ class TaskTrainContainer extends React.Component {
     }
   }
 
-  render() {
+  renderData() {
     const {solutionResult, task} = this.props;
     const outputData = this.getOutput(solutionResult && solutionResult.jsonResult);
     const statistics = this.getRunStatistics(solutionResult && solutionResult.statistics);
-
     return (
       <div className={style.container}>
-        <div className={style.taskName}>{this.props.match.params.id}</div>
-        <div className={style.row}>
-          <Solution
-            solution={this.state.solution}
-            onSolutionChange={this.onSolutionChange}
-            resetSolution={this.resetSolution}
-            onSubmitTask={this.submitTask}
-          />
-          <SampleTests
-            defaultTests={task && task.test}
-            sampleTests={this.state.sampleTests} runSampleTests={this.runSampleTests}
-            onSampleTestsChange={this.onSampleTestsChange}
-          />
+        <div className={style.dataContainer}>
+          <div className={style.taskName}>{this.props.match.params.id}</div>
+          <TooltipsBoard className={style.tooltips} task={task} />
+          <div className={style.row}>
+            <Solution
+              solution={this.state.solution}
+              onSolutionChange={this.onSolutionChange}
+              resetSolution={this.resetSolution}
+              onSubmitTask={this.submitTask}
+            />
+            <SampleTests
+              defaultTests={task && task.test}
+              sampleTests={this.state.sampleTests} runSampleTests={this.runSampleTests}
+              onSampleTestsChange={this.onSampleTestsChange}
+            />
+          </div>
+          <div className={style.row}>
+            <TaskDetails details={task && task.description} />
+            <Output
+              outputData={outputData}
+              time={statistics.time}
+              passed={statistics.passed}
+              failed={statistics.failed}
+              errors={statistics.errors}
+            />
+          </div>
         </div>
-        <div className={style.row}>
-          <TaskDetails details={task && task.description} />
-          <Output
-            outputData={outputData}
-            time={statistics.time}
-            passed={statistics.passed}
-            failed={statistics.failed}
-            errors={statistics.errors}
-          />
-        </div>
+      </div>
+    );
+  }
+
+  render() {
+    return (
+      <div className={style.mainWrapper}>
+        {
+          !this.props.task || this.props.solutionLoading
+            ? <Loader />
+            : this.renderData()
+        }
       </div>
     );
   }
@@ -131,6 +168,7 @@ class TaskTrainContainer extends React.Component {
 const mapStateToProps = (state) => {
   return {
     task: state.tasks.taskById,
+    taskLoading: state.tasks.isLoading,
     solutionResult: state.solution.result,
     solutionError: state.solution.error,
     solutionLoading: state.solution.isLoading
@@ -138,7 +176,11 @@ const mapStateToProps = (state) => {
 };
 
 const mapActionsToProps = (dispatch) => {
-  return bindActionCreators({solutionRequest, taskByIdRequest}, dispatch);
+  return bindActionCreators({
+    submitSolutionRequest,
+    solutionByTaskIdRequest,
+    taskByIdRequest
+  }, dispatch);
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(TaskTrainContainer);

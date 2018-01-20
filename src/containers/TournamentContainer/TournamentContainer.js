@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {withRouter} from 'react-router-dom';
 import {BattleTable, Summary} from 'src/components/Battle';
+import Loader from 'src/components/Loader';
 import {tournamentsByIdRequest} from 'src/actions/action_creators/tournamentActionCreators';
 import {tasksByIdRequest} from 'src/actions/action_creators/taskActionCreators';
 import style from './style.scss';
@@ -120,7 +121,7 @@ class BattleContainer extends React.Component {
       <div className={style.mainWrapper}>
         {
           !this.props.tournamentById
-            ? <div className={style.loader} />
+            ? <Loader />
             : this.renderData()
         }
       </div>
