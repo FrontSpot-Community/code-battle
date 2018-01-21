@@ -20,9 +20,10 @@ import style from './style.scss';
 class TaskTrainContainer extends React.Component {
   constructor(props) {
     super(props);
-    const {task} = props;
+    const {task, solutionResult} = props;
     this.state = {
-      solution: task && task.solution || '',
+      solution: task && task.solution || solutionResult && solutionResult.solutionCode || '',
+      isSolutionDirty: false,
       sampleTests: '',
       details: task && task.description || '',
       output: {
@@ -32,11 +33,10 @@ class TaskTrainContainer extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    const {solutionResult} = this.props;
-    if (solutionResult) return;
-
-    if (newProps.solutionResult) {
-      this.setState({solution: newProps.solutionResult.solutionCode});
+    if (!this.state.isSolutionDirty) {
+      const solution = newProps.solutionResult && newProps.solutionResult.solutionCode
+        || newProps.task && newProps.task.solution;
+      this.setState({solution});
     }
   }
 
@@ -60,6 +60,7 @@ class TaskTrainContainer extends React.Component {
 
   onSolutionChange = (newText) => {
     this.setState({
+      isSolutionDirty: true,
       solution: newText
     });
   };

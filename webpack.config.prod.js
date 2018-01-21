@@ -13,7 +13,7 @@ module.exports = {
     ],
     output: {
       path: outputPath, // Note: Physical files are only output by the production build task `npm run build`.
-      publicPath: './',
+      publicPath: '/',
       filename: 'bundle.js'
     },
     resolve: {

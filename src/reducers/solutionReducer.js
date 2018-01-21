@@ -29,6 +29,7 @@ export default (state = initialState, action) => {
   case SUBMIT_SOLUTION_FETCH_FAILED:
     return {
       ...state,
+      result: null,
       error: action.error && action.error.data || 'Solution fetch failed',
       isSubmitLoading: false
     };
@@ -47,6 +48,7 @@ export default (state = initialState, action) => {
   case SOLUTION_BY_TASK_ID_FETCH_FAILED:
     return {
       ...state,
+      result: null,
       error: action.error && action.error.data || 'Solution fetch failed',
       isLoading: false
     };
