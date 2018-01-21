@@ -5,7 +5,7 @@ import style from './style.scss';
 const SingleTooltip = (props) => {
   const {data} = props;
 
-  const textStyle = !data.status
+  const textStyle = !data.hasOwnProperty('status')
     ? style.commonText
     : data.text === 'Open'
       ? style.openText

@@ -32,7 +32,7 @@ function* fetchTournamentById({payload}) {
       item.status === 'open' && opened++;
       item.status === 'resolved' && resolved++;
     });
-    tournament.solving = opened ? Math.round(resolved / opened) : 100;
+    tournament.solving = opened ? Math.round(resolved / opened) * 100 : 100;
     yield put(tournamentsByIdFetchSuccess(tournament));
   } catch (e) {
     yield put(tournamentsByIdFetchFailed(JSON.stringify(e)));
