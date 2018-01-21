@@ -22,7 +22,7 @@ class TaskTrainContainer extends React.Component {
     super(props);
     const {task, solutionResult} = props;
     this.state = {
-      solution: task && task.solution || solutionResult && solutionResult.solutionCode || '',
+      solution: task && task.sample || solutionResult && solutionResult.solutionCode || '',
       isSolutionDirty: false,
       sampleTests: '',
       details: task && task.description || '',
@@ -35,7 +35,7 @@ class TaskTrainContainer extends React.Component {
   componentWillReceiveProps(newProps) {
     if (!this.state.isSolutionDirty) {
       const solution = newProps.solutionResult && newProps.solutionResult.solutionCode
-        || newProps.task && newProps.task.solution;
+        || newProps.task && newProps.task.sample;
       this.setState({solution});
     }
   }
@@ -48,6 +48,7 @@ class TaskTrainContainer extends React.Component {
 
   submitTask = () => {
     const {taskId} = this.props.match.params;
+    if (!this.state.solution) return;
     this.props.submitSolutionRequest({
       taskId: taskId,
       solutionCode: this.state.solution
