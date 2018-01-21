@@ -25,7 +25,6 @@
 
 .tournament {
   &Name {
-    font-family: Source Sans Pro;
     color: $WHITE;
     font-size: 14px;
   }
@@ -33,6 +32,5 @@
   &Score {
     color: $DUSTY_GRAY;
     font-size: 14px;
-    font-family: Source Sans Pro;
   }
 }

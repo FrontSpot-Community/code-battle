@@ -11,7 +11,6 @@
     width: 12%;
     height: 75px;
     color: $DUSTY_GRAY;
-    font-family: Source Sans Pro;
     font-size: 14px;
 
     &:first-child {
@@ -33,10 +32,20 @@
 .status {
   &Started {
     color: $DARK_GREEN;
+    font-weight: bold;
+
+    &:first-letter {
+      text-transform: uppercase;
+    }
   }
 
   &Preparing {
     color: $AMBER;
+    font-weight: bold;
+
+    &:first-letter {
+      text-transform: uppercase;
+    }
   }
 }
 
@@ -54,7 +63,6 @@
 .tournamentName:focus {
   display: block;
   color: $WHITE;
-  font-family: Source Sans Pro;
   text-decoration: none;
   font-size: 16px;
   font-weight: bold;
