@@ -4,17 +4,7 @@ import parser from 'html-react-parser';
 import style from './style.scss';
 import lock from './assets/lock.svg';
 import {Button} from 'src/components/Common';
-
-const addNewLineCharacter = (text) => {
-  return text.split('\n').map((item, key) => {
-    return (
-      <span key={key}>
-        {item}
-        <br/>
-      </span>
-    );
-  });
-};
+import {addNewLineCharacter} from 'src/utils';
 
 const TaskPreviewInfo = (props) => {
   return (
