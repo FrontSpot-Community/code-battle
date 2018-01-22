@@ -5,6 +5,17 @@ import style from './style.scss';
 import lock from './assets/lock.svg';
 import {Button} from 'src/components/Common';
 
+const addNewLineCharacter = (text) => {
+  return text.split('\n').map((item, key) => {
+    return (
+      <span key={key}>
+        {item}
+        <br/>
+      </span>
+    );
+  });
+};
+
 const TaskPreviewInfo = (props) => {
   return (
     <div className={style.wrapper}>
@@ -42,7 +53,9 @@ const TaskPreviewInfo = (props) => {
       </header>
 
       <section className={style.textBlock}>
-        {props.infoState === 'details' && props.task ? parser(props.task.description) : null}
+        {props.infoState === 'details' && props.task
+          ? addNewLineCharacter(parser(props.task.description))
+          : null}
         {props.infoState === 'your-solution'
           ? <pre className={style.codeBlock}>{props.solution}</pre>
           : null
