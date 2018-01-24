@@ -1,8 +1,12 @@
 import httpClient from '../services/httpClient';
-import {USER} from '../endpoints';
+import {ME, USERS} from '../endpoints';
 
 export const getUser = () => {
-  return httpClient.get(USER);
+  return httpClient.get(ME);
+};
+
+export const getUsers = () => {
+  return httpClient.get(USERS);
 };
 
 export const changeUserInfo = (data) => {
