@@ -6,8 +6,7 @@ import TournamentList from '../../components/TournamentList';
 import Tabs from '../../components/Tabs';
 import Rank from '../../components/Rank';
 import {tournamentsRequest} from '../../actions/action_creators/tournamentActionCreators';
-
-import userScoreList from './mockUsers';
+import {allUsersRequest} from '../../actions/action_creators/userActionCreators';
 
 class HomeContainer extends React.Component {
   constructor(props) {
@@ -16,6 +15,7 @@ class HomeContainer extends React.Component {
 
   componentDidMount() {
     this.props.tournamentsRequest();
+    this.props.allUsersRequest();
   }
 
   renderTabs = () => (<Tabs />);
@@ -33,7 +33,7 @@ class HomeContainer extends React.Component {
             <Rank rankPosition={102}
               totalRankPosition={654}
               totalScore={190354}
-              userScoreList={userScoreList}/>
+              userScoreList={this.props.users}/>
           </div>
         </div>
       </div>
@@ -44,12 +44,13 @@ class HomeContainer extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    tournaments: state.tournaments.data
+    tournaments: state.tournaments.data,
+    users: state.user.users
   };
 };
 
 const mapActionsToProps = (dispatch) => (
-  bindActionCreators({tournamentsRequest}, dispatch)
+  bindActionCreators({tournamentsRequest, allUsersRequest}, dispatch)
 );
 
 export default connect(mapStateToProps, mapActionsToProps)(HomeContainer);

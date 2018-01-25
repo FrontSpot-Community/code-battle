@@ -1,14 +1,16 @@
 import {call, put, takeEvery} from 'redux-saga/effects';
 import {showLoading, hideLoading} from 'react-redux-loading-bar';
-import {getUser, changeUserInfo} from '../api/user';
+import {getUser, changeUserInfo, getUsers} from '../api/user';
 
 import {
   userFetchSuccess,
   userFetchFailed,
-  userLoading
+  userLoading,
+  allUsersFetchSuccess,
+  allUsersFetchFailed
 } from '../actions/action_creators/userActionCreators';
 
-import {USER_FETCH, USER_PUT} from '../actions/actions';
+import {USER_FETCH, USER_PUT, USERS_FETCH} from '../actions/actions';
 
 function* fetchUser() {
   try {
@@ -32,9 +34,19 @@ function* editUser({payload}) {
   }
 }
 
+function* fetchAllUsers() {
+  try {
+    const users = yield call(getUsers);
+    yield put(allUsersFetchSuccess(users));
+  } catch (error) {
+    yield put(allUsersFetchFailed(error.data));
+  }
+}
+
 function* userSaga() {
   yield takeEvery(USER_FETCH, fetchUser);
   yield takeEvery(USER_PUT, editUser);
+  yield takeEvery(USERS_FETCH, fetchAllUsers);
 }
 
 export default userSaga;
