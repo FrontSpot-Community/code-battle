@@ -17,14 +17,14 @@ const TooltipsBoard = ({className, task}) => {
     status='Open'
   } = task;
 
-  const statuImage = status === 'Resolved' ? statusResolvedImg : statusOpenImg;
+  const statusImage = status === 'Resolved' ? statusResolvedImg : statusOpenImg;
 
   const tooltipsData = [
     {img: difficultyImg, text: difficulty},
     // {img: satisfactionImg, text: satisfaction},
     // {img: solvedByImg, text: solvedBy},
     // {img: authorImg, text: author},
-    {img: statuImage, text: status, status: status === 'Resolved'}
+    {img: statusImage, text: status, status: status === 'Resolved'}
   ];
 
   const externalClasses = className ? className : '';

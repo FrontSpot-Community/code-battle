@@ -31,7 +31,7 @@ class HttpService {
   get(resource, params={}) {
     return this.service.get(resource, {
       responseType: 'json',
-      ...params
+      params
     })
       .then(({data}) => data);
   }

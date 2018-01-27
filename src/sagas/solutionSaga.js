@@ -12,7 +12,9 @@ import {
 } from '../actions/action_creators/solutionActionCreators';
 
 import {
-  SUBMIT_SOLUTION_FETCH, SOLUTION_BY_TASK_ID_FETCH
+  SUBMIT_SOLUTION_FETCH,
+  SOLUTION_BY_TASK_ID_FETCH
+
 } from '../actions/actions';
 
 function* sendSolution({payload}) {
