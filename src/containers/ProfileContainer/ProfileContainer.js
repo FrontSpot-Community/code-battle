@@ -6,13 +6,11 @@ import {
   userEdit,
   userRequest
 } from '../../actions/action_creators/userActionCreators';
+import {tournamentsRequest} from '../../actions/action_creators/tournamentActionCreators';
 
 import {
   ProfileDetails,
-  TasksStatistic,
-  TournamentsStatistic,
-  UnfinishedActivity,
-  SolvedTasksStat
+  ProfileTournaments
 } from '../../components/Profile';
 
 import style from './style.scss';
@@ -35,6 +33,7 @@ class ProfileContainer extends Component {
 
   componentWillMount() {
     this.props.userRequest();
+    this.props.tournamentsRequest();
   }
 
   componentWillReceiveProps(props) {
@@ -61,20 +60,6 @@ class ProfileContainer extends Component {
   }
 
   render() {
-    const tournamentsMetrics = {
-      participated: 57,
-      finished: 21,
-      wins: 3,
-      satisfation: '67%'
-    };
-
-    const tasksMetrics = {
-      assigned: 269,
-      trained: 230,
-      solved: 156,
-      totalAttempts: 1921
-    };
-
     const detailsFromServer = _.pick(this.props.userInfo, Object.keys(this.state.profileDetails));
     const isProfileDetailsChanged = !_.isEqual(this.state.profileDetails, detailsFromServer);
     return this.props.userLoading
@@ -82,14 +67,7 @@ class ProfileContainer extends Component {
       : <div className={style.mainWrapper}>
         <div className={style.wrapper}>
           <div className={style.statisticsContainer}>
-            <TasksStatistic
-              metrics={tasksMetrics}
-            />
-            <TournamentsStatistic
-              metrics={tournamentsMetrics}
-            />
-            <UnfinishedActivity/>
-            <SolvedTasksStat/>
+            <ProfileTournaments tournaments={this.props.tournaments}/>
           </div>
           <div className={style.detailsContainer}>
             <ProfileDetails
@@ -117,7 +95,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapActionsToProps = (dispatch) => (
-  bindActionCreators({userEdit, userRequest}, dispatch)
+  bindActionCreators({userEdit, userRequest, tournamentsRequest}, dispatch)
 );
 
 export default connect(mapStateToProps, mapActionsToProps)(ProfileContainer);

@@ -20,10 +20,9 @@ export default class TournamentTableRow extends Component {
       difficulty,
       language,
       department,
-      remaining,
-      status,
-      // taskIds,
-      numberOfTasks
+      // remaining,
+      // status,
+      taskIds
     } = tournament;
 
     // const numberOfTasks = taskIds.length;
@@ -36,15 +35,15 @@ export default class TournamentTableRow extends Component {
           </Link>
           {this.renderTags(tags, name)}
         </div>
-        <div className={style.item}>{numberOfTasks} tasks</div>
+        <div className={style.item}>{taskIds.length}</div>
         <div className={style.item}>{difficulty}</div>
         <div className={style.item}>{language}</div>
         <div className={style.item}>{department}</div>
-        <div className={style.item}>
+        {/* <div className={style.item}>
           <span className={style[`status${status}`]}>{status}</span>
           <br/>
           {status === 'Started' && <span>{remaining}</span>}
-        </div>
+        </div> */}
       </section>
     );
   }

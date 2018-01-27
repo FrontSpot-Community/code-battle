@@ -22,21 +22,21 @@ const headerCells = [
     propName: 'difficulty',
     sorted: true
   },
-  {
-    value: mixIcon('Value'),
-    propName: 'stars',
-    sorted: true
-  },
-  {
-    value: mixIcon('Satisfaction'),
-    propName: 'satisfaction',
-    sorted: true
-  },
-  {
-    value: mixIcon('Solved by'),
-    propName: 'solvedBy',
-    sorted: true
-  },
+  // {
+  //   value: mixIcon('Value'),
+  //   propName: 'stars',
+  //   sorted: true
+  // },
+  // {
+  //   value: mixIcon('Satisfaction'),
+  //   propName: 'satisfaction',
+  //   sorted: true
+  // },
+  // {
+  //   value: mixIcon('Solved by'),
+  //   propName: 'solvedBy',
+  //   sorted: true
+  // },
   {
     value: mixIcon('Status'),
     propName: 'status',

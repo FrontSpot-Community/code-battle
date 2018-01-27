@@ -5,14 +5,14 @@
 
   >div {
     display: inline-block;
-    width: 15%;
+    width: 25%;
     padding: 15px 0;
     color: $WHITE;
     font-family: 'Source Sans Pro Regular', sans-serif;
     font-size: 14px;
 
     &:first-child {
-      width: 25%;
+      width: 50%;
     }
 
     i {

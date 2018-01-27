@@ -8,7 +8,7 @@ export default class Tabs extends Component {
       activeTabIndex: 0
     };
 
-    this.tabs = ['LET THE BATTLE BEGIN', 'FINISHED TOURNAMENTS'];
+    this.tabs = ['LET THE BATTLE BEGIN'];
   }
     onTabClickHandler = (clickedTabIndex) => {
       return () => {

@@ -2,7 +2,7 @@ import React from 'react';
 import parser from 'html-react-parser';
 
 import style from './style.scss';
-import lock from './assets/lock.svg';
+// import lock from './assets/lock.svg';
 import {Button} from 'src/components/Common';
 import {addNewLineCharacter} from 'src/utils';
 
@@ -30,7 +30,7 @@ const TaskPreviewInfo = (props) => {
         >
           Your solution
         </Button>
-        <Button
+        {/* <Button
           active={props.infoState === 'best-solutions'}
           onClick={() => {
             props.onChangeInfoState('best-solutions');
@@ -39,7 +39,7 @@ const TaskPreviewInfo = (props) => {
           className={style.button}
         >
           <img src={lock} className={style.image} width='16px' height='16px' /> Best solutions
-        </Button>
+        </Button> */}
       </header>
 
       <section className={style.textBlock}>

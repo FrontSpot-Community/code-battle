@@ -8,18 +8,14 @@
   >div {
     display: flex;
     align-items: center;
-    width: 15%;
+    width: 25%;
     height: 75px;
     color: $DUSTY_GRAY;
     font-size: 14px;
 
     &:first-child {
-      width: 40%;
+      width: 50%;
     }
-    
-    // &:nth-child(5) {
-    //   width: 18%;
-    // }
   }
 
   .tournamentInfo {
@@ -28,27 +24,6 @@
     color: $WHITE;
   }
 }
-
-.status {
-  &Started {
-    color: $DARK_GREEN;
-    font-weight: bold;
-
-    &:first-letter {
-      text-transform: uppercase;
-    }
-  }
-
-  &Preparing {
-    color: $AMBER;
-    font-weight: bold;
-
-    &:first-letter {
-      text-transform: uppercase;
-    }
-  }
-}
-
 
 .tag {
   margin-right: 5px;

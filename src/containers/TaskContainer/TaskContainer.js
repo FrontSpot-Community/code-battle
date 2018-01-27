@@ -8,7 +8,7 @@ import {
 import {
   solutionByTaskIdRequest
 } from '../../actions/action_creators/solutionActionCreators';
-import {TaskPreviewHeader, TaskPreviewInfo, TaskPreviewDiscuss} from 'src/components/TaskPreview';
+import {TaskPreviewHeader, TaskPreviewInfo} from 'src/components/TaskPreview';
 import Loader from 'src/components/Loader';
 import style from './style.scss';
 
@@ -80,7 +80,7 @@ class TaskContainer extends React.Component {
             onNextTask={this.onNextTask}
             onStartTrain={this.onStartTrain}
           />
-          <TaskPreviewDiscuss task={this.props.task} />
+          {/* <TaskPreviewDiscuss task={this.props.task} /> */}
         </div>
       </div>
     );

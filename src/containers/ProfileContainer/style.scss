@@ -1,27 +1,32 @@
 @import '../../constants/colors';
 
 .mainWrapper {
-  height: 100%;
   padding: 18px;
   width: 100%;
   position: relative;
+  height: -moz-calc(100% - 5px);
+  height: -webkit-calc(100% - 5px);
+  height: calc(100% - 5px);
 }
 
 .wrapper {
   display: flex;
   flex: 1;
   justify-content: space-between;
-  height: 90%;
+  height: -moz-calc(100% - 60px);
+  height: -webkit-calc(100% - 60px);
+  height: calc(100% - 60px);
 }
 
 .statisticsContainer {
-  display: grid;
-  grid-template-columns: repeat(5, 1);
-  grid-template-rows: repeat(7, 1);
-  grid-column-gap: 18px;
-  grid-row-gap: 18px;
-  height: 100%;
-  width: 70%;
+  // display: grid;
+  // grid-template-columns: repeat(5, 1);
+  // grid-template-rows: repeat(7, 1);
+  // grid-column-gap: 18px;
+  // grid-row-gap: 18px;
+  // height: 100%;
+  // width: 70%;
+  flex: 5;
 }
 
 .detailsContainer {
