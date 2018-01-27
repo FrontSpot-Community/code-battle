@@ -9,11 +9,11 @@ class SampleTests extends React.Component {
       <div className={style.container}>
         <div className={style.header}>
           <span className={style.headerName}>SAMPLE TESTS</span>
-          <div className={style.headerButtons}>
+          {/* <div className={style.headerButtons}>
             <button className={style.runSampleTestsButton} onClick={this.props.runSampleTests}>
               <span className={style.runSampleTestsButtonText}>RUN TESTS</span>
             </button>
-          </div>
+          </div> */}
         </div>
         <CodeEditor
           value={this.props.defaultTests || this.props.sampleTests}

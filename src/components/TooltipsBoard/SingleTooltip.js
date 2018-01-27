@@ -7,7 +7,7 @@ const SingleTooltip = (props) => {
 
   const textStyle = !data.hasOwnProperty('status')
     ? style.commonText
-    : data.text === 'Open'
+    : data.text === 'Open' || data.text === 'In progress'
       ? style.openText
       : style.resolvedText;
 

@@ -53,8 +53,9 @@ class TaskContainer extends React.Component {
 
   isSolutionComplete() {
     const {solutionResult} = this.props;
+    if (!solutionResult) return 'Open';
 
-    return solutionResult && solutionResult.completed;
+    return solutionResult.completed ? 'Resolved' : 'In progress';
   }
 
   renderData() {
@@ -64,7 +65,7 @@ class TaskContainer extends React.Component {
       difficulty: task && task.difficulty,
       author: task && task.author,
       satisfaction: task && task.satisfaction,
-      status: this.isSolutionComplete() ? 'Resolved' : 'Open'
+      status: this.isSolutionComplete()
     };
 
     return (
