@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import style from './style.scss';
 
-import RankHeader from '../../Rank/RankHeader';
+// import RankHeader from '../../Rank/RankHeader';
 import ProfileDetailsList from './ProfileDetailsList';
 
 export default class ProfileDetails extends Component {
@@ -10,7 +10,7 @@ export default class ProfileDetails extends Component {
   }
 
   render() {
-    const {rankPosition, totalRankPosition, totalScore, profileDetails} = this.props;
+    const {profileDetails} = this.props;
 
     return (
       <div className={style.wrapper}>
@@ -19,13 +19,6 @@ export default class ProfileDetails extends Component {
               Your details
           </dt>
         </dl>
-        <RankHeader
-          leftTitle={'Your Rank Position'}
-          rightTitle={'Your Total Score'}
-          rankPosition={rankPosition}
-          totalRankPosition={totalRankPosition}
-          totalScore={totalScore}
-        />
         <ProfileDetailsList
           profileDetails={profileDetails}
           onChangeProfileDetail={this.props.onChangeProfileDetail}

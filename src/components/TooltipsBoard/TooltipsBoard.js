@@ -2,9 +2,9 @@ import React from 'react';
 
 import SingleTooltip from './SingleTooltip';
 import style from './style.scss';
-import authorImg from './assets/author.svg';
+// import authorImg from './assets/author.svg';
 import difficultyImg from './assets/difficulty.svg';
-import satisfactionImg from './assets/satisfaction.svg';
+// import satisfactionImg from './assets/satisfaction.svg';
 // import solvedByImg from './assets/solvedBy.svg';
 import statusOpenImg from './assets/status_open.svg';
 import statusResolvedImg from './assets/status_resolved.svg';
@@ -12,8 +12,8 @@ import statusResolvedImg from './assets/status_resolved.svg';
 const TooltipsBoard = ({className, task}) => {
   const {
     difficulty='Unknown',
-    author='Unknown',
-    satisfaction='Unknown',
+    // author='Unknown',
+    // satisfaction='Unknown',
     status='Open'
   } = task;
 
@@ -21,9 +21,9 @@ const TooltipsBoard = ({className, task}) => {
 
   const tooltipsData = [
     {img: difficultyImg, text: difficulty},
-    {img: satisfactionImg, text: satisfaction},
+    // {img: satisfactionImg, text: satisfaction},
     // {img: solvedByImg, text: solvedBy},
-    {img: authorImg, text: author},
+    // {img: authorImg, text: author},
     {img: statuImage, text: status, status: status === 'Resolved'}
   ];
 

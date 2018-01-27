@@ -12,10 +12,10 @@ const BattleBodyRow = (props) => {
   return (
     <div className={style.row}>
       <div><Link className={style.title} to={`${props.preLink}/${task.id}`}>{task.name}</Link></div>
-      <div className={style.faint}>{task.difficulty}</div>
-      <div className={style.faint}>{stars}</div>
-      <div className={style.faint}>{task.satisfaction}</div>
-      <div className={style.faint}>{task.solvedBy}</div>
+      <div className={style.faint}>{task.complexity}</div>
+      {/* <div className={style.faint}>{stars}</div> */}
+      {/* <div className={style.faint}>{task.satisfaction}</div>
+      <div className={style.faint}>{task.solvedBy}</div> */}
       <div
         className={task.status === 'Open' ? style.status_open : style.status_resolved}
       >
