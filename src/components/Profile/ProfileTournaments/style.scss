@@ -1,17 +1,18 @@
-@import '../../constants/colors';
+@import '~Colors';
 
 .wrapper {
   display: flex;
+  flex: 1;
   flex-direction: column;
   background-color: $bg_dark;
   height: 100%;
-  flex: 2;
 }
 
 .header {
   align-items: center;
   padding: 13px;
   border-bottom: 1px solid $MINE_SHAFT;
+  margin-bottom: 0;
 }
 
 .title {
@@ -21,4 +22,8 @@
   line-height: 1.71;
   text-align: left;
   color: $WHITE;
+}
+
+.body {
+  padding: 0 18px;
 }

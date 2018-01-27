@@ -1,5 +1,5 @@
 import {call, put, takeEvery, all} from 'redux-saga/effects';
-import {getTaskById} from '../api/tasks';
+import {getTaskById, getAllTasks} from '../api/tasks';
 import tasksMock from '../api/mocks/tasks.mock';
 
 import {
@@ -19,7 +19,7 @@ import {
 
 function* fetchTasks() {
   try {
-    const tasks = yield call(tasksMock.fetchAll);
+    const tasks = yield call(getAllTasks);
     yield put(tasksFetchSuccess(tasks));
   } catch (e) {
     yield put(tasksFetchFailed(e));
