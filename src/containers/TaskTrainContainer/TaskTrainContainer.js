@@ -69,7 +69,7 @@ class TaskTrainContainer extends React.Component {
 
   onSampleTestsChange = (newText) => {
     this.setState({
-      solution: newText
+      sampleTests: newText
     });
   };
 
