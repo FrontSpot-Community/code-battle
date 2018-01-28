@@ -1,11 +1,3 @@
-### Release 1.0 (Planned date 29.12.2017)
-- [ ] Design migration
-- [ ] Integrate task verification process with UI
-- [ ] Create First ('Happy New Year') Tournament
-- [ ] Possible bugs fix
-- [ ] CI
-- [ ] What about administration of tournament (release 1.1 possible feature)
-
 # Code-Battle
 
 ## How to install ?
@@ -33,17 +25,17 @@
 yarn  run build or npm  run build
 ```
 
-## Code convention
-
-* google style with additional rules
-
-* code quality tool: ESLint
-
-:bulb:  *You can\'t commit if you have code style errors  or test failed*
-
 ## Used:
 
-* **Node.js**
-* **React+Redux**
-* **Webpack**
-* **Yarn**
+
+- [React](https://reactjs.org/) A JavaScript library for building user interfaces
+- [Redux](https://redux.js.org/) Predictable state container for JavaScript apps
+- [Redux-Saga](https://redux-saga.js.org/) Easier managing application side effects
+- [React-Router](https://reacttraining.com/react-router/) Collection of navigational components that compose declaratively with your application
+- [Babel](https://babeljs.io/) Use next generation JavaScript
+- [ESLint](https://eslint.org/) The pluggable linting utility for JavaScript and JSX
+- [Webpack](https://webpack.js.org/) Bundler
+
+## Contribution
+
+Feel free to create issues and PRs :smiley:
