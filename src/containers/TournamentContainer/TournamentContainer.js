@@ -94,6 +94,10 @@ class BattleContainer extends React.Component {
       status: this.state.statusNextSortIncr
     };
 
+    const tournamentStatus = tournament && tournament.total === tournament.solved
+      ? 'Solved'
+      : 'Started';
+
     return (
       <div className={style.wrapper}>
         <div className={style.tableContainer}>
@@ -107,7 +111,7 @@ class BattleContainer extends React.Component {
         </div>
         <div className={style.summaryContainer}>
           <Summary
-            status='Started'
+            status={tournamentStatus}
             tournament={tournament}
           />
         </div>
