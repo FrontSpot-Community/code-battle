@@ -22,7 +22,7 @@ const getDateFromUTC = (utc) => {
 
 const Summary = (props) => {
   const {tournament, status} = props;
-  const solvingPercent = tournament.solved/tournament.total * 100;
+  const solvingPercent = Math.ceil(tournament.solved/tournament.total * 100);
   return (
     <div className={style.wrapper}>
       <dl className={style.header}>
