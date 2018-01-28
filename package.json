@@ -1,9 +1,8 @@
 {
-  "name": "react-redux-env",
+  "name": "code-battle",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "author": "Rufat Khaslarov",
   "scripts": {
     "prestart": "node_modules/.bin/babel-node tools/start.js",
     "start": "npm-run-all --parallel test:watch open:src lint:watch",
