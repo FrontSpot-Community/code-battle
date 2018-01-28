@@ -14,7 +14,7 @@ module.exports = {
     output: {
       path: outputPath, // Note: Physical files are only output by the production build task `npm run build`.
       publicPath: '/',
-      filename: 'bundle.js'
+      filename: 'bundle.[hash].js'
     },
     resolve: {
       alias: {
@@ -43,7 +43,7 @@ module.exports = {
           exclude: []
         },
         {
-          test: /\.(png|jpe?g)$/,
+          test: /\.(png|ico|jpe?g)$/,
           exclude: /node_modules/,
           use: [
               'preload-image-loader',
@@ -75,6 +75,7 @@ module.exports = {
     plugins: [
       new HtmlWebpackPlugin({
         template: path.join(srcPath, 'index.html'),
+        favicon: 'src/assets/images/favicon.ico',
         filename: 'index.html',
         path: outputPath
       }),
