@@ -16,6 +16,12 @@ class ProfileItem extends Component {
     };
   }
 
+  componentDidMount() {
+    this.currentElement.addEventListener('mouseleave', () => {
+      this.setState({isOpen: false});
+    });
+  }
+
   toggleDropDown = () => {
     this.setState({isOpen: !this.state.isOpen});
   };
@@ -37,6 +43,9 @@ class ProfileItem extends Component {
       <div
         className={isOpen ? styles.containerHover : styles.container}
         onClick={this.toggleDropDown}
+        ref={(item) =>{
+          this.currentElement = item;
+        }}
       >
         <img className={styles.userPic} src={this.state.avatarUrl || userPic} />
         <img

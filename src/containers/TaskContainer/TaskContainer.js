@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import {withRouter} from 'react-router-dom';
 
 import {
   taskByIdRequest
@@ -8,6 +9,7 @@ import {
 import {
   solutionByTaskIdRequest
 } from '../../actions/action_creators/solutionActionCreators';
+import {tournamentsByIdRequest} from 'src/actions/action_creators/tournamentActionCreators';
 import {TaskPreviewHeader, TaskPreviewInfo} from 'src/components/TaskPreview';
 import Loader from 'src/components/Loader';
 import style from './style.scss';
@@ -23,10 +25,23 @@ class TaskContainer extends React.Component {
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.location.pathname !== nextProps.location.pathname) {
+      const {taskId} = nextProps.match.params;
+      this.props.taskByIdRequest(taskId);
+      this.props.solutionByTaskIdRequest({taskId});
+    }
+  }
+
   componentDidMount() {
     const {taskId} = this.props.match.params;
     this.props.taskByIdRequest(taskId);
     this.props.solutionByTaskIdRequest({taskId});
+    if (!this.props.tournament) {
+      const {id} = this.props.match.params;
+      const requestData = {id};
+      this.props.tournamentsByIdRequest(requestData);
+    }
   }
 
   onChangeInfoState = (newInfoState) => {
@@ -36,15 +51,10 @@ class TaskContainer extends React.Component {
   };
 
   onNextTask = () => {
-    const {task, tournament} = this.state;
-    const taskIndex = tournament.tasks.findIndex((item) => item === task);
-
-    const nextTask = tournament.tasks[taskIndex + 1] || tournament.tasks[0];
-    if (nextTask === task) {
-      return;
-    }
-    this.setState({existionChecked: false});
-    this.props.history.push(`/${this.props.match.params.id}/${nextTask.id}`);
+    const tasks = this.props.tournament.taskIds;
+    const currentTaskIndex = tasks.findIndex((item) => item._id === this.props.task._id);
+    const nextTaskIndex = currentTaskIndex + 1 < tasks.length ? currentTaskIndex + 1 : 0;
+    nextTaskIndex !== currentTaskIndex && this.props.history.push(`/${this.props.match.params.id}/${tasks[nextTaskIndex].id}`);
   };
 
   onStartTrain = () => {
@@ -102,6 +112,7 @@ class TaskContainer extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    tournament: state.tournaments.tournamentById,
     task: state.tasks.taskById,
     taskLoading: state.tasks.isLoading,
     solutionResult: state.solution.result,
@@ -113,8 +124,9 @@ const mapStateToProps = (state) => {
 const mapActionsToProps = (dispatch) => (
   bindActionCreators({
     taskByIdRequest,
-    solutionByTaskIdRequest
+    solutionByTaskIdRequest,
+    tournamentsByIdRequest
   }, dispatch)
 );
 
-export default connect(mapStateToProps, mapActionsToProps)(TaskContainer);
+export default connect(mapStateToProps, mapActionsToProps)(withRouter(TaskContainer));

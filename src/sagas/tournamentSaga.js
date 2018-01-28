@@ -26,13 +26,6 @@ function* fetchTournaments() {
 function* fetchTournamentById({payload}) {
   try {
     const tournament = yield call(getTournamentById, payload.id, payload.params);
-    let opened = 0;
-    let resolved = 0;
-    tournament.taskIds.forEach((item) => {
-      item.status === 'open' && opened++;
-      item.status === 'resolved' && resolved++;
-    });
-    tournament.solving = opened ? Math.round(resolved / opened) * 100 : 100;
     yield put(tournamentsByIdFetchSuccess(tournament));
   } catch (e) {
     yield put(tournamentsByIdFetchFailed(JSON.stringify(e)));

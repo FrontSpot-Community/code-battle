@@ -73,7 +73,7 @@ class TaskTrainContainer extends React.Component {
     });
   };
 
-  resetSolution = () => this.setState({solution: ''});
+  resetSolution = () => this.setState({solution: this.props.task.sample});
 
   getRunStatistics = (stat) => {
     if (!stat) {
