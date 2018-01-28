@@ -123,7 +123,7 @@ class BattleContainer extends React.Component {
     return (
       <div className={style.mainWrapper}>
         {
-          !this.props.tournamentById
+          !this.props.tournamentById || this.props.tournamentsLoading
             ? <Loader />
             : this.renderData()
         }

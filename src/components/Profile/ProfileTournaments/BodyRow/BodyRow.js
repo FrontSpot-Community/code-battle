@@ -16,7 +16,8 @@ const BattleBodyRow = (props) => {
     id,
     name,
     tags,
-    taskIds
+    total,
+    solved
   } = props.tournament;
   return (
     <div className={style.row}>
@@ -26,7 +27,8 @@ const BattleBodyRow = (props) => {
         </Link>
         {renderTags(tags, name)}
       </div>
-      <div>{taskIds.length}</div>
+      <div>{total}</div>
+      <div>{solved}</div>
     </div>
   );
 };

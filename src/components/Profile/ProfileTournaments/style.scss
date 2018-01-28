@@ -6,6 +6,7 @@
   flex-direction: column;
   background-color: $bg_dark;
   height: 100%;
+  overflow: hidden;
 }
 
 .header {
@@ -26,4 +27,5 @@
 
 .body {
   padding: 0 18px;
+  overflow-y: scroll;
 }
