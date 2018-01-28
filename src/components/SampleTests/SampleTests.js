@@ -16,7 +16,7 @@ class SampleTests extends React.Component {
           </div> */}
         </div>
         <CodeEditor
-          value={this.props.defaultTests || this.props.sampleTests}
+          value={this.props.sampleTests || this.props.defaultTests || ''}
           onCodeEditorChange={this.props.onSampleTestsChange}
         />
       </div>
