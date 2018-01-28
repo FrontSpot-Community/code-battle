@@ -22,6 +22,7 @@ const getDateFromUTC = (utc) => {
 
 const Summary = (props) => {
   const {tournament, status} = props;
+  const solvingPercent = tournament.solved/tournament.total * 100;
   return (
     <div className={style.wrapper}>
       <dl className={style.header}>
@@ -38,11 +39,11 @@ const Summary = (props) => {
           <div className={style.statusLineBlock}>
             <span className={style.statusLineBlockTitle}>Solved</span>
             <span className={style.statusLineBlockTitleStatus}>
-              You have done {tournament.solving} %
+              You have done {solvingPercent} %
             </span>
             <div className={style.line}>
               <span className={style.lineFull}> </span>
-              <span className={style.linePartial} style={{width: `${tournament.solving}%`}}> </span>
+              <span className={style.linePartial} style={{width: `${solvingPercent}%`}}> </span>
             </div>
           </div>
           {/* <div className={style.statusLineBlock}>
