@@ -1,0 +1,36 @@
+@import '~Colors';
+
+.singleWrapper {
+  display: inline-block;
+  margin-right: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  text-align: left;
+}
+
+.image {
+  margin-right: 4px;
+}
+
+.commonText {
+  color: $DUSTY_GRAY;
+  vertical-align: middle;
+}
+
+.openText {
+  color: $SHARP_BLUE;
+  vertical-align: middle;
+}
+
+.resolvedText {
+  color: $LIME_GREEN;
+  vertical-align: middle;
+}
+
+.textStyleDark {
+  color: $MEDIUM_GRAY;
+}

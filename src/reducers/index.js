@@ -1,12 +1,14 @@
 import {combineReducers} from 'redux';
 import tournamentReducer from './tournamentReducer';
-import {loadingBarReducer} from 'react-redux-loading-bar';
+import taskReducer from './taskReducer';
 import solutionReducer from './solutionReducer';
+import userReducer from './userReducer';
 
 const rootReducer = combineReducers({
+  tasks: taskReducer,
   tournaments: tournamentReducer,
   solution: solutionReducer,
-  loadingBar: loadingBarReducer
+  user: userReducer
 });
 
 export default rootReducer;

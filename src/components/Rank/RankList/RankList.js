@@ -7,17 +7,17 @@ export default class RankList extends Component {
       <div className={style.rankList}>
         {this.props.rankList.map((user, index) => (
           <div className={style.rankListItem}
-            key={user.username + index}>
+            key={user.githubDisplayName || user.githubUsername + index}>
 
             <div className={style.avatar}>
               <div className={style.imageWrapper}>
-                <img src={user.avatar}/>
+                <img src={user.gitHubAvatar_url}/>
               </div>
             </div>
 
             <div className={style.userInfo}>
               <div className={style.userName}>
-                {user.username}
+                {user.githubDisplayName || user.githubUsername}
               </div>
               <div className={style.userScore}>
                 {user.totalScore}

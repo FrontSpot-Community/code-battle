@@ -4,10 +4,10 @@ import style from './style.scss';
 
 const BattleHeadRow = (props) => {
   return (
-    <tr className={style.tr}>
+    <header className={style.header}>
       {
         props.headerCells.map((item, idx) => (
-          <th
+          <div
             onClick={() => {
               item.sorted && props.onClickSort(item.propName);
             }}
@@ -15,10 +15,10 @@ const BattleHeadRow = (props) => {
             className={props.nextSorts[item.propName] ? style.rotated : style.nonRotated}
           >
             {item.value}
-          </th>
+          </div>
         ))
       }
-    </tr>
+    </header>
   );
 };
 

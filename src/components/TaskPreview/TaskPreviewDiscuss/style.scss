@@ -1,0 +1,78 @@
+@import '~Colors';
+
+.wrapper {
+  height: 100%;
+  flex: 2;
+  margin-left: 18px;
+  border-top: 1px solid #333333;
+  background-color: $bg_dark;
+}
+
+.header {
+  height: 50px;
+  width: 100%;
+  padding: 0 18px;
+  border-bottom: 1px solid $MINE_SHAFT;
+  color: $WHITE
+}
+
+.headerText {
+  display: inline-block;
+  position: relative;
+  height: 100%;
+  padding: 0px;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  font-family: 'Oswald Regular', sans-serif;
+  font-size: 14px;
+  line-height: 1.71;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.circle {
+  position: absolute;
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  border-radius: 7px;
+  line-height: 13px;
+  top: 0px;
+  left: 53px;
+  background-color: #333333;
+  font-size: 8px;
+  font-weight: bold;
+  text-align: center;
+  color: #999999;
+}
+
+.commentsBlock {
+  height: -moz-calc(100% - 50px);
+  height: -webkit-calc(100% - 50px);
+  height: calc(100% - 50px);
+  position: relative;
+}
+
+.comments {
+  height: -moz-calc(100% - 80px);
+  height: -webkit-calc(100% - 80px);
+  height: calc(100% - 80px);
+  padding: 18px 10px 18px 18px;
+  overflow-y: scroll;
+}
+
+.commentArea {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  padding: 18px;
+  width: 100%;
+  height: 80px;
+  background-color: #1a1a1a;
+  border: 0;
+  resize: none;
+  outline: none;
+  font-size: 14px;
+  line-height: 1.14;
+  color: #666666;
+}

@@ -1,16 +1,97 @@
-@import '../../../constants/colors';
+@import '~Colors';
 
 .button {
-  background-color: $LIME_GREEN;
-  border: none;
-  height: 32px;
-  width: 65px;
-}
-
-.buttonText {
-  color: $WHITE;
+  padding: 4px 12px;
   font-family: 'Oswald Regular', sans-serif;
   font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
   line-height: 1.71;
-  text-align: center;
+  letter-spacing: normal;
+  text-align: left;
+  box-sizing: border-box;
+  box-shadow: none;
+  border: 1px solid transparent;
+
+  & + & {
+    margin-left: 6px;
+  }
+
+  &:active,
+  &:hover,
+  &:focus {
+    outline: 0;
+  }
+}
+
+.default {
+  color: $button-default_color;
+  background-color: $button-default_bg;
+  border: 1px solid $button-default_color;
+}
+
+.success {
+  color: $button-success_color;
+  background-color: $button-success_bg;
+}
+
+.cancel {
+  color: $button-cancel_color;
+  background-color: $button-cancel_bg;
+  border: 1px solid $button-cancel_color;
+}
+
+.navigation {
+  height: 100%;
+  padding: 0;
+  color: $MEDIUM_GRAY;
+  background-color: transparent;
+  text-transform: uppercase;
+
+  &:active,
+  &:hover,
+  &:focus {
+    color: $button-navigation_color;
+    border-bottom: 2px solid $button-navigation_color;
+  }
+}
+
+.githubLogin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 260px;
+  height: 48px;
+  font-family: 'Oswald Regular', sans-serif;
+  font-size: 16px;
+  color: $button-github-font_color;
+  background-color: $button-github-bg_color;
+
+  &:hover, &:active {
+    text-decoration: none;
+    background-color: darken($button-github-bg_color, 10%);
+    color: $button-github-font_color
+  }
+  
+  img {
+    margin-right: 8px;
+  }
+}
+
+.disabled {
+  color: $button-disable_color;
+  background-color: $button-disable_bg;
+  border: 1px solid $button-disable_bg;
+  cursor: default;
+
+  &:hover {
+    background-color: $button-disable_bg;
+  }
+}
+
+.active {
+  color: $button-navigation_color;
+  border-bottom: 2px solid $button-navigation_color;
+
 }

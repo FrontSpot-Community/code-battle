@@ -13,8 +13,8 @@ module.exports = {
     ],
     output: {
       path: outputPath, // Note: Physical files are only output by the production build task `npm run build`.
-      publicPath: './',
-      filename: 'bundle.js'
+      publicPath: '/',
+      filename: 'bundle.[hash].js'
     },
     resolve: {
       alias: {
@@ -31,15 +31,19 @@ module.exports = {
           use: 'babel-loader'
         },
         {
-          test: /\.s?css$/,
-          include: srcPath,
-          use: ExtractTextPlugin.extract({
-            fallback: 'style-loader',
-            use: 'css-loader?modules&importLoaders=1&localIdentName=sn-[local]___[hash:base64:5]!sass-loader',
-          })
+          test: /\.scss$/,
+          loaders: [
+            'style-loader',
+            'css-loader?modules&importLoaders=1&localIdentName=sn-[local]___[hash:base64:5]',
+            'sass-loader'
+          ],
+          include: [
+            path.join(__dirname, 'src')
+          ],
+          exclude: []
         },
         {
-          test: /\.(png|jpe?g)$/,
+          test: /\.(png|ico|jpe?g)$/,
           exclude: /node_modules/,
           use: [
               'preload-image-loader',
@@ -55,6 +59,10 @@ module.exports = {
           use:'url-loader?prefix=font/&limit=50000'
         },
         {
+          test: /\.(otf)$/,
+          use:'url-loader?prefix=font/&limit=50000'
+        },
+        {
           test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
           use: 'url-loader?limit=10000&mimetype=application/octet-stream'
         },
@@ -67,6 +75,7 @@ module.exports = {
     plugins: [
       new HtmlWebpackPlugin({
         template: path.join(srcPath, 'index.html'),
+        favicon: 'src/assets/images/favicon.ico',
         filename: 'index.html',
         path: outputPath
       }),
@@ -74,7 +83,8 @@ module.exports = {
       new webpack.DefinePlugin({
         'process.env': {
           NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-          API_URL: JSON.stringify('http://code-battle.westeurope.cloudapp.azure.com/api')
+          API_URL: JSON.stringify('http://code-battle.westeurope.cloudapp.azure.com/api'),
+          LOGIN_URL: JSON.stringify('http://code-battle.westeurope.cloudapp.azure.com/api/auth/github')
         },
       }),
       new ExtractTextPlugin('style.css'),

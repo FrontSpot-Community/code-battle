@@ -1,0 +1,24 @@
+@import '~Colors';
+
+.mainWrapper {
+  height: -moz-calc(100% - 60px);
+  height: -webkit-calc(100% - 60px);
+  height: calc(100% - 60px);
+  padding: 18px;
+  width: 100%;
+}
+
+.wrapper {
+  height: -moz-calc(100% - 10px);
+  height: -webkit-calc(100% - 10px);
+  height: calc(100% - 10px);
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  height: -moz-calc(100% - 66px);
+  height: -webkit-calc(100% - 66px);
+  height: calc(100% - 66px);
+}

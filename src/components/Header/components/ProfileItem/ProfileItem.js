@@ -6,70 +6,62 @@ import caretIcon from '../../../../assets/images/caret.svg';
 
 import styles from './profileItem.scss';
 
-import {ButtonToolbar} from 'react-bootstrap';
-import {Dropdown} from 'react-bootstrap';
-
 class ProfileItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isOpen: false,
-      userName: 'User Name'
+      userName: 'User Name',
+      avatarUrl: ''
     };
   }
 
-  // toggleDropDown = () => {
-  //   this.setState({isOpen: !this.state.isOpen});
-  // };
+  componentDidMount() {
+    this.currentElement.addEventListener('mouseleave', () => {
+      this.setState({isOpen: false});
+    });
+  }
 
-  // handleOffClick = () => {
-  //   if (!this.state.isOpen) {
-  //     document.addEventListener('click', this.handleOffClickChecker, false);
-  //   } else {
-  //     document.removeEventListener('click', this.handleOffClickChecker, false);
-  //   }
-  //   this.setState({isOpen: !this.state.isOpen});
-  // };
-  //
-  // handleOffClickChecker(e) {
-  //   // console.log(this);
-  //   // console.log(this.node);
-  //   // console.log(e);
-  //   if (this.node.contains(e.target)) {
-  //     return;
-  //   }
-  //   this.handleOffClick();
-  // }
+  toggleDropDown = () => {
+    this.setState({isOpen: !this.state.isOpen});
+  };
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.user) {
+      this.setState({
+        ...this.state,
+        userName: nextProps.user.githubUsername,
+        avatarUrl: nextProps.user.gitHubAvatar_url
+      });
+    }
+  }
+
 
   render() {
     const {isOpen} = this.state;
     return (
-
-      <ButtonToolbar>
-        <Dropdown
-          id="dropdown-custom-1"
-          pullRight
-
+      <div
+        className={isOpen ? styles.containerHover : styles.container}
+        onClick={this.toggleDropDown}
+        ref={(item) =>{
+          this.currentElement = item;
+        }}
+      >
+        <img className={styles.userPic} src={this.state.avatarUrl || userPic} />
+        <img
+          style={{transform: `rotate(${isOpen ? '180deg' : '0deg'})`}}
+          src={caretIcon}
+        />
+        <div
+          style={{display: this.state.isOpen ? 'flex' : 'none'}}
+          className={styles.dropDown}
         >
-          <Dropdown.Toggle
-            className={isOpen ? styles.containerHover : styles.container}
-          >
-            <img className={styles.userPic} src={userPic} />
-            <img
-              style={{transform: `rotate(${isOpen ? '180deg' : '0deg'})`}}
-              src={caretIcon}
-            />
-          </Dropdown.Toggle>
-          <Dropdown.Menu
-            className={styles.dropDown}
-          >
-            <span className={styles.userName}>{this.state.userName}</span>
-            <Link className={styles.dropDownItem} to={''}>My Profile</Link>
-            <Link className={styles.dropDownItem} to={''}>Resolved Tasks</Link>
-            <Link className={styles.logout} to={''}>LOGOUT</Link>
-          </Dropdown.Menu>
-        </Dropdown>
-      </ButtonToolbar>
+          <span className={styles.userName}>{this.state.userName}</span>
+          <Link className={styles.dropDownItem} to={'/profile'}>My Profile</Link>
+          <Link className={styles.dropDownItem} to={''}>Main</Link>
+          {/* <Link className={styles.logout} to={''}>LOGOUT</Link> */}
+        </div>
+      </div>
     );
   }
 }

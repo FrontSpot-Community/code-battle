@@ -15,38 +15,36 @@ export default class TournamentTableRow extends Component {
     const {tournament} = this.props;
     const {
       id,
-      title,
-      tags,
       name,
+      tags,
       difficulty,
       language,
       department,
-      remaining,
-      status,
-      // taskIds,
-      numberOfTasks
+      // remaining,
+      // status,
+      taskIds
     } = tournament;
 
     // const numberOfTasks = taskIds.length;
 
     return (
-      <tr className={style.row}>
-        <td className={style.tournamentInfo}>
+      <section className={style.row}>
+        <div className={style.tournamentInfo}>
           <Link className={style.tournamentName}
-            to={{pathname: `/${id}`, params: {testvalue: 'hello'}}}>{title}
+            to={{pathname: `/${id}`}}>{name}
           </Link>
           {this.renderTags(tags, name)}
-        </td>
-        <td>{numberOfTasks} tasks</td>
-        <td>{difficulty}</td>
-        <td>{language}</td>
-        <td>{department}</td>
-        <td>
+        </div>
+        <div className={style.item}>{taskIds.length}</div>
+        <div className={style.item}>{difficulty}</div>
+        <div className={style.item}>{language}</div>
+        <div className={style.item}>{department}</div>
+        {/* <div className={style.item}>
           <span className={style[`status${status}`]}>{status}</span>
           <br/>
           {status === 'Started' && <span>{remaining}</span>}
-        </td>
-      </tr>
+        </div> */}
+      </section>
     );
   }
 }

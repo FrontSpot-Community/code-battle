@@ -1,31 +1,34 @@
 @font-face {
   font-family: 'Oswald Bold';
-  src: local('Oswald Bold'), url('../assets/fonts/font-oswald/oswald-bold.woff') format('woff');
+  src: url('../assets/fonts/font-oswald/oswald-bold.woff') format('woff');
 }
 
 @font-face {
   font-family: 'Oswald Regular';
-  src: local('Oswald Regular'), url('../assets/fonts/font-oswald/oswald-regular.woff') format('woff');
+  src: url('../assets/fonts/font-oswald/oswald-regular.woff') format('woff');
 }
 
 @font-face {
   font-family: 'Oswald Light';
-  src: local('Oswald Light'), url('../assets/fonts/font-oswald/oswald-light.woff') format('woff');
+  src: url('../assets/fonts/font-oswald/oswald-light.woff') format('woff');
 }
 
 @font-face {
   font-family: 'Source Sans Pro Light';
-  src: local('Source Sans Pro Light'), url('../assets/fonts/font-SourceSansPro/SourceSansPro-Light.otf') format('otf');
+  src: url('../assets/fonts/font-SourceSansPro/SourceSansPro-Light.otf') format('otf');
+  src: url('../assets/fonts/font-SourceSansPro/SourceSansPro-Light.ttf') format('ttf');
 }
 
 @font-face {
   font-family: 'Source Sans Pro Regular';
-  src: local('Source Sans Pro Regular'), url('../assets/fonts/font-SourceSansPro/SourceSansPro-Regular.otf') format('otf');
+  src: url('../assets/fonts/font-SourceSansPro/SourceSansPro-Regular.otf') format('otf');
+  src: url('../assets/fonts/font-SourceSansPro/SourceSansPro-Regular.ttf') format('ttf');
 }
 
 @font-face {
   font-family: 'Source Sans Pro Bold';
-  src: local('Source Sans Pro Bold'), url('../assets/fonts/font-SourceSansPro/SourceSansPro-Bold.otf') format('otf');
+  src: url('../assets/fonts/font-SourceSansPro/SourceSansPro-Bold.otf') format('otf');
+  src: url('../assets/fonts/font-SourceSansPro/SourceSansPro-Bold.ttf') format('ttf');
 }
 
 ::-webkit-scrollbar {
@@ -45,7 +48,7 @@
 
 body {
   height: 100%;
-    overflow: hidden;
+  overflow: hidden;
 }
 
 a:hover, a:active, a:focus {
@@ -55,6 +58,7 @@ a:hover, a:active, a:focus {
 .wrapper {
   height: 100%;
   background-color: #303133;
+  font-family: 'Source Sans Pro Regular', sans-serif;
 }
 
 .main {

@@ -1,0 +1,44 @@
+@import '~Colors';
+
+.row {
+  display: flex;
+  border-bottom: 1px solid $MINE_SHAFT;
+  height: 75px;
+
+  >div {
+    display: flex;
+    align-items: center;
+    width: 25%;
+    height: 75px;
+    color: $DUSTY_GRAY;
+    font-size: 14px;
+
+    &:first-child {
+      width: 50%;
+    }
+  }
+
+  .tournamentInfo {
+    display: inline-block;
+    padding: 16px 0;
+    color: $WHITE;
+  }
+}
+
+.tag {
+  margin-right: 5px;
+  background-color: $MINE_SHAFT;
+  color: $DUSTY_GRAY;
+  font-size: 10px;
+  padding: 2px;
+}
+
+.tournamentName,
+.tournamentName:hover,
+.tournamentName:focus {
+  display: block;
+  color: $WHITE;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+}

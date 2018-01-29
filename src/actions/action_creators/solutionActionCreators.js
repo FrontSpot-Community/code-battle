@@ -1,17 +1,16 @@
 import {Actions} from './actionCreator';
 import {
-  SOLUTION_FETCH,
-  SOLUTION_LOADING
+  SUBMIT_SOLUTION_FETCH,
+  SOLUTION_BY_TASK_ID_FETCH
 } from '../actions';
 
-const SolutionActions = new Actions(SOLUTION_FETCH);
+const SubmitSolutionActions = new Actions(SUBMIT_SOLUTION_FETCH);
+const SolutionByTaskIdActions = new Actions(SOLUTION_BY_TASK_ID_FETCH);
 
-export const solutionRequest = SolutionActions.request;
-export const solutionSuccess = SolutionActions.success;
-export const solutionFailed = SolutionActions.failed;
+export const submitSolutionRequest = SubmitSolutionActions.request;
+export const submitSolutionSuccess = SubmitSolutionActions.success;
+export const submitSolutionFailed = SubmitSolutionActions.failed;
 
-export const solutionLoading = () => {
-  return {
-    type: SOLUTION_LOADING
-  };
-};
+export const solutionByTaskIdRequest = SolutionByTaskIdActions.request;
+export const solutionByTaskIdSuccess = SolutionByTaskIdActions.success;
+export const solutionByTaskIdFailed = SolutionByTaskIdActions.failed;

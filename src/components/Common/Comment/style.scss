@@ -1,0 +1,53 @@
+@import '~Colors';
+
+.wrapper {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.avatar {
+  display: inline-block;
+  width: 36px;
+  height: 100%;
+  margin-right: 12px;
+}
+
+.textBlock {
+  display: inline-block;
+  width: -moz-calc(100% - 48px);
+  width: -webkit-calc(100% - 48px);
+  width: calc(100% - 48px);
+  padding-bottom: 10px;
+  border-bottom: 1px solid $MINE_SHAFT;
+}
+
+.textHeader {
+  margin-bottom: 4px;
+}
+
+.name {
+  margin-right: 6px;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1.33;
+  text-align: left;
+  letter-spacing: normal;
+  color: $WHITE;
+}
+
+.date {
+  font-size: 12px;
+  line-height: 1.33;
+  letter-spacing: normal;
+  text-align: left;
+  color: $DUSTY_GRAY;
+}
+
+.text {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.15;
+  text-align: left;
+  color: $WHITE;
+}

@@ -1,0 +1,91 @@
+@import '~Colors';
+
+.container {
+  height: 100%;
+  width: calc(50% - 9px);
+  background-color: $bg_dark;
+  overflow-y: scroll;
+}
+
+.header {
+  display: flex;
+  background-color: $bg_dark;
+  padding: 12px 18px 12px 8px;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid $MINE_SHAFT;
+}
+
+.headerName {
+  font-family: 'Oswald Regular', sans-serif;
+  font-size: 14px;
+  color: $WHITE;
+  line-height: 34px;
+}
+
+.statsWrapper {
+  display: inline-block;
+}
+
+.stat {
+  color: $WHITE;
+  line-height: 34px;
+  font-family: 'Source Sans Pro Regular', sans-serif;
+  margin-right: 8px
+}
+
+.output {
+  font-family: 'Source Sans Pro Regular', sans-serif;
+  font-size: 14px;
+  color: $WHITE;
+  padding: 18px 41px 0 18px;
+}
+
+.suite {
+  font-size: 14px;
+  color: $WHITE;
+}
+
+.test {
+  padding: 12px 0 0 12px;
+}
+
+.error {
+  padding: 2px 0 0 24px;
+}
+
+.error pre {
+  background-color: $bg_dark;
+  border: none;
+  color: $RASPBERRY;
+  font-size: 12px;
+}
+
+.passedTest {
+  color: $LIME_GREEN;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 0 0 24px;
+}
+
+.failedTest {
+  color: $RASPBERRY;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 0 0 24px;
+}
+
+.timeTest {
+  color: $DUSTY_GRAY;
+  font-size: 12px;
+  font-weight: bold;
+  padding-left: 24px;
+}
+
+.timeSuite {
+  color: $DUSTY_GRAY;
+  font-size: 12px;
+  font-weight: bold;
+  padding-top: 10px;
+}
+

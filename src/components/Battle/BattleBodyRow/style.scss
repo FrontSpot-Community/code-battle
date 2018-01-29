@@ -1,15 +1,19 @@
 @import '~Colors';
 
-.tr {
-  margin-left: 2%;
+.row {
   border-bottom: 1px solid $MINE_SHAFT;
 
-  td {
-    padding: 0 10px;
-    height: 50px;
+  >div {
+    display: inline-block;
+    width: 25%;
+    padding: 15px 0;
     color: $WHITE;
-    font-family: SourceSansPro;
+    font-family: 'Source Sans Pro Regular', sans-serif;
     font-size: 14px;
+
+    &:first-child {
+      width: 50%;
+    }
 
     i {
       margin-right: 5px;
@@ -17,11 +21,21 @@
   }
 
   .status_open {
+    font-weight: bold;
     color: #27f4ff;
+
+    &:first-letter {
+      text-transform: uppercase;
+    }
   }
   
   .status_resolved {
+    font-weight: bold;
     color: #c3ff5b;
+
+    &:first-letter {
+      text-transform: uppercase;
+    }
   }
 }
 

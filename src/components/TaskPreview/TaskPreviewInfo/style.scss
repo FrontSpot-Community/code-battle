@@ -1,0 +1,84 @@
+@import '~Colors';
+
+.wrapper {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  flex: 2;
+  border-top: 1px solid #333333;
+  background-color: $bg_dark;
+  overflow: hidden;
+}
+
+.header {
+  height: 50px;
+  width: 100%;
+  padding: 0 18px;
+  border-bottom: 1px solid $MINE_SHAFT;
+}
+
+.button {
+  margin-right: 18px;
+}
+
+.image {
+  margin-top: -3px;
+  color: $button-navigation_color;
+}
+
+.textBlock {
+  height: -moz-calc(100% - 100px);
+  height: -webkit-calc(100% - 100px);
+  height: calc(100% - 100px);
+  padding: 18px;
+  
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: $WHITE;
+  overflow-y: scroll;
+
+  p {
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+
+    code {
+      background-color: $code;
+      color: $WHITE;
+    }
+  }
+}
+
+.runButtonsBlock {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  height: 50px;
+  width: 100%;
+  padding: 0 18px;
+  border-top: 1px solid $MINE_SHAFT;
+  overflow: hidden;
+  background-color: $bg_dark;
+  padding: 8px 18px;
+  text-align: right;
+}
+
+.runButton {
+  margin-left: 8px;
+}
+
+.codeBlock {
+  background-color: $bg_dark;
+  border: none;
+  color: $WHITE;
+  overflow-x: hidden;
+}

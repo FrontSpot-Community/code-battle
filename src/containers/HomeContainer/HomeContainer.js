@@ -6,8 +6,8 @@ import TournamentList from '../../components/TournamentList';
 import Tabs from '../../components/Tabs';
 import Rank from '../../components/Rank';
 import {tournamentsRequest} from '../../actions/action_creators/tournamentActionCreators';
-
-import userScoreList from './mockUsers';
+import {allUsersRequest} from '../../actions/action_creators/userActionCreators';
+import Loader from 'src/components/Loader';
 
 class HomeContainer extends React.Component {
   constructor(props) {
@@ -16,6 +16,7 @@ class HomeContainer extends React.Component {
 
   componentDidMount() {
     this.props.tournamentsRequest();
+    this.props.allUsersRequest();
   }
 
   renderTabs = () => (<Tabs />);
@@ -23,32 +24,35 @@ class HomeContainer extends React.Component {
   render() {
     return (
       <div className={style.mainWrapper}>
-        <div className={style.wrapper}>
-          <div className={style.tableContainer}>
-            <TournamentList tournaments={this.props.tournaments}
-              render={this.renderTabs}/>
-          </div>
-          <div className={style.rankContainer}>
-            <Rank rankPosition={102}
-              totalRankPosition={654}
-              totalScore={190354}
-              userScoreList={userScoreList}/>
-          </div>
-        </div>
+        {!this.props.user
+          ? <Loader />
+          : <div className={style.wrapper}>
+            <div className={style.tableContainer}>
+              <TournamentList tournaments={this.props.tournaments}
+                render={this.renderTabs}/>
+            </div>
+            <div className={style.rankContainer}>
+              <Rank rankPosition={102}
+                totalRankPosition={654}
+                totalScore={190354}
+                userScoreList={this.props.users}/>
+            </div>
+          </div>}
       </div>
-
     );
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    tournaments: state.tournaments.data
+    tournaments: state.tournaments.data,
+    users: state.user.users,
+    user: state.user.userInfo
   };
 };
 
 const mapActionsToProps = (dispatch) => (
-  bindActionCreators({tournamentsRequest}, dispatch)
+  bindActionCreators({tournamentsRequest, allUsersRequest}, dispatch)
 );
 
 export default connect(mapStateToProps, mapActionsToProps)(HomeContainer);
