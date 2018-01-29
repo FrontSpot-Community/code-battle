@@ -1,0 +1,21 @@
+@import '~Colors';
+
+.container {
+  height: 100%;
+  padding: 18px;
+}
+
+.taskName {
+  font-family: 'Oswald Regular', sans-serif;
+  font-size: 24px;
+  letter-spacing: 0.2px;
+  color: $WHITE;
+  margin-bottom: 12px;
+}
+
+.row {
+  height: calc(50% - 63px);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}

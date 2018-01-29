@@ -1,0 +1,41 @@
+@import '~Colors';
+
+.container {
+  height: 100%;
+  width: calc(50% - 9px);
+}
+
+.header {
+  display: flex;
+  background-color: $bg_dark;
+  padding: 12px 18px 12px 8px;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid $MINE_SHAFT;
+}
+
+.headerName {
+  font-family: 'Oswald Regular', sans-serif;
+  font-size: 14px;
+  color: $WHITE;
+  line-height: 34px;
+}
+
+.headerButtons {
+  display: inline-block;
+}
+
+.resetButton {
+  background-color: transparent;
+  border: 1px solid $MEDIUM_GRAY;
+  padding: 4px 12px;
+  margin-right: 6px;
+}
+
+.resetButtonText {
+  color: $WHITE;
+  font-family: 'Oswald Regular', sans-serif;
+  font-size: 14px;
+  line-height: 1.71;
+  text-align: center;
+}

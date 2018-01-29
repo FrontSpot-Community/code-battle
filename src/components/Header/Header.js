@@ -36,7 +36,7 @@ class Header extends Component {
         </Link>
         <Breadcrumbs setHeaderBackground={this.setHeaderBackground}/>
         <Notifications />
-        <ProfileItem />
+        <ProfileItem user={this.props.user}/>
       </header>
     );
   }

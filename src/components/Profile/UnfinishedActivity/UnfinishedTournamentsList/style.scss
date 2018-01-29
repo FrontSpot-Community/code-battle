@@ -1,0 +1,38 @@
+@import '~Colors';
+
+.unfinishedList {
+  display: flex;
+  flex: .85;
+  padding: 0 10px 10px 10px;
+  flex-direction: column;
+  overflow-y: auto;
+
+  &Item {
+    display: flex;
+    border-bottom: 1px solid $MINE_SHAFT;
+    height: 70px;
+    flex-shrink: 0;
+  }
+}
+
+.tournamentInfo {
+  flex: 3;
+  justify-content: center;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.tournament {
+  &Name {
+    font-family: SourceSansPro;
+    color: $WHITE;
+    font-size: 14px;
+  }
+
+  &Score {
+    color: $DUSTY_GRAY;
+    font-size: 14px;
+    font-family: SourceSansPro;
+  }
+}

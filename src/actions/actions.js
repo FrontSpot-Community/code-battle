@@ -19,3 +19,26 @@ export const [
   TOURNAMENT_BY_ID_FETCH_FAILED
 ] = createFetchActions('TOURNAMENT_BY_ID_FETCH');
 
+export const [
+  TASK_BY_ID_FETCH,
+  TASK_BY_ID_FETCH_SUCCESS,
+  TASK_BY_ID_FETCH_FAILED
+] = createFetchActions('TASK_BY_ID_FETCH');
+
+export const [
+  TASKS_FETCH,
+  TASKS_FETCH_SUCCESS,
+  TASKS_FETCH_FAILED
+] = createFetchActions('TASKS_FETCH');
+
+export const [
+  TASKS_BY_ID_FETCH,
+  TASKS_BY_ID_FETCH_SUCCESS,
+  TASKS_BY_ID_FETCH_FAILED
+] = createFetchActions('TASKS_BY_ID_FETCH');
+
+export const [
+  USER_FETCH,
+  USER_FETCH_SUCCESS,
+  USER_FETCH_FAILED
+] = createFetchActions('USER_FETCH');

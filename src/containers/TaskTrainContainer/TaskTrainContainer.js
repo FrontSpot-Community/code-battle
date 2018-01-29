@@ -1,82 +1,114 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {
-  Grid,
-  Row,
-  Col,
-  Tabs,
-  Tab
-} from 'react-bootstrap';
 
-import TaskDescription from '../../components/TaskDescription/TaskDescription';
-import TaskOutput from '../../components/TaskOutput/TaskOutput';
-import CodeEditor from '../../components/CodeEditor/CodeEditor';
-import Button from '../../components/Common/Button';
+import Solution from '../../components/Solution';
+import SampleTests from '../../components/SampleTests';
+import TaskDetails from '../../components/TaskDetails';
+import Output from '../../components/Output';
+
 import {solutionRequest} from '../../actions/action_creators/solutionActionCreators';
 import {bindActionCreators} from 'redux';
+
+import style from './style.scss';
+
+const mockData = {
+  solution: 'function findEvenIndex(arr)\n' +
+  '{\n' +
+  '    //Code goes here!\n' +
+  '}',
+  sampleTests: 'Test.describe("FindEvenIndex", function() {\n' +
+  '  Test.it("Tests", function() {\n' +
+  '    Test.assertEquals(findEvenIndex([1,2,3,4,5,6]),-1, "The array: [1,2,3,4,5,6] \\n");\n' +
+  '  });\n' +
+  '});',
+  details: 'You are going to be given an array of integers. ' +
+  'Your job is to take that array and find an index N where the ' +
+  'sum of the integers to the left of N is equal to the sum of the integers to the right of N. ' +
+  'If there is no index that would make this happen, return   -1  .'
+};
 
 class TaskTrainContainer extends React.Component {
   constructor() {
     super();
-
     this.state = {
-      description: 'Task Description',
-      output: 'Task Output',
-      solution: ''
+      solution: mockData.solution,
+      sampleTests: mockData.sampleTests,
+      details: mockData.details,
+      output: {
+        details: 'To be continued...',
+        time: '321ms',
+        passed: '0',
+        failed: '2',
+        errors: '1'
+      }
     };
   }
 
   submitTask = () => {
     this.props.solutionRequest({
-      taskId: '5a40b0f8d999dc0115e77e2f',
+      taskId: '5a44c84b7a50db7e70a44a81',
       solutionCode: this.state.solution
     });
-  }
+  };
 
-  onCodeEditorChange = (newText) => {
+  runSampleTests = () => {
+    // run test action
+  };
+
+  onSolutionChange = (newText) => {
     this.setState({
       solution: newText
     });
-  }
+  };
+
+  onSampleTestsChange = (newText) => {
+    this.setState({
+      solution: newText
+    });
+  };
+
+  resetSolution = () => this.setState({solution: ''});
 
   render() {
-    const {solution} = this.props;
-    const solutionOutput = solution && solution.runOutput || '';
+    const {solutionResult} = this.props;
+    const solutionOutput = solutionResult
+      && solutionResult.runOutput.replace(/<IT::>/g, '<br/><br/>')
+      || this.state.details;
+
     return (
-      <Grid fluid={true}>
-        <h1>Task : {this.props.match.params.taskId}</h1>
-        <Row>
-          <Col md={5}>
-            <Tabs id={'taskDescriptionTabs'} defaultActiveKey={1}>
-              <Tab eventKey={1} title={'Description'}>
-                <TaskDescription
-                  description={this.state.description}
-                />
-              </Tab>
-              <Tab eventKey={2} title={'Output'}>
-                <TaskOutput
-                  output={solutionOutput}
-                />
-              </Tab>
-            </Tabs>
-          </Col>
-          <Col md={7}>
-            <CodeEditor
-              onChange={this.onCodeEditorChange}
-            />
-          </Col>
-        </Row>
-        <Row>
-          <Button onClick={this.submitTask}>SUBMIT</Button>
-        </Row>
-      </Grid>
+      <div className={style.container}>
+        <div className={style.taskName}>{this.props.match.params.id}</div>
+        <div className={style.row}>
+          <Solution
+            solution={this.state.solution}
+            onSolutionChange={this.onSolutionChange}
+            resetSolution={this.resetSolution}
+            onSubmitTask={this.submitTask}
+          />
+          <SampleTests
+            sampleTests={this.state.sampleTests}
+            runSampleTests={this.runSampleTests}
+            onSampleTestsChange={this.onSampleTestsChange}
+          />
+        </div>
+        <div className={style.row}>
+          <TaskDetails details={this.state.details} />
+          <Output
+            details={solutionOutput}
+            time={this.state.output.time}
+            passed={this.state.output.passed}
+            failed={this.state.output.failed}
+            errors={this.state.output.errors}
+          />
+        </div>
+      </div>
     );
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    solution: state.solution.result,
+    solutionResult: state.solution.result,
     solutionError: state.solution.error,
     solutionLoading: state.solution.isLoading
   };
