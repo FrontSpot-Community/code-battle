@@ -10,7 +10,7 @@ export default class ProfileDetails extends Component {
   }
 
   render() {
-    const {profileDetails} = this.props;
+    const {profileDetails, epamEmployee} = this.props;
 
     return (
       <div className={style.wrapper}>
@@ -20,7 +20,9 @@ export default class ProfileDetails extends Component {
           </dt>
         </dl>
         <ProfileDetailsList
+          epamEmployee={epamEmployee}
           profileDetails={profileDetails}
+          onChangeEpamEmployee={this.props.onChangeEpamEmployee}
           onChangeProfileDetail={this.props.onChangeProfileDetail}
           onResetProfileDetails={this.props.onResetProfileDetails}
           onSubmitProfileDetails={this.props.onSubmitProfileDetails}

@@ -4,3 +4,4 @@ export const TASK_ENDPOINT = 'task';
 export const ME = 'me';
 export const USERS = 'user';
 export const PROFILE_ENDPOINT = 'profile';
+export const AMI_ENDPOINT = 'http://ami-server.azurewebsites.net/';

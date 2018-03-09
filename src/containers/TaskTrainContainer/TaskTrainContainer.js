@@ -48,9 +48,11 @@ class TaskTrainContainer extends React.Component {
   }
 
   submitTask = () => {
-    const {taskId} = this.props.match.params;
+    const {id, taskId} = this.props.match.params;
     if (!this.state.solution) return;
     this.props.submitSolutionRequest({
+      userInfo: this.props.userInfo,
+      tournamentId: id,
       taskId: taskId,
       solutionCode: this.state.solution
     });
@@ -177,7 +179,8 @@ const mapStateToProps = (state) => {
     solutionResult: state.solution.result,
     solutionError: state.solution.error,
     solutionLoading: state.solution.isLoading,
-    solutionSubmitLoading: state.solution.isSubmitLoading
+    solutionSubmitLoading: state.solution.isSubmitLoading,
+    userInfo: state.user.userInfo
   };
 };
 
