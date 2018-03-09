@@ -6,12 +6,13 @@ const texts = {
   firstName: 'First name',
   lastName: 'Last name',
   email: 'E-mail',
+  upsa: 'UPSA Id',
   phoneNumber: 'Phone number',
   country: 'Country'
 };
 
 const ListItem = (props) => {
-  const {title, value, editable, onChangeProfileDetail} = props;
+  const {title, value, editable, onChangeProfileDetail, additionalInfo} = props;
   return (
     <div
       className={style.profileDetailsListItem}
@@ -26,11 +27,16 @@ const ListItem = (props) => {
             className={style.profileDetailValue}
             value={value}
             onChange={({target}) => {
-              onChangeProfileDetail(title, target.value);
+              !props.changeOnPaste && onChangeProfileDetail(title, target.value);
+            }}
+            onPaste={(e) => {
+              props.changeOnPaste &&
+                onChangeProfileDetail(title, e.clipboardData.getData('Text'));
             }}
           />
           : <div className={style.profileDetailValue}>{value}</div>}
       </div>
+      {additionalInfo}
     </div>
   );
 };

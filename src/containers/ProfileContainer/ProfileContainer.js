@@ -26,8 +26,10 @@ class ProfileContainer extends Component {
         lastName: userInfo.lastName,
         email: userInfo.email,
         phoneNumber: userInfo.phoneNumber,
-        country: userInfo.country
-      }
+        country: userInfo.country,
+        upsa: userInfo.upsa
+      },
+      epamEmployee: userInfo.epamEmployee
     };
   }
 
@@ -39,7 +41,9 @@ class ProfileContainer extends Component {
   componentWillReceiveProps(props) {
     if (!this.props.userInfo && props.userInfo) {
       const newProfileDetails = _.pick(props.userInfo, Object.keys(this.state.profileDetails));
-      this.setState({profileDetails: newProfileDetails});
+      this.setState({
+        profileDetails: newProfileDetails, epamEmployee: props.userInfo.epamEmployee
+      });
     }
   }
 
@@ -49,6 +53,10 @@ class ProfileContainer extends Component {
     this.setState({profileDetails: newProfileDetails});
   }
 
+  onChangeEpamEmployee = () => {
+    this.setState({epamEmployee: !this.state.epamEmployee});
+  }
+
   onResetProfileDetails = (e) => {
     e.preventDefault();
     this.setState({userInfo: _.pick(this.props.userInfo, Object.keys(this.state.profileDetails))});
@@ -56,12 +64,16 @@ class ProfileContainer extends Component {
 
   onSubmitProfileDetails = (e) => {
     e.preventDefault();
-    this.props.userEdit({id: this.props.userInfo._id, ...this.state.profileDetails});
+    this.props.userEdit({
+      id: this.props.userInfo._id,
+      ...this.state.profileDetails,
+      epamEmployee: this.state.epamEmployee});
   }
 
   render() {
     const detailsFromServer = _.pick(this.props.userInfo, Object.keys(this.state.profileDetails));
-    const isProfileDetailsChanged = !_.isEqual(this.state.profileDetails, detailsFromServer);
+    const isProfileDetailsChanged = !_.isEqual(this.state.profileDetails, detailsFromServer) ||
+      (this.state.epamEmployee !== this.props.userInfo.epamEmployee);
     return this.props.userLoading
       ? <div className={style.loader} />
       : <div className={style.mainWrapper}>
@@ -74,7 +86,9 @@ class ProfileContainer extends Component {
               rankPosition={102}
               totalRankPosition={654}
               totalScore={190354}
+              epamEmployee={this.state.epamEmployee}
               profileDetails={this.state.profileDetails}
+              onChangeEpamEmployee={this.onChangeEpamEmployee}
               onChangeProfileDetail={this.onChangeProfileDetail}
               onResetProfileDetails={this.onResetProfileDetails}
               onSubmitProfileDetails={this.onSubmitProfileDetails}

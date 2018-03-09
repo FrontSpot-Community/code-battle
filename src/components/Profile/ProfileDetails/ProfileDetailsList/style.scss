@@ -11,6 +11,7 @@
     display: flex;
     border-bottom: 1px solid $MINE_SHAFT;
     height: 70px;
+    width: 100%;
     flex-shrink: 0;
   }
 }
@@ -39,4 +40,17 @@
 
 .buttonsBlock {
   margin-top: 15px;
+}
+
+.epamEmployee {
+  margin-top: 25px;
+  color: white;
+}
+
+.switch {
+  margin-left: 5px;
+}
+
+.upsa {
+  color: white;
 }

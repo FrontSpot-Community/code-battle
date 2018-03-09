@@ -1,0 +1,82 @@
+@import '~Colors';
+
+.switcher {
+  display: inline-block;
+  color: white;
+}
+
+.switcherWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.switcherWrapperInput {
+  position: absolute;
+  left: -9999px;
+}
+
+.switcherWrapperLabel {
+  display: inline-block;
+  margin-right: 8px;
+  margin-left: 8px;
+  vertical-align: middle;
+  text-transform: capitalize;
+}
+
+.switcherWrapperFakeInput {
+  position: relative;
+  margin-right: 10px;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 48px;
+  height: 28px;
+  border-radius: 14px;
+  transition: all 0.2s ease-in-out;
+  background: $color-switcher-brand;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.switcherWrapperFakeInput:before {
+  position: absolute;
+  content: '';
+  width: 24px;
+  height: 24px;
+  left: 2px;
+  top: 2px;
+  bottom: 2px;
+  background: white;
+  border-radius: 50%;
+  transition: all 0.2s ease-in-out;
+}
+
+.switcherWrapperInput:checked ~ .switcherWrapperFakeInput {
+  background: $color-switcher-brand;
+}
+
+.switcherWrapperInput:checked ~ .switcherWrapperFakeInput:before {
+  transform: translateX(20px);
+}
+
+.switcherWrapperInput:not(:checked) ~ .switcherWrapperFakeInput {
+  background: $color-switcher-inactive;
+}
+
+.switcherWrapperInput:disabled ~ .switcherWrapperFakeInput {
+  background: white;
+  border: 2px solid $color-switcher-disabled;
+  cursor: default;
+}
+
+.switcherWrapperInput:disabled ~ .switcherWrapperFakeInput:before{
+  background: $color-switcher-disabled;
+  width: 20px;
+  height: 20px;
+}
+
+.switcherCheckedText {
+  user-select: none;
+}
