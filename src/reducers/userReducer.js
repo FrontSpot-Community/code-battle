@@ -5,7 +5,8 @@ import {
   USER_LOADING,
   USERS_FETCH,
   USERS_FETCH_SUCCESS,
-  USERS_FETCH_FAILED
+  USERS_FETCH_FAILED,
+  EPAM_LOGIN
 } from '../actions/actions';
 
 const initialState = {
@@ -17,6 +18,11 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+  case EPAM_LOGIN:
+    return {
+      ...state,
+      isLoading: true
+    };
   case USER_FETCH:
     return {
       ...state,

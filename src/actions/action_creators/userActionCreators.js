@@ -3,7 +3,8 @@ import {
   USER_FETCH,
   USER_PUT,
   USER_LOADING,
-  USERS_FETCH
+  USERS_FETCH,
+  EPAM_LOGIN
 } from '../actions';
 
 const userActions = new Actions(USER_FETCH);
@@ -24,5 +25,12 @@ export const userEdit = userActionsEdit.request;
 export const userLoading = () => {
   return {
     type: USER_LOADING
+  };
+};
+
+export const epamLogin = (data) => {
+  return {
+    type: EPAM_LOGIN,
+    payload: data
   };
 };

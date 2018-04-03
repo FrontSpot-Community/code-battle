@@ -8,7 +8,8 @@ const BUTTON_TYPES = [
   'success',
   'cancel',
   'navigation',
-  'githubLogin'
+  'githubLogin',
+  'epamLogin'
 ];
 
 

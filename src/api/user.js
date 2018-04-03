@@ -1,5 +1,5 @@
 import httpClient from '../services/httpClient';
-import {ME, USERS} from '../endpoints';
+import {ME, USERS, EPAM_LOGIN} from '../endpoints';
 
 export const getUser = () => {
   return httpClient.get(ME);
@@ -12,4 +12,8 @@ export const getUsers = () => {
 export const changeUserInfo = (data) => {
   const {id, ...rest} = data;
   return httpClient.put(`user/${id}`, rest);
+};
+
+export const epamLogin = (data) => {
+  return httpClient.post(EPAM_LOGIN, data);
 };

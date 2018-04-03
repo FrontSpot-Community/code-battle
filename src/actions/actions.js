@@ -59,3 +59,5 @@ export const [
   USERS_FETCH_SUCCESS,
   USERS_FETCH_FAILED
 ] = createFetchActions('USERS_FETCH');
+
+export const EPAM_LOGIN = 'EPAM_LOGIN';

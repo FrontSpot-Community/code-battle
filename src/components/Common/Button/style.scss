@@ -13,6 +13,7 @@
   box-sizing: border-box;
   box-shadow: none;
   border: 1px solid transparent;
+  cursor: pointer;
 
   & + & {
     margin-left: 6px;
@@ -57,7 +58,7 @@
   }
 }
 
-.githubLogin {
+.githubLogin, .epamLogin {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -66,6 +67,9 @@
   font-family: 'Oswald Regular', sans-serif;
   font-size: 16px;
   color: $button-github-font_color;
+}
+
+.githubLogin {
   background-color: $button-github-bg_color;
 
   &:hover, &:active {
@@ -76,6 +80,20 @@
   
   img {
     margin-right: 8px;
+  }
+}
+
+.githubLogin + .epamLogin {
+  margin-left: 0px;
+}
+
+.epamLogin {
+  background-color: $button-epam-bg_color;
+  margin-top: 18px;
+
+  &:hover, &:active {
+    text-decoration: none;
+    background-color: darken($button-epam-bg_color, 10%);
   }
 }
 
