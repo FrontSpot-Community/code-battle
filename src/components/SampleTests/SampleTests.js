@@ -5,6 +5,13 @@ import style from './style.scss';
 
 class SampleTests extends React.Component {
   render() {
+    const {
+      language,
+      sampleTests,
+      defaultTests,
+      onSampleTestsChange
+    } = this.props;
+
     return (
       <div className={style.container}>
         <div className={style.header}>
@@ -16,8 +23,9 @@ class SampleTests extends React.Component {
           </div> */}
         </div>
         <CodeEditor
-          value={this.props.sampleTests || this.props.defaultTests || ''}
-          onCodeEditorChange={this.props.onSampleTestsChange}
+          language={language}
+          value={sampleTests || defaultTests || ''}
+          onCodeEditorChange={onSampleTestsChange}
         />
       </div>
     );
