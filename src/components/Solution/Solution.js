@@ -7,6 +7,7 @@ import style from './style.scss';
 class Solution extends React.Component {
   render() {
     const {
+      language,
       onSubmitTask,
       solution,
       onSolutionChange,
@@ -25,6 +26,7 @@ class Solution extends React.Component {
           </div>
         </div>
         <CodeEditor
+          language={language}
           value={solution}
           onCodeEditorChange={onSolutionChange}
         />

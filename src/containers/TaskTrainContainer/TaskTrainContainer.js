@@ -139,15 +139,17 @@ class TaskTrainContainer extends React.Component {
           <TooltipsBoard className={style.tooltips} task={tooltipData} />
           <div className={style.row}>
             <Solution
-              solution={this.state.solution}
+              language={task && task.language}
               onSolutionChange={this.onSolutionChange}
-              resetSolution={this.resetSolution}
               onSubmitTask={this.submitTask}
+              resetSolution={this.resetSolution}
+              solution={this.state.solution}
             />
             <SampleTests
               defaultTests={task && task.test}
-              sampleTests={this.state.sampleTests} runSampleTests={this.runSampleTests}
+              language={task && task.language}
               onSampleTestsChange={this.onSampleTestsChange}
+              sampleTests={this.state.sampleTests} runSampleTests={this.runSampleTests}
             />
           </div>
           <div className={style.row}>
