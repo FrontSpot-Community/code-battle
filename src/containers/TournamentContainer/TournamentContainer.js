@@ -86,6 +86,8 @@ class BattleContainer extends React.Component {
 
   renderData() {
     const tournament = this.props.tournamentById;
+    if (!tournament) return null;
+
     const nextSorts = {
       difficulty: this.state.difficultyNextSortIncr,
       stars: this.state.starsNextSortIncr,
@@ -94,9 +96,9 @@ class BattleContainer extends React.Component {
       status: this.state.statusNextSortIncr
     };
 
-    const tournamentStatus = tournament && tournament.total === tournament.solved
+    const tournamentStatus = tournament.total === tournament.solved
       ? 'Solved'
-      : 'Started';
+      : tournament.status;
 
     return (
       <div className={style.wrapper}>
