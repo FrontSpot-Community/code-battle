@@ -1,0 +1,21 @@
+@import '~Colors';
+
+.status {
+  &Started {
+    color: $LIME_GREEN;
+    font-weight: bold;
+
+    &:first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  &Preparing {
+    color: $AMBER;
+    font-weight: bold;
+
+    &:first-letter {
+      text-transform: uppercase;
+    }
+  }
+}

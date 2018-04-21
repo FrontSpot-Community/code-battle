@@ -6,17 +6,21 @@
   height: 75px;
 
   >div {
-    display: flex;
     align-items: center;
-    width: 15%;
-    height: 75px;
     color: $DUSTY_GRAY;
+    display: flex;
+    flex-grow: 0;
+    flex-shrink: 0;
     font-size: 14px;
+    height: 75px;
+    width: 15%;
 
     &:first-child {
-      width: 40%;
+      flex-grow: 0;
+      flex-shrink: 0;
+      width: 25%;
     }
-    
+
     // &:nth-child(5) {
     //   width: 18%;
     // }
@@ -28,27 +32,6 @@
     color: $WHITE;
   }
 }
-
-.status {
-  &Started {
-    color: $DARK_GREEN;
-    font-weight: bold;
-
-    &:first-letter {
-      text-transform: uppercase;
-    }
-  }
-
-  &Preparing {
-    color: $AMBER;
-    font-weight: bold;
-
-    &:first-letter {
-      text-transform: uppercase;
-    }
-  }
-}
-
 
 .tag {
   margin-right: 5px;
@@ -66,4 +49,10 @@
   text-decoration: none;
   font-size: 16px;
   font-weight: bold;
+}
+
+.row > div.columnItem {
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
 }

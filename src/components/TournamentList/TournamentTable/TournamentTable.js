@@ -54,11 +54,11 @@ const headerCellNames = [
     displayName: 'Created By Team',
     propName: 'createdByTeam',
     disabled: true
+  },
+  {
+    displayName: 'Status',
+    propName: 'status',
+    sort: true
   }
-  // {
-  //   displayName: 'Status',
-  //   propName: 'status',
-  //   sort: true
-  // }
 ];
 

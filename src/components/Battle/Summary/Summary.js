@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './style.scss';
+import Status from '../../Status';
 
 const getDateFromUTC = (utc) => {
   const months = [
@@ -22,7 +23,9 @@ const getDateFromUTC = (utc) => {
 
 const Summary = (props) => {
   const {tournament, status} = props;
-  const solvingPercent = Math.ceil(tournament.solved/tournament.total * 100);
+  const solvingPercent = tournament.total
+    ? Math.ceil(tournament.solved/tournament.total * 100)
+    : null;
   return (
     <div className={style.wrapper}>
       <dl className={style.header}>
@@ -30,7 +33,7 @@ const Summary = (props) => {
           Tournaments summary
         </dt>
         <dd className={style.topStatus}>
-          {status}
+          <Status status={status} />
         </dd>
       </dl>
 
@@ -39,7 +42,7 @@ const Summary = (props) => {
           <div className={style.statusLineBlock}>
             <span className={style.statusLineBlockTitle}>Solved</span>
             <span className={style.statusLineBlockTitleStatus}>
-              You have done {solvingPercent} %
+              { solvingPercent !== null ? `You have done ${solvingPercent} %` : 'Nothing to solve' }
             </span>
             <div className={style.line}>
               <span className={style.lineFull}> </span>
