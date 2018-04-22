@@ -25,6 +25,10 @@
   }
 }
 
+.button:hover {
+  cursor: pointer;
+}
+
 .default {
   color: $button-default_color;
   background-color: $button-default_bg;
@@ -73,7 +77,7 @@
     background-color: darken($button-github-bg_color, 10%);
     color: $button-github-font_color
   }
-  
+
   img {
     margin-right: 8px;
   }

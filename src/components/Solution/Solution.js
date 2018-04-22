@@ -19,9 +19,7 @@ class Solution extends React.Component {
         <div className={style.header}>
           <span className={style.headerName}>SOLUTION</span>
           <div className={style.headerButtons}>
-            <button className={style.resetButton} onClick={resetSolution}>
-              <span className={style.resetButtonText}>RESET</span>
-            </button>
+            <Button mod="cancel" onClick={resetSolution}>RESET</Button>
             <Button onClick={onSubmitTask}>SUBMIT</Button>
           </div>
         </div>
