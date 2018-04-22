@@ -15,6 +15,11 @@
   background-color: $MINE_SHAFT;
 }
 
+.container:hover,
+.containerHover:hover {
+  cursor: pointer;
+}
+
 .userPic {
   width: 36px;
   height: 36px;
