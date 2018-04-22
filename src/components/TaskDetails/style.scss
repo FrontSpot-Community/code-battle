@@ -27,4 +27,18 @@
   font-size: 14px;
   color: $WHITE;
   padding: 18px 41px 0 18px;
+
+  pre {
+    background-color: $code;
+  }
+
+  pre code {
+    color: $WHITE;
+    background-color: $code;
+  }
+
+  code {
+    color: $WHITE;
+    background-color: $code;
+  }
 }

@@ -1,12 +1,15 @@
 import React from 'react';
-import parser from 'html-react-parser';
+import ReactMarkdown from 'react-markdown';
 
 import style from './style.scss';
 // import lock from './assets/lock.svg';
 import {Button} from 'src/components/Common';
-import {addNewLineCharacter} from 'src/utils';
 
 const TaskPreviewInfo = (props) => {
+  const taskDetails = props.infoState === 'details' && props.task
+    ? props.task.description
+    : null;
+
   return (
     <div className={style.wrapper}>
       <header className={style.header}>
@@ -43,9 +46,7 @@ const TaskPreviewInfo = (props) => {
       </header>
 
       <section className={style.textBlock}>
-        {props.infoState === 'details' && props.task
-          ? addNewLineCharacter(parser(props.task.description))
-          : null}
+        <ReactMarkdown source={taskDetails} />
         {props.infoState === 'your-solution'
           ? <pre className={style.codeBlock}>{props.solution}</pre>
           : null

@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {addNewLineCharacter} from 'src/utils';
 
 import Solution from '../../components/Solution';
 import TooltipsBoard from 'src/components/TooltipsBoard';
@@ -153,7 +152,7 @@ class TaskTrainContainer extends React.Component {
             />
           </div>
           <div className={style.row}>
-            <TaskDetails details={task && addNewLineCharacter(task.description)} />
+            <TaskDetails details={task && task.description} />
             {this.renderOutput(outputData, statistics, solutionSubmitLoading)}
           </div>
         </div>

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import ReactMarkdown from 'react-markdown';
 
 import style from './style.scss';
 
@@ -10,7 +11,7 @@ export default class TaskDetails extends Component {
           <span className={style.headerName}>DETAILS</span>
         </div>
         <div className={style.content}>
-          {this.props.details}
+          <ReactMarkdown source={this.props.details} />
         </div>
       </div>
     );
