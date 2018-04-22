@@ -31,7 +31,7 @@
   height: -webkit-calc(100% - 100px);
   height: calc(100% - 100px);
   padding: 18px;
-  
+
   font-size: 14px;
   font-weight: normal;
   font-style: normal;
@@ -50,11 +50,20 @@
     line-height: normal;
     letter-spacing: normal;
     text-align: left;
+  }
 
-    code {
-      background-color: $code;
-      color: $WHITE;
-    }
+  pre {
+    background-color: $code;
+  }
+
+  pre code {
+    color: $WHITE;
+    background-color: $code;
+  }
+
+  code {
+    color: $WHITE;
+    background-color: $code;
   }
 }
 

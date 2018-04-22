@@ -1,3 +1,5 @@
+set -e
+
 yarn install
 yarn run clean-dist
 yarn run build
