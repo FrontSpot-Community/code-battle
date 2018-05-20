@@ -6,7 +6,7 @@ import TournamentList from '../../components/TournamentList';
 import Tabs from '../../components/Tabs';
 import Rank from '../../components/Rank';
 import {tournamentsRequest} from '../../actions/action_creators/tournamentActionCreators';
-import {allUsersRequest} from '../../actions/action_creators/userActionCreators';
+import {allUsersRequest, userRequest} from '../../actions/action_creators/userActionCreators';
 import Loader from 'src/components/Loader';
 
 class HomeContainer extends React.Component {
@@ -17,6 +17,7 @@ class HomeContainer extends React.Component {
   componentDidMount() {
     this.props.tournamentsRequest();
     this.props.allUsersRequest();
+    this.props.userRequest();
   }
 
   renderTabs = () => (<Tabs />);
@@ -32,10 +33,10 @@ class HomeContainer extends React.Component {
                 render={this.renderTabs}/>
             </div>
             <div className={style.rankContainer}>
-              <Rank rankPosition={102}
-                totalRankPosition={654}
-                totalScore={190354}
-                userScoreList={this.props.users}/>
+              <Rank rankPosition={this.props.rankPosition}
+                totalRankPosition={this.props.users.length}
+                totalScore={this.props.user.score}
+                users={this.props.users}/>
             </div>
           </div>}
       </div>
@@ -45,6 +46,7 @@ class HomeContainer extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    rankPosition: state.user.users.findIndex((item) => item._id === state.user.userInfo._id) + 1,
     tournaments: state.tournaments.data,
     users: state.user.users,
     user: state.user.userInfo
@@ -52,7 +54,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapActionsToProps = (dispatch) => (
-  bindActionCreators({tournamentsRequest, allUsersRequest}, dispatch)
+  bindActionCreators({tournamentsRequest, allUsersRequest, userRequest}, dispatch)
 );
 
 export default connect(mapStateToProps, mapActionsToProps)(HomeContainer);
