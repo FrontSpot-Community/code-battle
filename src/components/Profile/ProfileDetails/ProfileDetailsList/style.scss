@@ -3,16 +3,16 @@
 .profileDetailsList {
   display: flex;
   flex: .85;
-  padding: 0 10px 10px 10px;
+  padding: 0 18px 10px;
   flex-direction: column;
   overflow-y: auto;
 
   &Item {
-    display: flex;
-    border-bottom: 1px solid $MINE_SHAFT;
-    height: 70px;
-    width: 100%;
     flex-shrink: 0;
+    display: flex;
+    width: 100%;
+    padding: 17px 0 0;
+    border-bottom: 1px solid $MINE_SHAFT;
   }
 }
 
@@ -24,14 +24,16 @@
   flex-direction: column;
 
   &Name {
-    color: $WHITE;
-    font-size: 14px;
+    color: $DUSTY_GRAY;
+    font-size: 12px;
+    line-height: 16px;
   }
 
   &Value {
     width: 100%;
-    color: $DUSTY_GRAY;
+    color: $WHITE;
     font-size: 14px;
+    line-height: 24px;
     background-color: transparent;
     border: 0;
     outline: none;

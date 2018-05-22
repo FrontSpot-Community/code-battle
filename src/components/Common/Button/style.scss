@@ -13,6 +13,7 @@
   box-sizing: border-box;
   box-shadow: none;
   border: 1px solid transparent;
+  text-transform: uppercase;
 
   & + & {
     margin-left: 6px;
