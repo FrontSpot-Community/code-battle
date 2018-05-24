@@ -11,7 +11,7 @@
 
 .header {
   align-items: center;
-  padding: 13px;
+  padding: 13px 18px;
   border-bottom: 1px solid $MINE_SHAFT;
   margin-bottom: 0;
 }
@@ -27,5 +27,5 @@
 
 .body {
   padding: 0 18px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
