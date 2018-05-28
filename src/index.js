@@ -2,7 +2,7 @@ import 'babel-polyfill';
 import React from 'react';
 import {render} from 'react-dom';
 import {Provider} from 'react-redux';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 import {configureStore} from './store/configureStore';
 import App from './containers/App';
 import HomeContainer from './containers/HomeContainer';
@@ -11,6 +11,7 @@ import TaskContainer from './containers/TaskContainer';
 import TaskTrainContainer from './containers/TaskTrainContainer';
 import ProfileContainer from './containers/ProfileContainer';
 import LoginContainer from './containers/LoginContainer';
+import cookieService from './services/cookie';
 
 import rootSaga from './sagas';
 import {userRequest} from './actions/action_creators/userActionCreators';
@@ -19,12 +20,20 @@ const store = configureStore();
 store.runSaga(rootSaga);
 store.dispatch(userRequest());
 
+const renderComponent = (component) => {
+  return () => {
+    const token = cookieService.getCookie('token');
+
+    return token ? component : <Redirect to='login' />;
+  };
+};
+
 render(
   <Provider store={store}>
     <Router>
       <App>
         <Switch>
-          <Route exact path="/" component={HomeContainer} />
+          <Route exact path="/" render={renderComponent(<HomeContainer/>)}/>
           <Route exact path="/login" component={LoginContainer} />
           <Route exact path="/profile" component={ProfileContainer} />
           <Route exact path="/:id" component={TournamentContainer} />

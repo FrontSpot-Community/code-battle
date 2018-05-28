@@ -29,8 +29,8 @@ class LoginContainer extends React.Component {
                 href={process.env.LOGIN_URL}
               >
                 {[
-                  <img src={github} width='24px' height='24px' />,
-                  <span>GITHUB</span>
+                  <img src={github} width='24px' height='24px' key='githubImage'/>,
+                  <span key='span'>GITHUB</span>
                 ]}
               </Button>
             </div>
