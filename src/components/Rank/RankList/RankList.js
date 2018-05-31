@@ -5,7 +5,7 @@ export default class RankList extends Component {
   render() {
     return (
       <div className={style.rankList}>
-        {this.props.rankList.map((user, index) => (
+        {this.props.users.map((user, index) => (
           <div className={style.rankListItem}
             key={user.githubDisplayName || user.githubUsername + index}>
 
@@ -20,7 +20,7 @@ export default class RankList extends Component {
                 {user.githubDisplayName || user.githubUsername}
               </div>
               <div className={style.userScore}>
-                {user.totalScore}
+                {user.score ? user.score : 0}
               </div>
             </div>
 

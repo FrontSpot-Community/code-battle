@@ -50,7 +50,7 @@ export default (state = initialState, action) => {
     return {
       ...state,
       isLoading: false,
-      users: [...action.payload.data]
+      users: [...action.payload]
     };
   case USERS_FETCH_FAILED:
     return {

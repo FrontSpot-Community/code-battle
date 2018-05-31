@@ -37,7 +37,7 @@ function* editUser({payload}) {
 function* fetchAllUsers() {
   try {
     const users = yield call(getUsers);
-    yield put(allUsersFetchSuccess(users));
+    yield put(allUsersFetchSuccess(users.data));
   } catch (error) {
     yield put(allUsersFetchFailed(error.data));
   }
