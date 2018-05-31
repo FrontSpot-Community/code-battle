@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import cookieService from '../../../../services/cookie/index';
 
 import userPic from '../../../../assets/images/flip.jpg';
 import caretIcon from '../../../../assets/images/caret.svg';
@@ -15,6 +16,10 @@ class ProfileItem extends Component {
       avatarUrl: ''
     };
   }
+
+  handleLogout = () => {
+    return cookieService.removeCookie('token');
+  };
 
   componentDidMount() {
     this.currentElement.addEventListener('mouseleave', () => {
@@ -59,7 +64,11 @@ class ProfileItem extends Component {
           <span className={styles.userName}>{this.state.userName}</span>
           <Link className={styles.dropDownItem} to={'/profile'}>My Profile</Link>
           <Link className={styles.dropDownItem} to={''}>Main</Link>
-          {/* <Link className={styles.logout} to={''}>LOGOUT</Link> */}
+          <Link
+            className={styles.logout}
+            to={'login'}
+            onClick={this.handleLogout}>LOGOUT
+          </Link>
         </div>
       </div>
     );
