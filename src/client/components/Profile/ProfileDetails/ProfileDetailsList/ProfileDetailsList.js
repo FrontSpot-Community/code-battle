@@ -14,15 +14,18 @@ const ProfileDetailsList = (props) => {
         .entries(props.profileDetails)
         .map(([title, value]) => {
           return (title !== 'upsa' || props.epamEmployee === true) &&
-          <div><ListItem
+          <div
             key={title}
-            editable={title !== 'githubLogin'}
-            title={title}
-            value={value}
-            onChangeProfileDetail={props.onChangeProfileDetail}
-            changeOnPaste={title === 'upsa'}
-          />
-          {title === 'upsa' &&
+          >
+            <ListItem
+              key={title}
+              editable={title !== 'githubLogin'}
+              title={title}
+              value={value}
+              onChangeProfileDetail={props.onChangeProfileDetail}
+              changeOnPaste={title === 'upsa'}
+            />
+            {title === 'upsa' &&
             <p className={style.upsa}>Please, paste ID from your upsa account</p>}
           </div>;
         })

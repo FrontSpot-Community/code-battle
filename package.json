@@ -36,6 +36,7 @@
     "react-ace": "^5.10.0",
     "react-bootstrap": "^0.31.5",
     "react-dom": "^16.1.1",
+    "react-joyride": "next",
     "react-markdown": "^3.3.0",
     "react-redux": "^5.0.6",
     "react-redux-loading-bar": "^2.9.3",
