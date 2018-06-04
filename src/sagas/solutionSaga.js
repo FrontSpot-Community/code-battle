@@ -30,10 +30,9 @@ function* sendSolution({payload}) {
     const tournament = yield call(getTournamentById, tournamentId);
     if (tournament.solved === tournament.total) {
       const dataToAmi = {
-        name: `${userInfo.firstName} ${userInfo.lastName}`,
         upsa: userInfo.upsa,
         language: tournament.language,
-        lesson: tournament.id
+        tournament: tournament.id
       };
       yield call(postToAmi, dataToAmi);
     }
