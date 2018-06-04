@@ -3,9 +3,11 @@
         "eslint:recommended",
         "google",
         "plugin:import/errors",
-        "plugin:import/warnings"],
+        "plugin:import/warnings"
+    ],
     "plugins": [
         "react",
+        "prettier",
         "import"
     ],
     "parserOptions": {
