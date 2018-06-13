@@ -83,8 +83,8 @@ module.exports = {
       new webpack.DefinePlugin({
         'process.env': {
           NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-          API_URL: JSON.stringify('http://battle.frontspot.co/api'),
-          LOGIN_URL: JSON.stringify('http://battle.frontspot.co/api/auth/github')
+          API_URL: JSON.stringify('https://battle.frontspot.co/api'),
+          LOGIN_URL: JSON.stringify('https://battle.frontspot.co/api/auth/github')
         },
       }),
       new ExtractTextPlugin('style.css'),
