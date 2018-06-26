@@ -1,0 +1,29 @@
+@import '~Colors';
+
+.wrapper {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    height: -moz-calc(100% - 5px);
+    height: -webkit-calc(100% - 5px);
+    height: calc(100% - 5px);
+    font-size: 14px;
+}
+
+.mainWrapper {
+    height: -moz-calc(100% - 60px);
+    height: -webkit-calc(100% - 60px);
+    height: calc(100% - 60px);
+    padding: 18px;
+    width: 100%;
+}
+
+.tableContainer {
+    flex: 5;
+    height: 100%;
+}
+
+.rankContainer {
+    flex: 2;
+    margin-left: 18px;
+}

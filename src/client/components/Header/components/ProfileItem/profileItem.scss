@@ -1,0 +1,107 @@
+@import '~Colors';
+
+.container {
+  position: relative;
+  padding: 12px 18px;
+
+  &:hover {
+    background-color: $MINE_SHAFT;
+  }
+}
+
+.containerHover {
+  position: relative;
+  padding: 12px 18px;
+  background-color: $MINE_SHAFT;
+}
+
+.container:hover,
+.containerHover:hover {
+  cursor: pointer;
+}
+
+.userPic {
+  width: 36px;
+  height: 36px;
+  border-radius: 18px;
+
+    &:hover {
+    border: 2px solid $SHARP_BLUE;
+  }
+}
+
+.dropDown {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-family: 'Oswald Regular', sans-serif;
+  font-size: 18px;
+  color: $WHITE;
+  white-space: nowrap;
+  background-color: $MINE_SHAFT;
+  min-width: 180px;
+  padding: 6px 0;
+  z-index: 500;
+}
+
+.userName {
+  position: relative;
+  padding: 10px 18px;
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  color: $DUSTY_GRAY;
+
+  &:after {
+    content: '';
+    position: absolute;
+    left: 6px;
+    bottom: -6px;
+    right: 6px;
+    height: 1px;
+    background: $DUSTY_GRAY;
+  }
+}
+
+.dropDownItem {
+  display: flex;
+  padding: 10px 18px;
+  color: $WHITE;
+  text-decoration: none;
+
+  &:hover, &:focus {
+    color: $WHITE;
+    text-decoration: none;
+    background-color: $SHARP_BLUE;
+  }
+}
+
+
+.logout {
+  position: relative;
+  padding: 10px 18px;
+  text-transform: uppercase;
+  margin-top: 12px;
+  color: $WHITE;
+  font-size: 14px;
+
+  &:hover, &:focus {
+    color: $WHITE;
+    text-decoration: none;
+    background-color: $SHARP_BLUE;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 6px;
+    right: 6px;
+    height: 1px;
+    background: $DUSTY_GRAY;
+  }
+}
+

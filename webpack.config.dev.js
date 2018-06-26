@@ -4,12 +4,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const outputPath = path.resolve(__dirname, './dist');
 const srcPath = path.resolve(__dirname, './src');
-const styleColors = path.resolve(__dirname, './src/constants/colors.scss');
+const commonPath = path.resolve(__dirname, './src/common');
+const rootPath = path.resolve(__dirname);
+const styleColors = path.resolve(__dirname, './src/common/constants/colors.scss');
 
 module.exports = {
     entry: [
       'eventsource-polyfill', // necessary for hot reloading with IE
-      './src/index'
+      './src/client/index'
     ],
     output: {
       path: outputPath, // Note: Physical files are only output by the production build task `npm run build`.
@@ -20,7 +22,9 @@ module.exports = {
     resolve: {
       alias: {
         src: srcPath,
-        'Colors': styleColors
+        'Colors': styleColors,
+        common: commonPath,
+        root: rootPath
       },
       extensions: ['.js', '.jsx']
     },
@@ -84,7 +88,7 @@ module.exports = {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: path.join(srcPath, 'index.html'),
+        template: path.join(srcPath, 'client', 'index.html'),
         filename: 'index.html',
         path: outputPath
       }),
