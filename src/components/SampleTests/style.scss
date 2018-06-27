@@ -8,7 +8,7 @@
 .header {
   display: flex;
   background-color: $bg_dark;
-  padding: 12px 18px 12px 8px;
+  padding: 12px 8px 12px 18px;
   flex-direction: row;
   justify-content: space-between;
   border-bottom: 1px solid $MINE_SHAFT;
@@ -18,7 +18,7 @@
   font-family: 'Oswald Regular', sans-serif;
   font-size: 14px;
   color: $WHITE;
-  line-height: 34px;
+  line-height: 24px;
 }
 
 .headerButtons {
