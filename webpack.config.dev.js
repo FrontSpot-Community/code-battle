@@ -9,20 +9,19 @@ const rootPath = path.resolve(__dirname);
 const styleColors = path.resolve(__dirname, './src/common/constants/colors.scss');
 
 module.exports = {
-    entry: [
-      'eventsource-polyfill', // necessary for hot reloading with IE
-      './src/client/index'
-    ],
+    entry: {
+      client: './src/client/index'
+    },
     output: {
-      path: outputPath, // Note: Physical files are only output by the production build task `npm run build`.
+      path: outputPath,
       publicPath: '/',
-      filename: 'bundle.js'
+      filename: '[name].entry.js'
     },
     devtool: 'inline-source-map',
     resolve: {
       alias: {
         src: srcPath,
-        'Colors': styleColors,
+        Colors: styleColors,
         common: commonPath,
         root: rootPath
       },
@@ -89,8 +88,17 @@ module.exports = {
     plugins: [
       new HtmlWebpackPlugin({
         template: path.join(srcPath, 'client', 'index.html'),
+        favicon: './assets/images/favicon.ico',
         filename: 'index.html',
-        path: outputPath
+        path: outputPath,
+        chunks: ['vendor', 'client']
+      }),
+      new HtmlWebpackPlugin({
+        template: path.join(srcPath, 'client_admin', 'index.html'),
+        favicon: './assets/images/favicon.ico',
+        filename: 'index_admin.html',
+        path: outputPath,
+        chunks: ['vendor', 'client_admin']
       }),
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NamedModulesPlugin(),
@@ -101,6 +109,10 @@ module.exports = {
           API_URL: JSON.stringify('http://localhost:3002'),
           LOGIN_URL: JSON.stringify('http://localhost:3002/auth/github')
         },
+      }),
+      new webpack.optimize.CommonsChunkPlugin({
+        name: 'vendor',
+        minChunks: ({ resource }) => /node_modules/.test(resource),
       })
     ],
     devServer : {
@@ -110,6 +122,7 @@ module.exports = {
       port: 3000,
       inline: true,
       hot: true,
-      historyApiFallback: true
+      historyApiFallback: true,
+      index: process.env.ADMIN_PAGE ? 'index_admin.html' : 'index.html'
     }
 };

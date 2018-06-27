@@ -4,22 +4,27 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const outputPath = path.resolve(__dirname, './dist');
 const srcPath = path.resolve(__dirname, './src');
-const styleColors = path.resolve(__dirname, './src/constants/colors.scss');
+const commonPath = path.resolve(__dirname, './src/common');
+const rootPath = path.resolve(__dirname);
+const styleColors = path.resolve(__dirname, './src/common/constants/colors.scss');
 
 module.exports = {
     devtool: 'source-map',
-    entry: [
-      './src/index'
-    ],
+    entry: {
+      client: './src/client/index',
+      client_admin: './src/client_admin/index'
+    },
     output: {
-      path: outputPath, // Note: Physical files are only output by the production build task `npm run build`.
+      path: outputPath,
       publicPath: '/',
-      filename: 'bundle.[hash].js'
+      filename: '[name]/[name].js'
     },
     resolve: {
       alias: {
         src: srcPath,
-        Colors: styleColors
+        Colors: styleColors,
+        common: commonPath,
+        root: rootPath
       },
       extensions: ['.js', '.jsx']
     },
@@ -74,10 +79,18 @@ module.exports = {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: path.join(srcPath, 'index.html'),
-        favicon: 'src/assets/images/favicon.ico',
+        template: path.join(srcPath, 'client', 'index.html'),
+        favicon: './assets/images/favicon.ico',
         filename: 'index.html',
-        path: outputPath
+        path: outputPath,
+        chunks: ['vendor', 'client']
+      }),
+      new HtmlWebpackPlugin({
+        template: path.join(srcPath, 'client_admin', 'index.html'),
+        favicon: './assets/images/favicon.ico',
+        filename: 'index_admin.html',
+        path: outputPath,
+        chunks: ['vendor', 'client_admin']
       }),
       new webpack.optimize.OccurrenceOrderPlugin(),
       new webpack.DefinePlugin({
@@ -90,6 +103,10 @@ module.exports = {
       new ExtractTextPlugin('style.css'),
       new webpack.LoaderOptionsPlugin({
         debug: true
+      }),
+      new webpack.optimize.CommonsChunkPlugin({
+        name: 'vendor',
+        minChunks: ({ resource }) => /node_modules/.test(resource),
       }),
       new webpack.optimize.UglifyJsPlugin()
     ]
