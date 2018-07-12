@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import Joyride from 'react-joyride';
 import {ACTIONS, EVENTS} from 'react-joyride/es/constants';
-import {profileSteps} from '../../constants/joyride';
+import {profileSteps} from 'src/common/constants/joyride';
 import {
   userEdit,
   userRequest
