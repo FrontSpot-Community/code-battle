@@ -41,6 +41,7 @@ const ProfileDetailsList = (props) => {
         ? <div className={style.buttonsBlock}>
           <Button type='reset' mod='cancel'>Reset</Button>
           <Button type='submit' mod='success'>Save changes</Button>
+          <Button type='delete' mod='delete'>Delete account</Button>
         </div>
         : null}
     </form>

@@ -6,6 +6,7 @@ import style from './style.scss';
 const BUTTON_TYPES = [
   'default',
   'success',
+  'delete',
   'cancel',
   'navigation',
   'githubLogin'

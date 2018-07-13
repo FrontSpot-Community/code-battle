@@ -47,6 +47,12 @@
   border: 1px solid $button-cancel_color;
 }
 
+.delete {
+  color: $button-delete_color;
+  background-color: $button-delete_bg;
+  float: right;
+}
+
 .navigation {
   height: 100%;
   padding: 0;
