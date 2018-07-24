@@ -13,7 +13,11 @@ import {tournamentsRequest} from 'src/client/actions/action_creators/tournamentA
 
 import {
   ProfileDetails,
-  ProfileTournaments
+  TasksStatistic,
+  TournamentsStatistic
+  // UnfinishedActivity,
+  // SolvedTasksStat
+  // ProfileTournaments
 } from 'src/client/components/Profile';
 
 import style from './style.scss';
@@ -95,6 +99,21 @@ class ProfileContainer extends Component {
     const detailsFromServer = _.pick(this.props.userInfo, Object.keys(this.state.profileDetails));
     const isProfileDetailsChanged = !_.isEqual(this.state.profileDetails, detailsFromServer) ||
       (this.state.epamEmployee !== this.props.userInfo.epamEmployee);
+
+    const taskMetrics= {
+      assigned: 40,
+      trained: 14,
+      solved: 9,
+      totalAttempts: 30
+    };
+
+    const tournamentMetrics= {
+      participated: 4,
+      finished: 3,
+      wins: 1,
+      satisfation: 2
+    };
+
     return this.props.userLoading
       ? <div className={style.loader} />
       : <div className={style.mainWrapper}>
@@ -107,11 +126,19 @@ class ProfileContainer extends Component {
         <div className={style.wrapper}>
           <div className={style.statisticsContainer}>
             {/* TODO: fix redundant inner div for joyride anchor */}
-            <div className="ProfileTournaments">
-              <ProfileTournaments
-                tournaments={this.props.tournaments}
-              />
-            </div>
+            <TournamentsStatistic
+              metrics={tournamentMetrics}
+            />
+            <TasksStatistic
+              metrics={taskMetrics}
+            />
+            {/* <UnfinishedActivity
+
+            /> */}
+            {/* <ProfileTournaments
+              tournaments={this.props.tournaments}
+            /> */}
+            {/* <SolvedTasksStat/> */}
           </div>
           <div className={style.detailsContainer}>
             <div className="ProfileDetails">
