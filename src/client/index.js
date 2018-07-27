@@ -3,17 +3,17 @@ import React from 'react';
 import {render} from 'react-dom';
 import {Provider} from 'react-redux';
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
-import {configureStore} from 'src/client/store/configureStore';
+import {configureStore} from 'src/common/store/configureStore';
 import App from 'src/client/containers/App';
 import HomeContainer from 'src/client/containers/HomeContainer/index';
 import TournamentContainer from 'src/client/containers/TournamentContainer/index';
 import TaskContainer from 'src/client/containers/TaskContainer/index';
 import TaskTrainContainer from 'src/client/containers/TaskTrainContainer/index';
 import ProfileContainer from 'src/client/containers/ProfileContainer/index';
-import LoginContainer from 'src/client/containers/LoginContainer/index';
+import LoginContainer from 'src/common/containers/LoginContainer/index';
 import cookieService from 'src/common/services/cookie/index';
 
-import rootSaga from './sagas/index';
+import rootSaga from 'src/client/sagas';
 import {userRequest} from './actions/action_creators/userActionCreators';
 
 const store = configureStore();

@@ -1,14 +1,5 @@
-import {combineReducers} from 'redux';
-import tournamentReducer from './tournamentReducer';
-import taskReducer from './taskReducer';
-import solutionReducer from './solutionReducer';
-import userReducer from './userReducer';
+import combineRootReducer from 'common/reducers';
 
-const rootReducer = combineReducers({
-  tasks: taskReducer,
-  tournaments: tournamentReducer,
-  solution: solutionReducer,
-  user: userReducer
-});
+const rootReducer = combineRootReducer;
 
-export default rootReducer;
+export default rootReducer();

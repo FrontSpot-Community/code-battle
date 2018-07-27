@@ -1,23 +1,23 @@
 import {call, put, takeEvery} from 'redux-saga/effects';
-import {getTournamentById} from '../../common/api/tournaments';
-import {postToAmi} from '../../common/api/ami';
+import {getTournamentById} from '../api/tournaments';
+import {postToAmi} from '../api/ami';
 
 import {
   submitSolution,
   getSolutionByTaskId
-} from '../../common/api/solutions';
+} from '../api/solutions';
 import {
   submitSolutionSuccess,
   submitSolutionFailed,
   solutionByTaskIdSuccess,
   solutionByTaskIdFailed
-} from '../actions/action_creators/solutionActionCreators';
+} from '../../client/actions/action_creators/solutionActionCreators';
 
 import {
   SUBMIT_SOLUTION_FETCH,
   SOLUTION_BY_TASK_ID_FETCH
 
-} from '../actions/actions';
+} from '../../client/actions/actions';
 
 function* sendSolution({payload}) {
   try {

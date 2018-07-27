@@ -8,7 +8,7 @@ import {
   TASKS_BY_ID_FETCH,
   TASKS_BY_ID_FETCH_SUCCESS,
   TASKS_BY_ID_FETCH_FAILED
-} from '../actions/actions';
+} from '../../client/actions/actions';
 
 const initialState = {
   isLoading: false,

@@ -1,6 +1,6 @@
 import {call, put, takeEvery} from 'redux-saga/effects';
 import {showLoading, hideLoading} from 'react-redux-loading-bar';
-import {getUser, changeUserInfo, getUsers} from '../../common/api/user';
+import {getUser, changeUserInfo, getUsers} from '../api/user';
 
 import {
   userFetchSuccess,
@@ -8,9 +8,9 @@ import {
   userLoading,
   allUsersFetchSuccess,
   allUsersFetchFailed
-} from '../actions/action_creators/userActionCreators';
+} from '../../client/actions/action_creators/userActionCreators';
 
-import {USER_FETCH, USER_PUT, USERS_FETCH} from '../actions/actions';
+import {USER_FETCH, USER_PUT, USERS_FETCH} from '../../client/actions/actions';
 
 function* fetchUser() {
   try {

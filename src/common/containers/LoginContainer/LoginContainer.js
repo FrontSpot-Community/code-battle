@@ -2,7 +2,7 @@ import React from 'react';
 import style from './style.scss';
 import logo from 'root/assets/images/logo.svg';
 import github from 'root/assets/images/github-logo.svg';
-import {Button} from 'src/client/components/Common';
+import {Button} from 'src/client/components/Common/index';
 
 class LoginContainer extends React.Component {
   constructor(props) {
