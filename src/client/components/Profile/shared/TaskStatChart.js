@@ -5,10 +5,10 @@ export default class TaskStatChart extends Component {
   render() {
     const data = {
       columns: [
-        ['Berserk', 40],
-        ['Fighter', 10],
-        ['Mortal', 20],
-        ['Champion', 30]
+        ['Berserk', 16],
+        ['Fighter', 90],
+        ['Mortal', 84],
+        ['Champion', 40]
       ],
       type: 'donut'
     };

@@ -6,15 +6,16 @@ import TotalValue from './TotalValue';
 
 export default class Totals extends Component {
   render() {
-    const {totalValuesMap} = this.props;
+    const {totalValuesMap, colors} = this.props;
 
     return (
       <div className={style.totals}>
         {
           Object.entries(totalValuesMap).map(([key, value]) => {
+            const color = colors[key];
             return (
               <div className={style.total} key={key}>
-                <TotalValue title={key} value={value} />
+                <TotalValue title={key} value={value} color={color}/>
               </div>
             );
           })

@@ -25,9 +25,7 @@ export default class UnfinishedActivity extends Component {
     return (
       <div className={style.wrapper}>
         <dl className={style.header}>
-          <dt className={style.title}>
-            UnfinishedActivity
-          </dt>
+          <dt className={style.title}>Unfinished Activity</dt>
         </dl>
         <UnfinishedTournamentsList
           unfinishedTournamentsList={unfinishedTournaments}

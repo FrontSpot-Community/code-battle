@@ -4,26 +4,27 @@
   color: white;
   display: flex;
   flex: 1;
-  text-align: center;
   flex-direction: column;
-  align-items: center;
   justify-content: space-between;
-  height: 100;
 }
 
 .totalLabel {
   color: white;
-  margin-top: 2;
 }
 
 .totalValue {
   color: white;
-  font-size: 32;
-  margin-bottom: 10;
+  font-size: 32px;
+  margin-bottom: 10px;
 }
 
 .totals {
   color: white;
   display: flex;
   flex-direction: row;
+  padding: 0 18px;
+}
+
+.chart {
+  padding: 0 18px;
 }

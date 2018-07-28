@@ -14,9 +14,9 @@ import {tournamentsRequest} from 'src/client/actions/action_creators/tournamentA
 import {
   ProfileDetails,
   TasksStatistic,
-  TournamentsStatistic
-  // UnfinishedActivity,
-  // SolvedTasksStat
+  TournamentsStatistic,
+  UnfinishedActivity,
+  SolvedTasksStat
   // ProfileTournaments
 } from 'src/client/components/Profile';
 
@@ -101,17 +101,17 @@ class ProfileContainer extends Component {
       (this.state.epamEmployee !== this.props.userInfo.epamEmployee);
 
     const taskMetrics= {
-      assigned: 40,
-      trained: 14,
-      solved: 9,
-      totalAttempts: 30
+      assigned: 269,
+      trained: 230,
+      solved: 156,
+      totalAttempts: 1921
     };
 
     const tournamentMetrics= {
-      participated: 4,
-      finished: 3,
-      wins: 1,
-      satisfation: 2
+      participated: 57,
+      finished: 21,
+      wins: 3,
+      satisfation: 68
     };
 
     return this.props.userLoading
@@ -126,19 +126,11 @@ class ProfileContainer extends Component {
         <div className={style.wrapper}>
           <div className={style.statisticsContainer}>
             {/* TODO: fix redundant inner div for joyride anchor */}
-            <TournamentsStatistic
-              metrics={tournamentMetrics}
-            />
-            <TasksStatistic
-              metrics={taskMetrics}
-            />
-            {/* <UnfinishedActivity
-
-            /> */}
-            {/* <ProfileTournaments
-              tournaments={this.props.tournaments}
-            /> */}
-            {/* <SolvedTasksStat/> */}
+            <TournamentsStatistic metrics={tournamentMetrics}/>
+            <TasksStatistic metrics={taskMetrics}/>
+            <UnfinishedActivity/>
+            <SolvedTasksStat/>
+            {/* <ProfileTournaments tournaments={this.props.tournaments} /> */}
           </div>
           <div className={style.detailsContainer}>
             <div className="ProfileDetails">

@@ -14,21 +14,22 @@ export default class TournamentsStatistic extends Component {
     const metricsMap = {
       'Participated': metrics.participated,
       'Finished': metrics.finished,
-      'Wins': metrics.wins,
-      'Satisfation': metrics.satisfation
+      'Wins': metrics.wins
+    };
+
+    const colorsMap = {
+      'Participated': '#333333',
+      'Finished': '#39c2d7',
+      'Wins': '#a6c638'
     };
 
     return (
       <div className={style.wrapper}>
         <dl className={style.header}>
-          <dt className={style.title}>
-            TournamentsStatistic
-          </dt>
+          <dt className={style.title}> Tournaments</dt>
         </dl>
-        <Totals
-          totalValuesMap={metricsMap}
-        />
-        <ProgressChart/>
+        <Totals totalValuesMap={metricsMap} colors={colorsMap}/>
+        <ProgressChart metrics={metricsMap} colors={colorsMap}/>
       </div>
     );
   }

@@ -18,17 +18,19 @@ export default class TasksStatistic extends Component {
       'Total Attempts': metrics.totalAttempts
     };
 
+    const colorsMap = {
+      'Assigned': '#333333',
+      'Trained': '#39c2d7',
+      'Solved': '#a6c638'
+    };
+
     return (
       <div className={style.wrapper}>
         <dl className={style.header}>
-          <dt className={style.title}>
-            TasksStatistic
-          </dt>
+          <dt className={style.title}>Tasks</dt>
         </dl>
-        <Totals
-          totalValuesMap={metricsMap}
-        />
-        <ProgressChart/>
+        <Totals totalValuesMap={metricsMap} colors={colorsMap}/>
+        <ProgressChart metrics={metricsMap} colors={colorsMap}/>
       </div>
     );
   }
