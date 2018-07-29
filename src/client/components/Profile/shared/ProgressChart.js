@@ -23,7 +23,7 @@ export default class ProgressChart extends Component {
       width: 10,
       size: {
         height: 30,
-        width: 480
+        width: 460
       },
       bar: {
         width: 8,
@@ -34,12 +34,13 @@ export default class ProgressChart extends Component {
         x: {show: false},
         y: {show: false}
       },
-      legend: {show: false}
+      legend: {show: false},
+      tooltip: {show: false}
     };
 
     return (
       <div className={style.chart}>
-        <C3Component data={data} config={chartConfig}/>
+        <C3Component data={data} config={chartConfig} />
       </div>
     );
   }

@@ -12,13 +12,13 @@ export default class UnfinishedActivity extends Component {
     const unfinishedTournaments = [
       {
         tournamentName: 'From Newbie To Overlord',
-        tasksStat: '1/10',
-        remainTime: '3' // TODO: time in ...
+        tasksStat: '5 of 15 tasks solved ',
+        remainTime: '3 days remainging' // TODO: time in ...
       },
       {
         tournamentName: 'Simple Tournament Name',
-        tasksStat: '3/5',
-        remainTime: '1'
+        tasksStat: '2 of 10 tasks solved ',
+        remainTime: '1 week remaining'
       }
     ];
 

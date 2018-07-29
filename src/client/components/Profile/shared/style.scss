@@ -10,21 +10,24 @@
 
 .totalLabel {
   color: white;
+  font-size: 14px;
+  font-weight: normal;
 }
 
 .totalValue {
   color: white;
-  font-size: 32px;
-  margin-bottom: 10px;
+  font-size: 24px;
+  font-family: 'Oswald Regular';
 }
 
 .totals {
   color: white;
   display: flex;
   flex-direction: row;
-  padding: 0 18px;
+  padding-left: 18px;
 }
 
 .chart {
-  padding: 0 18px;
+  padding-left: 18px;
 }
+
