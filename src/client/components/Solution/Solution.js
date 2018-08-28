@@ -11,17 +11,21 @@ class Solution extends React.Component {
       onSubmitTask,
       solution,
       onSolutionChange,
-      resetSolution
+      resetSolution,
+      editMode
     } = this.props;
 
     return (
       <div className={style.container}>
         <div className={style.header}>
           <span className={style.headerName}>SOLUTION</span>
-          <div className={style.headerButtons}>
-            <Button mod="cancel" onClick={resetSolution}>RESET</Button>
-            <Button onClick={onSubmitTask}>SUBMIT</Button>
-          </div>
+          {
+            !editMode &&
+              <div className={style.headerButtons}>
+                <Button mod="cancel" onClick={resetSolution}>RESET</Button>
+                <Button onClick={onSubmitTask}>SUBMIT</Button>
+              </div>
+          }
         </div>
         <CodeEditor
           language={language}

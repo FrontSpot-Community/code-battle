@@ -7,6 +7,8 @@ import {configureStore} from 'src/common/store/configureStore';
 import App from 'src/client/containers/App';
 import LoginContainer from 'src/common/containers/LoginContainer';
 import HomeContainer from 'src/client/containers/HomeContainer';
+import TournamentContainer from 'src/client/containers/TournamentContainer';
+import TaskEditContainer from 'src/client_admin/containers/TaskEditContainer';
 import cookieService from 'src/common/services/cookie/index';
 
 import rootSaga from 'src/client_admin/sagas';
@@ -31,6 +33,8 @@ render(
         <Switch>
           <Route exact path="/" render={renderComponent(<HomeContainer/>)}/>
           <Route exact path="/login" component={LoginContainer} />
+          <Route exact path="/:id" component={TournamentContainer} />
+          <Route exact path="/:id/:taskId" component={TaskEditContainer} />
         </Switch>
       </App>
     </Router>

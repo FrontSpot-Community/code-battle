@@ -7,6 +7,7 @@ const BUTTON_TYPES = [
   'default',
   'success',
   'cancel',
+  'warn',
   'navigation',
   'githubLogin'
 ];

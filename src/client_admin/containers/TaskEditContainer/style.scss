@@ -1,0 +1,72 @@
+@import '~Colors';
+
+.container {
+  height: 100%;
+}
+
+.dataContainer {
+  height: 100%;
+}
+
+.col {
+  height: 100%;
+  width: calc(50% - 9px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  margin-right: 18px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.row {
+  height: calc(50% - 9px);
+  width: 100%;
+  margin-bottom: 9px;
+
+  & > * {
+    width: 100%;
+  }
+}
+
+.taskDetailsEditor {
+  float: left;
+}
+
+.wrapper {
+  display: flex;
+  height: 100%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 18px);
+}
+
+.actions {
+  text-align: right;
+
+  & > button {
+    &:first-child {
+      float: left;
+    }
+  }
+}
+
+.mainWrapper {
+  height: -moz-calc(100% - 60px);
+  height: -webkit-calc(100% - 60px);
+  height: calc(100% - 60px);
+  padding: 18px 18px 0;
+  width: 100%;
+}
+
+.outputContainer {
+  height: 100%;
+  width: calc(50% - 9px);
+  background-color: $bg_dark;
+}

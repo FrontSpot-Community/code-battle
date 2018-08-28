@@ -1,0 +1,66 @@
+@import '~Colors';
+
+.checkbox {
+  display: inline-block;
+  color: white;
+  visibility: hidden;
+  position: absolute;
+  left: -18px;
+}
+
+.wrapper {
+  position: relative;
+  display: flex;
+  height: 18px;
+  align-items: center;
+  overflow: hidden;
+}
+
+.fakeCheckbox {
+  position: relative;
+  margin-right: 10px;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 18px;
+  height: 18px;
+  transition: all 0.2s ease-in-out;
+  background: white;
+  display: inline-block;
+}
+
+.label {
+  font-family: 'Source Sans Pro Regular', sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+
+.checkbox:checked ~ .fakeCheckbox {
+  background: $LIME_GREEN;
+
+  &::after {
+    content: '';
+    background-color: transparent;
+    position: absolute;
+    left: 6px;
+    top: 2px;
+    width: 6px;
+    border-bottom: 2px solid white;
+    height: 11px;
+    border-right: 2px solid white;
+    transform: rotate(45deg);
+  }
+}
+
+.checkbox:disabled ~ .fakeCheckbox {
+  background: $DUSTY_GRAY;
+  cursor: default;
+}
