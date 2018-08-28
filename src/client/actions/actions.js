@@ -11,12 +11,12 @@ export const [
   SUBMIT_SOLUTION_FETCH_SUCCESS,
   SUBMIT_SOLUTION_FETCH_FAILED
 ] = createFetchActions('SUBMIT_SOLUTION_FETCH');
+
 export const [
   SOLUTION_BY_TASK_ID_FETCH,
   SOLUTION_BY_TASK_ID_FETCH_SUCCESS,
   SOLUTION_BY_TASK_ID_FETCH_FAILED
 ] = createFetchActions('SOLUTION_BY_TASK_ID_FETCH');
-
 
 export const [
   TOURNAMENT_BY_ID_FETCH,
@@ -29,6 +29,18 @@ export const [
   TASK_BY_ID_FETCH_SUCCESS,
   TASK_BY_ID_FETCH_FAILED
 ] = createFetchActions('TASK_BY_ID_FETCH');
+
+export const [
+  TASK_UPDATE,
+  TASK_UPDATE_SUCCESS,
+  TASK_UPDATE_FAILED
+] = createFetchActions('TASK_UPDATE');
+
+export const [
+  TASK_DELETE,
+  TASK_DELETE_SUCCESS,
+  TASK_DELETE_FAILED
+] = createFetchActions('TASK_DELETE');
 
 export const [
   TASKS_FETCH,
@@ -52,7 +64,6 @@ export const USER_LOADING = 'USER_LOADING';
 export const [
   USER_PUT
 ] = createFetchActions('USER_PUT');
-
 
 export const [
   USERS_FETCH,

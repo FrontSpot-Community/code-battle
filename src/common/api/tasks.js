@@ -8,3 +8,11 @@ export const getTaskById = (id, params) => {
 export const getAllTasks = (params) => {
   return httpClient.get(`${TASK_ENDPOINT}`, {params});
 };
+
+export const updateTaskById = (id, params) => {
+  return httpClient.put(`${TASK_ENDPOINT}/${id}`, params);
+};
+
+export const removeTaskById = (id) => {
+  return httpClient.delete(`${TASK_ENDPOINT}/${id}`);
+};
