@@ -1,6 +1,11 @@
 .header {
   display: flex;
   background-color: #222222;
+
+  &__rightPart {
+    display: flex;
+    margin-left: auto;
+  }
 }
 
 .logoWrapper, .logoWrapper:hover, .logoWrapper:active, .logoWrapper:focus {
