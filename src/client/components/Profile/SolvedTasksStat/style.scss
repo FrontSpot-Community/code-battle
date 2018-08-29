@@ -17,6 +17,22 @@
   border-bottom: 1px solid $MINE_SHAFT;
 }
 
+.content {
+  display: grid;
+}
+
+.leftContent {
+  padding-right: 10px;
+  grid-column: 1 / 3;
+  border-right: 1px solid #333;
+  display: grid;
+}
+
+.rightContent {
+  grid-column: 3 / 6;
+  display: grid;
+}
+
 .title {
   text-transform: uppercase;
   font-family: 'Oswald Regular', sans-serif;

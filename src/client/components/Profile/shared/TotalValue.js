@@ -15,7 +15,7 @@ export default class TotalValue extends Component {
     return (
       <div className={style.total}>
         <div className={style.totalLabel} style={{color}}>{title}</div>
-        <div className={style.totalValue}>{value || '--'}</div>
+        <div className={style.totalValue}>{value || '--'}{title === 'Satisfaction' && '%'}</div>
       </div>
     );
   }

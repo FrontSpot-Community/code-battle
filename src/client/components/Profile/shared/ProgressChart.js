@@ -6,11 +6,9 @@ export default class ProgressChart extends Component {
   render() {
     const {metrics, colors} = this.props;
     const columns = [];
-    Object.keys(metrics).map((item) => {
-      if (item !== 'Total Attempts') {
-        const metricArr = [item, metrics[item]];
-        columns.push(metricArr);
-      }
+    Object.entries(metrics).map(([key, value]) => {
+      const metricArr = [key, value];
+      columns.push(metricArr);
     });
 
     const data = {
@@ -20,14 +18,12 @@ export default class ProgressChart extends Component {
     };
 
     const chartConfig = {
-      width: 10,
       size: {
-        height: 30,
-        width: 460
+        height: 40
       },
       bar: {
-        width: 8,
-        space: 0.5
+        width: 13,
+        space: 0.6
       },
       axis: {
         rotated: true,
@@ -37,7 +33,6 @@ export default class ProgressChart extends Component {
       legend: {show: false},
       tooltip: {show: false}
     };
-
     return (
       <div className={style.chart}>
         <C3Component data={data} config={chartConfig} />

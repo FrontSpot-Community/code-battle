@@ -92,7 +92,8 @@ class ProfileContainer extends Component {
     this.props.userEdit({
       id: this.props.userInfo._id,
       ...this.state.profileDetails,
-      epamEmployee: this.state.epamEmployee});
+      epamEmployee: this.state.epamEmployee
+    });
   }
 
   render() {
@@ -100,18 +101,24 @@ class ProfileContainer extends Component {
     const isProfileDetailsChanged = !_.isEqual(this.state.profileDetails, detailsFromServer) ||
       (this.state.epamEmployee !== this.props.userInfo.epamEmployee);
 
-    const taskMetrics= {
+    const taskMetrics = {
       assigned: 269,
       trained: 230,
-      solved: 156,
-      totalAttempts: 1921
+      solved: 156
     };
 
-    const tournamentMetrics= {
+    const tournamentMetrics = {
       participated: 57,
       finished: 21,
-      wins: 3,
-      satisfation: 68
+      wins: 3
+    };
+
+    const solvedMonthsMetrics = {
+      year: 2017,
+      mortal: [29, 17, 11, 18, 13, 11],
+      champion: [22, 22, 22, 11, 4, 22],
+      fighter: [4, 1, 23, 28, 20, 23],
+      berserk: [3, 2, 2, 2, 15, 2]
     };
 
     return this.props.userLoading
@@ -126,10 +133,10 @@ class ProfileContainer extends Component {
         <div className={style.wrapper}>
           <div className={style.statisticsContainer}>
             {/* TODO: fix redundant inner div for joyride anchor */}
-            <TournamentsStatistic metrics={tournamentMetrics}/>
-            <TasksStatistic metrics={taskMetrics}/>
-            <UnfinishedActivity/>
-            <SolvedTasksStat/>
+            <TournamentsStatistic metrics={tournamentMetrics} />
+            <TasksStatistic metrics={taskMetrics} />
+            <UnfinishedActivity />
+            <SolvedTasksStat metrics={solvedMonthsMetrics} />
             {/* <ProfileTournaments tournaments={this.props.tournaments} /> */}
           </div>
           <div className={style.detailsContainer}>

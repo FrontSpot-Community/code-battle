@@ -4,19 +4,25 @@ import style from './style.scss';
 
 export default class TaskStatChart extends Component {
   render() {
+    const {metrics, colors} = this.props;
+    const columns = [];
+    let metricsSum = 0;
+    Object.entries(metrics).map(([key, value]) => {
+      const metricArr = [key, value];
+      metricsSum += value;
+      columns.push(metricArr);
+    });
+
     const data = {
-      columns: [
-        ['Fighter', 90],
-        ['Berserk', 16],
-        ['Champion', 40],
-        ['Mortal', 84]
-      ],
+      columns,
       type: 'donut',
-      order: null
+      order: null,
+      colors
     };
 
     const chartConfig = {
       donut: {
+        title: metricsSum,
         width: 15,
         label: {show: false}
       },

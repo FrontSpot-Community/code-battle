@@ -6,12 +6,12 @@ import TotalValue from './TotalValue';
 
 export default class Totals extends Component {
   render() {
-    const {totalValuesMap, colors} = this.props;
+    const {metrics, colors} = this.props;
 
     return (
       <div className={style.totals}>
         {
-          Object.entries(totalValuesMap).map(([key, value]) => {
+          Object.entries(metrics).map(([key, value]) => {
             const color = colors[key];
             return (
               <div className={style.total} key={key}>
@@ -26,5 +26,5 @@ export default class Totals extends Component {
 }
 
 Totals.propTypes = {
-  totalValuesMap: PropTypes.object.isRequired
+  metrics: PropTypes.object.isRequired
 };

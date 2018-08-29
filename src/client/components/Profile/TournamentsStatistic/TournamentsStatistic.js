@@ -26,10 +26,10 @@ export default class TournamentsStatistic extends Component {
     return (
       <div className={style.wrapper}>
         <dl className={style.header}>
-          <dt className={style.title}> Tournaments</dt>
+          <dt className={style.title}>Tournaments</dt>
         </dl>
-        <Totals totalValuesMap={metricsMap} colors={colorsMap}/>
-        <ProgressChart metrics={metricsMap} colors={colorsMap}/>
+        <Totals metrics={metricsMap} colors={colorsMap} />
+        <ProgressChart metrics={metricsMap} colors={colorsMap} />
       </div>
     );
   }
