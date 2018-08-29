@@ -49,6 +49,12 @@ export const [
 ] = createFetchActions('TASKS_FETCH');
 
 export const [
+  TASK_ADD,
+  TASK_ADD_SUCCESS,
+  TASK_ADD_FAILED
+] = createFetchActions('TASK_ADD');
+
+export const [
   TASKS_BY_ID_FETCH,
   TASKS_BY_ID_FETCH_SUCCESS,
   TASKS_BY_ID_FETCH_FAILED

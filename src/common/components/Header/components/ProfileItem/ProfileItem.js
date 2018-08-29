@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import cookieService from 'src/common/services/cookie';
+import cookieService from 'src/common/services/cookie/index';
 
 import userPic from 'root/assets/images/flip.jpg';
 import caretIcon from 'root/assets/images/caret.svg';

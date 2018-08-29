@@ -1,5 +1,10 @@
 import {call, put, takeEvery, all} from 'redux-saga/effects';
-import {getTaskById, getAllTasks, updateTaskById, removeTaskById} from '../api/tasks';
+import {
+  getTaskById,
+  getAllTasks,
+  updateTaskById,
+  removeTaskById,
+  addTask as addNewTask} from '../api/tasks';
 import tasksMock from '../api/mocks/tasks.mock';
 
 import {
@@ -12,7 +17,9 @@ import {
   taskUpdateSuccess,
   taskUpdateFailed,
   taskDeleteSuccess,
-  taskDeleteFailed
+  taskDeleteFailed,
+  taskAddFailed,
+  taskAddSuccess
 } from '../../client/actions/action_creators/taskActionCreators';
 
 import {
@@ -20,7 +27,8 @@ import {
   TASKS_BY_ID_FETCH,
   TASK_BY_ID_FETCH,
   TASK_UPDATE,
-  TASK_DELETE
+  TASK_DELETE,
+  TASK_ADD
 } from '../../client/actions/actions';
 
 function* fetchTasks() {
@@ -71,12 +79,22 @@ function* removeTask({payload}) {
   }
 }
 
+function* addTask({payload}) {
+  try {
+    yield call(addNewTask, payload);
+    yield put(taskAddSuccess(payload));
+  } catch (e) {
+    yield put(taskAddFailed(e));
+  }
+}
+
 function* taskSaga() {
   yield takeEvery(TASKS_FETCH, fetchTasks);
   yield takeEvery(TASKS_BY_ID_FETCH, fetchTasksById);
   yield takeEvery(TASK_BY_ID_FETCH, fetchTaskById);
   yield takeEvery(TASK_UPDATE, updateTask);
   yield takeEvery(TASK_DELETE, removeTask);
+  yield takeEvery(TASK_ADD, addTask);
 }
 
 export default taskSaga;

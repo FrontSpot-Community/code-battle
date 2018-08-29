@@ -10,7 +10,8 @@ import {Button} from 'src/client/components/Common';
 import {
   taskByIdRequest,
   taskUpdate,
-  taskDelete
+  taskDelete,
+  taskAdd
 } from 'src/client/actions/action_creators/taskActionCreators';
 import {bindActionCreators} from 'redux';
 
@@ -25,12 +26,16 @@ class TaskEditContainer extends React.Component {
     stars: '',
     complexity: '',
     description: '',
-    language: ''
+    language: '',
+    isEditMode: false
   };
 
   componentDidMount() {
     const {taskId} = this.props.match.params;
-    this.props.taskByIdRequest(taskId);
+    if (taskId) {
+      this.setState({isEditMode: true});
+      this.props.taskByIdRequest(taskId);
+    }
   }
 
   componentWillReceiveProps(props) {
@@ -74,14 +79,19 @@ class TaskEditContainer extends React.Component {
   saveChanges = (e) => {
     e.preventDefault();
     const {taskId} = this.props.match.params;
-    const {taskUpdate, task} = this.props;
+    const {taskUpdate, taskAdd} = this.props;
+    let {task} = this.props;
+
+    if (!task || !this.state.isEditMode) {
+      task = this.state;
+    }
 
     const {
       sample, name, test, id,
       stars, complexity, description, language
     } = this.state;
 
-    taskUpdate({
+    const dataToSend = {
       ...task,
       id: id === '' ? taskId : id,
       name: name === '' ? task.name : name,
@@ -90,18 +100,11 @@ class TaskEditContainer extends React.Component {
       complexity: complexity === '' ? task.complexity : complexity,
       stars: stars === '' ? task.stars : stars,
       language: language === '' ? task.language : language,
-      description: description === '' ? task.description : description
-    });
+      description: description === '' ? task.description : description,
+      tournamentId: this.props.match.params.id
+    };
 
-    this.setState({
-      name: name === '' ? task.name : name,
-      test: test === '' ? task.test : test,
-      sample: sample === '' ? task.sample : sample,
-      complexity: complexity === '' ? task.complexity : complexity,
-      stars: stars === '' ? task.stars : stars,
-      language: language === '' ? task.language : language,
-      description: description === '' ? task.description : description
-    });
+    this.state.isEditMode ? taskUpdate(dataToSend) : taskAdd(dataToSend);
   };
 
   cancelChanges = (e) => {
@@ -122,7 +125,7 @@ class TaskEditContainer extends React.Component {
     e.preventDefault();
     const {taskDelete, task} = this.props;
     taskDelete({...task});
-    this.props.history.push(this.props.match.url.replace(task.id, ''));
+    this.props.history.push(this.props.match.url.replace(`/${task.id}/edit`, ''));
   };
 
   renderData() {
@@ -168,7 +171,9 @@ class TaskEditContainer extends React.Component {
             <div className={style.actions}>
               <Button mod="warn" onClick={this.deleteTask}>DELETE TASK</Button>
               <Button mod="cancel" onClick={this.cancelChanges}>CANCEL</Button>
-              <Button mod="success" onClick={this.saveChanges}>SAVE CHANGES</Button>
+              <Button mod="success" onClick={this.saveChanges}>
+                {this.state.isEditMode ? 'SAVE CHANGES' : 'SAVE'}
+              </Button>
             </div>
           </form>
         </div>
@@ -201,7 +206,8 @@ const mapActionsToProps = (dispatch) => {
   return bindActionCreators({
     taskByIdRequest,
     taskUpdate,
-    taskDelete
+    taskDelete,
+    taskAdd
   }, dispatch);
 };
 

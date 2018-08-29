@@ -16,3 +16,7 @@ export const updateTaskById = (id, params) => {
 export const removeTaskById = (id) => {
   return httpClient.delete(`${TASK_ENDPOINT}/${id}`);
 };
+
+export const addTask = (params) => {
+  return httpClient.post(`${TASK_ENDPOINT}`, params);
+};

@@ -8,6 +8,9 @@ import Rank from 'src/client/components/Rank';
 import {tournamentsRequest} from 'src/client/actions/action_creators/tournamentActionCreators';
 import {allUsersRequest, userRequest} from 'src/client/actions/action_creators/userActionCreators';
 import Loader from 'src/client/components/Loader';
+import withActivePageDispatch from 'common/components/Hocs/withActivePageDispatch';
+import withPageName from 'common/components/Hocs/withPageName';
+import {HOME_PAGE} from 'common/constants/activePageNames';
 
 class HomeContainer extends React.Component {
   constructor(props) {
@@ -58,5 +61,6 @@ const mapStateToProps = (state) => {
 const mapActionsToProps = (dispatch) => (
   bindActionCreators({tournamentsRequest, allUsersRequest, userRequest}, dispatch)
 );
-
-export default connect(mapStateToProps, mapActionsToProps)(HomeContainer);
+export default connect(mapStateToProps, mapActionsToProps)(
+  withActivePageDispatch(withPageName(HomeContainer, HOME_PAGE))
+);

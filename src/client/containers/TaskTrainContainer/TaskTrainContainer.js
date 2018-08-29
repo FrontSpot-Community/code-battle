@@ -13,7 +13,10 @@ import {
   submitSolutionRequest,
   solutionByTaskIdRequest
 } from 'src/client/actions/action_creators/solutionActionCreators';
+import withActivePageDispatch from 'common/components/Hocs/withActivePageDispatch';
+import withPageName from 'common/components/Hocs/withPageName';
 import {bindActionCreators} from 'redux';
+import {TASK_TRAIN_PAGE} from 'common/constants/activePageNames';
 
 import style from './style.scss';
 
@@ -208,4 +211,8 @@ const mapActionsToProps = (dispatch) => {
   }, dispatch);
 };
 
-export default connect(mapStateToProps, mapActionsToProps)(TaskTrainContainer);
+export default connect(mapStateToProps, mapActionsToProps)(
+  withActivePageDispatch(
+    withPageName(TaskTrainContainer, TASK_TRAIN_PAGE)
+  )
+);

@@ -13,7 +13,10 @@ import {
   TASK_UPDATE_FAILED,
   TASK_DELETE,
   TASK_DELETE_SUCCESS,
-  TASK_DELETE_FAILED
+  TASK_DELETE_FAILED,
+  TASK_ADD,
+  TASK_ADD_SUCCESS,
+  TASK_ADD_FAILED
 } from '../../client/actions/actions';
 
 const initialState = {
@@ -22,7 +25,7 @@ const initialState = {
   data: [],
   count: 0,
   tasksById: [],
-  taskById: null
+  task: null
 };
 
 export default (state = initialState, action) => {
@@ -109,6 +112,24 @@ export default (state = initialState, action) => {
       isLoading: false
     };
   case TASK_BY_ID_FETCH_FAILED:
+    return {
+      ...state,
+      taskById: null,
+      isLoading: false,
+      error: action.error
+    };
+  case TASK_ADD:
+    return {
+      ...state,
+      isLoading: true
+    };
+  case TASK_ADD_SUCCESS:
+    return {
+      ...state,
+      isLoading: false,
+      taskById: action.payload
+    };
+  case TASK_ADD_FAILED:
     return {
       ...state,
       taskById: null,

@@ -3,12 +3,14 @@ import tournamentReducer from './tournamentReducer';
 import taskReducer from './taskReducer';
 import solutionReducer from './solutionReducer';
 import userReducer from './userReducer';
+import acrivePageReducer from './activePage';
 
 const commonReducerMap = {
   tasks: taskReducer,
   tournaments: tournamentReducer,
   solution: solutionReducer,
-  user: userReducer
+  user: userReducer,
+  activePage: acrivePageReducer
 };
 
 const combineRootReducer = (reducerMap) => (
