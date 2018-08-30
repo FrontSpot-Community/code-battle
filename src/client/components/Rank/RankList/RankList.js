@@ -20,7 +20,7 @@ export default class RankList extends Component {
                 {user.githubDisplayName || user.githubUsername}
               </div>
               <div className={style.userScore}>
-                {user.score ? user.score : 0}
+                {user.statistics.totalScore}
               </div>
             </div>
 
