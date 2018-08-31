@@ -4,6 +4,9 @@ import AceEditor from 'react-ace';
 // Languages
 import 'brace/mode/php';
 import 'brace/mode/javascript';
+import 'brace/mode/csharp';
+import 'brace/mode/java';
+import 'brace/mode/python';
 
 // Color Themes
 import 'brace/theme/twilight';
@@ -12,7 +15,10 @@ const MODS = {
   javascript: 'javascript',
   // php mode wasn't working correctly during test
   // so javascript one looks better then others for highlighting php code
-  php: 'javascript'
+  php: 'javascript',
+  csharp: 'csharp',
+  java: 'java',
+  python: 'python'
 };
 
 export default class CodeEditor extends Component {
