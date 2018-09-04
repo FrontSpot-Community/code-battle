@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import style from './style.scss';
 
-import ParticipantsChart from '../shared/ParticipantsChart';
+import TasksChart from '../shared/TasksChart';
 
-export default class LanguagesParticipants extends Component {
+export default class LanguagesTasks extends Component {
   constructor(props) {
     super(props);
   }
@@ -13,10 +13,10 @@ export default class LanguagesParticipants extends Component {
       <div className={style.wrapper}>
         <dl className={style.header}>
           <dt className={style.title}>
-            Languages Participants
+            Languages Tasks
           </dt>
         </dl>
-        <ParticipantsChart metrics={this.props.metrics}/>
+        <TasksChart metrics={this.props.metrics}/>
       </div>
     );
   }

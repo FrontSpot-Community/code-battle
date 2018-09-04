@@ -5,12 +5,15 @@
   flex: 1;
   flex-direction: column;
   background-color: $bg_dark;
-  height: 100%;
+  overflow-y: scroll;
+  grid-column: 1 / 4;
+  grid-row: 1 / 3;
+  height: 45%;
 }
 
 .header {
   align-items: center;
-  padding: 13px 18px;
+  padding: 13px;
   border-bottom: 1px solid $MINE_SHAFT;
 }
 

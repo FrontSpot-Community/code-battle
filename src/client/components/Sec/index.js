@@ -1,9 +1,9 @@
-import ProfileDetails from './ProfileDetails';
 import LanguagesParticipants from './LanguagesParticipants';
+import LanguagesTasks from './LanguagesTasks';
 import TournamentScore from './TournamentScore';
 
 export {
-  ProfileDetails,
   LanguagesParticipants,
+  LanguagesTasks,
   TournamentScore
 };
