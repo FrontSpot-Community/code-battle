@@ -96,46 +96,79 @@ class SecContainer extends Component {
     const isProfileDetailsChanged = !_.isEqual(this.state.profileDetails, detailsFromServer) ||
       (this.state.epamEmployee !== this.props.userInfo.epamEmployee);
 
+    const places = {
+      '0': {name: '1st'},
+      '1': {name: '2nd'},
+      '2': {name: '3rd'},
+      '3': {name: '4th'},
+      '4': {name: '5th'},
+      '5': {name: '6th'},
+      '6': {name: '7th'},
+      '7': {name: '8th'},
+      '8': {name: '9th'},
+      '9': {name: '10th'}
+    };
+
     const tournaments = {
       'javaScript': {
-        '1': {name: 'John 1'},
+        '0': {name: 'John 1'},
+        '1': {name: 'John 2'},
         '3': {name: 'John 3'},
-        '2': {name: 'John 2'},
-        '4': {name: 'John 4'},
-        '5': {name: 'John 5'},
-        '6': {name: 'John 6'}
+        '2': {name: 'John 4'},
+        '4': {name: 'John 5'},
+        '5': {name: 'John 6'},
+        '6': {name: 'John 7'},
+        '7': {name: 'John 8'},
+        '8': {name: 'John 9'},
+        '9': {name: 'John 10'}
       },
       'python': {
-        '5': {name: 'David 5'},
-        '2': {name: 'David 2'},
-        '3': {name: 'David 3'},
-        '4': {name: 'David 4'},
-        '1': {name: 'David 1'},
-        '6': {name: 'David 6'}
+        '0': {name: 'David 1'},
+        '1': {name: 'David 2'},
+        '2': {name: 'David 3'},
+        '3': {name: 'David 4'},
+        '4': {name: 'David 5'},
+        '5': {name: 'David 6'},
+        '6': {name: 'David 7'},
+        '7': {name: 'David 8'},
+        '8': {name: 'David 9'},
+        '9': {name: 'David 10'}
       },
       'csharp': {
-        '1': {name: 'Peter 1'},
-        '2': {name: 'Peter 2'},
-        '3': {name: 'Peter 3'},
-        '4': {name: 'Peter 4'},
-        '5': {name: 'Peter 5'},
-        '6': {name: 'Peter 6'}
+        '0': {name: 'Peter 1'},
+        '1': {name: 'Peter 2'},
+        '2': {name: 'Peter 3'},
+        '3': {name: 'Peter 4'},
+        '4': {name: 'Peter 5'},
+        '5': {name: 'Peter 6'},
+        '6': {name: 'Peter 7'},
+        '7': {name: 'Peter 8'},
+        '8': {name: 'Peter 9'},
+        '9': {name: 'Peter 10'}
       },
       'java': {
-        '1': {name: 'Mark 1'},
-        '2': {name: 'Mark 2'},
-        '3': {name: 'Mark 3'},
-        '4': {name: 'Mark 4'},
-        '5': {name: 'Mark 5'},
-        '6': {name: 'Mark 6'}
+        '0': {name: 'Mark 1'},
+        '1': {name: 'Mark 2'},
+        '2': {name: 'Mark 3'},
+        '3': {name: 'Mark 4'},
+        '4': {name: 'Mark 5'},
+        '5': {name: 'Mark 6'},
+        '6': {name: 'Mark 7'},
+        '7': {name: 'Mark 8'},
+        '8': {name: 'Mark 9'},
+        '9': {name: 'Mark 10'}
       },
       'php': {
-        '1': {name: 'Steve 1'},
-        '2': {name: 'Steve 2'},
-        '3': {name: 'Steve 3'},
-        '4': {name: 'Steve 4'},
-        '5': {name: 'Steve 5'},
-        '6': {name: 'Steve 6'}
+        '0': {name: 'Steve 1'},
+        '1': {name: 'Steve 2'},
+        '2': {name: 'Steve 3'},
+        '3': {name: 'Steve 4'},
+        '4': {name: 'Steve 5'},
+        '5': {name: 'Steve 6'},
+        '6': {name: 'Steve 7'},
+        '7': {name: 'Steve 8'},
+        '8': {name: 'Steve 9'},
+        '9': {name: 'Steve 10'}
       }
     };
 
@@ -152,6 +185,7 @@ class SecContainer extends Component {
           <div className={style.resultsContainer}>
             <div className="ProfileTournaments">
               <TournamentScore
+                places={places}
                 tournaments={tournaments}
               />
             </div>

@@ -3,11 +3,13 @@ import style from './style.scss';
 
 import HeadRow from './HeadRow';
 import BodyCol from './BodyCol';
+import BodyMainCol from './BodyMainCol';
 
-const headerCells = ['JavaScript', 'Python', 'C#', 'Java', 'PHP'];
+const headerCells = ['Position', 'JavaScript', 'Python', 'C#', 'Java', 'PHP'];
 
 const TournamentScore = (props) => {
   const {javaScript, python, csharp, java, php} = props.tournaments;
+
   return (
     <div className={style.wrapper}>
       <dl className={style.header}>
@@ -19,6 +21,7 @@ const TournamentScore = (props) => {
         headerCells={headerCells}
       />
       <section className={style.body}>
+        <BodyMainCol key='positions' positions={props.places}/>
         <BodyCol key='javascript' positions={javaScript}/>
         <BodyCol key='python' positions={python}/>
         <BodyCol key='csharp' positions={csharp}/>

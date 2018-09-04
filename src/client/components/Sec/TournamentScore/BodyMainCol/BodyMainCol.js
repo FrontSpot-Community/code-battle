@@ -2,7 +2,7 @@ import React from 'react';
 
 import style from './style.scss';
 
-const BodyCol = (props) => {
+const BodyMainCol = (props) => {
   return (
     <div className={style.col}>
       {Object.entries(props.positions).sort().map(([key, person]) => {
@@ -14,4 +14,4 @@ const BodyCol = (props) => {
   );
 };
 
-export default BodyCol;
+export default BodyMainCol;
