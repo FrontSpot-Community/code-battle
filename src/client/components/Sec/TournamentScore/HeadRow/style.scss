@@ -1,0 +1,17 @@
+@import '~Colors';
+
+.header {
+  border-bottom: 1px solid $MINE_SHAFT;
+  padding: 0 18px;
+
+  >p {
+    width: 20%;
+    display: inline-block;
+    padding: 16px 0;
+    margin: 0;
+    height: 50px;
+    color: $WHITE;
+    font-size: 14px;
+    opacity: 0.5;
+  }
+}

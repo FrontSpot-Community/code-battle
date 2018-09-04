@@ -13,8 +13,8 @@ import {tournamentsRequest} from 'src/client/actions/action_creators/tournamentA
 
 import {
   ProfileDetails,
-  ProfileTournaments
-} from 'src/client/components/Profile';
+  TournamentScore
+} from 'src/client/components/Sec';
 
 import style from './style.scss';
 
@@ -95,6 +95,50 @@ class SecContainer extends Component {
     const detailsFromServer = _.pick(this.props.userInfo, Object.keys(this.state.profileDetails));
     const isProfileDetailsChanged = !_.isEqual(this.state.profileDetails, detailsFromServer) ||
       (this.state.epamEmployee !== this.props.userInfo.epamEmployee);
+
+    const tournaments = {
+      'javaScript': {
+        '1': {name: 'John 1'},
+        '3': {name: 'John 3'},
+        '2': {name: 'John 2'},
+        '4': {name: 'John 4'},
+        '5': {name: 'John 5'},
+        '6': {name: 'John 6'}
+      },
+      'python': {
+        '5': {name: 'David 5'},
+        '2': {name: 'David 2'},
+        '3': {name: 'David 3'},
+        '4': {name: 'David 4'},
+        '1': {name: 'David 1'},
+        '6': {name: 'David 6'}
+      },
+      'csharp': {
+        '1': {name: 'Peter 1'},
+        '2': {name: 'Peter 2'},
+        '3': {name: 'Peter 3'},
+        '4': {name: 'Peter 4'},
+        '5': {name: 'Peter 5'},
+        '6': {name: 'Peter 6'}
+      },
+      'java': {
+        '1': {name: 'Mark 1'},
+        '2': {name: 'Mark 2'},
+        '3': {name: 'Mark 3'},
+        '4': {name: 'Mark 4'},
+        '5': {name: 'Mark 5'},
+        '6': {name: 'Mark 6'}
+      },
+      'php': {
+        '1': {name: 'Steve 1'},
+        '2': {name: 'Steve 2'},
+        '3': {name: 'Steve 3'},
+        '4': {name: 'Steve 4'},
+        '5': {name: 'Steve 5'},
+        '6': {name: 'Steve 6'}
+      }
+    };
+
     return this.props.userLoading
       ? <div className={style.loader} />
       : <div className={style.mainWrapper}>
@@ -105,15 +149,14 @@ class SecContainer extends Component {
           steps={this.state.steps}
         />
         <div className={style.wrapper}>
-          <div className={style.statisticsContainer}>
-            {/* TODO: fix redundant inner div for joyride anchor */}
+          <div className={style.resultsContainer}>
             <div className="ProfileTournaments">
-              <ProfileTournaments
-                tournaments={this.props.tournaments}
+              <TournamentScore
+                tournaments={tournaments}
               />
             </div>
           </div>
-          <div className={style.detailsContainer}>
+          <div className={style.chartsContainer}>
             <div className="ProfileDetails">
               <ProfileDetails
                 rankPosition={102}

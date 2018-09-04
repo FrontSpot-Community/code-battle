@@ -18,19 +18,12 @@
   height: calc(100% - 60px);
 }
 
-.statisticsContainer {
-  // display: grid;
-  // grid-template-columns: repeat(5, 1);
-  // grid-template-rows: repeat(7, 1);
-  // grid-column-gap: 18px;
-  // grid-row-gap: 18px;
-  // height: 100%;
-  // width: 70%;
+.resultsContainer {
   flex: 5;
 }
 
-.detailsContainer {
-  flex: 2;
+.chartsContainer {
+  flex: 3;
   margin-left: 20px;
 }
 
