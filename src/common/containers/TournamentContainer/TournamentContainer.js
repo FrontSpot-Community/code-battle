@@ -8,6 +8,8 @@ import {tournamentsByIdRequest} from 'src/client/actions/action_creators/tournam
 import {tasksByIdRequest} from 'src/client/actions/action_creators/taskActionCreators';
 import style from './style.scss';
 import sorts from './sorts';
+import withActivePageDispatch from 'common/components/Hocs/withActivePageDispatch';
+import withPageName from 'common/components/Hocs/withPageName';
 
 const mixIcon = (val) => <span>{val}<i className={'glyphicon glyphicon-triangle-bottom'}/></span>;
 
@@ -150,4 +152,7 @@ const mapActionsToProps = (dispatch) => (
 export default connect(
   mapStateToProps,
   mapActionsToProps
-)(withRouter(BattleContainer));
+)(withActivePageDispatch(
+  withPageName(
+    withRouter(BattleContainer), 'TOURNAMENT_PAGE')
+));

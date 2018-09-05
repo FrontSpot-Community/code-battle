@@ -13,9 +13,11 @@ class App extends React.Component {
     super(props);
   }
   componentDidMount() {
-    this.removeListener = this.props.history.listen(()=> (
-      this.props.activePageChange(CLEAR)
-    ));
+    this.removeListener = this.props.history.listen((targetLocation)=> {
+      if (targetLocation.pathname !== this.props.location.pathname) {
+        this.props.activePageChange(CLEAR);
+      }
+    });
   }
   componentWillUnmount() {
     this.removeListener();

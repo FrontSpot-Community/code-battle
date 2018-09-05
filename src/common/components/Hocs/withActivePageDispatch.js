@@ -10,7 +10,9 @@ const withActivePageDispatch = (WrappedComponent) => {
     }
 
     componentDidMount() {
-      this.props.activePageChange(WrappedComponent.pageName);
+      setTimeout(() => {
+        this.props.activePageChange(WrappedComponent.pageName);
+      }, 0);
     }
 
     render() {

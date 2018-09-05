@@ -1,4 +1,5 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom';
 import Button from 'src/client/components/Common/Button';
 import styles from './style.scss';
 import {HOME_PAGE, TOURNAMENT_PAGE, TASK_TRAIN_PAGE} from 'common/constants/activePageNames';
@@ -9,24 +10,38 @@ class AdminButtonPanel extends React.Component {
   }
 
 
-  handleClick = () => {
+  handleClick = (getPathFunction) => {
+    return () => {
+      const path = getPathFunction();
+      if (this.props.location.pathname !== path) {
+        this.props.history.push(path);
+      }
+    };
   };
 
   buttonRouteMap = {
     newTournament: {
-      path: '',
+      getPath: () => {
+        return this.props.location.pathname;
+      },
       buttonName: 'New Tournament'
     },
     editTournament: {
-      path: '',
+      getPath: () => {
+        return this.props.location.pathname;
+      },
       buttonName: 'Edit Tournament'
     },
     newTask: {
-      path: '',
+      getPath: () => {
+        return this.props.location.pathname + '/new_task';
+      },
       buttonName: 'Add New Task'
     },
     editTask: {
-      path: '',
+      getPath: () => {
+        return this.props.location.pathname.replace('train', 'edit');
+      },
       buttonName: 'Edit Task'
     }
   };
@@ -34,24 +49,24 @@ class AdminButtonPanel extends React.Component {
   pageNameComponentMap = {
     [HOME_PAGE]: <Button type='submit'
       mod='success'
-      onClick={this.handleClick(this.buttonRouteMap.newTournament.path)}>
+      onClick={this.handleClick(this.buttonRouteMap.newTournament.getPath)}>
       {this.buttonRouteMap.newTournament.buttonName}
     </Button>,
     [TOURNAMENT_PAGE]: [
       <Button type='submit'
         key={'editTournamentButton'}
-        onClick={this.handleClick(this.buttonRouteMap.editTournament.path)}>
+        onClick={this.handleClick(this.buttonRouteMap.editTournament.getPath)}>
         {this.buttonRouteMap.editTournament.buttonName}
       </Button>,
       <Button type='submit'
         mod='success'
         key={'addNewTaskButton'}
-        onClick={this.handleClick(this.buttonRouteMap.newTask.path)}>
+        onClick={this.handleClick(this.buttonRouteMap.newTask.getPath)}>
         {this.buttonRouteMap.newTask.buttonName}
       </Button>
     ],
     [TASK_TRAIN_PAGE]: <Button type='submit'
-      onClick={this.handleClick(this.buttonRouteMap.editTask.path)}>
+      onClick={this.handleClick(this.buttonRouteMap.editTask.getPath)}>
       {this.buttonRouteMap.editTask.buttonName}
     </Button>
   };
@@ -70,4 +85,4 @@ class AdminButtonPanel extends React.Component {
   }
 }
 
-export default AdminButtonPanel;
+export default withRouter(AdminButtonPanel);
