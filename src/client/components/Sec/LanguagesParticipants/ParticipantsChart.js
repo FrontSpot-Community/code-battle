@@ -27,10 +27,11 @@ export default class ParticipantsChart extends Component {
         backgroundColor: [
           '#f39c12',
           '#a6c638',
-          '#690081',
+          '#9f37b7',
           '#e74c3c',
           '#39c2d7'
-        ]
+        ],
+        borderColor: '#222222'
       }]
     };
 

@@ -5,8 +5,6 @@ import HeadRow from './HeadRow';
 import BodyCol from './BodyCol';
 import BodyMainCol from './BodyMainCol';
 
-const headerCells = ['Position', 'JavaScript', 'Python', 'C#', 'Java', 'PHP'];
-
 const TournamentScore = (props) => {
   const {javaScript, python, csharp, java, php} = props.tournaments;
 
@@ -18,7 +16,7 @@ const TournamentScore = (props) => {
         </dt>
       </dl>
       <HeadRow
-        headerCells={headerCells}
+        headerCells={props.headerCells}
       />
       <section className={style.body}>
         <BodyMainCol key='positions' positions={props.places}/>

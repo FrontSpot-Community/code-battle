@@ -97,6 +97,15 @@ class SecContainer extends Component {
       }
     };
 
+    const headerCells = {
+      position: 'Position',
+      javascript: 'JavaScript',
+      python: 'Python',
+      csharp: 'C#',
+      java: 'Java',
+      php: 'PHP'
+    };
+
     const participantsMetrics = {
       javaScript: 57,
       python: 21,
@@ -119,6 +128,7 @@ class SecContainer extends Component {
         <div className={style.wrapper}>
           <div className={style.resultsContainer}>
             <TournamentScore
+              headerCells={headerCells}
               places={places}
               tournaments={tournaments}
             />

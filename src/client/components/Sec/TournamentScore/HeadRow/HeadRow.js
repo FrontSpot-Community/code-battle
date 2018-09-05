@@ -5,9 +5,9 @@ const HeadRow = (props) => {
   return (
     <header className={style.header}>
       {
-        props.headerCells.map((item, idx) => (
-          <p key={idx}>
-            {item}
+        Object.entries(props.headerCells).map(([key, value]) => (
+          <p key={key} className={style[key]}>
+            {value}
           </p>
         ))
       }
