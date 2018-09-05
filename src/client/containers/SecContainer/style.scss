@@ -11,6 +11,7 @@
 
 .wrapper {
   display: flex;
+  flex-direction: row;
   flex: 1;
   justify-content: space-between;
   height: -moz-calc(100% - 60px);
@@ -25,6 +26,13 @@
 .chartsContainer {
   flex: 3;
   margin-left: 20px;
+}
+
+.charts {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .loader,

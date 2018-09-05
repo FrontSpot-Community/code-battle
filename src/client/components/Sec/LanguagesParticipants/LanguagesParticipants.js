@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import style from './style.scss';
 
-import ParticipantsChart from '../shared/ParticipantsChart';
+import ParticipantsChart from './ParticipantsChart';
 
 export default class LanguagesParticipants extends Component {
   constructor(props) {

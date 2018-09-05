@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import style from './style.scss';
 
-import TasksChart from '../shared/TasksChart';
+import TasksChart from './TasksChart';
 
 export default class LanguagesTasks extends Component {
   constructor(props) {

@@ -124,8 +124,10 @@ class SecContainer extends Component {
             />
           </div>
           <div className={style.chartsContainer}>
-            <LanguagesParticipants metrics={participantsMetrics}/>
-            <LanguagesTasks metrics={tasksMetrics}/>
+            <div className={style.charts}>
+              <LanguagesParticipants metrics={participantsMetrics}/>
+              <LanguagesTasks metrics={tasksMetrics}/>
+            </div>
           </div>
         </div>
       </div>;
