@@ -82,7 +82,7 @@ class TaskEditContainer extends React.Component {
     const {taskUpdate, taskAdd} = this.props;
     let {task} = this.props;
 
-    if (!task || this.state.isEditMode) {
+    if (!task || !this.state.isEditMode) {
       task = this.state;
     }
 
