@@ -26,7 +26,7 @@ class App extends React.Component {
     return (
       <div className={styles.wrapper}>
         <Header user={this.props.userInfo}
-          activePageName={this.props.activePage.activePageName}/>}
+          activePageName={this.props.activePage.activePageName}/>
         <main className={styles.main}>
           {this.props.children}
         </main>
