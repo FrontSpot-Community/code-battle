@@ -28,7 +28,7 @@ class AdminButtonPanel extends React.Component {
     },
     editTournament: {
       getPath: () => {
-        return this.props.location.pathname;
+        return this.props.location.pathname + '/edit_tournament';
       },
       buttonName: 'Edit Tournament'
     },
