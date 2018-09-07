@@ -1,99 +1,70 @@
 import React, {Component} from 'react';
-import C3Component from './BaseC3';
+import {Bar} from 'react-chartjs-2';
+
 import style from './style.scss';
 
 export default class MonthsStatChart extends Component {
-  componentWillMount() {
-    this.yTicksValues = this.yTicksHandle();
-  }
-
-  yTicksHandle = () => {
-    const {metrics} = this.props;
-    const maxArr = [];
-
+  render() {
+    const {metrics, colors} = this.props;
+    const labels = [];
+    const dataArray = [];
+    const backgroundColor = [];
     Object.entries(metrics).map(([key, value]) => {
-      if (key !== 'year') {
-        maxArr.push(Math.max(...value));
-      }
+      labels.push(key);
+      dataArray.push(value);
+      backgroundColor.push(colors[key]);
     });
 
-    let maxMetricValue = Math.ceil(Math.max(...maxArr) / 10) * 10;
-
-    const ticksArr = [];
-    while (maxMetricValue > 0) {
-      ticksArr.push(maxMetricValue);
-      maxMetricValue -= 10;
-    }
-    ticksArr.push(0);
-
-    return ticksArr.reverse();
-  }
-
-  tooltipHandle = (data, months, year) => {
-    const tasks = data[0].value;
-    const complexity = data[0].id;
-    const month = months[data[0].index];
-
-    const tooltip = document.createElement('div');
-    tooltip.style.opacity = 0.9;
-    tooltip.style.width = '136px';
-    tooltip.style.padding = '10px';
-    tooltip.style.fontSize = '12px';
-    tooltip.style.lineHeight = 1.17;
-    tooltip.style.borderRadius = '5px';
-    tooltip.style.backgroundColor = '#111111';
-    tooltip.innerText = `${tasks} ${complexity}'s tasks solved at ${month} ${year}`;
-
-    return tooltip.outerHTML;
-  };
-
-  render() {
-    const {metrics, months, colors} = this.props;
-    const year = metrics.year;
-
     const data = {
-      columns: [
-        ['Mortal', ...metrics.mortal],
-        ['Champion', ...metrics.champion],
-        ['Fighter', ...metrics.fighter],
-        ['Berserk', ...metrics.berserk]
-      ],
-      type: 'bar',
-      colors
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+      datasets: [
+        {
+          data: [1, 3, 2, 1, 5, 2],
+          backgroundColor: '#a6c638',
+          borderColor: '#222222'
+        },
+        {
+          data: [3, 1, 5, 4, 2, 4],
+          backgroundColor: '#39c2d7',
+          borderColor: '#222222'
+        },
+        {
+          data: [5, 1, 5, 4, 1, 3],
+          backgroundColor: '#f39c12',
+          borderColor: '#222222'
+        },
+        {
+          data: [4, 1, 3, 1, 2, 5],
+          backgroundColor: '#e74c3c',
+          borderColor: '#222222'
+        }
+      ]
     };
 
-    const chartConfig = {
-      size: {
-        width: 500,
-        height: 160
+    const options = {
+      maintainAspectRatio: false,
+      legend: {
+        display: false
       },
-      bar: {
-        width: 13,
-        space: 0.5
-      },
-      axis: {
-        x: {
-          type: 'category',
-          categories: months
-        },
-        y: {
-          tick: {values: this.yTicksValues}
-        }
-      },
-      grid: {
-        x: {show: false},
-        y: {show: true}
-      },
-      legend: {show: false},
-      tooltip: {
-        grouped: false,
-        contents: (d) => this.tooltipHandle(d, months, year)
+      scales: {
+        xAxes: [{
+          categoryPercentage: 0.6,
+          barPercentage: 0.6
+        }],
+        yAxes: [{
+          gridLines: {
+            display: false
+          },
+          ticks: {
+            beginAtZero: true
+          }
+        }]
       }
     };
 
     return (
-      <div className={style.chartMonths} >
-        <C3Component data={data} config={chartConfig} />
+      <div className={style.chartMonths}>
+        <Bar data={data} options={options}/>
       </div>
     );
   }

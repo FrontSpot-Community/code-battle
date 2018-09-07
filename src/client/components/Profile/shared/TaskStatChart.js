@@ -1,42 +1,58 @@
 import React, {Component} from 'react';
-import C3Component from './BaseC3';
+import {Chart, Doughnut} from 'react-chartjs-2';
+import {plugin} from './doughnutPlugin';
+
 import style from './style.scss';
 
 export default class TaskStatChart extends Component {
+  componentWillMount() {
+    Chart.pluginService.register({
+      beforeDraw: plugin
+    });
+  }
+
   render() {
     const {metrics, colors} = this.props;
-    const columns = [];
     let metricsSum = 0;
+    const labels = [];
+    const dataArray = [];
+    const backgroundColor = [];
     Object.entries(metrics).map(([key, value]) => {
-      const metricArr = [key, value];
       metricsSum += value;
-      columns.push(metricArr);
+      labels.push(key);
+      dataArray.push(value);
+      backgroundColor.push(colors[key]);
     });
 
     const data = {
-      columns,
-      type: 'donut',
-      order: null,
-      colors
+      labels,
+      datasets: [{
+        data: dataArray,
+        backgroundColor,
+        borderWidth: 0
+      }]
     };
 
-    const chartConfig = {
-      donut: {
-        title: metricsSum,
-        width: 15,
-        label: {show: false}
+    const options ={
+      maintainAspectRatio: false,
+      cutoutPercentage: 85,
+      legend: {
+        display: false
       },
-      size: {
-        width: 150,
-        height: 150
-      },
-      legend: {show: false},
-      tooltip: {show: false}
+      elements: {
+        center: {
+          text: metricsSum,
+          color: '#ffffff', // Default is #000000
+          fontStyle: 'Oswald', // Default is Arial
+          sidePadding: 20, // Defualt is 20 (as a percentage)
+          size: 32
+        }
+      }
     };
 
     return (
-      <div className={style.chartDonut}>
-        <C3Component data={data} config={chartConfig} />
+      <div className={style.doughnut}>
+        <Doughnut data={data} options={options}/>
       </div>
     );
   }

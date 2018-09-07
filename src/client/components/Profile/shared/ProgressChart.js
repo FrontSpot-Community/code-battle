@@ -1,41 +1,53 @@
 import React, {Component} from 'react';
-import C3Component from './BaseC3';
+import {HorizontalBar} from 'react-chartjs-2';
+
 import style from './style.scss';
 
 export default class ProgressChart extends Component {
   render() {
     const {metrics, colors} = this.props;
-    const columns = [];
+    const labels = [];
+    const dataArray = [];
+    const backgroundColor = [];
     Object.entries(metrics).map(([key, value]) => {
-      const metricArr = [key, value];
-      columns.push(metricArr);
+      labels.push(key);
+      dataArray.push(value);
+      backgroundColor.push(colors[key]);
     });
 
     const data = {
-      columns,
-      type: 'bar',
-      colors
+      labels,
+      datasets: [{
+        data: dataArray,
+        backgroundColor,
+        borderColor: '#222222'
+      }]
     };
 
-    const chartConfig = {
-      size: {
-        height: 40
+    const options = {
+      maintainAspectRatio: false,
+      legend: {
+        display: false
       },
-      bar: {
-        width: 13,
-        space: 0.6
-      },
-      axis: {
-        rotated: true,
-        x: {show: false},
-        y: {show: false}
-      },
-      legend: {show: false},
-      tooltip: {show: false}
+      scales: {
+        xAxes: [{
+          display: false
+        }],
+        yAxes: [{
+          display: false,
+          categoryPercentage: 0.6,
+          barPercentage: 1,
+          gridLines: {
+            display: false
+          },
+          stacked: true
+        }]
+      }
     };
+
     return (
-      <div className={style.chart}>
-        <C3Component data={data} config={chartConfig} />
+      <div className={style.horBar}>
+        <HorizontalBar data={data} options={options}/>
       </div>
     );
   }
