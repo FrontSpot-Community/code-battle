@@ -1,0 +1,68 @@
+@import '~Colors';
+
+.header {
+  display: flex;
+  color: $WHITE;
+  border-bottom: 1px solid $MINE_SHAFT;
+  height: 48px;
+  padding-left: 18px;
+  padding-right: 18px;
+
+  font-family: 'Source Sans Pro Regular', sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.71;
+  letter-spacing: normal;
+  text-align: right;
+}
+
+.columnName {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: right;
+  justify-content: center;
+
+  &:first-child {
+    flex: 2;
+    text-align: left;
+  }
+}
+
+.userslist {
+  color: $WHITE;
+  padding: 0 18px;
+}
+
+.listItem {
+  display: flex;
+  height: 40px;
+  border-bottom: 1px solid $MINE_SHAFT;
+}
+
+.cell {
+  color: $DUSTY_GRAY;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  font-family: 'Source Sans Pro Regular', sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.14;
+  letter-spacing: normal;
+
+  flex-direction: column;
+  text-align: -webkit-right;
+  justify-content: center;
+
+  &:first-child {
+    color: $WHITE;
+    flex-direction: row;
+    justify-content: left;
+    flex: 2;
+  }
+}

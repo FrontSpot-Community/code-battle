@@ -13,13 +13,14 @@
   width: calc(50% - 9px);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   margin-bottom: 18px;
   margin-right: 18px;
 
   &:last-child {
     margin-right: 0;
   }
+
+  background-color: $bg_dark;
 }
 
 .row {
@@ -39,6 +40,7 @@
 .wrapper {
   display: flex;
   height: 100%;
+  margin-bottom: 18px;
 }
 
 .form {

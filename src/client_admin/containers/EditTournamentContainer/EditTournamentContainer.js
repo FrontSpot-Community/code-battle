@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {withRouter} from 'react-router-dom';
 import TournamentFieldsEditor from 'src/client_admin/components/TournamentFieldsEditor';
+import JoinedUsers from 'src/client_admin/components/JoinedUsersSection';
 import Loader from 'src/client/components/Loader';
 import {tournamentsByIdRequest} from 'src/client/actions/action_creators/tournamentActionCreators';
 import style from './style.scss';
@@ -120,7 +121,7 @@ class EditTournamentContainer extends React.Component {
                 />
               </div>
               <div className={style.col}>
-
+                <JoinedUsers />
               </div>
             </div>
             <div className={style.actions}>
