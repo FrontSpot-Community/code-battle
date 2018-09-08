@@ -8,6 +8,7 @@ export default class MonthsStatChart extends Component {
     const {metrics, colors, months: labels} = this.props;
     const datasets = Object.entries(metrics).map(([key, value]) => (
       {
+        label: key,
         data: value,
         backgroundColor: colors[key]
       }

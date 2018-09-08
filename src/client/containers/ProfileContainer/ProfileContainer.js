@@ -116,10 +116,10 @@ class ProfileContainer extends Component {
     const solvedMonthsMetrics = {
       year: 2017,
       history: {
-        mortal: [29, 17, 11, 18, 13, 11],
-        champion: [22, 22, 22, 11, 4, 22],
-        fighter: [4, 1, 23, 28, 20, 23],
-        berserk: [3, 2, 2, 2, 15, 2]
+        mortal: [29, 17, 11, 18, 13, 11, 4, 1, 23, 28, 20, 23],
+        champion: [22, 22, 22, 11, 4, 22, 3, 2, 2, 2, 15, 2],
+        fighter: [4, 1, 23, 28, 20, 23, 18, 13, 11, 4, 1, 23],
+        berserk: [3, 2, 2, 2, 15, 2, 13, 11, 4, 1, 23, 28]
       }
     };
 

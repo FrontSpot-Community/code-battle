@@ -12,6 +12,7 @@
 
 .header {
   display: flex;
+  align-items: center;
   padding: 12px 0 12px 18px;
   margin-bottom: 0;
   border-bottom: 1px solid $MINE_SHAFT;
@@ -33,7 +34,7 @@
 }
 
 .period {
-  flex: 1;
+  flex: 2;
 }
 
 .content {
