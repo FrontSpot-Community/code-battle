@@ -19,8 +19,7 @@ export default class ProgressChart extends Component {
       labels,
       datasets: [{
         data: dataArray,
-        backgroundColor,
-        borderColor: '#222222'
+        backgroundColor
       }]
     };
 
@@ -35,8 +34,8 @@ export default class ProgressChart extends Component {
         }],
         yAxes: [{
           display: false,
-          categoryPercentage: 0.6,
-          barPercentage: 1,
+          categoryPercentage: 0.7,
+          barPercentage: 0.9,
           gridLines: {
             display: false
           },

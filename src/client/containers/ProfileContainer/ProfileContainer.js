@@ -115,10 +115,12 @@ class ProfileContainer extends Component {
 
     const solvedMonthsMetrics = {
       year: 2017,
-      mortal: [29, 17, 11, 18, 13, 11],
-      champion: [22, 22, 22, 11, 4, 22],
-      fighter: [4, 1, 23, 28, 20, 23],
-      berserk: [3, 2, 2, 2, 15, 2]
+      history: {
+        mortal: [29, 17, 11, 18, 13, 11],
+        champion: [22, 22, 22, 11, 4, 22],
+        fighter: [4, 1, 23, 28, 20, 23],
+        berserk: [3, 2, 2, 2, 15, 2]
+      }
     };
 
     return this.props.userLoading
@@ -132,12 +134,10 @@ class ProfileContainer extends Component {
         />
         <div className={style.wrapper}>
           <div className={style.statisticsContainer}>
-            {/* TODO: fix redundant inner div for joyride anchor */}
             <TournamentsStatistic metrics={tournamentMetrics} />
             <TasksStatistic metrics={taskMetrics} />
             <UnfinishedActivity />
             <SolvedTasksStat metrics={solvedMonthsMetrics} />
-            {/* <ProfileTournaments tournaments={this.props.tournaments} /> */}
           </div>
           <div className={style.detailsContainer}>
             <div className="ProfileDetails">

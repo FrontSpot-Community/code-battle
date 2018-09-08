@@ -9,21 +9,21 @@ export default class SolvedTasksStat extends Component {
   }
 
   render() {
-    const {metrics} = this.props;
+    const {year, history} = this.props.metrics;
     const total = (arr) => arr.reduce((acc, curr) => acc + curr);
 
     const reducedMetricsMap = {
-      'Fighter': total(metrics.fighter),
-      'Berserk': total(metrics.berserk),
-      'Champion': total(metrics.champion),
-      'Mortal': total(metrics.mortal)
+      fighter: total(history.fighter),
+      berserk: total(history.berserk),
+      champion: total(history.champion),
+      mortal: total(history.mortal)
     };
 
     const colorsMap = {
-      'Fighter': '#f39c12',
-      'Berserk': '#e74c3c',
-      'Champion': '#39c2d7',
-      'Mortal': '#a6c638'
+      fighter: '#f39c12',
+      berserk: '#e74c3c',
+      champion: '#39c2d7',
+      mortal: '#a6c638'
     };
 
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
@@ -32,13 +32,18 @@ export default class SolvedTasksStat extends Component {
       <div className={style.wrapper}>
         <dl className={style.header}>
           <dt className={style.title}>Solved Tasks Stats</dt>
+          <dt className={style.period}>{year}</dt>
         </dl>
         <div className={style.content}>
           <div className={style.leftContent}>
-            <MonthsStatChart metrics={metrics} months={months} colors={colorsMap} />
+            <div className={style.stretchCharts}>
+              <MonthsStatChart metrics={history} colors={colorsMap} months={months} />
+            </div>
           </div>
           <div className={style.rightContent}>
-            <TaskStatChart metrics={reducedMetricsMap} colors={colorsMap} />
+            <div className={style.stretchCharts}>
+              <TaskStatChart metrics={reducedMetricsMap} colors={colorsMap} />
+            </div>
           </div>
         </div>
 

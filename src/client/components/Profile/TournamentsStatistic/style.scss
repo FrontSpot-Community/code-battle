@@ -26,3 +26,10 @@
   text-align: left;
   color: $WHITE;
 }
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding-left: 18px;
+  height: 100%;
+}

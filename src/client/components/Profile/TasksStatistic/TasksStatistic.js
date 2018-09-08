@@ -28,8 +28,10 @@ export default class TasksStatistic extends Component {
         <dl className={style.header}>
           <dt className={style.title}>Tasks</dt>
         </dl>
-        <Totals metrics={metricsMap} colors={colorsMap} />
-        <ProgressChart metrics={metricsMap} colors={colorsMap} />
+        <div className={style.content}>
+          <Totals metrics={metricsMap} colors={colorsMap} />
+          <ProgressChart metrics={metricsMap} colors={colorsMap} />
+        </div>
       </div>
     );
   }
