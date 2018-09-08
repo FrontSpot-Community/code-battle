@@ -1,6 +1,6 @@
 import {call, put, takeEvery, all} from 'redux-saga/effects';
-import {getTaskById, getAllTasks} from '../../common/api/tasks';
-import tasksMock from '../../common/api/mocks/tasks.mock';
+import {getTaskById, getAllTasks} from '../api/tasks';
+import tasksMock from '../api/mocks/tasks.mock';
 
 import {
   tasksFetchSuccess,
@@ -9,13 +9,13 @@ import {
   tasksByIdFetchFailed,
   taskByIdFetchSuccess,
   taskByIdFetchFailed
-} from '../actions/action_creators/taskActionCreators';
+} from '../../client/actions/action_creators/taskActionCreators';
 
 import {
   TASKS_FETCH,
   TASKS_BY_ID_FETCH,
   TASK_BY_ID_FETCH
-} from '../actions/actions';
+} from '../../client/actions/actions';
 
 function* fetchTasks() {
   try {

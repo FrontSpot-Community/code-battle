@@ -10,7 +10,8 @@ const styleColors = path.resolve(__dirname, './src/common/constants/colors.scss'
 
 module.exports = {
     entry: {
-      client: './src/client/index'
+      client: './src/client/index',
+      client_admin: './src/client_admin/index'
     },
     output: {
       path: outputPath,
@@ -94,7 +95,7 @@ module.exports = {
         chunks: ['vendor', 'client']
       }),
       new HtmlWebpackPlugin({
-        template: path.join(srcPath, 'client_admin', 'index.html'),
+        template: path.join(srcPath, 'client_admin', 'index_admin.html'),
         favicon: './assets/images/favicon.ico',
         filename: 'index_admin.html',
         path: outputPath,

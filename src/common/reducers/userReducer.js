@@ -6,7 +6,7 @@ import {
   USERS_FETCH,
   USERS_FETCH_SUCCESS,
   USERS_FETCH_FAILED
-} from '../actions/actions';
+} from '../../client/actions/actions';
 
 const initialState = {
   isLoading: false,

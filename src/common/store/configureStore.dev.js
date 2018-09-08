@@ -1,8 +1,10 @@
 import {createStore, applyMiddleware, compose} from 'redux';
-import rootReducer from '../reducers/index';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 import createSagaMiddleware, {END} from 'redux-saga';
+import clientRootReducer from 'src/common/reducers';
+import clientAdminRootReducer from 'src/client_admin/reducers';
 
+const rootReducer = process.env.ADMIN_PAGE ? clientAdminRootReducer() : clientRootReducer();
 const sagaMiddleware = createSagaMiddleware();
 let store;
 

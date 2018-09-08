@@ -5,7 +5,7 @@ import {
   SOLUTION_BY_TASK_ID_FETCH,
   SOLUTION_BY_TASK_ID_FETCH_SUCCESS,
   SOLUTION_BY_TASK_ID_FETCH_FAILED
-} from '../actions/actions';
+} from '../../client/actions/actions';
 
 const initialState = {
   isLoading: false,

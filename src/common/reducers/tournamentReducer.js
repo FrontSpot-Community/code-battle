@@ -5,7 +5,7 @@ import {
   TOURNAMENT_BY_ID_FETCH,
   TOURNAMENT_BY_ID_FETCH_SUCCESS,
   TOURNAMENT_BY_ID_FETCH_FAILED
-} from '../actions/actions';
+} from '../../client/actions/actions';
 
 const initialState = {
   isLoading: false,
