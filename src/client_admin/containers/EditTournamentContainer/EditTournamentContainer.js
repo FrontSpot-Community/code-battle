@@ -5,7 +5,12 @@ import {withRouter} from 'react-router-dom';
 import TournamentFieldsEditor from 'src/client_admin/components/TournamentFieldsEditor';
 import JoinedUsers from 'src/client_admin/components/JoinedUsersSection';
 import Loader from 'src/client/components/Loader';
-import {tournamentsByIdRequest} from 'src/client/actions/action_creators/tournamentActionCreators';
+import {
+  tournamentsByIdRequest,
+  tournamentUpdate,
+  tournamentDelete
+} from 'src/client/actions/action_creators/tournamentActionCreators';
+
 import style from './style.scss';
 import {Button} from 'src/client/components/Common';
 
@@ -34,16 +39,7 @@ class EditTournamentContainer extends React.Component {
   componentWillReceiveProps(nextProps) {
     const {tournamentById} = nextProps;
 
-    this.setState({
-      name: tournamentById ? tournamentById.name : '',
-      startDate: tournamentById ? tournamentById.startDate : '',
-      endDate: tournamentById ? tournamentById.endDate : '',
-      language: tournamentById ? tournamentById.language : '',
-      author: tournamentById ? tournamentById.department : '',
-      description: tournamentById ? tournamentById.description : '',
-      tags: tournamentById ? tournamentById.tags : [],
-      difficulty: tournamentById ? tournamentById.difficulty : ''
-    });
+    this.setTournamentState(tournamentById);
   }
 
   handleTitleChanges = (newName) => {
@@ -78,17 +74,55 @@ class EditTournamentContainer extends React.Component {
     this.setState({tags: newTagsList});
   };
 
-  deleteTournament = () => {
+  setTournamentState(tournamentById) {
+    this.setState({
+      name: tournamentById ? tournamentById.name : '',
+      startDate: tournamentById ? tournamentById.startDate : '',
+      endDate: tournamentById ? tournamentById.endDate : '',
+      language: tournamentById ? tournamentById.language : '',
+      author: tournamentById ? tournamentById.department : '',
+      description: tournamentById ? tournamentById.description : '',
+      tags: tournamentById ? tournamentById.tags : [],
+      difficulty: tournamentById ? tournamentById.difficulty : ''
+    });
+  }
 
+  deleteTournament = (e) => {
+    e.preventDefault();
+    const {tournamentDelete, tournamentById} = this.props;
+    tournamentDelete(tournamentById.id);
+    this.props.history.push(
+      this.props.match.url.replace(`/${tournamentById.id}/edit_tournament`, ''));
   };
 
-
-  cancelChanges = () => {
-
+  cancelChanges = (e) => {
+    e.preventDefault();
+    const {tournamentById} = this.props;
+    this.setTournamentState(tournamentById);
   };
 
-  saveChanges = () => {
+  saveChanges = (e) => {
+    e.preventDefault();
+    const {tournamentUpdate, tournamentById} = this.props;
 
+    const {
+      name, startDate, endDate, language, author,
+      description, tags, difficulty
+    } = this.state;
+
+    const dataToSend = {
+      ...tournamentById,
+      name: name === '' ? tournamentById.name : name,
+      startDate: startDate === '' ? tournamentById.startDate : startDate,
+      endDate: endDate === '' ? tournamentById.endDate : endDate,
+      language: language === '' ? tournamentById.language : language,
+      author: author === '' ? tournamentById.department : author,
+      description: description === '' ? tournamentById.description : description,
+      tags: tags.length ? tournamentById.tags : [],
+      difficulty: difficulty === '' ? tournamentById.difficulty : difficulty
+    };
+
+    tournamentUpdate(dataToSend);
   };
 
   renderData() {
@@ -158,7 +192,11 @@ const mapStateToProps = (state) => {
 };
 
 const mapActionsToProps = (dispatch) => (
-  bindActionCreators({tournamentsByIdRequest}, dispatch)
+  bindActionCreators({
+    tournamentsByIdRequest,
+    tournamentUpdate,
+    tournamentDelete
+  }, dispatch)
 );
 
 export default connect(
