@@ -35,6 +35,7 @@ render(
       <App>
         <Switch>
           <Route exact path="/" render={renderComponent(<HomeContainer />)}/>
+          <Route exact path="/new_tournament" component={EditTournamentContainer} />
           <Route exact path="/:id" component={TournamentContainer}/>
           <Route exact path="/:id/edit_tournament" component={EditTournamentContainer} />
           <Route exact path="/:id/new_task" component={TaskEditContainer}/>

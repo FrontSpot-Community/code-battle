@@ -61,6 +61,12 @@ export const [
 ] = createFetchActions('TASKS_FETCH');
 
 export const [
+  TOURNAMENT_ADD,
+  TOURNAMENT_ADD_SUCCESS,
+  TOURNAMENT_ADD_FAILED
+] = createFetchActions('TOURNAMENT_ADD');
+
+export const [
   TASK_ADD,
   TASK_ADD_SUCCESS,
   TASK_ADD_FAILED

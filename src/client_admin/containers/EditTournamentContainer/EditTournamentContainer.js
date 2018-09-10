@@ -8,7 +8,8 @@ import Loader from 'src/client/components/Loader';
 import {
   tournamentsByIdRequest,
   tournamentUpdate,
-  tournamentDelete
+  tournamentDelete,
+  tournamentAdd
 } from 'src/client/actions/action_creators/tournamentActionCreators';
 
 import style from './style.scss';
@@ -26,14 +27,19 @@ class EditTournamentContainer extends React.Component {
       description: '',
       tags: [],
       difficulty: '',
-      author: ''
+      department: '',
+      isEditMode: false
     };
   }
 
   componentDidMount() {
     const {id} = this.props.match.params;
     const requestData = {id: `${id}?populateField=taskIds`};
-    this.props.tournamentsByIdRequest(requestData);
+
+    if (id) {
+      this.setState({isEditMode: true});
+      this.props.tournamentsByIdRequest(requestData);
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -63,7 +69,7 @@ class EditTournamentContainer extends React.Component {
   };
 
   handleAuthorNameChanges = (newAuthor) => {
-    this.setState({author: newAuthor});
+    this.setState({department: newAuthor});
   };
 
   handleTaskDescriptionChanges = (newDescription) => {
@@ -74,13 +80,18 @@ class EditTournamentContainer extends React.Component {
     this.setState({tags: newTagsList});
   };
 
+  replaceIllegalChars(string, replaceTo) {
+    const regexp = new RegExp('[^a-zA-Z0-9/-]+', 'g');
+    return string.replace(regexp, replaceTo);
+  }
+
   setTournamentState(tournamentById) {
     this.setState({
       name: tournamentById ? tournamentById.name : '',
       startDate: tournamentById ? tournamentById.startDate : '',
       endDate: tournamentById ? tournamentById.endDate : '',
       language: tournamentById ? tournamentById.language : '',
-      author: tournamentById ? tournamentById.department : '',
+      department: tournamentById ? tournamentById.department : '',
       description: tournamentById ? tournamentById.description : '',
       tags: tournamentById ? tournamentById.tags : [],
       difficulty: tournamentById ? tournamentById.difficulty : ''
@@ -103,36 +114,44 @@ class EditTournamentContainer extends React.Component {
 
   saveChanges = (e) => {
     e.preventDefault();
-    const {tournamentUpdate, tournamentById} = this.props;
+    let {tournamentUpdate, tournamentAdd, tournamentById} = this.props;
+
+    if (!tournamentById || !this.state.isEditMode) {
+      tournamentById = this.state;
+    }
 
     const {
-      name, startDate, endDate, language, author,
+      name, startDate, endDate, language, department,
       description, tags, difficulty
     } = this.state;
 
     const dataToSend = {
       ...tournamentById,
+      title:
+        this.replaceIllegalChars(name === '' ? tournamentById.name : name, ' ')
+          .toLowerCase(),
+      id:
+        this.replaceIllegalChars(name === '' ? tournamentById.name : name, '_'),
+      status: !this.state.isEditMode ? 'Started': tournamentById.status,
       name: name === '' ? tournamentById.name : name,
       startDate: startDate === '' ? tournamentById.startDate : startDate,
       endDate: endDate === '' ? tournamentById.endDate : endDate,
       language: language === '' ? tournamentById.language : language,
-      author: author === '' ? tournamentById.department : author,
+      department: department === '' ? tournamentById.department : department,
       description: description === '' ? tournamentById.description : description,
       tags: tags.length ? tournamentById.tags : [],
       difficulty: difficulty === '' ? tournamentById.difficulty : difficulty
     };
 
-    tournamentUpdate(dataToSend);
+    this.state.isEditMode ?
+      tournamentUpdate(dataToSend) : tournamentAdd(dataToSend);
   };
 
   renderData() {
     const {
-      name, startDate, endDate, language, author,
+      name, startDate, endDate, language, department,
       description, tags, difficulty
     } = this.state;
-
-    const tournament = this.props.tournamentById;
-    if (!tournament) return null;
 
     return (
       <div className={style.container}>
@@ -143,7 +162,7 @@ class EditTournamentContainer extends React.Component {
                 <TournamentFieldsEditor
                   name={name} startDate={startDate} endDate={endDate}
                   language={language} description={description}
-                  tags={tags} difficulty={difficulty} author={author}
+                  tags={tags} difficulty={difficulty} author={department}
                   onTitleChanges={this.handleTitleChanges}
                   onStartDateChanges={this.handleStartDateChanges}
                   onEndDateChanges={this.handleEndDateChanges}
@@ -175,7 +194,7 @@ class EditTournamentContainer extends React.Component {
     return (
       <div className={style.mainWrapper}>
         {
-          !this.props.tournamentById || this.props.tournamentsLoading
+          this.props.tournamentsLoading
             ? <Loader />
             : this.renderData()
         }
@@ -195,7 +214,8 @@ const mapActionsToProps = (dispatch) => (
   bindActionCreators({
     tournamentsByIdRequest,
     tournamentUpdate,
-    tournamentDelete
+    tournamentDelete,
+    tournamentAdd
   }, dispatch)
 );
 

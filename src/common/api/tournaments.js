@@ -16,3 +16,7 @@ export const updateTournamentById = (id, params) => {
 export const deleteTournamentById = (id) => {
   return httpClient.delete(`${TOURAMENT_ENDPOINT}/${id}`);
 };
+
+export const addTournament = (params) => {
+  return httpClient.post(`${TOURAMENT_ENDPOINT}`, params);
+};

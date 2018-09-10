@@ -22,7 +22,7 @@ class AdminButtonPanel extends React.Component {
   buttonRouteMap = {
     newTournament: {
       getPath: () => {
-        return this.props.location.pathname;
+        return this.props.location.pathname + 'new_tournament';
       },
       buttonName: 'New Tournament'
     },

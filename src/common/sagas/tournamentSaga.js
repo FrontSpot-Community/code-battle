@@ -3,7 +3,8 @@ import {
   getTournamentById,
   gettAllTournamnets,
   updateTournamentById,
-  deleteTournamentById
+  deleteTournamentById,
+  addTournament as addNewTournament
 } from '../api/tournaments';
 
 import {
@@ -14,14 +15,17 @@ import {
   tournamentUpdateSuccess,
   tournamentUpdateFailed,
   tournamentDeleteSuccess,
-  tournamentDeleteFailed
+  tournamentDeleteFailed,
+  tournamentAddSuccess,
+  tournamentAddFailed
 } from '../../client/actions/action_creators/tournamentActionCreators';
 
 import {
   TOURNAMENTS_FETCH,
   TOURNAMENT_BY_ID_FETCH,
   TOURNAMENT_UPDATE,
-  TOURNAMENT_DELETE
+  TOURNAMENT_DELETE,
+  TOURNAMENT_ADD
 } from '../../client/actions/actions';
 
 function* fetchTournaments() {
@@ -61,11 +65,21 @@ function* deleteTournament({payload}) {
   }
 }
 
+function* addTournament({payload}) {
+  try {
+    const tournament = yield call(addNewTournament, payload);
+    yield put(tournamentAddSuccess(tournament));
+  } catch (error) {
+    yield put(tournamentAddFailed(error.data));
+  }
+}
+
 function* tournamentSaga() {
   yield takeEvery(TOURNAMENTS_FETCH, fetchTournaments);
   yield takeEvery(TOURNAMENT_BY_ID_FETCH, fetchTournamentById);
   yield takeEvery(TOURNAMENT_UPDATE, updateTournament);
   yield takeEvery(TOURNAMENT_DELETE, deleteTournament);
+  yield takeEvery(TOURNAMENT_ADD, addTournament);
 }
 
 export default tournamentSaga;
