@@ -150,7 +150,7 @@ class EditTournamentContainer extends React.Component {
   renderData() {
     const {
       name, startDate, endDate, language, department,
-      description, tags, difficulty
+      description, tags, difficulty, isEditMode
     } = this.state;
 
     return (
@@ -158,7 +158,7 @@ class EditTournamentContainer extends React.Component {
         <div className={style.dataContainer}>
           <form className={style.form}>
             <div className={style.wrapper}>
-              <div className={style.col}>
+              <div className={isEditMode ? style.col : style.col__wide}>
                 <TournamentFieldsEditor
                   name={name} startDate={startDate} endDate={endDate}
                   language={language} description={description}
@@ -173,9 +173,11 @@ class EditTournamentContainer extends React.Component {
                   onTagsListChanges={this.handleTagsListChanges}
                 />
               </div>
-              <div className={style.col}>
-                <JoinedUsers users={this.props.users}/>
-              </div>
+              {
+                isEditMode ? <div className={style.col}>
+                  <JoinedUsers users={this.props.users}/>
+                </div> : null
+              }
             </div>
             <div className={style.actions}>
               <Button mod="warn" onClick={this.deleteTournament}>DELETE TOURNAMENT</Button>

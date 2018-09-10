@@ -22,6 +22,10 @@
   }
 
   background-color: $bg_dark;
+
+  &__wide {
+    width: 100%;
+  }
 }
 
 .row {
