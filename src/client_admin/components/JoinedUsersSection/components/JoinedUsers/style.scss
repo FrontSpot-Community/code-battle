@@ -4,7 +4,7 @@
   display: flex;
   color: $WHITE;
   border-bottom: 1px solid $MINE_SHAFT;
-  height: 48px;
+  flex-basis: 48px;
   padding-left: 18px;
   padding-right: 18px;
 
@@ -34,12 +34,26 @@
 .userslist {
   color: $WHITE;
   padding: 0 18px;
+  overflow-y: auto;
+
+  &:before {
+    content: ' ';
+    width: 100%;
+    height: 80px;
+    left: 0;
+    bottom: 0;
+    position: absolute;
+    display: block;
+    z-index: 1;
+    background-image: linear-gradient(to bottom, rgba(34, 34, 34, 0), #222222);
+  }
 }
 
 .listItem {
   display: flex;
   height: 40px;
   border-bottom: 1px solid $MINE_SHAFT;
+
 }
 
 .cell {
@@ -64,5 +78,8 @@
     flex-direction: row;
     justify-content: left;
     flex: 2;
+
+    opacity: 0.7;
+    font-family: 'Source Sans Pro Regular', sans-serif;
   }
 }

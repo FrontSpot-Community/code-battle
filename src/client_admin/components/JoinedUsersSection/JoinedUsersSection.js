@@ -11,7 +11,7 @@ export default class JoinedUsersSection extends React.Component {
     return (
       <Fragment>
         <HeaderWithSearch />
-        <JoinedUsers />
+        <JoinedUsers users={this.props.users}/>
       </Fragment>
     );
   }

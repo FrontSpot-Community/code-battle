@@ -174,7 +174,7 @@ class EditTournamentContainer extends React.Component {
                 />
               </div>
               <div className={style.col}>
-                <JoinedUsers />
+                <JoinedUsers users={this.props.users}/>
               </div>
             </div>
             <div className={style.actions}>
@@ -206,7 +206,8 @@ class EditTournamentContainer extends React.Component {
 const mapStateToProps = (state) => {
   return {
     tournamentById: state.tournaments.tournamentById,
-    tournamentsLoading: state.tournaments.isLoading
+    tournamentsLoading: state.tournaments.isLoading,
+    users: state.user.users
   };
 };
 
