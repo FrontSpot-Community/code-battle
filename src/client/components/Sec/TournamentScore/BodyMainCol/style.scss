@@ -1,0 +1,17 @@
+@import '~Colors';
+
+.col {
+  display: flex;
+  flex-direction: column;
+  width: 10%;
+  float: left;
+
+  >div {
+    display: flex;
+    align-items: center;
+    height: 75px;
+    color: $WHITE;
+    font-size: 14px;
+    border-bottom: 1px solid $MINE_SHAFT;
+  }
+}

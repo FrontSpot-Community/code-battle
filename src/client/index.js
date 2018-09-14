@@ -10,6 +10,7 @@ import TournamentContainer from 'src/client/containers/TournamentContainer/index
 import TaskContainer from 'src/client/containers/TaskContainer/index';
 import TaskTrainContainer from 'src/client/containers/TaskTrainContainer/index';
 import ProfileContainer from 'src/client/containers/ProfileContainer/index';
+import SecContainer from 'src/client/containers/SecContainer/index';
 import LoginContainer from 'src/common/containers/LoginContainer/index';
 import cookieService from 'src/common/services/cookie/index';
 
@@ -36,6 +37,7 @@ render(
           <Route exact path="/" render={renderComponent(<HomeContainer/>)}/>
           <Route exact path="/login" component={LoginContainer} />
           <Route exact path="/profile" component={ProfileContainer} />
+          <Route exact path="/sec" component={SecContainer} />
           <Route exact path="/:id" component={TournamentContainer} />
           <Route exact path="/:id/:taskId" component={TaskContainer} />
           <Route exact path="/:id/:taskId/train" component={TaskTrainContainer} />

@@ -1,0 +1,52 @@
+@import '~Colors';
+
+.header {
+  border-bottom: 1px solid $MINE_SHAFT;
+  padding: 0 18px;
+
+  >p {
+    width: 18%;
+    display: inline-block;
+    padding: 16px 0;
+    margin: 0;
+    height: 50px;
+    color: $WHITE;
+    font-size: 14px;
+
+    &.javascript {
+      color: #f39c12;
+      font-size: 18px;
+      font-weight: 700;
+    }
+    
+    &.python {
+      color: #a6c638;
+      font-size: 18px;
+      font-weight: 700;
+    }
+    
+    &.csharp {
+      color: #9f37b7;
+      font-size: 18px;
+      font-weight: 700;
+    }
+    
+    &.java {
+      color: #e74c3c;
+      font-size: 18px;
+      font-weight: 700;
+    }
+    
+    &.php {
+      color: #39c2d7;
+      font-size: 18px;
+      font-weight: 700;
+    }
+    
+    &:first-child {
+      width: 10%;
+      opacity: 0.5;
+    }
+  }
+}
+

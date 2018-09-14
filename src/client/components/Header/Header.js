@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 
 import Breadcrumbs from './components/Breadcrumbs';
+import SecButton from './components/SecButton';
 import Notifications from './components/Notifications';
 import ProfileItem from './components/ProfileItem';
 
@@ -35,6 +36,7 @@ class Header extends Component {
           {this.state.brandTitle}
         </Link>
         <Breadcrumbs setHeaderBackground={this.setHeaderBackground}/>
+        <SecButton/>
         <Notifications />
         <ProfileItem user={this.props.user}/>
       </header>

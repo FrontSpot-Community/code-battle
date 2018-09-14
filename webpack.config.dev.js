@@ -57,7 +57,7 @@ module.exports = {
               exclude: []
         },
         {
-          test: /\.(png|jpe?g)$/,
+          test: /\.(png|gif|jpe?g)$/,
           exclude: /node_modules/,
           use: [
               'preload-image-loader',
