@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Chart, Doughnut} from 'react-chartjs-2';
-import {plugin} from './doughnutPlugin';
+import {plugin} from 'src/common/utils/doughnutPlugin';
 
 import style from './style.scss';
 

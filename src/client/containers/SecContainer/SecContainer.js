@@ -122,6 +122,14 @@ class SecContainer extends Component {
       php: 18
     };
 
+    const colorsMap = {
+      javaScript: '#f39c12',
+      python: '#a6c638',
+      csharp: '#9f37b7',
+      java: '#e74c3c',
+      php: '#39c2d7'
+    };
+
     return this.props.userLoading
       ? <div className={style.loader} />
       : <div className={style.mainWrapper}>
@@ -135,8 +143,11 @@ class SecContainer extends Component {
           </div>
           <div className={style.chartsContainer}>
             <div className={style.charts}>
-              <LanguagesParticipants metrics={participantsMetrics}/>
-              <LanguagesTasks metrics={tasksMetrics}/>
+              <LanguagesParticipants
+                metrics={participantsMetrics}
+                colors={colorsMap}
+                headerCells={headerCells}/>
+              <LanguagesTasks metrics={tasksMetrics} colors={colorsMap} />
             </div>
           </div>
         </div>

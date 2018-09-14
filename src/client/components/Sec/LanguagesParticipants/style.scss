@@ -25,6 +25,21 @@
   color: $WHITE;
 }
 
+.content {
+  padding: 10px;
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+}
+
+.table{
+  flex: 2;
+}
+
+.chart {
+  flex: 5;
+}
+
 .doughnut {
   flex: 1;
   display: flex;
