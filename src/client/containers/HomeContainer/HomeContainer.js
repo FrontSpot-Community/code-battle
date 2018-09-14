@@ -35,7 +35,7 @@ class HomeContainer extends React.Component {
             <div className={style.rankContainer}>
               <Rank rankPosition={this.props.rankPosition}
                 totalRankPosition={this.props.users.length}
-                totalScore={this.props.user.score}
+                totalScore={this.props.user.statistics.totalScore}
                 users={this.props.users}/>
             </div>
           </div>}
