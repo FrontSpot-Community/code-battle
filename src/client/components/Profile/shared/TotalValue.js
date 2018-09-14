@@ -6,11 +6,16 @@ import style from './style.scss';
 export default class TotalValue extends Component {
   render() {
     const {title, value} = this.props;
+    let {color} = this.props;
+
+    if (title === 'Participated' || title === 'Attempts') {
+      color = '#999999';
+    }
 
     return (
       <div className={style.total}>
-        <div className={style.totalLabel}>{title}</div>
-        <div className={style.totalValue}>{value || '--'}</div>
+        <div className={style.totalLabel} style={{color}}>{title}</div>
+        <div className={style.totalValue}>{value || '--'}{title === 'Satisfaction' && '%'}</div>
       </div>
     );
   }

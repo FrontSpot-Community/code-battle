@@ -12,23 +12,26 @@ export default class TasksStatistic extends Component {
     const {metrics} = this.props;
 
     const metricsMap = {
-      'Assigned': metrics.assigned,
+      'Attempts': metrics.attempts,
       'Trained': metrics.trained,
-      'Solved': metrics.solved,
-      'Total Attempts': metrics.totalAttempts
+      'Solved': metrics.solved
+    };
+
+    const colorsMap = {
+      'Attempts': '#333333',
+      'Trained': '#39c2d7',
+      'Solved': '#a6c638'
     };
 
     return (
       <div className={style.wrapper}>
         <dl className={style.header}>
-          <dt className={style.title}>
-            TasksStatistic
-          </dt>
+          <dt className={style.title}>Tasks</dt>
         </dl>
-        <Totals
-          totalValuesMap={metricsMap}
-        />
-        <ProgressChart/>
+        <div className={style.content}>
+          <Totals metrics={metricsMap} colors={colorsMap} />
+          <ProgressChart metrics={metricsMap} colors={colorsMap} />
+        </div>
       </div>
     );
   }

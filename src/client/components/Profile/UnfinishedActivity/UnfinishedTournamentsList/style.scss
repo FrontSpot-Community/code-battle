@@ -3,9 +3,9 @@
 .unfinishedList {
   display: flex;
   flex: .85;
-  padding: 0 10px 10px 10px;
   flex-direction: column;
   overflow-y: auto;
+  padding-left: 18px;
 
   &Item {
     display: flex;
@@ -27,10 +27,11 @@
   &Name {
     color: $WHITE;
     font-size: 14px;
+    font-weight: bold;
   }
 
   &Score {
     color: $DUSTY_GRAY;
-    font-size: 14px;
+    font-size: 13px;
   }
 }

@@ -1,6 +1,7 @@
 @import '~Colors';
 
 .wrapper {
+  opacity: 0;
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -11,16 +12,67 @@
 }
 
 .header {
+  display: flex;
   align-items: center;
-  padding: 13px;
+  padding: 12px 0 12px 18px;
+  margin-bottom: 0;
   border-bottom: 1px solid $MINE_SHAFT;
 }
 
-.title {
+.title,
+.period {
   text-transform: uppercase;
   font-family: 'Oswald Regular', sans-serif;
+  font-weight: normal;
   font-size: 14px;
   line-height: 1.71;
   text-align: left;
   color: $WHITE;
 }
+
+.title {
+  flex: 10;
+}
+
+.period {
+  flex: 2;
+
+  & select {
+    text-transform: uppercase;
+    font-family: 'Oswald Regular', sans-serif;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 1.71;
+    color: $WHITE;
+    border: none;
+    outline: none;
+    background-color: $bg_dark;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  height: 100%;
+  padding-left: 18px;
+}
+
+.leftContent {
+  flex: 3;
+  display: flex;
+  align-items: center;
+  padding-right: 10px;
+  border-right: 1px solid #333;
+}
+
+.rightContent {
+  flex: 2;
+  display: flex;
+  align-items: center;
+}
+
+.stretchCharts {
+  width: 100%;
+}
+

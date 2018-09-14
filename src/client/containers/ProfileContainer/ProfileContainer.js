@@ -13,7 +13,10 @@ import {tournamentsRequest} from 'src/client/actions/action_creators/tournamentA
 
 import {
   ProfileDetails,
-  ProfileTournaments
+  TasksStatistic,
+  TournamentsStatistic,
+  UnfinishedActivity,
+  SolvedTasksStat
 } from 'src/client/components/Profile';
 
 import style from './style.scss';
@@ -35,7 +38,8 @@ class ProfileContainer extends Component {
         country: userInfo.country,
         upsa: userInfo.upsa
       },
-      epamEmployee: userInfo.epamEmployee
+      epamEmployee: userInfo.epamEmployee,
+      statistics: userInfo.statistics
     };
   }
 
@@ -52,7 +56,9 @@ class ProfileContainer extends Component {
     if (!this.props.userInfo && props.userInfo) {
       const newProfileDetails = _.pick(props.userInfo, Object.keys(this.state.profileDetails));
       this.setState({
-        profileDetails: newProfileDetails, epamEmployee: props.userInfo.epamEmployee
+        profileDetails: newProfileDetails,
+        epamEmployee: props.userInfo.epamEmployee,
+        statistics: props.userInfo.statistics
       });
     }
   }
@@ -88,13 +94,39 @@ class ProfileContainer extends Component {
     this.props.userEdit({
       id: this.props.userInfo._id,
       ...this.state.profileDetails,
-      epamEmployee: this.state.epamEmployee});
+      epamEmployee: this.state.epamEmployee
+    });
   }
 
   render() {
-    const detailsFromServer = _.pick(this.props.userInfo, Object.keys(this.state.profileDetails));
-    const isProfileDetailsChanged = !_.isEqual(this.state.profileDetails, detailsFromServer) ||
-      (this.state.epamEmployee !== this.props.userInfo.epamEmployee);
+    const {profileDetails, epamEmployee, statistics} = this.state;
+    const detailsFromServer = _.pick(this.props.userInfo, Object.keys(profileDetails));
+    const isProfileDetailsChanged = !_.isEqual(profileDetails, detailsFromServer) ||
+      (epamEmployee !== this.props.userInfo.epamEmployee);
+
+    const colorsMap = {
+      fighter: '#f39c12',
+      berserk: '#e74c3c',
+      champion: '#39c2d7',
+      mortal: '#a6c638'
+    };
+
+    const tournamentsMetrics = {
+      participated: 57,
+      finished: 21,
+      wins: 3
+    };
+
+    const solvedMonthsMetrics = {
+      year: 2017,
+      history: {
+        mortal: [29, 17, 11, 18, 13, 11, 4, 1, 23, 28, 20, 23],
+        champion: [22, 22, 22, 11, 4, 22, 3, 2, 2, 2, 15, 2],
+        fighter: [4, 1, 23, 28, 20, 23, 18, 13, 11, 4, 1, 23],
+        berserk: [3, 2, 2, 2, 15, 2, 13, 11, 4, 1, 23, 28]
+      }
+    };
+
     return this.props.userLoading
       ? <div className={style.loader} />
       : <div className={style.mainWrapper}>
@@ -106,12 +138,10 @@ class ProfileContainer extends Component {
         />
         <div className={style.wrapper}>
           <div className={style.statisticsContainer}>
-            {/* TODO: fix redundant inner div for joyride anchor */}
-            <div className="ProfileTournaments">
-              <ProfileTournaments
-                tournaments={this.props.tournaments}
-              />
-            </div>
+            <TournamentsStatistic metrics={tournamentsMetrics} colors={colorsMap} />
+            <TasksStatistic metrics={statistics.tasks} colors={colorsMap} />
+            <UnfinishedActivity />
+            <SolvedTasksStat metrics={solvedMonthsMetrics} colors={colorsMap} />
           </div>
           <div className={style.detailsContainer}>
             <div className="ProfileDetails">
@@ -119,8 +149,8 @@ class ProfileContainer extends Component {
                 rankPosition={102}
                 totalRankPosition={654}
                 totalScore={190354}
-                epamEmployee={this.state.epamEmployee}
-                profileDetails={this.state.profileDetails}
+                epamEmployee={epamEmployee}
+                profileDetails={profileDetails}
                 onChangeEpamEmployee={this.onChangeEpamEmployee}
                 onChangeProfileDetail={this.onChangeProfileDetail}
                 onResetProfileDetails={this.onResetProfileDetails}
