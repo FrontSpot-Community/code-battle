@@ -17,7 +17,6 @@ import {
   TournamentsStatistic,
   UnfinishedActivity,
   SolvedTasksStat
-  // ProfileTournaments
 } from 'src/client/components/Profile';
 
 import style from './style.scss';
@@ -39,7 +38,8 @@ class ProfileContainer extends Component {
         country: userInfo.country,
         upsa: userInfo.upsa
       },
-      epamEmployee: userInfo.epamEmployee
+      epamEmployee: userInfo.epamEmployee,
+      statistics: userInfo.statistics
     };
   }
 
@@ -56,7 +56,9 @@ class ProfileContainer extends Component {
     if (!this.props.userInfo && props.userInfo) {
       const newProfileDetails = _.pick(props.userInfo, Object.keys(this.state.profileDetails));
       this.setState({
-        profileDetails: newProfileDetails, epamEmployee: props.userInfo.epamEmployee
+        profileDetails: newProfileDetails,
+        epamEmployee: props.userInfo.epamEmployee,
+        statistics: props.userInfo.statistics
       });
     }
   }
@@ -97,17 +99,19 @@ class ProfileContainer extends Component {
   }
 
   render() {
-    const detailsFromServer = _.pick(this.props.userInfo, Object.keys(this.state.profileDetails));
-    const isProfileDetailsChanged = !_.isEqual(this.state.profileDetails, detailsFromServer) ||
-      (this.state.epamEmployee !== this.props.userInfo.epamEmployee);
+    const {profileDetails, epamEmployee, statistics} = this.state;
+    const detailsFromServer = _.pick(this.props.userInfo, Object.keys(profileDetails));
+    const isProfileDetailsChanged = !_.isEqual(profileDetails, detailsFromServer) ||
+      (epamEmployee !== this.props.userInfo.epamEmployee);
 
-    const taskMetrics = {
-      assigned: 269,
-      trained: 230,
-      solved: 156
+    const colorsMap = {
+      fighter: '#f39c12',
+      berserk: '#e74c3c',
+      champion: '#39c2d7',
+      mortal: '#a6c638'
     };
 
-    const tournamentMetrics = {
+    const tournamentsMetrics = {
       participated: 57,
       finished: 21,
       wins: 3
@@ -134,10 +138,10 @@ class ProfileContainer extends Component {
         />
         <div className={style.wrapper}>
           <div className={style.statisticsContainer}>
-            <TournamentsStatistic metrics={tournamentMetrics} />
-            <TasksStatistic metrics={taskMetrics} />
+            <TournamentsStatistic metrics={tournamentsMetrics} colors={colorsMap} />
+            <TasksStatistic metrics={statistics.tasks} colors={colorsMap} />
             <UnfinishedActivity />
-            <SolvedTasksStat metrics={solvedMonthsMetrics} />
+            <SolvedTasksStat metrics={solvedMonthsMetrics} colors={colorsMap} />
           </div>
           <div className={style.detailsContainer}>
             <div className="ProfileDetails">
@@ -145,8 +149,8 @@ class ProfileContainer extends Component {
                 rankPosition={102}
                 totalRankPosition={654}
                 totalScore={190354}
-                epamEmployee={this.state.epamEmployee}
-                profileDetails={this.state.profileDetails}
+                epamEmployee={epamEmployee}
+                profileDetails={profileDetails}
                 onChangeEpamEmployee={this.onChangeEpamEmployee}
                 onChangeProfileDetail={this.onChangeProfileDetail}
                 onResetProfileDetails={this.onResetProfileDetails}

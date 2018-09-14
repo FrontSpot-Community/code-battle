@@ -1,6 +1,7 @@
 @import '~Colors';
 
 .wrapper {
+  opacity: 0;
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -35,6 +36,18 @@
 
 .period {
   flex: 2;
+
+  & select {
+    text-transform: uppercase;
+    font-family: 'Oswald Regular', sans-serif;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 1.71;
+    color: $WHITE;
+    border: none;
+    outline: none;
+    background-color: $bg_dark;
+  }
 }
 
 .content {

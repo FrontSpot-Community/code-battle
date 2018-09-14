@@ -9,53 +9,47 @@ export default class SolvedTasksStat extends Component {
   }
 
   state = {
-    half: '1'
+    selected: 'janToJun'
   };
 
   handleChange = (e) => {
-    this.setState({half: e.target.value});
+    this.setState({selected: e.target.value});
   };
 
   total = (arr) => arr.reduce((acc, curr) => acc + curr);
 
   render() {
-    const {half} = this.state;
-    const {year, history} = this.props.metrics;
+    const {selected} = this.state;
+    const {metrics, colors} = this.props;
+    const {year, history} = metrics;
 
     const options = [
-      {value: '1', label: `Jan ${year} - Jun ${year}`},
-      {value: '2', label: `Jul ${year} - Dec ${year}`}
+      {value: 'janToJun', label: `Jan ${year} - Jun ${year}`},
+      {value: 'julToDec', label: `Jul ${year} - Dec ${year}`}
     ];
 
-    const colorsMap = {
-      fighter: '#f39c12',
-      berserk: '#e74c3c',
-      champion: '#39c2d7',
-      mortal: '#a6c638'
-    };
-
-    const firstHalfMetrics = {};
-    const secondHalfMetrics = {};
+    const janToJunMetrics = {};
+    const julToDecMetrics = {};
     Object.entries(history).map(([key, value]) => {
-      firstHalfMetrics[key] = value.slice(0, value.length / 2);
-      secondHalfMetrics[key] = value.slice(value.length / 2);
+      janToJunMetrics[key] = value.slice(0, value.length / 2);
+      julToDecMetrics[key] = value.slice(value.length / 2);
     });
 
-    const firstHalfMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
-    const secondHalfMonths = ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const janToJunMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
+    const julToDecMonths = ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-    const reducedFisrtHalf = {
-      fighter: this.total(firstHalfMetrics.fighter),
-      berserk: this.total(firstHalfMetrics.berserk),
-      champion: this.total(firstHalfMetrics.champion),
-      mortal: this.total(firstHalfMetrics.mortal)
+    const janToJunTotal = {
+      fighter: this.total(janToJunMetrics.fighter),
+      berserk: this.total(janToJunMetrics.berserk),
+      champion: this.total(janToJunMetrics.champion),
+      mortal: this.total(janToJunMetrics.mortal)
     };
 
-    const reducedSecondHalf = {
-      fighter: this.total(secondHalfMetrics.fighter),
-      berserk: this.total(secondHalfMetrics.berserk),
-      champion: this.total(secondHalfMetrics.champion),
-      mortal: this.total(secondHalfMetrics.mortal)
+    const julToDecTotal = {
+      fighter: this.total(julToDecMetrics.fighter),
+      berserk: this.total(julToDecMetrics.berserk),
+      champion: this.total(julToDecMetrics.champion),
+      mortal: this.total(julToDecMetrics.mortal)
     };
 
     return (
@@ -68,7 +62,7 @@ export default class SolvedTasksStat extends Component {
             <select name="period" onChange={this.handleChange}>
               {options.map(({label, value}) => {
                 return (
-                  <option key={value} value={value} defaultValue={half === value}>
+                  <option key={value} value={value} defaultValue={selected === value}>
                     {label}
                   </option>
                 );
@@ -83,14 +77,14 @@ export default class SolvedTasksStat extends Component {
           <div className={style.leftContent}>
             <div className={style.stretchCharts}>
               <MonthsStatChart
-                metrics={half === '1'
-                  ? firstHalfMetrics
-                  : secondHalfMetrics
+                metrics={selected === 'janToJun'
+                  ? janToJunMetrics
+                  : julToDecMetrics
                 }
-                colors={colorsMap}
-                months={half === '1'
-                  ? firstHalfMonths
-                  : secondHalfMonths
+                colors={colors}
+                months={selected === 'janToJun'
+                  ? janToJunMonths
+                  : julToDecMonths
                 }
               />
             </div>
@@ -99,11 +93,11 @@ export default class SolvedTasksStat extends Component {
           <div className={style.rightContent}>
             <div className={style.stretchCharts}>
               <TaskStatChart
-                metrics={half === '1'
-                  ? reducedFisrtHalf
-                  : reducedSecondHalf
+                metrics={selected === 'janToJun'
+                  ? janToJunTotal
+                  : julToDecTotal
                 }
-                colors={colorsMap}
+                colors={colors}
               />
             </div>
           </div>

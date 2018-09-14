@@ -8,7 +8,7 @@ export default class TotalValue extends Component {
     const {title, value} = this.props;
     let {color} = this.props;
 
-    if (title === 'Participated' || title === 'Assigned') {
+    if (title === 'Participated' || title === 'Attempts') {
       color = '#999999';
     }
 
