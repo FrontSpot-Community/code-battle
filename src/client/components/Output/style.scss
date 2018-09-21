@@ -41,6 +41,22 @@
   padding: 18px 41px 0 18px;
 }
 
+.info {
+  font-family: 'Oswald Regular', sans-serif;
+  font-size: 18px;
+  color: $WHITE;
+  line-height: 24px;
+  padding: 18px 41px 0 18px;
+  
+  & p {
+    margin: 0;
+  }
+}
+
+.code {
+  color: $LIME_GREEN;
+}
+
 .suite {
   font-size: 14px;
   color: $WHITE;
