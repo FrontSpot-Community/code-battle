@@ -43,6 +43,16 @@ const TaskPreviewInfo = (props) => {
         >
           <img src={lock} className={style.image} width='16px' height='16px' /> Best solutions
         </Button> */}
+        <Button
+          className={style.runButton}
+          onClick={() => {
+            props.onStartTrain();
+          }}
+          mod='success'
+        >
+          {props.isSolutionComplete ? 'Check solution' : 'Start train'}
+
+        </Button>
       </header>
 
       <section className={style.textBlock}>

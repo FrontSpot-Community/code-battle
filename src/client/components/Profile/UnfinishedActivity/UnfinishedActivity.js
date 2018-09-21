@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import style from './style.scss';
 
 import UnfinishedTournamentsList from './UnfinishedTournamentsList';
+import {CommingSoon} from 'src/client/components/Common';
 
 export default class UnfinishedActivity extends Component {
   constructor(props) {
@@ -24,6 +25,7 @@ export default class UnfinishedActivity extends Component {
 
     return (
       <div className={style.wrapper}>
+        <CommingSoon />
         <dl className={style.header}>
           <dt className={style.title}>Unfinished Activity</dt>
         </dl>

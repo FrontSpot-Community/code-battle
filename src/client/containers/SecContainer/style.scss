@@ -10,13 +10,18 @@
 }
 
 .wrapper {
-  display: flex;
-  flex-direction: row;
-  flex: 1;
-  justify-content: space-between;
   height: -moz-calc(100% - 60px);
   height: -webkit-calc(100% - 60px);
   height: calc(100% - 60px);
+  background-color: $bg_dark;
+  overflow-y: scroll;
+}
+
+.content {
+  flex: 1;
+  background-color: $bg_dark;
+  height: 100%;
+  // overflow: hidden;
 }
 
 .resultsContainer {

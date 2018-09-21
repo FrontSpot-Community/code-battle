@@ -139,7 +139,7 @@ class ProfileContainer extends Component {
         <div className={style.wrapper}>
           <div className={style.statisticsContainer}>
             <TournamentsStatistic metrics={tournamentsMetrics} colors={colorsMap} />
-            <TasksStatistic metrics={statistics.tasks} colors={colorsMap} />
+            <TasksStatistic metrics={statistics && statistics.tasks} colors={colorsMap} />
             <UnfinishedActivity />
             <SolvedTasksStat metrics={solvedMonthsMetrics} colors={colorsMap} />
           </div>

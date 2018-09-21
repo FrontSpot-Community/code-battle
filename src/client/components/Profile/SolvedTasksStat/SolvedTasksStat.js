@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import MonthsStatChart from '../shared/MonthsStatChart';
 import TaskStatChart from '../shared/TaskStatChart';
 import style from './style.scss';
+import {CommingSoon} from 'src/client/components/Common';
 
 export default class SolvedTasksStat extends Component {
   constructor(props) {
@@ -54,6 +55,7 @@ export default class SolvedTasksStat extends Component {
 
     return (
       <div className={style.wrapper}>
+        <CommingSoon />
 
         <div className={style.header}>
           <div className={style.title}>Solved Tasks Stats</div>

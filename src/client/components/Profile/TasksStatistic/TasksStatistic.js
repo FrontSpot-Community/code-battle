@@ -12,9 +12,9 @@ export default class TasksStatistic extends Component {
     const {metrics} = this.props;
 
     const metricsMap = {
-      'Attempts': metrics.attempts,
-      'Trained': metrics.trained,
-      'Solved': metrics.solved
+      'Attempts': metrics && metrics.attempts,
+      'Trained': metrics && metrics.trained,
+      'Solved': metrics && metrics.solved
     };
 
     const colorsMap = {
