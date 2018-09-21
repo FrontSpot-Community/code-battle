@@ -56,7 +56,14 @@ class Output extends Component {
   }
 
   render() {
-    const {details, time, passed, failed, errors, outputData} = this.props;
+    const {show, details, time, passed, failed, errors, outputData} = this.props;
+
+    const secrets = {
+      'Phase_1:_Hack_The_Email': 'EPAM',
+      'Phase_2:_Fake_ID_Badge': 'SEC',
+      'Phase_3:_Configure_&_Install_Keylogger': '2018',
+      'Phase_4:_Bypass_Server_Firewall': 'NOW'
+    };
 
     return (
       <div className={style.container}>
@@ -69,10 +76,12 @@ class Output extends Component {
             <span className={style.stat}>Errors: {errors}</span>
           </div>
         </div>
+        {show && <div className={style.info}>
+          <p>Secret: <span className={style.code}>{secrets[details]}</span></p>
+        </div>}
         <div className={style.output}>
           {this.parseCodewarsOutput(outputData)}
         </div>
-        <div className={style.output} dangerouslySetInnerHTML={{__html: details}} />
       </div>
     );
   }

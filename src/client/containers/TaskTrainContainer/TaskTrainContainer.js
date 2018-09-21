@@ -105,6 +105,19 @@ class TaskTrainContainer extends React.Component {
   }
 
   renderOutput(outputData, statistics, solutionSubmitLoading) {
+    const {task, solutionResult} = this.props;
+    const secTaskIds = [
+      'Phase_1:_Hack_The_Email',
+      'Phase_2:_Fake_ID_Badge',
+      'Phase_3:_Configure_&_Install_Keylogger',
+      'Phase_4:_Bypass_Server_Firewall'
+    ];
+
+    let isSec = false;
+    if (task && secTaskIds.includes(task.id)) {
+      isSec = true;
+    }
+
     if (solutionSubmitLoading) {
       return <div className={style.outputContainer}>
         <Loader />
@@ -112,6 +125,8 @@ class TaskTrainContainer extends React.Component {
     }
     return (
       <Output
+        show={isSec && (solutionResult && solutionResult.completed)}
+        details={task && task.id}
         outputData={outputData}
         time={statistics.time}
         passed={statistics.passed}

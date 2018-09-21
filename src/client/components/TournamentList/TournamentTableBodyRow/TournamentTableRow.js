@@ -14,6 +14,13 @@ export default class TournamentTableRow extends Component {
     ));
   };
 
+  getSecStyle = () => {
+    const {name} = this.props.tournament;
+    return name === 'SEC Tournament'
+      ? {color: 'rgb(57, 194, 215)'}
+      : {};
+  }
+
   render() {
     const {tournament} = this.props;
     const {
@@ -36,7 +43,7 @@ export default class TournamentTableRow extends Component {
     const TournamentLink = tournament.status === STATUS.STARTED
       ? (
         <Link className={style.tournamentName}
-          to={{pathname: `/${id}`}} title={name}>{name}
+          to={{pathname: `/${id}`}} title={name} style={this.getSecStyle()} >{name}
         </Link>
       ) : (
         <div className={style.tournamentName} title={`Not started yet - ${name}`}>{name}</div>
