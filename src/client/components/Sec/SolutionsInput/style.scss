@@ -1,0 +1,40 @@
+@import '~Colors';
+
+.wrapper {
+  width: 100%;
+  padding: 18px;
+  color: $WHITE;
+  text-align: center;
+}
+
+.inputsWrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+  margin: 15px auto;
+}
+
+.input {
+  width: 23%;
+  padding: 0 5px;
+  color: $WHITE;
+  font-size: 14px;
+  line-height: 24px;
+  background-color: $GRAPHITE;
+  border: 0;
+  outline: none;
+}
+
+.infotext {
+  font-size: 20px;
+}
+
+.successStatus {
+  font-size: 18px;
+  color: $LIME_GREEN
+}
+
+.errorStatus {
+  font-size: 18px;
+  color: $RASPBERRY
+}

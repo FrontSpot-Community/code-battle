@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import ProgressChart from '../shared/ProgressChart';
 import Totals from '../shared/Totals';
 import style from './style.scss';
+import {CommingSoon} from 'src/client/components/Common';
 
 export default class TournamentsStatistic extends Component {
   constructor(props) {
@@ -25,6 +26,7 @@ export default class TournamentsStatistic extends Component {
 
     return (
       <div className={style.wrapper}>
+        <CommingSoon />
         <dl className={style.header}>
           <dt className={style.title}>Tournaments</dt>
         </dl>

@@ -1,17 +1,19 @@
 @import '~Colors';
 
 .wrapper {
+  position: relative;
   display: flex;
   flex: 1;
   flex-direction: column;
   background-color: $bg_dark;
-  overflow-y: scroll;
+  // overflow-y: scroll;
   grid-column: 4 / 6;
   grid-row: 1 / 5;
-  padding: 18px 0;
+  // padding: 18px 0;
 }
 
 .header {
+  margin-top: 18px;
   align-items: center;
   padding: 0 0 12px 18px;
   border-bottom: 1px solid $MINE_SHAFT;

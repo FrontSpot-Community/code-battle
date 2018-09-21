@@ -46,7 +46,9 @@ class HomeContainer extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    rankPosition: state.user.users.findIndex((item) => item._id === state.user.userInfo._id) + 1,
+    rankPosition: state.user.users.findIndex(
+      (item) => item._id === (state.user.userInfo && state.user.userInfo._id)
+    ) + 1,
     tournaments: state.tournaments.data,
     users: state.user.users,
     user: state.user.userInfo
