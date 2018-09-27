@@ -17,7 +17,7 @@ module.exports = {
     output: {
       path: outputPath,
       publicPath: '/',
-      filename: '[name]/[name].js'
+      filename: '[name].js'
     },
     resolve: {
       alias: {
@@ -48,7 +48,7 @@ module.exports = {
           exclude: []
         },
         {
-          test: /\.(png|ico|jpe?g)$/,
+          test: /\.(png|gif|ico|jpe?g)$/,
           exclude: /node_modules/,
           use: [
               'preload-image-loader',
@@ -86,7 +86,7 @@ module.exports = {
         chunks: ['vendor', 'client']
       }),
       new HtmlWebpackPlugin({
-        template: path.join(srcPath, 'client_admin', 'index.html'),
+        template: path.join(srcPath, 'client_admin', 'index_admin.html'),
         favicon: './assets/images/favicon.ico',
         filename: 'index_admin.html',
         path: outputPath,
