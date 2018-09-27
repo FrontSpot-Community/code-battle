@@ -19,16 +19,22 @@ import style from './style.scss';
 
 class TaskEditContainer extends React.Component {
   state = {
-    id: '',
-    sample: '',
-    name: '',
-    test: '',
-    stars: '',
-    complexity: '',
-    description: '',
-    language: '',
+    ...this.getInitialState(),
     isEditMode: false
   };
+
+  getInitialState(task) {
+    return {
+      language: task && task.language || 'javascript',
+      sample: task && task.sample || '',
+      test: task && task.test || '',
+      testSample: task && task.testSample || '',
+      complexity: task && task.complexity || 'Low',
+      name: task && task.name || '',
+      stars: task && task.stars || '1',
+      description: task && task.description || ''
+    };
+  }
 
   componentDidMount() {
     const {taskId} = this.props.match.params;
@@ -39,68 +45,32 @@ class TaskEditContainer extends React.Component {
   }
 
   componentWillReceiveProps(props) {
-    const {task} = props;
-    this.setState({
-      id: props.match.params.taskId,
-      sample: task ? task.sample : '',
-      name: task ? task.name : '',
-      test: task ? task.test : '',
-      stars: task ? task.stars : '',
-      complexity: task ? task.complexity : '',
-      description: task ? task.description : '',
-      language: task ? task.language : ''
-    });
+    this.state.isEditMode && this.setState(this.getInitialState(props.task));
   }
 
-  handleSampleTestsChanges = (newText) => {
-    this.setState({test: newText});
-  };
-
-  handleSampleSolutionChanges = (newText) => {
-    this.setState({sample: newText});
-  };
-
-  handleTaskDescriptionChanges = (newText) => {
-    this.setState({description: newText});
-  };
-
-  handleTaskNameChanges = (newText) => {
-    this.setState({name: newText});
-  };
-
-  handleTaskStarsChanges = (newText) => {
-    this.setState({stars: newText});
-  };
-
-  handleTaskDifficultyChanges = (newText) => {
-    this.setState({complexity: newText});
-  };
+  handleStateUpdate = (prop) => (newText) => this.setState({[prop]: newText});
 
   saveChanges = (e) => {
     e.preventDefault();
-    const {taskId} = this.props.match.params;
     const {taskUpdate, taskAdd} = this.props;
-    let {task} = this.props;
-
-    if (!task || !this.state.isEditMode) {
-      task = this.state;
-    }
+    let {task = {}} = this.props;
 
     const {
-      sample, name, test, id,
+      sample, name, test, testSample,
       stars, complexity, description, language
     } = this.state;
 
     const dataToSend = {
       ...task,
-      id: id === '' ? taskId : id,
-      name: name === '' ? task.name : name,
-      test: test === '' ? task.test : test,
-      sample: sample === '' ? task.sample : sample,
-      complexity: complexity === '' ? task.complexity : complexity,
-      stars: stars === '' ? task.stars : stars,
-      language: language === '' ? task.language : language,
-      description: description === '' ? task.description : description,
+      id: this.props.match.params.taskId,
+      name: name || task.name,
+      test: test || task.test,
+      testSample: testSample || task.testSample,
+      sample: sample || task.sample,
+      complexity: complexity || task.complexity,
+      stars: stars || task.stars,
+      language: language || task.language,
+      description: description || task.description,
       tournamentId: this.props.match.params.id
     };
 
@@ -109,16 +79,7 @@ class TaskEditContainer extends React.Component {
 
   cancelChanges = (e) => {
     e.preventDefault();
-    const {task} = this.props;
-    this.setState({
-      language: task && task.language || '',
-      sample: task && task.sample || '',
-      test: task && task.test || '',
-      complexity: task && task.complexity || '',
-      name: task && task.name || '',
-      stars: task && task.stars || '',
-      description: task && task.description || ''
-    });
+    this.setState(this.getInitialState(this.state.isEditMode && this.props.task));
   };
 
   deleteTask = (e) => {
@@ -130,7 +91,7 @@ class TaskEditContainer extends React.Component {
 
   renderData() {
     const {
-      sample, name, test, stars,
+      sample, name, test, testSample, stars,
       complexity, description, language
     } = this.state;
 
@@ -142,11 +103,12 @@ class TaskEditContainer extends React.Component {
               <div className={style.col}>
                 <TaskDetailsEditor
                   difficulty={complexity} name={name}
-                  description={description} stars={stars}
-                  onTaskDescriptionChanges={this.handleTaskDescriptionChanges}
-                  onTaskNameChanges={this.handleTaskNameChanges}
-                  onTaskStarsChanges={this.handleTaskStarsChanges}
-                  onTaskDifficultyChanges={this.handleTaskDifficultyChanges}
+                  description={description} stars={stars} language={language}
+                  onTaskDescriptionChanges={this.handleStateUpdate('description')}
+                  onTaskNameChanges={this.handleStateUpdate('name')}
+                  onTaskStarsChanges={this.handleStateUpdate('stars')}
+                  onTaskDifficultyChanges={this.handleStateUpdate('complexity')}
+                  onTaskLanguageChanges={this.handleStateUpdate('language')}
                 />
               </div>
               <div className={style.col}>
@@ -154,16 +116,26 @@ class TaskEditContainer extends React.Component {
                   <Solution
                     editMode={true}
                     language={language}
-                    onSolutionChange={this.handleSampleSolutionChanges}
+                    onSolutionChange={this.handleStateUpdate('sample')}
                     solution={sample}
                   />
                 </div>
                 <div className={style.row}>
                   <SampleTests
+                    header='TESTS'
                     defaultTests={test}
                     language={language}
-                    onSampleTestsChange={this.handleSampleTestsChanges}
-                    sampleTests={test} runSampleTests={this.runSampleTests}
+                    onSampleTestsChange={this.handleStateUpdate('test')}
+                    sampleTests={test}
+                  />
+                </div>
+                <div className={style.row}>
+                  <SampleTests
+                    header='SAMPLE TESTS'
+                    defaultTests={testSample}
+                    language={language}
+                    onSampleTestsChange={this.handleStateUpdate('testSample')}
+                    sampleTests={testSample}
                   />
                 </div>
               </div>
