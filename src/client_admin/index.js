@@ -21,11 +21,11 @@ const store = configureStore();
 store.runSaga(rootSaga);
 store.dispatch(userRequest());
 
-const renderComponent = (Component) => {
+const renderComponent = (component) => {
   return () => {
     const token = cookieService.getCookie('token');
 
-    return token ? Component : <LoginContainer />;
+    return token ? component : <Redirect to='login' />;
   };
 };
 
@@ -35,6 +35,7 @@ render(
       <App>
         <Switch>
           <Route exact path="/" render={renderComponent(<HomeContainer />)}/>
+          <Route exact path="/login" component={LoginContainer} />
           <Route exact path="/new_tournament" component={EditTournamentContainer} />
           <Route exact path="/:id" component={TournamentContainer}/>
           <Route exact path="/:id/edit_tournament" component={EditTournamentContainer} />
@@ -42,7 +43,6 @@ render(
           <Route exact path="/:id/:taskId/train" component={TaskTrainContainer} />
           <Route exact path="/:id/:taskId" component={TaskContainer} />
           <Route exact path="/:id/:taskId/edit" component={TaskEditContainer} />
-          <Route exact path="/login" component={LoginContainer} />
           <Route path="*" component={HomeContainer} />
         </Switch>
       </App>
