@@ -1,6 +1,6 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
-import Button from 'src/client/components/Common/Button';
+import Button from 'src/client/components/Common/Button/index';
 import styles from './style.scss';
 import {HOME_PAGE, TOURNAMENT_PAGE, TASK_TRAIN_PAGE} from 'common/constants/activePageNames';
 

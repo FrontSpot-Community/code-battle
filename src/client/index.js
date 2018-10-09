@@ -4,7 +4,7 @@ import {render} from 'react-dom';
 import {Provider} from 'react-redux';
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 import {configureStore} from 'src/common/store/configureStore';
-import App from 'common/containers/AppContainer/';
+import App from 'src/client/containers/AppContainer';
 import HomeContainer from 'src/client/containers/HomeContainer/index';
 import TournamentContainer from 'src/common/containers/TournamentContainer';
 import TaskContainer from 'src/client/containers/TaskContainer/index';
@@ -35,12 +35,13 @@ render(
       <App>
         <Switch>
           <Route exact path="/" render={renderComponent(<HomeContainer/>)}/>
-          <Route exact path="/login" component={LoginContainer} />
-          <Route exact path="/profile" component={ProfileContainer} />
-          <Route exact path="/sec" component={SecContainer} />
+
           <Route exact path="/:id" component={TournamentContainer} />
           <Route exact path="/:id/:taskId" component={TaskContainer} />
           <Route exact path="/:id/:taskId/train" component={TaskTrainContainer} />
+          <Route exact path="/login" component={LoginContainer} />
+          <Route exact path="/profile" component={ProfileContainer} />
+          <Route exact path="/sec" component={SecContainer} />
           <Route path="*" component={HomeContainer} />
         </Switch>
       </App>

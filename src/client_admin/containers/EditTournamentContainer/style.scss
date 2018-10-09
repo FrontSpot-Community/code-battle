@@ -10,7 +10,7 @@
 
 .col {
   height: 100%;
-  width: calc(50% - 9px);
+  flex: 1;
   display: flex;
   flex-direction: column;
   margin-bottom: 18px;

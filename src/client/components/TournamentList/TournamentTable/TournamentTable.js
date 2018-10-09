@@ -9,7 +9,8 @@ export default class TournamentTable extends Component {
     const mapHandler = (tournament, headerCellNames) => (
       <TournamentTableRow tournament={tournament}
         headerCells={headerCellNames}
-        key={tournament.id}/>
+        key={tournament.id}
+        adminMode={this.props.adminMode}/>
     );
     return tournaments.map(mapHandler);
   };

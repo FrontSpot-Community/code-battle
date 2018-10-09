@@ -7,6 +7,7 @@ import styles from './App.scss';
 import {activePageChange} from 'common/actions/actionCreators/activePageActionCreator';
 import {bindActionCreators} from 'redux';
 import {CLEAR} from 'common/constants/activePageNames';
+import AdminButtonPanel from 'common/components/AdminButtonPanel';
 
 class App extends React.Component {
   constructor(props) {
@@ -22,11 +23,16 @@ class App extends React.Component {
   componentWillUnmount() {
     this.removeListener();
   }
+
+  renderAdminButtons = () => {
+    return <AdminButtonPanel activePageName={this.props.activePage.activePageName}/>;
+  };
+
   render() {
     return (
       <div className={styles.wrapper}>
         <Header user={this.props.userInfo}
-          activePageName={this.props.activePage.activePageName}/>
+          renderAdminButtons={this.renderAdminButtons}/>
         <main className={styles.main}>
           {this.props.children}
         </main>

@@ -8,6 +8,7 @@ import {
 } from '../api/tournaments';
 
 import {
+  tournamentsRequest,
   tournamentsFetchSuccess,
   tournamentsFetchFailed,
   tournamentsByIdFetchSuccess,
@@ -60,6 +61,7 @@ function* deleteTournament({payload}) {
   try {
     const tournament = yield call(deleteTournamentById, payload);
     yield put(tournamentDeleteSuccess(tournament));
+    yield put(tournamentsRequest());
   } catch (error) {
     yield put(tournamentDeleteFailed(error.data));
   }
@@ -69,6 +71,7 @@ function* addTournament({payload}) {
   try {
     const tournament = yield call(addNewTournament, payload);
     yield put(tournamentAddSuccess(tournament));
+    yield put(tournamentsRequest());
   } catch (error) {
     yield put(tournamentAddFailed(error.data));
   }

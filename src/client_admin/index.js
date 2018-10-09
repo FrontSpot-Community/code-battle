@@ -4,7 +4,7 @@ import {render} from 'react-dom';
 import {Provider} from 'react-redux';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import {configureStore} from 'src/common/store/configureStore';
-import App from 'common/containers/AppContainer';
+import App from 'src/client_admin/containers/AppContainer';
 import LoginContainer from 'src/common/containers/LoginContainer';
 import HomeContainer from 'src/client/containers/HomeContainer';
 import TournamentContainer from 'src/common/containers/TournamentContainer';

@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {withRouter} from 'react-router-dom';
 import TournamentFieldsEditor from 'src/client_admin/components/TournamentFieldsEditor';
-import JoinedUsers from 'src/client_admin/components/JoinedUsersSection';
 import Loader from 'src/client/components/Loader';
 import {
   tournamentsByIdRequest,
@@ -173,11 +172,6 @@ class EditTournamentContainer extends React.Component {
                   onTagsListChanges={this.handleTagsListChanges}
                 />
               </div>
-              {
-                isEditMode ? <div className={style.col}>
-                  <JoinedUsers users={this.props.users}/>
-                </div> : null
-              }
             </div>
             <div className={style.actions}>
               <Button mod="warn" onClick={this.deleteTournament}>DELETE TOURNAMENT</Button>

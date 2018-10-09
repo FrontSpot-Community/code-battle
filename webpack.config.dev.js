@@ -7,6 +7,14 @@ const srcPath = path.resolve(__dirname, './src');
 const commonPath = path.resolve(__dirname, './src/common');
 const rootPath = path.resolve(__dirname);
 const styleColors = path.resolve(__dirname, './src/common/constants/colors.scss');
+const devServerCommon = {
+  stats: 'errors-only',
+  contentBase: outputPath,
+  host: '0.0.0.0',
+  port: 3000,
+  inline: true,
+  hot: true
+}
 
 module.exports = {
   entry: {
@@ -87,19 +95,20 @@ module.exports = {
     ]
   },
   plugins: [
+    process.env.ADMIN_PAGE ?
+    new HtmlWebpackPlugin({
+      template: path.join(srcPath, 'client_admin', 'index.html'),
+      favicon: './assets/images/favicon.ico',
+      filename: 'index.html',
+      path: outputPath,
+      chunks: ['vendor', 'client_admin']
+    }) :
     new HtmlWebpackPlugin({
       template: path.join(srcPath, 'client', 'index.html'),
       favicon: './assets/images/favicon.ico',
       filename: 'index.html',
       path: outputPath,
       chunks: ['vendor', 'client']
-    }),
-    new HtmlWebpackPlugin({
-      template: path.join(srcPath, 'client_admin', 'index_admin.html'),
-      favicon: './assets/images/favicon.ico',
-      filename: 'index_admin.html',
-      path: outputPath,
-      chunks: ['vendor', 'client_admin']
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
@@ -116,16 +125,13 @@ module.exports = {
       minChunks: ({ resource }) => /node_modules/.test(resource),
     })
   ],
-  devServer: {
-    stats: 'errors-only',
-    contentBase: outputPath,
-    host: '0.0.0.0',
-    port: 3000,
-    inline: true,
-    hot: true,
-    historyApiFallback: {
-      index: process.env.ADMIN_PAGE ? '/' : 'index.html'
-    },
-    index: process.env.ADMIN_PAGE ? 'index_admin.html' : 'index.html'
+  devServer: process.env.ADMIN_PAGE ? {
+    ...devServerCommon,
+    historyApiFallback: true,
+    index: 'index_admin.html'
+  } : {
+    ...devServerCommon,
+    historyApiFallback: true,
+    index: 'index.html'
   }
 };
