@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {withRouter, Link} from 'react-router-dom';
-
 import Breadcrumbs from './components/Breadcrumbs/index';
 import Notifications from './components/Notifications/index';
 import ProfileItem from './components/ProfileItem/index';

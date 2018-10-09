@@ -8,7 +8,7 @@ export default class TournamentList extends Component {
     return (
       <div className={style.wrapper}>
         {this.props.render()}
-        <TournamentTable tournaments={tournaments} adminMode/>
+        <TournamentTable tournaments={tournaments} adminMode={adminMode}/>
       </div>
     );
   }
