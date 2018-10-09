@@ -10,12 +10,12 @@ import HomeContainer from 'src/client/containers/HomeContainer';
 import TournamentContainer from 'src/common/containers/TournamentContainer';
 import TaskEditContainer from 'src/client_admin/containers/TaskEditContainer';
 import cookieService from 'src/common/services/cookie/index';
-
 import rootSaga from 'src/client_admin/sagas';
 import {userRequest} from 'src/client/actions/action_creators/userActionCreators';
 import TaskContainer from 'src/client/containers/TaskContainer';
 import TaskTrainContainer from 'src/client/containers/TaskTrainContainer';
 import EditTournamentContainer from 'src/client_admin/containers/EditTournamentContainer';
+import ProfileContainer from 'src/client/containers/ProfileContainer/index';
 
 const store = configureStore();
 store.runSaga(rootSaga);
@@ -36,6 +36,7 @@ render(
         <Switch>
           <Route exact path="/" render={renderComponent(<HomeContainer />)}/>
           <Route exact path="/login" component={LoginContainer} />
+          <Route exact path="/profile" component={ProfileContainer} />
           <Route exact path="/new_tournament" component={EditTournamentContainer} />
           <Route exact path="/:id" component={TournamentContainer}/>
           <Route exact path="/:id/edit_tournament" component={EditTournamentContainer} />
