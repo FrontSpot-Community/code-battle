@@ -1,6 +1,6 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
-import Button from 'src/client/components/Common/Button';
+import Button from 'src/client/components/Common/Button/index';
 import styles from './style.scss';
 import {HOME_PAGE, TOURNAMENT_PAGE, TASK_TRAIN_PAGE} from 'common/constants/activePageNames';
 
@@ -22,13 +22,13 @@ class AdminButtonPanel extends React.Component {
   buttonRouteMap = {
     newTournament: {
       getPath: () => {
-        return this.props.location.pathname;
+        return this.props.location.pathname + 'new_tournament';
       },
       buttonName: 'New Tournament'
     },
     editTournament: {
       getPath: () => {
-        return this.props.location.pathname;
+        return this.props.location.pathname + '/edit_tournament';
       },
       buttonName: 'Edit Tournament'
     },

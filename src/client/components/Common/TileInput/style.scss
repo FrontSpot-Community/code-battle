@@ -1,0 +1,62 @@
+@import '~Colors';
+
+.label {
+  width: calc(100% + 14px);
+  height: calc(100% + 14px);
+
+  & > span {
+    display: block;
+    font-family: 'Source Sans Pro Regular', sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: left;
+    color: $DUSTY_GRAY;
+    margin-bottom: 6px;
+  }
+}
+
+.tileInputWrapper {
+  padding: 12px;
+  background-color: $bg_dark;
+  border-color: $MINE_SHAFT;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.input {
+  min-width: 100px;
+  color: white;
+  background-color: transparent;
+  border: none;
+  line-height: 20px;
+  padding: 0 12px;
+  font-size: 14px;
+
+  &:focus {
+      outline: none;
+  }
+}
+
+.tile {
+  line-height: 10px;
+  margin-right: 4px;
+  padding: 4px;
+  background-color: $MINE_SHAFT;
+  color: white;
+  font-size: 10px;
+
+  img {
+    margin-left: 6px;
+    cursor: pointer;
+  }
+}
+
+.icon {
+  align-self: flex-end;
+  margin-right: 5%;
+  color: #666666;
+}

@@ -31,10 +31,22 @@ export const [
 ] = createFetchActions('TASK_BY_ID_FETCH');
 
 export const [
+  TOURNAMENT_UPDATE,
+  TOURNAMENT_UPDATE_SUCCESS,
+  TOURNAMENT_UPDATE_FAILED
+] = createFetchActions('TOURNAMENT_UPDATE');
+
+export const [
   TASK_UPDATE,
   TASK_UPDATE_SUCCESS,
   TASK_UPDATE_FAILED
 ] = createFetchActions('TASK_UPDATE');
+
+export const [
+  TOURNAMENT_DELETE,
+  TOURNAMENT_DELETE_SUCCESS,
+  TOURNAMENT_DELETE_FAILED
+] = createFetchActions('TOURNAMENT_DELETE');
 
 export const [
   TASK_DELETE,
@@ -47,6 +59,12 @@ export const [
   TASKS_FETCH_SUCCESS,
   TASKS_FETCH_FAILED
 ] = createFetchActions('TASKS_FETCH');
+
+export const [
+  TOURNAMENT_ADD,
+  TOURNAMENT_ADD_SUCCESS,
+  TOURNAMENT_ADD_FAILED
+] = createFetchActions('TOURNAMENT_ADD');
 
 export const [
   TASK_ADD,

@@ -73,7 +73,7 @@ class BattleContainer extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (!nextProps.tournamentsLoading) {
-      this.props.tasksByIdRequest(nextProps.tournamentById.tasks);
+      this.props.tasksByIdRequest(nextProps.tournamentById && nextProps.tournamentById.tasks);
     }
   }
 

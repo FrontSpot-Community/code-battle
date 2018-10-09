@@ -18,9 +18,17 @@ class HomeContainer extends React.Component {
   }
 
   componentDidMount() {
-    this.props.tournamentsRequest();
-    this.props.allUsersRequest();
-    this.props.userRequest();
+    if (!this.props.tournaments.length) {
+      this.props.tournamentsRequest();
+    }
+
+    if (!this.props.user) {
+      this.props.userRequest();
+    }
+
+    if (!this.props.users.length) {
+      this.props.allUsersRequest();
+    }
   }
 
   renderTabs = () => (<Tabs />);
@@ -33,7 +41,8 @@ class HomeContainer extends React.Component {
           : <div className={style.wrapper}>
             <div className={style.tableContainer}>
               <TournamentList tournaments={this.props.tournaments}
-                render={this.renderTabs}/>
+                render={this.renderTabs}
+                adminMode={this.props.user.isAdmin}/>
             </div>
             <div className={style.rankContainer}>
               <Rank rankPosition={this.props.rankPosition}

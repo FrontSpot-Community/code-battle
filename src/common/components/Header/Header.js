@@ -1,11 +1,8 @@
 import React, {Component} from 'react';
 import {withRouter, Link} from 'react-router-dom';
-
 import Breadcrumbs from './components/Breadcrumbs/index';
 import Notifications from './components/Notifications/index';
 import ProfileItem from './components/ProfileItem/index';
-import AdminButtonPanel from './components/AdminButtonPanel';
-import SecButton from './components/SecButton';
 
 import logo from 'root/assets/images/logo.svg';
 import styles from './header.scss';
@@ -27,10 +24,8 @@ class Header extends Component {
   };
 
   renderAdminButtonPanel = () => {
-    const {user} = this.props;
-    return (user && user.isAdmin) ?
-      <AdminButtonPanel activePageName={this.props.activePageName}/>
-      : null;
+    const {renderAdminButtons} = this.props;
+    return renderAdminButtons ? renderAdminButtons() : null;
   };
 
   renderHeader = () =>{
@@ -44,7 +39,6 @@ class Header extends Component {
           {this.state.brandTitle}
         </Link>
         <Breadcrumbs setHeaderBackground={this.setHeaderBackground}/>
-        <SecButton/>
         <div className={styles.header__rightPart}>
           {this.renderAdminButtonPanel()}
           <Notifications/>
