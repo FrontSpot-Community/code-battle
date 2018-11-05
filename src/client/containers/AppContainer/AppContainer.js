@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from 'common/components/Header/index';
+import Header from 'common/components/Header';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import styles from './App.scss';

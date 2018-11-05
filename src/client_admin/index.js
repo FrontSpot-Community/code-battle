@@ -2,7 +2,7 @@ import 'babel-polyfill';
 import React from 'react';
 import {render} from 'react-dom';
 import {Provider} from 'react-redux';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 import {configureStore} from 'src/common/store/configureStore';
 import App from 'src/client_admin/containers/AppContainer';
 import LoginContainer from 'src/common/containers/LoginContainer';
@@ -35,6 +35,7 @@ render(
       <App>
         <Switch>
           <Route exact path="/" render={renderComponent(<HomeContainer />)}/>
+          <Redirect exact from='/admin' to='/'/>
           <Route exact path="/login" component={LoginContainer} />
           <Route exact path="/profile" component={ProfileContainer} />
           <Route exact path="/new_tournament" component={EditTournamentContainer} />
