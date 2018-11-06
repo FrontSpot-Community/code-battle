@@ -53,7 +53,7 @@ class HttpService {
   }
 
   delete(url, data) {
-    return this.request(url, {
+    return this.request({
       method: 'delete',
       url,
       data

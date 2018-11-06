@@ -47,6 +47,12 @@
   border: 1px solid $button-cancel_color;
 }
 
+.warn {
+  color: #e74c3c;
+  background-color: $button-cancel_bg;
+  border: 1px solid #e74c3c;
+}
+
 .navigation {
   height: 100%;
   padding: 0;
@@ -98,5 +104,4 @@
 .active {
   color: $button-navigation_color;
   border-bottom: 2px solid $button-navigation_color;
-
 }

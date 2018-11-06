@@ -22,7 +22,7 @@ export default class TournamentTableRow extends Component {
   }
 
   render() {
-    const {tournament} = this.props;
+    const {tournament, adminMode} = this.props;
     const {
       id,
       name,
@@ -40,7 +40,7 @@ export default class TournamentTableRow extends Component {
       ? new Date(endDate) - new Date()
       : '';
 
-    const TournamentLink = tournament.status === STATUS.STARTED
+    const TournamentLink = tournament.status === STATUS.STARTED || adminMode
       ? (
         <Link className={style.tournamentName}
           to={{pathname: `/${id}`}} title={name} style={this.getSecStyle()} >{name}

@@ -2,12 +2,14 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {withRouter} from 'react-router-dom';
-import {BattleTable, Summary} from 'src/client/components/Battle';
-import Loader from 'src/client/components/Loader';
+import {BattleTable, Summary} from 'src/client/components/Battle/index';
+import Loader from 'src/client/components/Loader/index';
 import {tournamentsByIdRequest} from 'src/client/actions/action_creators/tournamentActionCreators';
 import {tasksByIdRequest} from 'src/client/actions/action_creators/taskActionCreators';
 import style from './style.scss';
 import sorts from './sorts';
+import withActivePageDispatch from 'common/components/Hocs/withActivePageDispatch';
+import withPageName from 'common/components/Hocs/withPageName';
 
 const mixIcon = (val) => <span>{val}<i className={'glyphicon glyphicon-triangle-bottom'}/></span>;
 
@@ -71,7 +73,7 @@ class BattleContainer extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (!nextProps.tournamentsLoading) {
-      this.props.tasksByIdRequest(nextProps.tournamentById.tasks);
+      this.props.tasksByIdRequest(nextProps.tournamentById && nextProps.tournamentById.tasks);
     }
   }
 
@@ -150,4 +152,7 @@ const mapActionsToProps = (dispatch) => (
 export default connect(
   mapStateToProps,
   mapActionsToProps
-)(withRouter(BattleContainer));
+)(withActivePageDispatch(
+  withPageName(
+    withRouter(BattleContainer), 'TOURNAMENT_PAGE')
+));

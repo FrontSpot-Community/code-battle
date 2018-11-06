@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
-
-import Breadcrumbs from './components/Breadcrumbs';
-import SecButton from './components/SecButton';
-import Notifications from './components/Notifications';
-import ProfileItem from './components/ProfileItem';
+import {withRouter, Link} from 'react-router-dom';
+import Breadcrumbs from './components/Breadcrumbs/index';
+import Notifications from './components/Notifications/index';
+import ProfileItem from './components/ProfileItem/index';
 
 import logo from 'root/assets/images/logo.svg';
 import styles from './header.scss';
@@ -25,7 +23,12 @@ class Header extends Component {
     this.setState({headerStyles: {backgroundColor: color}});
   };
 
-  render() {
+  renderAdminButtonPanel = () => {
+    const {renderAdminButtons} = this.props;
+    return renderAdminButtons ? renderAdminButtons() : null;
+  };
+
+  renderHeader = () =>{
     return (
       <header
         style={this.state.headerStyles}
@@ -36,12 +39,20 @@ class Header extends Component {
           {this.state.brandTitle}
         </Link>
         <Breadcrumbs setHeaderBackground={this.setHeaderBackground}/>
-        <SecButton/>
-        <Notifications />
-        <ProfileItem user={this.props.user}/>
+        <div className={styles.header__rightPart}>
+          {this.renderAdminButtonPanel()}
+          <Notifications/>
+          <ProfileItem user={this.props.user}/>
+        </div>
       </header>
+    );
+  };
+
+  render() {
+    return (
+      this.props.location.pathname !== '/login' ? this.renderHeader() : null
     );
   }
 }
 
-export default Header;
+export default withRouter(Header);

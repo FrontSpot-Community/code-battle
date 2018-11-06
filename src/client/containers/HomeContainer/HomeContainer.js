@@ -8,6 +8,9 @@ import Rank from 'src/client/components/Rank';
 import {tournamentsRequest} from 'src/client/actions/action_creators/tournamentActionCreators';
 import {allUsersRequest, userRequest} from 'src/client/actions/action_creators/userActionCreators';
 import Loader from 'src/client/components/Loader';
+import withActivePageDispatch from 'common/components/Hocs/withActivePageDispatch';
+import withPageName from 'common/components/Hocs/withPageName';
+import {HOME_PAGE} from 'common/constants/activePageNames';
 
 class HomeContainer extends React.Component {
   constructor(props) {
@@ -15,9 +18,17 @@ class HomeContainer extends React.Component {
   }
 
   componentDidMount() {
-    this.props.tournamentsRequest();
-    this.props.allUsersRequest();
-    this.props.userRequest();
+    if (!this.props.tournaments.length) {
+      this.props.tournamentsRequest();
+    }
+
+    if (!this.props.user) {
+      this.props.userRequest();
+    }
+
+    if (!this.props.users.length) {
+      this.props.allUsersRequest();
+    }
   }
 
   renderTabs = () => (<Tabs />);
@@ -30,7 +41,8 @@ class HomeContainer extends React.Component {
           : <div className={style.wrapper}>
             <div className={style.tableContainer}>
               <TournamentList tournaments={this.props.tournaments}
-                render={this.renderTabs}/>
+                render={this.renderTabs}
+                adminMode={this.props.user.isAdmin}/>
             </div>
             <div className={style.rankContainer}>
               <Rank rankPosition={this.props.rankPosition}
@@ -58,5 +70,6 @@ const mapStateToProps = (state) => {
 const mapActionsToProps = (dispatch) => (
   bindActionCreators({tournamentsRequest, allUsersRequest, userRequest}, dispatch)
 );
-
-export default connect(mapStateToProps, mapActionsToProps)(HomeContainer);
+export default connect(mapStateToProps, mapActionsToProps)(
+  withActivePageDispatch(withPageName(HomeContainer, HOME_PAGE))
+);

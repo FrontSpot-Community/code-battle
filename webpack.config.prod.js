@@ -17,7 +17,7 @@ module.exports = {
     output: {
       path: outputPath,
       publicPath: '/',
-      filename: '[name]/entry.js'
+      filename: '[name].entry.js'
     },
     resolve: {
       alias: {
@@ -86,7 +86,7 @@ module.exports = {
         chunks: ['vendor', 'client']
       }),
       new HtmlWebpackPlugin({
-        template: path.join(srcPath, 'client_admin', 'index_admin.html'),
+        template: path.join(srcPath, 'client_admin', 'index.html'),
         favicon: './assets/images/favicon.ico',
         filename: 'index_admin.html',
         path: outputPath,

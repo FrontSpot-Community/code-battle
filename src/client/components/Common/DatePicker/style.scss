@@ -1,0 +1,88 @@
+@import '~Colors';
+
+.label {
+  width: calc(100% + 14px);
+  height: calc(100% + 14px);
+  min-width: 115px;
+
+  & > span {
+    display: block;
+    font-family: 'Source Sans Pro Regular', sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: left;
+    color: $DUSTY_GRAY;
+    margin-bottom: 6px;
+  }
+
+  .input {
+    position: relative;
+    margin: 0;
+    width: 100%;
+    font-family: 'Source Sans Pro Regular', sans-serif;
+    font-size: 14px;
+    line-height: 23px;
+    color: $WHITE;
+    padding: 11px;
+    background-color: $bg_dark;
+    border-color: $MINE_SHAFT;
+    border-style: solid;
+    border-width: 1px;
+
+    .calendar {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      pointer-events: none;
+      cursor: pointer;
+    }
+
+    input[type='date'] {
+      float: right;
+      width: 24px;
+      height: 24px;
+      position: relative;
+      border: 0;
+      outline: none;
+      opacity: 0;
+
+      &::-webkit-datetime-edit-fields-wrapper {
+        display: none;
+      }
+
+      &::-webkit-datetime-edit-text {
+        display: none;
+      }
+
+      &::-webkit-datetime-edit {
+        display: none;
+      }
+
+      &::-webkit-inner-spin-button {
+        display: none;
+      }
+
+      &::-webkit-calendar-picker-indicator {
+        cursor: pointer;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    input[type='date']::-webkit-calendar-picker-indicator {
+      color: #2c3e50;
+    }
+
+    input[type='date'], focus {
+      outline: none;
+    }
+  }
+}

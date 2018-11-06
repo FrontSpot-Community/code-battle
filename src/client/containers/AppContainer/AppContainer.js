@@ -1,15 +1,16 @@
 import React from 'react';
-import Header from '../components/Header';
+import Header from 'common/components/Header';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
-
 import styles from './App.scss';
-
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <div className={styles.wrapper}>
-        {location.pathname !== '/login' && <Header user={this.props.userInfo}/>}
+        <Header user={this.props.userInfo} />
         <main className={styles.main}>
           {this.props.children}
         </main>
@@ -18,8 +19,8 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => (
-  {userInfo: state.user.userInfo}
-);
+const mapStateToProps = (state) => ({
+  userInfo: state.user.userInfo
+});
 
-export default withRouter(connect(mapStateToProps)(App));
+export default withRouter(connect(mapStateToProps, null)(App));

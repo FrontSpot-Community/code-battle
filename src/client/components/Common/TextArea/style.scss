@@ -1,0 +1,35 @@
+@import '~Colors';
+
+.textArea {
+  width: 100%;
+  height: calc(100% - 36px);
+  overflow-y: auto;
+  font-family: 'Source Sans Pro Regular', sans-serif;
+  font-size: 14px;
+  color: $WHITE;
+  padding: 18px;
+  background-color: $bg_dark;
+  resize: none;
+  border-color: $MINE_SHAFT;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.label {
+  width: calc(100% + 14px);
+  height: calc(100% + 14px);
+
+  & > span {
+    display: block;
+    font-family: 'Source Sans Pro Regular', sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: left;
+    color: $DUSTY_GRAY;
+    margin-bottom: 6px;
+  }
+}
