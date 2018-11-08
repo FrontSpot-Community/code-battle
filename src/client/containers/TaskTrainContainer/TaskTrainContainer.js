@@ -149,6 +149,7 @@ class TaskTrainContainer extends React.Component {
       satisfaction: task && task.satisfaction,
       status: solutionResult && solutionResult.completed && 'Resolved' || 'Open'
     };
+    const withoutTestsText = 'Sorry, tests sample are not present.';
     return (
       <div className={style.container}>
         <div className={style.dataContainer}>
@@ -163,7 +164,7 @@ class TaskTrainContainer extends React.Component {
               solution={this.state.solution}
             />
             <SampleTests
-              defaultTests={task && task.test}
+              defaultTests={(task && task.testSample) || withoutTestsText}
               language={task && task.language}
               onSampleTestsChange={this.onSampleTestsChange}
               sampleTests={this.state.sampleTests} runSampleTests={this.runSampleTests}

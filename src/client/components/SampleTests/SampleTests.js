@@ -6,6 +6,7 @@ import style from './style.scss';
 class SampleTests extends React.Component {
   render() {
     const {
+      header,
       language,
       sampleTests,
       defaultTests,
@@ -15,7 +16,7 @@ class SampleTests extends React.Component {
     return (
       <div className={style.container}>
         <div className={style.header}>
-          <span className={style.headerName}>SAMPLE TESTS</span>
+          <span className={style.headerName}>{header || 'SAMPLE TESTS'}</span>
           {/* <div className={style.headerButtons}>
             <button className={style.runSampleTestsButton} onClick={this.props.runSampleTests}>
               <span className={style.runSampleTestsButtonText}>RUN TESTS</span>

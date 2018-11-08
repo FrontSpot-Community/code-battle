@@ -5,9 +5,9 @@ import style from './style.scss';
 
 const TaskDetailsEditor = (props) => {
   const {
-    name, description, stars, difficulty,
+    name, description, stars, difficulty, language,
     onTaskDifficultyChanges, onTaskStarsChanges,
-    onTaskNameChanges, onTaskDescriptionChanges
+    onTaskNameChanges, onTaskDescriptionChanges, onTaskLanguageChanges
   } = props;
 
   return (
@@ -68,6 +68,34 @@ const TaskDetailsEditor = (props) => {
                 {
                   value: 'Mortal',
                   text: 'Mortal'
+                }
+              ]
+            }
+          />
+          <Select
+            className={style.form__label} label="Language"
+            onChange={({target}) => onTaskLanguageChanges(target.value)}
+            value={language} values={
+              [
+                {
+                  value: 'javascript',
+                  text: 'javascript'
+                },
+                {
+                  value: 'php',
+                  text: 'php'
+                },
+                {
+                  value: 'csharp',
+                  text: 'csharp'
+                },
+                {
+                  value: 'java',
+                  text: 'java'
+                },
+                {
+                  value: 'python',
+                  text: 'python'
                 }
               ]
             }
