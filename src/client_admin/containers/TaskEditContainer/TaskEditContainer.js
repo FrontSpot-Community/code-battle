@@ -32,7 +32,9 @@ class TaskEditContainer extends React.Component {
       complexity: task && task.complexity || 'Low',
       name: task && task.name || '',
       stars: task && task.stars || '1',
-      description: task && task.description || ''
+      description: task && task.description || '',
+      numberOfTests: task && task.numberOfTests || '',
+      score: task && task.score || 1
     };
   }
 
@@ -56,8 +58,8 @@ class TaskEditContainer extends React.Component {
     let {task = {}} = this.props;
 
     const {
-      sample, name, test, testSample,
-      stars, complexity, description, language
+      sample, name, test, testSample, numberOfTests,
+      stars, complexity, description, language, score
     } = this.state;
 
     const dataToSend = {
@@ -71,6 +73,8 @@ class TaskEditContainer extends React.Component {
       stars: stars || task.stars,
       language: language || task.language,
       description: description || task.description,
+      numberOfTests: Number(numberOfTests || task.numberOfTests),
+      score: Number(score || task.numberOfTests),
       tournamentId: this.props.match.params.id
     };
 
@@ -91,8 +95,8 @@ class TaskEditContainer extends React.Component {
 
   renderData() {
     const {
-      sample, name, test, testSample, stars,
-      complexity, description, language
+      sample, name, test, testSample, stars, score,
+      complexity, description, language, numberOfTests
     } = this.state;
 
     return (
@@ -102,13 +106,16 @@ class TaskEditContainer extends React.Component {
             <div className={style.wrapper}>
               <div className={style.col}>
                 <TaskDetailsEditor
-                  difficulty={complexity} name={name}
+                  difficulty={complexity} name={name} numberOfTests={numberOfTests}
                   description={description} stars={stars} language={language}
+                  score={score}
                   onTaskDescriptionChanges={this.handleStateUpdate('description')}
                   onTaskNameChanges={this.handleStateUpdate('name')}
                   onTaskStarsChanges={this.handleStateUpdate('stars')}
                   onTaskDifficultyChanges={this.handleStateUpdate('complexity')}
                   onTaskLanguageChanges={this.handleStateUpdate('language')}
+                  onNumberOfTestsChanges={this.handleStateUpdate('numberOfTests')}
+                  onScoreChanges={this.handleStateUpdate('score')}
                 />
               </div>
               <div className={style.col}>
