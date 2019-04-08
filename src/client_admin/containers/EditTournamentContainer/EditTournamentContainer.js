@@ -10,7 +10,7 @@ import {
   tournamentDelete,
   tournamentAdd
 } from 'src/client/actions/action_creators/tournamentActionCreators';
-
+import {STATUS} from 'src/client/components/Status';
 import style from './style.scss';
 import {Button} from 'src/client/components/Common';
 
@@ -27,6 +27,7 @@ class EditTournamentContainer extends React.Component {
       tags: [],
       difficulty: '',
       department: '',
+      status: STATUS.PREPARING,
       isEditMode: false
     };
   }
@@ -79,6 +80,10 @@ class EditTournamentContainer extends React.Component {
     this.setState({tags: newTagsList});
   };
 
+  handleStatusChanges = (status) => {
+    this.setState({status});
+  }
+
   replaceIllegalChars(string, replaceTo) {
     const regexp = new RegExp('[^a-zA-Z0-9/-]+', 'g');
     return string.replace(regexp, replaceTo);
@@ -93,7 +98,8 @@ class EditTournamentContainer extends React.Component {
       department: tournamentById ? tournamentById.department : '',
       description: tournamentById ? tournamentById.description : '',
       tags: tournamentById ? tournamentById.tags : [],
-      difficulty: tournamentById ? tournamentById.difficulty : ''
+      difficulty: tournamentById ? tournamentById.difficulty : '',
+      status: tournamentById ? tournamentById.status : STATUS.PREPARING
     });
   }
 
@@ -121,7 +127,7 @@ class EditTournamentContainer extends React.Component {
 
     const {
       name, startDate, endDate, language, department,
-      description, tags, difficulty
+      description, tags, difficulty, status
     } = this.state;
 
     const dataToSend = {
@@ -131,7 +137,7 @@ class EditTournamentContainer extends React.Component {
           .toLowerCase(),
       id:
         this.replaceIllegalChars(name === '' ? tournamentById.name : name, '_'),
-      status: !this.state.isEditMode ? 'Started': tournamentById.status,
+      status: status === '' ? tournamentById.status : status,
       name: name === '' ? tournamentById.name : name,
       startDate: startDate === '' ? tournamentById.startDate : startDate,
       endDate: endDate === '' ? tournamentById.endDate : endDate,
@@ -149,7 +155,7 @@ class EditTournamentContainer extends React.Component {
   renderData() {
     const {
       name, startDate, endDate, language, department,
-      description, tags, difficulty, isEditMode
+      description, tags, difficulty, isEditMode, status
     } = this.state;
 
     return (
@@ -162,6 +168,7 @@ class EditTournamentContainer extends React.Component {
                   name={name} startDate={startDate} endDate={endDate}
                   language={language} description={description}
                   tags={tags} difficulty={difficulty} author={department}
+                  status={status}
                   onTitleChanges={this.handleTitleChanges}
                   onStartDateChanges={this.handleStartDateChanges}
                   onEndDateChanges={this.handleEndDateChanges}
@@ -170,6 +177,7 @@ class EditTournamentContainer extends React.Component {
                   onAuthorNameChanges={this.handleAuthorNameChanges}
                   onTaskDescriptionChanges={this.handleTaskDescriptionChanges}
                   onTagsListChanges={this.handleTagsListChanges}
+                  onStatusChanges={this.handleStatusChanges}
                 />
               </div>
             </div>

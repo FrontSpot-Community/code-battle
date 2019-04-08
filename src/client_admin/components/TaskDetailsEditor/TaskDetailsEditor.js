@@ -5,9 +5,10 @@ import style from './style.scss';
 
 const TaskDetailsEditor = (props) => {
   const {
-    name, description, stars, difficulty, language,
-    onTaskDifficultyChanges, onTaskStarsChanges,
-    onTaskNameChanges, onTaskDescriptionChanges, onTaskLanguageChanges
+    name, description, stars, difficulty, language, numberOfTests,
+    onTaskDifficultyChanges, onTaskStarsChanges, onNumberOfTestsChanges,
+    onTaskNameChanges, onTaskDescriptionChanges, onTaskLanguageChanges,
+    score, onScoreChanges
   } = props;
 
   return (
@@ -99,6 +100,16 @@ const TaskDetailsEditor = (props) => {
                 }
               ]
             }
+          />
+        </div>
+        <div className={style.row}>
+          <Input
+            className={style.form__label} value={numberOfTests} label="Number of tests"
+            onChange={({target}) => onNumberOfTestsChanges(target.value)}
+          />
+          <Input
+            className={style.form__label} value={score} label="Score"
+            onChange={({target}) => onScoreChanges(target.value)}
           />
         </div>
         <div className={style.row}>

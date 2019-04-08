@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {STATUS} from 'src/client/components/Status';
 import {
   TextArea, Input, Select, Checkbox, DatePicker, TileInput
 } from 'src/client/components/Common';
@@ -13,7 +13,7 @@ export default class TournamentFieldsEditor extends React.Component {
       name, startDate, endDate, language, description, tags, difficulty, author,
       onTitleChanges, onStartDateChanges, onEndDateChanges, onDifficultyChanges,
       onLanguageChanges, onAuthorNameChanges, onTaskDescriptionChanges,
-      onTagsListChanges
+      onTagsListChanges, status, onStatusChanges
     } = this.props;
 
     return (
@@ -34,6 +34,16 @@ export default class TournamentFieldsEditor extends React.Component {
               <DatePicker
                 className={style.form__label} value={endDate} label="End Date"
                 onChange={({target}) => onEndDateChanges(target.value)}
+              />
+              <Select
+                className={style.form__label} label="Tournament status"
+                onChange={({target}) => onStatusChanges(target.value)}
+                value={status} values={
+                  Object.keys(STATUS).map((itemKey) => ({
+                    value: STATUS[itemKey],
+                    text: STATUS[itemKey]
+                  }))
+                }
               />
             </div>
             <div className={style.row__second}>
@@ -76,6 +86,18 @@ export default class TournamentFieldsEditor extends React.Component {
                   {
                     value: 'php',
                     text: 'PHP'
+                  },
+                  {
+                    value: 'csharp',
+                    text: 'C#'
+                  },
+                  {
+                    value: 'java',
+                    text: 'Java'
+                  },
+                  {
+                    value: 'python',
+                    text: 'Python'
                   }
                 ]
               }
