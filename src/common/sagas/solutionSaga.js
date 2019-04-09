@@ -1,6 +1,4 @@
 import {call, put, takeEvery} from 'redux-saga/effects';
-import {getTournamentById} from '../api/tournaments';
-import {postToAmi} from '../api/ami';
 
 import {
   submitSolution,
@@ -21,21 +19,12 @@ import {
 
 function* sendSolution({payload}) {
   try {
-    const {solutionCode, taskId, tournamentId, userInfo} = payload;
+    const {solutionCode, taskId} = payload;
     if (!(solutionCode && taskId)) {
       return put(submitSolutionFailed('Empty solution'));
     }
     const submitResult = yield call(submitSolution, payload);
     yield put(submitSolutionSuccess(submitResult));
-    const tournament = yield call(getTournamentById, tournamentId);
-    if (tournament.solved === tournament.total) {
-      const dataToAmi = {
-        upsa: userInfo.upsa,
-        language: tournament.language,
-        tournament: tournament.id
-      };
-      yield call(postToAmi, dataToAmi);
-    }
   } catch (e) {
     yield put(submitSolutionFailed(e));
   }
